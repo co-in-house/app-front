@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import './view/homePage.dart' as homePage;
+import './view/rootFlame.dart' as root;
 
 void main() {
   runApp(MyApp());
@@ -15,10 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ChangeNotifierProvider(
-        create: (context) => homePage.SamplePostThenNotice(),
-        child: homePage.MyHomePage(),
-      ),
+      home: root.RootFlame(),
     );
   }
 }
