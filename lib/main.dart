@@ -1,3 +1,4 @@
+import 'package:Inhouse/util/theme.dart';
 import 'package:flutter/material.dart';
 import './view/rootFlame.dart' as root;
 
@@ -10,10 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Inhouse Sample',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      title: 'Inhouse',
+      theme: inhouseThemeColor,
       home: root.RootFlame(),
     );
   }
