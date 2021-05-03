@@ -17,17 +17,17 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     // int rs = context
-    //     .select((RootingState rootingState) => rootingState)
-    //     .rootingState;
-    // if (RootingState.isHome(rs)) {
+    //     .select((routingState routingState) => routingState)
+    //     .routingState;
+    // if (routingState.isHome(rs)) {
     //   print("home");
     //   return _AppBarComponent.home(context);
-    // } else if (RootingState.isSearch(rs)) {
+    // } else if (routingState.isSearch(rs)) {
     //   print("search");
     //   return _AppBarComponent.search();
     // } else {
     //   print("other");
-    //   print("RootingState is " + rs.toString());
+    //   print("routingState is " + rs.toString());
     //   return _AppBarComponent.home(context);
     // }
     return _AppBarComponent.home(context);

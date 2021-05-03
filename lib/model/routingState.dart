@@ -3,19 +3,19 @@ import 'package:Inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 
 @immutable
-class RootingState extends BaseModel {
-  RootingState({
-    this.rootingState = 0,
+class RoutingState extends BaseModel {
+  RoutingState({
+    this.routingState = 0,
   });
-  final int rootingState;
+  final int routingState;
 
   static bool isHome(int rs) {
-    print("RootingState isHome?");
+    print("routingState isHome?");
     return rs == Const.rootingNoHome;
   }
 
   static bool isSearch(int rs) {
-    print("RootingState isSearch?");
+    print("routingState isSearch?");
     return rs == Const.rootingNoSearch;
   }
 }

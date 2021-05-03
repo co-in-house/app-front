@@ -27,6 +27,33 @@ class RootFlame extends StatelessWidget {
           child: MyHomePage(),
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+            label: 'Home',
+            icon: Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            label: 'Explore',
+            icon: Icon(Icons.explore),
+          ),
+          BottomNavigationBarItem(
+            label: 'Lounge',
+            icon: Icon(Icons.apps),
+          ),
+          BottomNavigationBarItem(
+            label: 'Event',
+            icon: Icon(Icons.event_available),
+          ),
+          BottomNavigationBarItem(
+            label: 'Message',
+            icon: Icon(Icons.message_rounded),
+          ),
+        ],
+      ),
     );
   }
 }

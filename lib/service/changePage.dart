@@ -1,17 +1,17 @@
-import 'package:Inhouse/model/rootingState.dart';
+import 'package:Inhouse/model/routingState.dart';
 import 'package:Inhouse/util/util.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-class ChangePage extends StateNotifier<RootingState> {
-  ChangePage() : super(RootingState());
+class ChangePage extends StateNotifier<RoutingState> {
+  ChangePage() : super(RoutingState());
 
   void setHome() {
-    print("RootingState変更 : home");
-    state = RootingState(rootingState: Const.rootingNoHome);
+    print("routingState変更 : home");
+    state = RoutingState(routingState: Const.rootingNoHome);
   }
 
   void setSearch() {
-    print("RootingState変更 : search");
-    state = RootingState(rootingState: Const.rootingNoSearch);
+    print("routingState変更 : search");
+    state = RoutingState(routingState: Const.rootingNoSearch);
   }
 }
