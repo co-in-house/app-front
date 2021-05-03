@@ -1,3 +1,5 @@
+import 'package:Inhouse/component/appBar.dart';
+import 'package:Inhouse/component/drawer.dart';
 import 'package:Inhouse/model/sample.dart';
 import 'package:Inhouse/service/sampleService.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +11,9 @@ class RootFlame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Inhouse Sample Page'),
+      appBar: CustomAppBar(),
+      drawer: CustomDrawer(
+        context: context,
       ),
       body: Container(
         alignment: Alignment.center,
