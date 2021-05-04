@@ -23,9 +23,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
     if (Const.routingNoHome == rs) {
       print("home");
       return _AppBarComponent.home(context);
-    } else if (Const.routingNoSearch == rs) {
-      print("search");
-      return _AppBarComponent.search();
+    } else if (Const.routingNoExplore == rs) {
+      print("explore");
+      return _AppBarComponent.explore();
     } else if (Const.routingNoLounge == rs) {
       print("lounge");
       return _AppBarComponent.lounge();
@@ -50,7 +50,7 @@ class _AppBarComponent {
     );
   }
 
-  static AppBar search() {
+  static AppBar explore() {
     return AppBar(
       title: TextField(
         onChanged: (text) {},
