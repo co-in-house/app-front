@@ -1,29 +1,22 @@
-import 'package:Inhouse/component/sampleMessage.dart';
-import 'package:Inhouse/model/sample.dart';
-import 'package:Inhouse/service/sampleService.dart';
+import 'package:Inhouse/component/postCard.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
-  final TextEditingController _controller = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        TextField(
-          controller: _controller,
-          decoration: InputDecoration(hintText: 'Enter Your Name !'),
-        ),
-        ElevatedButton(
-          child: Text('Submit'),
-          onPressed: () {
-            context.read<SampleService>().call(_controller.text);
-          },
-        ),
-        SampleMessage(sample: context.select((Sample sample) => sample)),
-      ],
-    );
+    // return Column(
+    //   mainAxisAlignment: MainAxisAlignment.center,
+    //   children: <Widget>[
+    //     Text('Home Page'),
+    //     PostCard(),
+    //   ],
+    // );
+    // return PostCard();
+    return ListView(scrollDirection: Axis.vertical, children: <Widget>[
+      PostCard(),
+      PostCard(),
+      PostCard(),
+      PostCard(),
+    ]);
   }
 }
