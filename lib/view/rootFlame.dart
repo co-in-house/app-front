@@ -1,4 +1,5 @@
 import 'package:Inhouse/component/appBar.dart';
+import 'package:Inhouse/component/navBar.dart';
 import 'package:Inhouse/component/drawer.dart';
 import 'package:Inhouse/model/sample.dart';
 import 'package:Inhouse/service/sampleService.dart';
@@ -12,9 +13,8 @@ class RootFlame extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(),
-      drawer: CustomDrawer(
-        context: context,
-      ),
+      drawer: CustomDrawer(context: context),
+      bottomNavigationBar: CustomNavBar(),
       body: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.all(8.0),
@@ -26,33 +26,6 @@ class RootFlame extends StatelessWidget {
           ],
           child: MyHomePage(),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            label: 'Home',
-            icon: Icon(Icons.home),
-          ),
-          BottomNavigationBarItem(
-            label: 'Explore',
-            icon: Icon(Icons.explore),
-          ),
-          BottomNavigationBarItem(
-            label: 'Lounge',
-            icon: Icon(Icons.apps),
-          ),
-          BottomNavigationBarItem(
-            label: 'Event',
-            icon: Icon(Icons.event_available),
-          ),
-          BottomNavigationBarItem(
-            label: 'Message',
-            icon: Icon(Icons.message_rounded),
-          ),
-        ],
       ),
     );
   }
