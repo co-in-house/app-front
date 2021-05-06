@@ -4,10 +4,12 @@ import 'package:Inhouse/service/api/getTimeLineService.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class PostCardRowList extends StatelessWidget {
-  final TimeLine timeLine;
-  PostCardRowList({this.timeLine});
+class PostCardRowList extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _PostCardRowListState();
+}
 
+class _PostCardRowListState extends State<PostCardRowList> {
   @override
   Widget build(BuildContext context) {
     var timeLine = context.select((TimeLine timeLine) => timeLine);
