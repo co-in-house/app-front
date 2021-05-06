@@ -1,3 +1,5 @@
+import 'package:Inhouse/model/timeLine.dart';
+import 'package:Inhouse/service/api/getTimeLineService.dart';
 import 'package:Inhouse/service/changePage.dart';
 import 'package:Inhouse/util/theme.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +23,9 @@ class MyApp extends StatelessWidget {
         providers: [
           StateNotifierProvider<ChangePage, RoutingState>(
             create: (context) => ChangePage(),
+          ),
+          StateNotifierProvider<GetTimeLineService, TimeLine>(
+            create: (context) => GetTimeLineService(),
           ),
         ],
         child: root.RootFlame(),
