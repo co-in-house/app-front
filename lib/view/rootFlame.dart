@@ -3,7 +3,7 @@ import 'package:Inhouse/component/navBar.dart';
 import 'package:Inhouse/component/drawer.dart';
 import 'package:Inhouse/model/routingState.dart';
 import 'package:Inhouse/model/sample.dart';
-import 'package:Inhouse/service/sampleService.dart';
+import 'package:Inhouse/service/api/sampleService.dart';
 import 'package:Inhouse/view/eventPage.dart';
 import 'package:Inhouse/view/explorePage.dart';
 import 'package:Inhouse/view/loungePage.dart';

@@ -1,6 +1,6 @@
 import 'package:Inhouse/component/sampleMessage.dart';
 import 'package:Inhouse/model/sample.dart';
-import 'package:Inhouse/service/sampleService.dart';
+import 'package:Inhouse/service/api/sampleService.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
