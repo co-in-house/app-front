@@ -10,6 +10,28 @@ class PostCardRowList extends StatefulWidget {
 }
 
 class _PostCardRowListState extends State<PostCardRowList> {
+  ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _scrollListener() {
+    // スクロールを検知したときに呼ばれる
+    double positionRate =
+        _scrollController.offset / _scrollController.position.maxScrollExtent;
+    print("positionRate : " + positionRate.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     var timeLine = context.select((TimeLine timeLine) => timeLine);
@@ -27,6 +49,7 @@ class _PostCardRowListState extends State<PostCardRowList> {
             )
           : ListView.builder(
               physics: const AlwaysScrollableScrollPhysics(),
+              controller: _scrollController,
               itemBuilder: (BuildContext context, int index) {
                 return PostCardRow(row: timeLine.contentsList[index]);
               },
