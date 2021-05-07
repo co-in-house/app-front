@@ -32,7 +32,7 @@ class SliverAppBarHome extends StatelessWidget {
                 decoration: new InputDecoration(
               suffixIcon:
                   new Icon(Icons.search, color: Theme.of(context).primaryColor),
-              hintText: "any fixed object",
+              hintText: "fixed object",
             ))
           ],
         ),
