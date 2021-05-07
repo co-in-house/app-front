@@ -9,8 +9,34 @@ class SliverAppBarHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       title: Text('Inhouse'),
-      backgroundColor: Theme.of(context).primaryColor,
+      // backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      textTheme: TextTheme(
+        headline6: TextStyle(
+          color: Theme.of(context).primaryColor,
+          fontSize: 20,
+        ),
+      ),
+      iconTheme: IconThemeData(
+        color: Theme.of(context).primaryColor,
+      ),
       floating: true,
+      pinned: true,
+      // snap: true,
+      bottom: PreferredSize(
+        preferredSize: const Size.fromHeight(50),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+                decoration: new InputDecoration(
+              suffixIcon:
+                  new Icon(Icons.search, color: Theme.of(context).primaryColor),
+              hintText: "any fixed object",
+            ))
+          ],
+        ),
+      ),
     );
   }
 }
