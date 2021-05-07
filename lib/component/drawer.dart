@@ -14,13 +14,13 @@ class CustomDrawer extends Drawer {
                 ),
               ),
               ListTile(
-                title: Text('Item 1'),
+                title: Text('Item AAA'),
                 onTap: () {
                   Navigator.pop(context);
                 },
               ),
               ListTile(
-                title: Text('Item 2'),
+                title: Text('Item BBB'),
                 onTap: () {
                   Navigator.pop(context);
                 },
