@@ -1,4 +1,3 @@
-import 'package:Inhouse/component/appBar.dart';
 import 'package:Inhouse/component/navBar.dart';
 import 'package:Inhouse/component/drawer.dart';
 import 'package:Inhouse/model/routingState.dart';
@@ -25,12 +24,9 @@ class RootFlame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
       drawer: CustomDrawer(context: context),
       bottomNavigationBar: CustomNavBar(),
       body: Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.all(8.0),
         child: MultiProvider(
           providers: [
             StateNotifierProvider<SampleService, Sample>(

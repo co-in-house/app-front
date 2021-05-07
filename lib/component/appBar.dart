@@ -3,9 +3,22 @@ import 'package:Inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+// SliverAppBar for Home
+class SliverAppBarHome extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      title: Text('Inhouse'),
+      backgroundColor: Theme.of(context).primaryColor,
+      floating: true,
+    );
+  }
+}
+
 // Custom
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
-  CustomAppBar({Key key})
+  final BuildContext context;
+  CustomAppBar({Key key, this.context})
       : preferredSize = Size.fromHeight(kToolbarHeight),
         super(key: key);
 
@@ -22,7 +35,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
     int rs = context.select((RoutingState state) => state).routingState;
     if (Const.routingNoHome == rs) {
       print("home");
-      return _AppBarComponent.home(context);
+      return _AppBarComponent.home(widget.context);
     } else if (Const.routingNoExplore == rs) {
       print("explore");
       return _AppBarComponent.explore();
