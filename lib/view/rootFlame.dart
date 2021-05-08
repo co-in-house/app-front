@@ -1,3 +1,4 @@
+import 'package:Inhouse/component/floatingButton.dart';
 import 'package:Inhouse/component/navBar.dart';
 import 'package:Inhouse/component/drawer.dart';
 import 'package:Inhouse/model/routingState.dart';
@@ -25,6 +26,7 @@ class RootFlame extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: CustomDrawer(context: context),
+      floatingActionButton: CustomFloatingButton(),
       bottomNavigationBar: CustomNavBar(),
       body: Container(
         child: MultiProvider(
