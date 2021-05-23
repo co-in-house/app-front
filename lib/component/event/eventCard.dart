@@ -1,9 +1,9 @@
-import 'package:Inhouse/model/postList.dart';
+import 'package:Inhouse/model/eventList.dart';
 import 'package:flutter/material.dart';
 
-class PostCard extends StatelessWidget {
-  final OneCardOnPostList content;
-  PostCard({this.content});
+class EventCard extends StatelessWidget {
+  final OneCardOnEventList content;
+  EventCard({this.content});
 
   @override
   Widget build(BuildContext context) {

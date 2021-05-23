@@ -1,6 +1,6 @@
-import 'package:Inhouse/component/timeline/postCardRowList.dart';
-import 'package:Inhouse/model/timeLine.dart';
-import 'package:Inhouse/service/api/getTimeLineService.dart';
+import 'package:Inhouse/component/timeline/postCardList.dart';
+import 'package:Inhouse/model/postList.dart';
+import 'package:Inhouse/service/api/getPostListService.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Inhouse/component/appBar.dart';
@@ -16,13 +16,13 @@ class HomePage extends StatelessWidget {
         SliverAppBarHome(),
         CupertinoSliverRefreshControl(
           onRefresh: () async {
-            await context.read<GetTimeLineService>().call();
+            await context.read<GetPostListService>().call();
           },
         ),
         SliverFixedExtentList(
           itemExtent: 200.0,
           delegate: PostCardRowList(
-            context.select((TimeLine timeLine) => timeLine),
+            context.select((PostList eventList) => eventList),
           ),
         ),
       ],

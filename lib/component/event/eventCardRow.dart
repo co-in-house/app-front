@@ -1,19 +1,19 @@
-import 'package:Inhouse/component/timeline/postCard.dart';
+import 'package:Inhouse/component/event/eventCard.dart';
 import 'package:flutter/material.dart';
 
-class PostCardRow extends StatelessWidget {
+class EventCardRow extends StatelessWidget {
   final List row;
-  PostCardRow({this.row});
+  EventCardRow({this.row});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 20.0),
-      height: 200.0,
+      // height: 200.0,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
-          return PostCard(content: row[index]);
+          return EventCard(content: row[index]);
         },
         itemCount: row.length,
       ),
