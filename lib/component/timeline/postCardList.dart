@@ -2,9 +2,8 @@ import 'package:Inhouse/component/timeline/postCard.dart';
 import 'package:Inhouse/model/postList.dart';
 import 'package:flutter/material.dart';
 
-class PostCardRowList extends SliverChildListDelegate {
-  PostCardRowList(PostList postList)
-      : super(_PostList.buildEventList(postList));
+class PostCardList extends SliverChildListDelegate {
+  PostCardList(PostList postList) : super(_PostList.buildEventList(postList));
 }
 
 class _PostList {

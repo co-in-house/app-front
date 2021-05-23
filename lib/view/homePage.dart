@@ -19,10 +19,10 @@ class HomePage extends StatelessWidget {
             await context.read<GetPostListService>().call();
           },
         ),
-        SliverFixedExtentList(
-          itemExtent: 200.0,
-          delegate: PostCardRowList(
-            context.select((PostList eventList) => eventList),
+        SliverList(
+          // itemExtent: 108.0,
+          delegate: PostCardList(
+            context.select((PostList postList) => postList),
           ),
         ),
       ],
