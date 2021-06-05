@@ -13,8 +13,8 @@ class CommunityList extends BaseModel {
   factory CommunityList.fromJson(Map<String, dynamic> json) {
     List<dynamic> _list = json['communityList'];
     List<Community> obj = [];
-    List<Tag> _tags = [];
     for (int i = 0; i < _list.length; i++) {
+      List<Tag> _tags = [];
       List<dynamic> _tagList = _list[i]['tagList'];
       for (int j = 0; j < _tagList.length; j++) {
         if (_tagList[j]['tagType'] == 1) {
