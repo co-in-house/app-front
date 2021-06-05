@@ -3,11 +3,11 @@ import 'package:Inhouse/model/postList.dart';
 import 'package:flutter/material.dart';
 
 class PostCardList extends SliverChildListDelegate {
-  PostCardList(PostList postList) : super(_PostList.buildEventList(postList));
+  PostCardList(PostList postList) : super(_PostList.buildPostList(postList));
 }
 
 class _PostList {
-  static List<Widget> buildEventList(PostList postList) {
+  static List<Widget> buildPostList(PostList postList) {
     print(postList);
     if (postList.contentsList == null || postList.contentsList.length == 0) {
       return [Text("No Content")];

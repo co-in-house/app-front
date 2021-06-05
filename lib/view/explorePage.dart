@@ -1,27 +1,34 @@
-import 'package:Inhouse/component/sampleMessage.dart';
-import 'package:Inhouse/model/sample.dart';
-import 'package:Inhouse/service/api/sampleService.dart';
+import 'package:Inhouse/component/appBar.dart';
+import 'package:Inhouse/component/search/communityCardList.dart';
+import 'package:Inhouse/model/communityList.dart';
+import 'package:Inhouse/service/api/getCommunityListService.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ExplorePage extends StatelessWidget {
-  final TextEditingController _controller = TextEditingController();
+  final TextEditingController searchTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        TextField(
-          controller: _controller,
-          decoration: InputDecoration(hintText: 'Enter Your Name !'),
-        ),
-        ElevatedButton(
-          child: Text('Submit'),
-          onPressed: () {
-            context.read<SampleService>().call(_controller.text);
+    return CustomScrollView(
+      physics:
+          const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      slivers: <Widget>[
+        SliverAppBarSearch(searchTextController: this.searchTextController),
+        CupertinoSliverRefreshControl(
+          onRefresh: () async {
+            print("searchTextController:" + this.searchTextController.text);
+            await context
+                .read<GetCommunityListService>()
+                .call(this.searchTextController.text);
           },
         ),
-        SampleMessage(sample: context.select((Sample sample) => sample)),
+        SliverFixedExtentList(
+          itemExtent: 153.0,
+          delegate: CommunityCardList(
+            context.select((CommunityList communityList) => communityList),
+          ),
+        ),
       ],
     );
   }

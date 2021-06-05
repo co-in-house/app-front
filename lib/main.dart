@@ -1,5 +1,7 @@
+import 'package:Inhouse/model/communityList.dart';
 import 'package:Inhouse/model/eventList.dart';
 import 'package:Inhouse/model/postList.dart';
+import 'package:Inhouse/service/api/getCommunityListService.dart';
 import 'package:Inhouse/service/api/getEventListService.dart';
 import 'package:Inhouse/service/api/getPostListService.dart';
 import 'package:Inhouse/service/changePage.dart';
@@ -31,6 +33,9 @@ class MyApp extends StatelessWidget {
           ),
           StateNotifierProvider<GetPostListService, PostList>(
             create: (context) => GetPostListService(),
+          ),
+          StateNotifierProvider<GetCommunityListService, CommunityList>(
+            create: (context) => GetCommunityListService(),
           ),
         ],
         child: root.RootFlame(),

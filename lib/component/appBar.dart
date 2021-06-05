@@ -1,10 +1,11 @@
 import 'package:Inhouse/model/routingState.dart';
+import 'package:Inhouse/service/api/getCommunityListService.dart';
 import 'package:Inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-// SliverAppBar for Home
-class SliverAppBarHome extends StatelessWidget {
+// SliverAppBar for Sample
+class SliverAppBarSample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
@@ -22,21 +23,54 @@ class SliverAppBarHome extends StatelessWidget {
       ),
       floating: true,
       pinned: true,
-      // snap: true,
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(50),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-                decoration: new InputDecoration(
-              suffixIcon:
-                  new Icon(Icons.search, color: Theme.of(context).primaryColor),
-              hintText: "fixed object",
-            ))
-          ],
+      snap: true,
+      // bottom: PreferredSize(
+      //   preferredSize: const Size.fromHeight(50),
+      //   child: Column(
+      //     mainAxisAlignment: MainAxisAlignment.center,
+      //     children: [
+      //       TextField(
+      //           decoration: new InputDecoration(
+      //         suffixIcon:
+      //             new Icon(Icons.search, color: Theme.of(context).primaryColor),
+      //         hintText: "fixed object",
+      //       ))
+      //     ],
+      //   ),
+      // ),
+    );
+  }
+}
+
+// SliverAppBar for Search
+class SliverAppBarSearch extends StatelessWidget {
+  SliverAppBarSearch({this.searchTextController});
+  final TextEditingController searchTextController;
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      title: TextField(
+        controller: searchTextController,
+        decoration: new InputDecoration(
+          suffixIcon: IconButton(
+            icon: Icon(Icons.search, color: Theme.of(context).primaryColor),
+            onPressed: () async {
+              print("searchTextController:" + this.searchTextController.text);
+              await context
+                  .read<GetCommunityListService>()
+                  .call(this.searchTextController.text);
+            },
+          ),
+          hintText: "serach text",
         ),
       ),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      iconTheme: IconThemeData(
+        color: Theme.of(context).primaryColor,
+      ),
+      floating: true,
+      pinned: true,
+      snap: true,
     );
   }
 }

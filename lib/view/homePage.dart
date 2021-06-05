@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
       physics:
           const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       slivers: <Widget>[
-        SliverAppBarHome(),
+        SliverAppBarSample(),
         CupertinoSliverRefreshControl(
           onRefresh: () async {
             await context.read<GetPostListService>().call();
