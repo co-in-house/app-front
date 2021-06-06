@@ -28,6 +28,7 @@ class CommunityList extends BaseModel {
         communityId: _list[i]['communityId'],
         communityName: _list[i]['communityName'],
         content: _list[i]['content'],
+        requirement: _list[i]['requirement'],
         locationId: _list[i]['locationId'],
         locationName: _list[i]['locationName'],
         note: _list[i]['note'],
@@ -47,6 +48,7 @@ class Community {
     this.communityId,
     this.communityName,
     this.content,
+    this.requirement,
     this.locationId,
     this.locationName,
     this.note,
@@ -59,6 +61,7 @@ class Community {
   int communityId;
   String communityName;
   String content;
+  String requirement;
   int locationId;
   String locationName;
   String note;
