@@ -40,6 +40,7 @@ class GetCommunityListService extends StateNotifier<CommunityList> {
       );
       state = eventList;
     } else {
+      print("response status: " + response.statusCode.toString());
       throw Exception('Failed to get CommunityList');
     }
   }

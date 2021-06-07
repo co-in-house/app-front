@@ -2,14 +2,11 @@ import 'package:Inhouse/component/floatingButton.dart';
 import 'package:Inhouse/component/navBar.dart';
 import 'package:Inhouse/component/drawer.dart';
 import 'package:Inhouse/model/routingState.dart';
-import 'package:Inhouse/model/sample.dart';
-import 'package:Inhouse/service/api/sampleService.dart';
 import 'package:Inhouse/view/eventPage.dart';
 import 'package:Inhouse/view/explorePage.dart';
 import 'package:Inhouse/view/loungePage.dart';
 import 'package:Inhouse/view/messagePage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:Inhouse/view/homePage.dart';
 import 'package:provider/provider.dart';
 
@@ -28,17 +25,8 @@ class RootFlame extends StatelessWidget {
       drawer: CustomDrawer(context: context),
       floatingActionButton: CustomFloatingButton(),
       bottomNavigationBar: CustomNavBar(),
-      body: Container(
-        child: MultiProvider(
-          providers: [
-            StateNotifierProvider<SampleService, Sample>(
-              create: (context) => SampleService(),
-            ),
-          ],
-          child: _contentView[
-              context.select((RoutingState state) => state).routingState],
-        ),
-      ),
+      body: _contentView[
+          context.select((RoutingState state) => state).routingState],
     );
   }
 }
