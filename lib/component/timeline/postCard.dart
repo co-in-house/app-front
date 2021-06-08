@@ -36,21 +36,33 @@ class PostCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 0.0),
-                    child: Text(
-                      'Inhouse',
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                  Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                    Container(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 20.0, horizontal: 0.0),
+                      child: Text(
+                        'Inhouse',
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
+                    //ここからID
+                    Container(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 0.5),
+                      child: Text(
+                        '@Inhouse',
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                    ),
+                  ]),
                   Container(
                     padding:
-                        EdgeInsets.symmetric(vertical: 00.0, horizontal: 0.0),
+                        EdgeInsets.symmetric(vertical: 00.0, horizontal: 10.0),
                     child: Text(
-                      'めちゃめちゃ長い文章を書きたいのだけれど、思いつかないからその旨を記載してみるめちゃめちゃ長い文章を書きたいのだけれど、思いつかないからその旨を記載してみるめちゃめちゃ長い文章を書きたいのだけれど、思いつかないからその旨を記載してみる',
+                      'めちゃ長い文章を書きたいのだけれど、思いつかないからその旨を記載してみるめちゃめちゃ長い文章を書きたいのだけれど、思いつかないからその旨を記載してみるめちゃめちゃ長い文章を書きたいのだけれど、思いつかないからその旨を記載してみる',
                       overflow: TextOverflow.ellipsis,
                       maxLines: 3,
                     ),
