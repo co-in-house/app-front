@@ -39,7 +39,7 @@ class PostCard extends StatelessWidget {
                   Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                     Container(
                       padding:
-                          EdgeInsets.symmetric(vertical: 20.0, horizontal: 0.0),
+                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 0.0),
                       child: Text(
                         'Inhouse',
                         overflow: TextOverflow.ellipsis,
@@ -59,8 +59,7 @@ class PostCard extends StatelessWidget {
                     ),
                   ]),
                   Container(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 00.0, horizontal: 10.0),
+                    padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0),
                     child: Text(
                       'めちゃ長い文章を書きたいのだけれど、思いつかないからその旨を記載してみるめちゃめちゃ長い文章を書きたいのだけれど、思いつかないからその旨を記載してみるめちゃめちゃ長い文章を書きたいのだけれど、思いつかないからその旨を記載してみる',
                       overflow: TextOverflow.ellipsis,
@@ -68,8 +67,7 @@ class PostCard extends StatelessWidget {
                     ),
                   ),
                   Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 00.0, horizontal: 0.0),
+                      padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
