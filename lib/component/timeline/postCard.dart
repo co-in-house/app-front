@@ -57,6 +57,15 @@ class PostCard extends StatelessWidget {
                         maxLines: 1,
                       ),
                     ),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      //final DateTime now = DateTime.now();
+                      child: Text(
+                        '2020/6/11',
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                    ),
                   ]),
                   Container(
                     padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0),
