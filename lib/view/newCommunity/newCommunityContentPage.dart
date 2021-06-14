@@ -1,25 +1,22 @@
 import 'package:Inhouse/component/appBar.dart';
+import 'package:Inhouse/model/newCommunityInfo.dart';
 import 'package:Inhouse/util/theme.dart';
-import 'package:Inhouse/view/community/communityTagPage.dart';
+import 'package:Inhouse/util/util.dart';
+import 'package:Inhouse/view/newCommunity/newCommunityTagPage.dart';
 import 'package:flutter/material.dart';
 
-class CommunityNamePage extends StatefulWidget {
-  CommunityNamePage() : super();
-
-  @override
-  _CommunityNameState createState() => _CommunityNameState();
-}
-
-class _CommunityNameState extends State<CommunityNamePage> {
+class NewCommunityContentPage extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
-  final String testState = "testStateValue";
+  NewCommunityContentPage({this.newCommunityInfo});
+  final NewCommunityInfo newCommunityInfo;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBarCommunity.name(context),
+      appBar: CustomAppBarCommunity.content(context),
       body: Center(
         child: Container(
-          width: MediaQuery.of(context).size.width * 0.9,
+          width: MediaQuery.of(context).size.width *
+              Const.containerWidthPercentage,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +29,7 @@ class _CommunityNameState extends State<CommunityNamePage> {
                         color: inhouseThemeColor.primaryColor),
                     onPressed: null,
                   ),
-                  hintText: "Enter your community name",
+                  hintText: "活動内容を入力",
                 ),
                 onSubmitted: (String inputName) {
                   print("submitted : " + inputName);
@@ -42,19 +39,20 @@ class _CommunityNameState extends State<CommunityNamePage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   ElevatedButton(
-                    child: Text("Submit"),
+                    child: Text("次へ"),
                     style: ElevatedButton.styleFrom(
                       elevation: 16,
                     ),
                     onPressed: () {
-                      print("controller.text : " + this._controller.text);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CommunityTagPage(
-                                  argument: this._controller.text,
-                                )),
-                      );
+                      newCommunityInfo.content = this._controller.text;
+                      print("data : " + newCommunityInfo.toString());
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => NewCommunityTagPage(
+                      //         newCommunityInfo: newCommunityInfo),
+                      //   ),
+                      // );
                     },
                   ),
                 ],

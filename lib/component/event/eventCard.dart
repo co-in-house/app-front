@@ -48,14 +48,15 @@ class EventCard extends StatelessWidget {
         elevation: 2.0,
         child: Container(
           margin: const EdgeInsets.all(10.0),
-          width: 300,
+          width: MediaQuery.of(context).size.width * 0.80,
           height: 100,
-          alignment: Alignment.topCenter,
+          alignment: Alignment.centerLeft,
           // child: Image.asset('images/' + content.img, fit: BoxFit.fill),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Container(
+                margin: const EdgeInsets.all(0.0),
                 width: 100,
                 height: 50,
                 decoration: BoxDecoration(

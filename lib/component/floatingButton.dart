@@ -1,9 +1,16 @@
-import 'package:Inhouse/view/community/communityNamePage.dart';
+import 'package:Inhouse/model/newCommunityInfo.dart';
+import 'package:Inhouse/model/tagList.dart';
+import 'package:Inhouse/view/newCommunity/newCommunityNamePage.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CustomFloatingButton extends StatelessWidget {
+  final NewCommunityInfo newCommunityInfo = new NewCommunityInfo();
+
   @override
   Widget build(BuildContext context) {
+    newCommunityInfo.tagList = context.select((TagList tagList) => tagList);
+    print("build CustomFloatingButton");
     return FloatingActionButton(
       child: Icon(Icons.add),
       onPressed: () {
@@ -25,7 +32,9 @@ class CustomFloatingButton extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => CommunityNamePage()),
+                        builder: (context) => NewCommunityNamePage(
+                            newCommunityInfo: newCommunityInfo),
+                      ),
                     );
                   },
                 ),

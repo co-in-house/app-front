@@ -8,7 +8,7 @@ class EventCardRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 20.0),
+      margin: EdgeInsets.symmetric(vertical: 0.0),
       // height: 200.0,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,

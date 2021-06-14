@@ -78,7 +78,7 @@ class CustomAppBarCommunity {
   // for community name
   static AppBar name(BuildContext context) {
     return AppBar(
-      title: Text("Step1"),
+      title: Text("コミュニティ名"),
       backgroundColor: inhouseThemeColor.backgroundColor,
       textTheme: TextTheme(
         headline6: TextStyle(
@@ -95,7 +95,24 @@ class CustomAppBarCommunity {
   // for community tag
   static AppBar tag(BuildContext context) {
     return AppBar(
-      title: Text("Step2"),
+      title: Text("コミュニティタグ"),
+      backgroundColor: inhouseThemeColor.backgroundColor,
+      textTheme: TextTheme(
+        headline6: TextStyle(
+          color: inhouseThemeColor.primaryColor,
+          fontSize: 20,
+        ),
+      ),
+      iconTheme: IconThemeData(
+        color: inhouseThemeColor.primaryColor,
+      ),
+    );
+  }
+
+  // for community content
+  static AppBar content(BuildContext context) {
+    return AppBar(
+      title: Text("活動内容"),
       backgroundColor: inhouseThemeColor.backgroundColor,
       textTheme: TextTheme(
         headline6: TextStyle(

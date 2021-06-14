@@ -20,7 +20,7 @@ class EventPage extends StatelessWidget {
           },
         ),
         SliverFixedExtentList(
-          itemExtent: 200.0,
+          itemExtent: MediaQuery.of(context).size.height * 0.23,
           delegate: EventCardRowList(
             context.select((EventList eventList) => eventList),
           ),
