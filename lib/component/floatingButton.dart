@@ -1,3 +1,4 @@
+import 'package:Inhouse/model/locationList.dart';
 import 'package:Inhouse/model/newCommunityInfo.dart';
 import 'package:Inhouse/model/tagList.dart';
 import 'package:Inhouse/view/newCommunity/newCommunityNamePage.dart';
@@ -10,6 +11,8 @@ class CustomFloatingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     newCommunityInfo.tagList = context.select((TagList tagList) => tagList);
+    newCommunityInfo.locationList =
+        context.select((LocationList locationList) => locationList);
     print("build CustomFloatingButton");
     return FloatingActionButton(
       child: Icon(Icons.add),

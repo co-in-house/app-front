@@ -8,7 +8,7 @@ class PostCardList extends SliverChildListDelegate {
 
 class _PostList {
   static List<Widget> buildPostList(PostList postList) {
-    print(postList);
+    print("buildPostList");
     if (postList.contentsList == null || postList.contentsList.length == 0) {
       return [Text("No Content")];
     } else {

@@ -18,7 +18,7 @@ class _NewCommunityTagState extends State<NewCommunityTagPage> {
     return List<ElevatedButton>.generate(
       tagList.contentsList.length,
       (int index) => ElevatedButton(
-        child: Text(tagList.contentsList[index].tagLabel),
+        child: Text(tagList.contentsList[index].label),
         style: tagList.contentsList[index].flag
             ? ElevatedButton.styleFrom(
                 elevation: 16,
@@ -33,7 +33,7 @@ class _NewCommunityTagState extends State<NewCommunityTagPage> {
             tagList.contentsList[index].flag =
                 !tagList.contentsList[index].flag;
           });
-          print(tagList.contentsList[index].tagLabel +
+          print(tagList.contentsList[index].label +
               " : " +
               tagList.contentsList[index].flag.toString());
         },

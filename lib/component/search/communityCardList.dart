@@ -9,7 +9,7 @@ class CommunityCardList extends SliverChildListDelegate {
 
 class _CommunityList {
   static List<Widget> buildCommunityList(CommunityList communityList) {
-    print(communityList);
+    print("buildCommunityList");
     if (communityList.contentsList == null ||
         communityList.contentsList.length == 0) {
       return [Text("No Content")];

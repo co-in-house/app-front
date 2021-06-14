@@ -125,4 +125,38 @@ class CustomAppBarCommunity {
       ),
     );
   }
+
+  // for community location
+  static AppBar location(BuildContext context) {
+    return AppBar(
+      title: Text("主な活動場所"),
+      backgroundColor: inhouseThemeColor.backgroundColor,
+      textTheme: TextTheme(
+        headline6: TextStyle(
+          color: inhouseThemeColor.primaryColor,
+          fontSize: 20,
+        ),
+      ),
+      iconTheme: IconThemeData(
+        color: inhouseThemeColor.primaryColor,
+      ),
+    );
+  }
+
+// for community requirement
+  static AppBar requirement(BuildContext context) {
+    return AppBar(
+      title: Text("入会条件"),
+      backgroundColor: inhouseThemeColor.backgroundColor,
+      textTheme: TextTheme(
+        headline6: TextStyle(
+          color: inhouseThemeColor.primaryColor,
+          fontSize: 20,
+        ),
+      ),
+      iconTheme: IconThemeData(
+        color: inhouseThemeColor.primaryColor,
+      ),
+    );
+  }
 }

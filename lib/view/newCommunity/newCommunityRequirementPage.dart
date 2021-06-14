@@ -2,17 +2,16 @@ import 'package:Inhouse/component/appBar.dart';
 import 'package:Inhouse/model/newCommunityInfo.dart';
 import 'package:Inhouse/util/theme.dart';
 import 'package:Inhouse/util/util.dart';
-import 'package:Inhouse/view/newCommunity/newCommunityLocationPage.dart';
 import 'package:flutter/material.dart';
 
-class NewCommunityContentPage extends StatelessWidget {
+class NewCommunityRequirementPage extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
-  NewCommunityContentPage({this.newCommunityInfo});
+  NewCommunityRequirementPage({this.newCommunityInfo});
   final NewCommunityInfo newCommunityInfo;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBarCommunity.content(context),
+      appBar: CustomAppBarCommunity.requirement(context),
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width *
@@ -22,14 +21,18 @@ class NewCommunityContentPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TextField(
+                autocorrect: false,
+                keyboardType: TextInputType.multiline,
+                maxLines: 3,
                 controller: this._controller,
                 decoration: new InputDecoration(
+                  border: OutlineInputBorder(),
                   suffixIcon: IconButton(
                     icon: Icon(Icons.sentiment_satisfied_alt,
                         color: inhouseThemeColor.primaryColor),
                     onPressed: null,
                   ),
-                  hintText: "活動内容を入力",
+                  hintText: "入会条件を入力",
                 ),
                 onSubmitted: (String inputName) {
                   print("submitted : " + inputName);
@@ -44,14 +47,15 @@ class NewCommunityContentPage extends StatelessWidget {
                       elevation: 16,
                     ),
                     onPressed: () {
-                      newCommunityInfo.content = this._controller.text;
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => NewCommunityLocationPage(
-                              newCommunityInfo: newCommunityInfo),
-                        ),
-                      );
+                      newCommunityInfo.requirement = this._controller.text;
+                      print(newCommunityInfo);
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => NewCommunityTagPage(
+                      //         newCommunityInfo: newCommunityInfo),
+                      //   ),
+                      // );
                     },
                   ),
                 ],

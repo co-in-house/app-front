@@ -33,5 +33,5 @@ class _MockResponse {
 
   int _statusCode = 200;
   String _body =
-      '{"tagList": [{"index":1, "tagLabel":"音楽"},{"index":2, "tagLabel":"運動"},{"index":3, "tagLabel":"文化"}]}';
+      '{"tagList": [{"index":1, "label":"音楽"},{"index":2, "label":"運動"},{"index":3, "label":"文化"}]}';
 }

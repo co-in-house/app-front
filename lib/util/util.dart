@@ -9,4 +9,6 @@ class Const {
   // size
   static final double containerWidthPercentage = 0.9;
   static final double containerHightPercentage = 0.9;
+
+  static final double refreshIndicatorDisplacement = 100.0;
 }

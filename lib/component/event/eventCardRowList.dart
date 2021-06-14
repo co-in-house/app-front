@@ -9,7 +9,7 @@ class EventCardRowList extends SliverChildListDelegate {
 
 class _EventList {
   static List<Widget> buildEventList(EventList eventList) {
-    print(eventList);
+    print("buildEventList");
     if (eventList.col == null || eventList.col.length == 0) {
       return [Text("No Content")];
     } else {
