@@ -2,6 +2,7 @@ import 'package:Inhouse/component/appBar.dart';
 import 'package:Inhouse/model/newCommunityInfo.dart';
 import 'package:Inhouse/util/theme.dart';
 import 'package:Inhouse/util/util.dart';
+import 'package:Inhouse/view/newCommunity/newCommunityIconPage.dart';
 import 'package:flutter/material.dart';
 
 class NewCommunityRequirementPage extends StatelessWidget {
@@ -49,13 +50,12 @@ class NewCommunityRequirementPage extends StatelessWidget {
                     onPressed: () {
                       newCommunityInfo.requirement = this._controller.text;
                       print(newCommunityInfo);
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => NewCommunityTagPage(
-                      //         newCommunityInfo: newCommunityInfo),
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NewCommunityIconPage(),
+                        ),
+                      );
                     },
                   ),
                 ],

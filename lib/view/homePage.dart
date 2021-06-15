@@ -10,23 +10,26 @@ import 'package:provider/provider.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      displacement: Const.refreshIndicatorDisplacement,
-      onRefresh: () async {
-        await context.read<GetPostListService>().call();
-      },
-      child: CustomScrollView(
-        physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics()),
-        slivers: <Widget>[
-          SliverAppBarSample(),
-          SliverList(
-            // itemExtent: 108.0,
-            delegate: PostCardList(
-              context.select((PostList postList) => postList),
+    print("========HomePage build========");
+    return Container(
+      color: Colors.white,
+      child: RefreshIndicator(
+        displacement: Const.refreshIndicatorDisplacement,
+        onRefresh: () async {
+          await context.read<GetPostListService>().call();
+        },
+        child: CustomScrollView(
+          physics: const BouncingScrollPhysics(
+              parent: AlwaysScrollableScrollPhysics()),
+          slivers: <Widget>[
+            SliverAppBarSample(),
+            SliverList(
+              // itemExtent: 108.0,
+              delegate: PostCardList(
+                  context, context.select((PostList postList) => postList)),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -11,6 +11,7 @@ class ExplorePage extends StatelessWidget {
   final TextEditingController searchTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    print("========ExplorePage build========");
     return RefreshIndicator(
       displacement: Const.refreshIndicatorDisplacement,
       onRefresh: () async {

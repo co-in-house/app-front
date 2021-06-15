@@ -10,23 +10,26 @@ import 'package:provider/provider.dart';
 class EventPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      displacement: Const.refreshIndicatorDisplacement,
-      onRefresh: () async {
-        await context.read<GetEventListService>().call();
-      },
-      child: CustomScrollView(
-        physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics()),
-        slivers: <Widget>[
-          SliverAppBarSample(),
-          SliverFixedExtentList(
-            itemExtent: MediaQuery.of(context).size.height * 0.23,
-            delegate: EventCardRowList(
-              context.select((EventList eventList) => eventList),
+    return Container(
+      color: Colors.green[50],
+      child: RefreshIndicator(
+        displacement: Const.refreshIndicatorDisplacement,
+        onRefresh: () async {
+          await context.read<GetEventListService>().call();
+        },
+        child: CustomScrollView(
+          physics: const BouncingScrollPhysics(
+              parent: AlwaysScrollableScrollPhysics()),
+          slivers: <Widget>[
+            SliverAppBarSample(),
+            SliverFixedExtentList(
+              itemExtent: MediaQuery.of(context).size.height * 0.23,
+              delegate: EventCardRowList(
+                context.select((EventList eventList) => eventList),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
