@@ -159,4 +159,21 @@ class CustomAppBarCommunity {
       ),
     );
   }
+
+// for community image
+  static AppBar image(BuildContext context) {
+    return AppBar(
+      title: Text("画像登録"),
+      backgroundColor: inhouseThemeColor.backgroundColor,
+      textTheme: TextTheme(
+        headline6: TextStyle(
+          color: inhouseThemeColor.primaryColor,
+          fontSize: 20,
+        ),
+      ),
+      iconTheme: IconThemeData(
+        color: inhouseThemeColor.primaryColor,
+      ),
+    );
+  }
 }

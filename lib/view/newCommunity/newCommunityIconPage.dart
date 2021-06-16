@@ -1,5 +1,7 @@
 import 'dart:io';
+import 'package:Inhouse/component/appBar.dart';
 import 'package:Inhouse/model/newCommunityInfo.dart';
+import 'package:Inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -12,79 +14,158 @@ class NewCommunityIconPage extends StatefulWidget {
 }
 
 class _NewCommunityIconState extends State<NewCommunityIconPage> {
-  File _image;
-  final picker = ImagePicker();
+  File _icon;
+  File _header;
 
-  Future getImageFromCamera() async {
-    try {
-      final pickedFile = await picker.getImage(source: ImageSource.camera);
-      setState(() {
-        if (pickedFile != null) {
-          _image = File(pickedFile.path);
-          print("path : " + pickedFile.path);
-        } else {
-          print('No image selected.');
-        }
-      });
-    } on PlatformException catch (err) {
-      print(err);
-    } on Exception catch (err) {
-      print(err);
-    }
+  Future getIconFromCamera() async {
+    final PickedFile iconFile = await OsAccess.getImageFromCamera();
+    setState(() {
+      if (iconFile != null) {
+        _icon = File(iconFile.path);
+      }
+    });
   }
 
-  Future getImageFromGallery() async {
-    try {
-      final pickedFile = await picker.getImage(source: ImageSource.gallery);
-      setState(() {
-        if (pickedFile != null) {
-          _image = File(pickedFile.path);
-          print("path : " + pickedFile.path);
-        } else {
-          print('No image selected.');
-        }
-      });
-    } on PlatformException catch (err) {
-      print(err);
-    } on Exception catch (err) {
-      print(err);
-    }
+  Future getIconFromGallery() async {
+    final PickedFile iconFile = await OsAccess.getImageFromGallery();
+    setState(() {
+      if (iconFile != null) {
+        _icon = File(iconFile.path);
+      }
+    });
+  }
+
+  Future getHeaderFromCamera() async {
+    final PickedFile headerFile = await OsAccess.getImageFromCamera();
+    setState(() {
+      if (headerFile != null) {
+        _header = File(headerFile.path);
+      }
+    });
+  }
+
+  Future getHeaderFromGallery() async {
+    final PickedFile headerFile = await OsAccess.getImageFromGallery();
+    setState(() {
+      if (headerFile != null) {
+        _header = File(headerFile.path);
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Image Picker Demo'),
-      ),
+      appBar: CustomAppBarCommunity.image(context),
       body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ElevatedButton(
-                  onPressed: getImageFromCamera,
-                  // tooltip: 'Pick Image From Camera',
-                  child: Icon(Icons.add_a_photo),
-                ),
-                ElevatedButton(
-                  onPressed: getImageFromGallery,
-                  // tooltip: 'Pick Image From Gallery',
-                  child: Icon(Icons.photo_library),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                  width: 300,
-                  child: _image == null
-                      ? Text('No image selected.')
-                      : Image.file(_image)),
-            )
-          ],
+        child: Container(
+          width: MediaQuery.of(context).size.width *
+              Const.containerWidthPercentage,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ElevatedButton(
+                        onPressed: getIconFromCamera,
+                        // tooltip: 'Pick Image From Camera',
+                        child: Icon(Icons.add_a_photo),
+                      ),
+                      ElevatedButton(
+                        onPressed: getIconFromGallery,
+                        // tooltip: 'Pick Image From Gallery',
+                        child: Icon(Icons.photo_library),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.all(0.0),
+                        alignment: Alignment.center,
+                        width: 200,
+                        child: Text("アイコン選択"),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(0.0),
+                    alignment: Alignment.center,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        // fit: BoxFit.fill,
+                        image: _icon == null
+                            ? AssetImage('images/logo.png')
+                            : AssetImage(_icon.path),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ElevatedButton(
+                        onPressed: getHeaderFromCamera,
+                        child: Icon(Icons.add_a_photo),
+                      ),
+                      ElevatedButton(
+                        onPressed: getHeaderFromGallery,
+                        child: Icon(Icons.photo_library),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.all(0.0),
+                        alignment: Alignment.center,
+                        width: 200,
+                        child: Text("ヘッダー選択"),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(0.0),
+                    alignment: Alignment.center,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      image: DecorationImage(
+                        fit: BoxFit.fitWidth,
+                        image: _header == null
+                            ? AssetImage('images/logo_w.png')
+                            : AssetImage(_header.path),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    child: Text("次へ"),
+                    style: ElevatedButton.styleFrom(
+                      elevation: 16,
+                    ),
+                    onPressed: () {
+                      // newCommunityInfo.name = this._controller.text;
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => NewCommunityTagPage(
+                      //         newCommunityInfo: newCommunityInfo),
+                      //   ),
+                      // );
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
