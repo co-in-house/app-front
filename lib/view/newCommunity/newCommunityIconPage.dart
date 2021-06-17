@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:Inhouse/component/appBar.dart';
 import 'package:Inhouse/model/newCommunityInfo.dart';
 import 'package:Inhouse/util/util.dart';
+import 'package:Inhouse/view/newCommunity/newCommunityNotePage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
 class NewCommunityIconPage extends StatefulWidget {
@@ -40,6 +40,7 @@ class _NewCommunityIconState extends State<NewCommunityIconPage> {
     setState(() {
       if (headerFile != null) {
         _header = File(headerFile.path);
+        widget.newCommunityInfo.iconImg = _icon;
       }
     });
   }
@@ -49,6 +50,7 @@ class _NewCommunityIconState extends State<NewCommunityIconPage> {
     setState(() {
       if (headerFile != null) {
         _header = File(headerFile.path);
+        widget.newCommunityInfo.headerImg = _header;
       }
     });
   }
@@ -152,14 +154,14 @@ class _NewCommunityIconState extends State<NewCommunityIconPage> {
                       elevation: 16,
                     ),
                     onPressed: () {
-                      // newCommunityInfo.name = this._controller.text;
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => NewCommunityTagPage(
-                      //         newCommunityInfo: newCommunityInfo),
-                      //   ),
-                      // );
+                      print(widget.newCommunityInfo);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NewCommunityNotePage(
+                              newCommunityInfo: widget.newCommunityInfo),
+                        ),
+                      );
                     },
                   ),
                 ],

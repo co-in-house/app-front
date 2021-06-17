@@ -176,4 +176,21 @@ class CustomAppBarCommunity {
       ),
     );
   }
+
+// for community note
+  static AppBar note(BuildContext context) {
+    return AppBar(
+      title: Text("備考情報"),
+      backgroundColor: inhouseThemeColor.backgroundColor,
+      textTheme: TextTheme(
+        headline6: TextStyle(
+          color: inhouseThemeColor.primaryColor,
+          fontSize: 20,
+        ),
+      ),
+      iconTheme: IconThemeData(
+        color: inhouseThemeColor.primaryColor,
+      ),
+    );
+  }
 }

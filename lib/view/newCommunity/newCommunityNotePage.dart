@@ -2,17 +2,16 @@ import 'package:Inhouse/component/appBar.dart';
 import 'package:Inhouse/model/newCommunityInfo.dart';
 import 'package:Inhouse/util/theme.dart';
 import 'package:Inhouse/util/util.dart';
-import 'package:Inhouse/view/newCommunity/newCommunityIconPage.dart';
 import 'package:flutter/material.dart';
 
-class NewCommunityRequirementPage extends StatelessWidget {
+class NewCommunityNotePage extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
-  NewCommunityRequirementPage({this.newCommunityInfo});
+  NewCommunityNotePage({this.newCommunityInfo});
   final NewCommunityInfo newCommunityInfo;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBarCommunity.requirement(context),
+      appBar: CustomAppBarCommunity.note(context),
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width *
@@ -33,7 +32,7 @@ class NewCommunityRequirementPage extends StatelessWidget {
                         color: inhouseThemeColor.primaryColor),
                     onPressed: null,
                   ),
-                  hintText: "入会条件を入力",
+                  hintText: "備考を入力",
                 ),
                 onSubmitted: (String inputName) {
                   print("submitted : " + inputName);
@@ -48,16 +47,14 @@ class NewCommunityRequirementPage extends StatelessWidget {
                       elevation: 16,
                     ),
                     onPressed: () {
-                      newCommunityInfo.requirement = this._controller.text;
+                      newCommunityInfo.note = this._controller.text;
                       print(newCommunityInfo);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => NewCommunityIconPage(
-                            newCommunityInfo: newCommunityInfo,
-                          ),
-                        ),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => NewCommunityIconPage(),
+                      //   ),
+                      // );
                     },
                   ),
                 ],

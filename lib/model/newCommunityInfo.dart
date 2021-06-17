@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:Inhouse/model/locationList.dart';
 import 'package:Inhouse/model/tagList.dart';
 
@@ -10,6 +12,9 @@ class NewCommunityInfo {
     this.selectedLocationIndex,
     this.selectedLocationLabel,
     this.requirement,
+    this.note,
+    this.iconImg,
+    this.headerImg,
   });
   String name;
   TagList tagList;
@@ -18,6 +23,9 @@ class NewCommunityInfo {
   int selectedLocationIndex;
   String selectedLocationLabel;
   String requirement;
+  String note;
+  File iconImg;
+  File headerImg;
 
   @override
   String toString() {
@@ -28,6 +36,7 @@ class NewCommunityInfo {
       'selectedLocationIndex': this.selectedLocationIndex,
       'selectedLocationLabel': this.selectedLocationLabel,
       'requirement': this.requirement,
+      'note': this.note,
     }.toString();
   }
 }
