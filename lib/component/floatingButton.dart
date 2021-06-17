@@ -1,7 +1,7 @@
 import 'package:Inhouse/model/locationList.dart';
 import 'package:Inhouse/model/newCommunityInfo.dart';
 import 'package:Inhouse/model/tagList.dart';
-import 'package:Inhouse/view/newCommunity/newCommunityNamePage.dart';
+import 'package:Inhouse/view/newCommunity/newCommunitySampleCardPage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -33,12 +33,14 @@ class CustomFloatingButton extends StatelessWidget {
                   ),
                   onPressed: () {
                     Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => NewCommunityNamePage(
-                            newCommunityInfo: newCommunityInfo),
-                      ),
-                    );
+                        context,
+                        // MaterialPageRoute(
+                        //   builder: (context) => NewCommunityNamePage(
+                        //       newCommunityInfo: newCommunityInfo),
+                        // ),
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                NewCommunitySampleCardPage()));
                   },
                 ),
                 ElevatedButton(

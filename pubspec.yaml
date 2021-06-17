@@ -24,7 +24,7 @@ dependencies:
   http: ^0.13.1
   provider: ^5.0.0
   image_picker: ^0.8.0+3
-  # file_picker:
+  flutter_swiper: ^1.1.6
   flutter_native_splash: ^1.2.0
   state_notifier:
   flutter_state_notifier:

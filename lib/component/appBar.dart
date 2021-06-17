@@ -193,4 +193,21 @@ class CustomAppBarCommunity {
       ),
     );
   }
+
+// for community sampleCard
+  static AppBar sample(BuildContext context) {
+    return AppBar(
+      title: Text("コミュニティを作成"),
+      backgroundColor: inhouseThemeColor.backgroundColor,
+      textTheme: TextTheme(
+        headline6: TextStyle(
+          color: inhouseThemeColor.primaryColor,
+          fontSize: 20,
+        ),
+      ),
+      iconTheme: IconThemeData(
+        color: inhouseThemeColor.primaryColor,
+      ),
+    );
+  }
 }
