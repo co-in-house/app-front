@@ -11,7 +11,7 @@ class NewCommunityNotePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBarCommunity.note(context),
+      appBar: CustomAppBar.newCommunity(context),
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width *

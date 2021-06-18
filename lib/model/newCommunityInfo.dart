@@ -9,8 +9,7 @@ class NewCommunityInfo {
     this.tagList,
     this.content,
     this.locationList,
-    this.selectedLocationIndex,
-    this.selectedLocationLabel,
+    this.selectedLocation,
     this.requirement,
     this.note,
     this.iconImg,
@@ -20,12 +19,11 @@ class NewCommunityInfo {
   TagList tagList;
   String content;
   LocationList locationList;
-  int selectedLocationIndex;
-  String selectedLocationLabel;
   String requirement;
   String note;
   File iconImg;
   File headerImg;
+  LocationState selectedLocation;
 
   @override
   String toString() {
@@ -33,8 +31,7 @@ class NewCommunityInfo {
       'name': this.name,
       'tagList': this.tagList,
       'content': this.content,
-      'selectedLocationIndex': this.selectedLocationIndex,
-      'selectedLocationLabel': this.selectedLocationLabel,
+      'selectedLocation': this.selectedLocation,
       'requirement': this.requirement,
       'note': this.note,
     }.toString();

@@ -58,7 +58,7 @@ class _NewCommunityIconState extends State<NewCommunityIconPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBarCommunity.image(context),
+      appBar: CustomAppBar.newCommunity(context),
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width *
