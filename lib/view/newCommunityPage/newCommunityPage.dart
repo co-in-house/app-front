@@ -11,6 +11,7 @@ import 'package:Inhouse/component/newCommunity/newCommunityTagCard.dart';
 import 'package:Inhouse/model/newCommunityInfo.dart';
 import 'package:Inhouse/model/tagList.dart';
 import 'package:Inhouse/util/util.dart';
+import 'package:Inhouse/view/newCommunityPage/testConfirm.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -88,13 +89,13 @@ class _NewCommunityState extends State<NewCommunityPage> {
                           this._requirementController.text;
                       widget.newCommunityInfo.note = this._noteController.text;
                       print(widget.newCommunityInfo);
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => NewCommunityLocationPage(
-                      //         newCommunityInfo: newCommunityInfo),
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TestConfirm(
+                              newCommunityInfo: widget.newCommunityInfo),
+                        ),
+                      );
                     },
                   )
                 : ElevatedButton(
