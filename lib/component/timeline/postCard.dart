@@ -1,4 +1,5 @@
 import 'package:Inhouse/model/postList.dart';
+import 'package:Inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 
 class PostCard extends StatelessWidget {
@@ -23,26 +24,23 @@ class PostCard extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            //この下からくくる
-            //Flexible(
-            //child: Column(
-            Container(
-              width: 100,
-              height: 50,
-              margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 0.0),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  // fit: BoxFit.fill,
-                  image: AssetImage('images/' + content.img),
-                ),
-              ),
-            ),
             Flexible(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+                  Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                    Container(
+                      width: 100,
+                      height: 50,
+                      margin: EdgeInsets.fromLTRB(0, 4, 0, 0),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          // fit: BoxFit.fill,
+                          image: AssetImage('images/' + content.img),
+                        ),
+                      ),
+                    ),
                     Container(
                       padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                       child: Text(
@@ -57,8 +55,7 @@ class PostCard extends StatelessWidget {
                     ),
                     //ここからID
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 0, horizontal: 0.5),
+                      padding: EdgeInsets.fromLTRB(10, 11, 0, 0),
                       child: Text(
                         '@Inhouse',
                         overflow: TextOverflow.ellipsis,
@@ -66,19 +63,23 @@ class PostCard extends StatelessWidget {
                       ),
                     ),
                   ]),
-                  //ここまでくくる
                   Container(
-                    padding: EdgeInsets.fromLTRB(0.0, 10, 10.0, 0),
+                    padding: EdgeInsets.fromLTRB(20, 10, 10.0, 0),
                     child: Text(
                       'めちゃ長い文章を書きたいのだけれど、思いつかないからその旨を記載してみるめちゃめちゃ長い文章を書きたいのだけれど、思いつかないからその旨を記載してみるめちゃめちゃ長い文章を書きたいのだけれど、思いつかないからその旨を記載してみる',
                       overflow: TextOverflow.ellipsis,
-                      maxLines: 3,
+                      maxLines: 4,
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(240, 10, 0, 10),
+                    child: Text(
+                      DatetimeUtil.getCurrentDateString(),
                     ),
                   ),
                 ],
               ),
             ),
-            //Container(
             Container(
                 padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
                 child: Column(
