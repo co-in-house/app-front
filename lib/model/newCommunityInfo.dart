@@ -34,6 +34,7 @@ class NewCommunityInfo {
       'selectedLocation': this.selectedLocation,
       'requirement': this.requirement,
       'iconPath': this.iconImg.path,
+      'headerPath': this.headerImg.path,
       'note': this.note,
     }.toString();
   }

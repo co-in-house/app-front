@@ -5,6 +5,7 @@ import 'package:Inhouse/component/newCommunity/newCommuityImageCard.dart';
 import 'package:Inhouse/component/newCommunity/newCommunityContentCard.dart';
 import 'package:Inhouse/component/newCommunity/newCommunityLocationCard.dart';
 import 'package:Inhouse/component/newCommunity/newCommunityNameCard.dart';
+import 'package:Inhouse/component/newCommunity/newCommunityNoteCard.dart';
 import 'package:Inhouse/component/newCommunity/newCommunityRequirementCard.dart';
 import 'package:Inhouse/component/newCommunity/newCommunityTagCard.dart';
 import 'package:Inhouse/model/newCommunityInfo.dart';
@@ -40,11 +41,13 @@ class _NewCommunityState extends State<NewCommunityPage> {
       NewCommunityContentCard(this._contentController),
       NewCommunityRequirementCard(this._requirementController),
       NewCommunityImageCard(
-          widget.newCommunityInfo,
-          this._iconFromGallaryButton(),
-          this._iconFromCameraButton(),
-          this._headerFromGallaryButton(),
-          this._headerFromCameraButton()),
+        widget.newCommunityInfo,
+        this._iconFromGallaryButton(),
+        this._iconFromCameraButton(),
+        this._headerFromGallaryButton(),
+        this._headerFromCameraButton(),
+      ),
+      NewCommunityNoteCard(this._noteController),
     ];
 
     if (widget.newCommunityInfo.iconImg == null) {
