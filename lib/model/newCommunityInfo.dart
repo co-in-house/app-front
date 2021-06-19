@@ -33,6 +33,7 @@ class NewCommunityInfo {
       'content': this.content,
       'selectedLocation': this.selectedLocation,
       'requirement': this.requirement,
+      'iconPath': this.iconImg.path,
       'note': this.note,
     }.toString();
   }

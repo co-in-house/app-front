@@ -24,8 +24,6 @@ class NewCommunityPage extends StatefulWidget {
 class _NewCommunityState extends State<NewCommunityPage> {
   Text _submitLabel = Text("作成");
   double _pageNo = 0.0;
-  File _icon;
-  File _header;
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _locationController = TextEditingController();
   final TextEditingController _contentController = TextEditingController();
@@ -41,8 +39,20 @@ class _NewCommunityState extends State<NewCommunityPage> {
           this._locationController, widget.newCommunityInfo),
       NewCommunityContentCard(this._contentController),
       NewCommunityRequirementCard(this._requirementController),
-      // NewCommunityImageCard(widget.newCommunityInfo),
+      NewCommunityImageCard(
+          widget.newCommunityInfo,
+          this._iconFromGallaryButton(),
+          this._iconFromCameraButton(),
+          this._headerFromGallaryButton(),
+          this._headerFromCameraButton()),
     ];
+
+    if (widget.newCommunityInfo.iconImg == null) {
+      widget.newCommunityInfo.iconImg = File('images/logo.png');
+    }
+    if (widget.newCommunityInfo.headerImg == null) {
+      widget.newCommunityInfo.headerImg = File('images/logo_w.png');
+    }
 
     return Scaffold(
       appBar: CustomAppBar.newCommunity(context),
@@ -128,41 +138,63 @@ class _NewCommunityState extends State<NewCommunityPage> {
     );
   }
 
-  Future getIconFromCamera() async {
-    final PickedFile iconFile = await OsAccess.getImageFromCamera();
-    setState(() {
-      if (iconFile != null) {
-        _icon = File(iconFile.path);
-      }
-    });
+  Widget _iconFromGallaryButton() {
+    return ElevatedButton(
+      // tooltip: 'Pick Image From Gallery',
+      onPressed: () async {
+        final PickedFile iconFile = await OsAccess.getImageFromGallery();
+        setState(() {
+          if (iconFile != null) {
+            widget.newCommunityInfo.iconImg = File(iconFile.path);
+          }
+        });
+      },
+      child: Icon(Icons.photo_library),
+    );
   }
 
-  Future getIconFromGallery() async {
-    final PickedFile iconFile = await OsAccess.getImageFromGallery();
-    setState(() {
-      if (iconFile != null) {
-        _icon = File(iconFile.path);
-      }
-    });
+  Widget _iconFromCameraButton() {
+    return ElevatedButton(
+      // tooltip: 'Pick Image From Camera',
+      onPressed: () async {
+        final PickedFile iconFile = await OsAccess.getImageFromCamera();
+        setState(() {
+          if (iconFile != null) {
+            widget.newCommunityInfo.iconImg = File(iconFile.path);
+          }
+        });
+      },
+      child: Icon(Icons.add_a_photo),
+    );
   }
 
-  Future getHeaderFromCamera() async {
-    final PickedFile headerFile = await OsAccess.getImageFromCamera();
-    setState(() {
-      if (headerFile != null) {
-        _header = File(headerFile.path);
-        widget.newCommunityInfo.iconImg = _icon;
-      }
-    });
+  Widget _headerFromGallaryButton() {
+    return ElevatedButton(
+      // tooltip: 'Pick Image From Gallery',
+      onPressed: () async {
+        final PickedFile iconFile = await OsAccess.getImageFromGallery();
+        setState(() {
+          if (iconFile != null) {
+            widget.newCommunityInfo.headerImg = File(iconFile.path);
+          }
+        });
+      },
+      child: Icon(Icons.photo_library),
+    );
   }
 
-  Future getHeaderFromGallery() async {
-    final PickedFile headerFile = await OsAccess.getImageFromGallery();
-    setState(() {
-      if (headerFile != null) {
-        _header = File(headerFile.path);
-        widget.newCommunityInfo.headerImg = _header;
-      }
-    });
+  Widget _headerFromCameraButton() {
+    return ElevatedButton(
+      // tooltip: 'Pick Image From Camera',
+      onPressed: () async {
+        final PickedFile iconFile = await OsAccess.getImageFromCamera();
+        setState(() {
+          if (iconFile != null) {
+            widget.newCommunityInfo.headerImg = File(iconFile.path);
+          }
+        });
+      },
+      child: Icon(Icons.add_a_photo),
+    );
   }
 }

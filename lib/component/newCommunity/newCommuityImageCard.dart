@@ -6,23 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class NewCommunityImageCard extends NewCommunityBaseCard {
-  NewCommunityImageCard(this.newCommunityInfo);
+  NewCommunityImageCard(
+      this.newCommunityInfo,
+      this._iconFromGallaryButton,
+      this._iconFromCameraButton,
+      this._headerFromCameraButton,
+      this._headerFromGallaryButton);
   final NewCommunityInfo newCommunityInfo;
-  ValueNotifier<PickedFile> _iconFie;
-
-  Future getIconFromCamera() async {
-    final PickedFile iconFile = await OsAccess.getImageFromCamera();
-    if (iconFile != null) {
-      newCommunityInfo.iconImg = File(iconFile.path);
-    }
-  }
-
-  Future getIconFromGallery() async {
-    final PickedFile iconFile = await OsAccess.getImageFromGallery();
-    if (iconFile != null) {
-      newCommunityInfo.iconImg = File(iconFile.path);
-    }
-  }
+  final Widget _iconFromGallaryButton;
+  final Widget _iconFromCameraButton;
+  final Widget _headerFromCameraButton;
+  final Widget _headerFromGallaryButton;
 
   Future getHeaderFromCamera() async {
     final PickedFile headerFile = await OsAccess.getImageFromCamera();
@@ -40,6 +34,8 @@ class NewCommunityImageCard extends NewCommunityBaseCard {
 
   @override
   Widget buildChild(BuildContext context) {
+    print("icon : " + newCommunityInfo.iconImg.path.toString());
+    print("header : " + newCommunityInfo.headerImg.path.toString());
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -50,20 +46,8 @@ class NewCommunityImageCard extends NewCommunityBaseCard {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    getIconFromCamera();
-                    this._iconFie =
-                        newCommunityInfo.iconImg as ValueNotifier<PickedFile>;
-                  },
-                  // tooltip: 'Pick Image From Camera',
-                  child: Icon(Icons.add_a_photo),
-                ),
-                ElevatedButton(
-                  onPressed: getIconFromGallery,
-                  // tooltip: 'Pick Image From Gallery',
-                  child: Icon(Icons.photo_library),
-                ),
+                _iconFromCameraButton,
+                _iconFromGallaryButton,
                 Container(
                   margin: const EdgeInsets.all(0.0),
                   alignment: Alignment.center,
@@ -79,10 +63,8 @@ class NewCommunityImageCard extends NewCommunityBaseCard {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  // fit: BoxFit.fill,
-                  image: _iconFie == null
-                      ? AssetImage('images/logo.png')
-                      : AssetImage(newCommunityInfo.iconImg.path),
+                  fit: BoxFit.contain,
+                  image: AssetImage(newCommunityInfo.iconImg.path),
                 ),
               ),
             ),
@@ -94,14 +76,8 @@ class NewCommunityImageCard extends NewCommunityBaseCard {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ElevatedButton(
-                  onPressed: getHeaderFromCamera,
-                  child: Icon(Icons.add_a_photo),
-                ),
-                ElevatedButton(
-                  onPressed: getHeaderFromGallery,
-                  child: Icon(Icons.photo_library),
-                ),
+                _headerFromGallaryButton,
+                _headerFromCameraButton,
                 Container(
                   margin: const EdgeInsets.all(0.0),
                   alignment: Alignment.center,
@@ -118,9 +94,7 @@ class NewCommunityImageCard extends NewCommunityBaseCard {
                 shape: BoxShape.rectangle,
                 image: DecorationImage(
                   fit: BoxFit.fitWidth,
-                  image: newCommunityInfo.headerImg == null
-                      ? AssetImage('images/logo_w.png')
-                      : AssetImage(newCommunityInfo.headerImg.path),
+                  image: AssetImage(newCommunityInfo.headerImg.path),
                 ),
               ),
             ),

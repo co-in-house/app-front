@@ -30,9 +30,10 @@ class OsAccess {
     return null;
   }
 
-  static Future getImageFromGallery() async {
+  static Future<PickedFile> getImageFromGallery() async {
+    PickedFile pickedFile;
     try {
-      final pickedFile = await picker.getImage(source: ImageSource.gallery);
+      pickedFile = await picker.getImage(source: ImageSource.gallery);
       return pickedFile;
     } on PlatformException catch (err) {
       print(err);
