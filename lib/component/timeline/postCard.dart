@@ -17,9 +17,15 @@ class PostCard extends StatelessWidget {
         width: 300,
         // height: 100, // auto?
         alignment: Alignment.topCenter,
+        //ここからカード内部
+        //children:<widget>[Container(
+        //child: Row(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            //この下からくくる
+            //Flexible(
+            //child: Column(
             Container(
               width: 100,
               height: 50,
@@ -36,90 +42,89 @@ class PostCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                  Column(mainAxisAlignment: MainAxisAlignment.start, children: [
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 0.0),
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                       child: Text(
                         'Inhouse',
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
                       ),
                     ),
                     //ここからID
                     Container(
                       padding:
-                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 0.5),
+                          EdgeInsets.symmetric(vertical: 0, horizontal: 0.5),
                       child: Text(
                         '@Inhouse',
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                      //final DateTime now = DateTime.now();
-                      child: Text(
-                        '2020/6/11',
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                    ),
                   ]),
+                  //ここまでくくる
                   Container(
-                    padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0),
+                    padding: EdgeInsets.fromLTRB(0.0, 10, 10.0, 0),
                     child: Text(
                       'めちゃ長い文章を書きたいのだけれど、思いつかないからその旨を記載してみるめちゃめちゃ長い文章を書きたいのだけれど、思いつかないからその旨を記載してみるめちゃめちゃ長い文章を書きたいのだけれど、思いつかないからその旨を記載してみる',
                       overflow: TextOverflow.ellipsis,
                       maxLines: 3,
                     ),
                   ),
-                  Container(
-                      padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          IconButton(
-                            icon: Icon(
-                              Icons.favorite,
-                              color: Colors.pink,
-                              size: 20.0,
-                            ),
-                            onPressed: () {},
-                          ),
-                          IconButton(
-                            icon: Icon(
-                              Icons.archive,
-                              color: Colors.green,
-                              size: 20.0,
-                            ),
-                            onPressed: () {},
-                          ),
-                          IconButton(
-                            icon: Icon(
-                              Icons.comment,
-                              color: Colors.blue,
-                              size: 20.0,
-                            ),
-                            onPressed: () {},
-                          ),
-                          IconButton(
-                            icon: Icon(
-                              Icons.share,
-                              color: Colors.black,
-                              size: 20.0,
-                            ),
-                            onPressed: () {},
-                          ),
-                        ],
-                      )),
                 ],
               ),
             ),
+            //Container(
+            Container(
+                padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.favorite,
+                        color: Colors.pink,
+                        size: 20.0,
+                      ),
+                      onPressed: () {},
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        Icons.archive,
+                        color: Colors.green,
+                        size: 20.0,
+                      ),
+                      onPressed: () {},
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        Icons.comment,
+                        color: Colors.blue,
+                        size: 20.0,
+                      ),
+                      onPressed: () {},
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        Icons.share,
+                        color: Colors.black,
+                        size: 20.0,
+                      ),
+                      onPressed: () {},
+                    ),
+                  ],
+                )),
+
+            //child: Text('あ'),
+            // ),
           ],
+          //),Container(),
         ),
-      ),
+      ), //最初こんてな
     );
   }
 }
