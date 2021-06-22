@@ -10,10 +10,13 @@ import 'package:Inhouse/component/newCommunity/newCommunityRequirementCard.dart'
 import 'package:Inhouse/component/newCommunity/newCommunityTagCard.dart';
 import 'package:Inhouse/model/newCommunityInfo.dart';
 import 'package:Inhouse/model/tagList.dart';
+import 'package:Inhouse/service/api/postNewCommunityService.dart';
 import 'package:Inhouse/util/util.dart';
 import 'package:Inhouse/view/newCommunityPage/testConfirm.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 class NewCommunityPage extends StatefulWidget {
   NewCommunityPage({Key key, this.newCommunityInfo}) : super(key: key);
@@ -92,8 +95,16 @@ class _NewCommunityState extends State<NewCommunityPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => TestConfirm(
-                              newCommunityInfo: widget.newCommunityInfo),
+                          builder: (context) => MultiProvider(
+                            providers: [
+                              StateNotifierProvider<PostNewCommunityService,
+                                  NewCommunityInfo>(
+                                create: (context) => PostNewCommunityService(),
+                              ),
+                            ],
+                            child: TestConfirm(
+                                newCommunityInfo: widget.newCommunityInfo),
+                          ),
                         ),
                       );
                     },

@@ -1,10 +1,12 @@
 import 'dart:io';
 
+import 'package:Inhouse/model/baseModel.dart';
 import 'package:Inhouse/model/locationList.dart';
 import 'package:Inhouse/model/tagList.dart';
 
-class NewCommunityInfo {
+class NewCommunityInfo extends BaseModel {
   NewCommunityInfo({
+    this.isLoading = false,
     this.name,
     this.tagList,
     this.content,
@@ -15,6 +17,7 @@ class NewCommunityInfo {
     this.iconImg,
     this.headerImg,
   });
+  bool isLoading;
   String name;
   TagList tagList;
   String content;
