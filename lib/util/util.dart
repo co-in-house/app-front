@@ -43,3 +43,13 @@ class OsAccess {
     return null;
   }
 }
+
+class DatetimeUtil {
+  static String getCurrentDateString() {
+    DateTime now = DateTime.now();
+    String day = now.day.toString();
+    String month = now.month.toString();
+    String year = now.year.toString();
+    return year + "/" + month + "/" + day;
+  }
+}
