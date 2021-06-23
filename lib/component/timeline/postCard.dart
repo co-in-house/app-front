@@ -18,7 +18,6 @@ class PostCard extends StatelessWidget {
         width: 300,
         // height: 100, // auto?
         alignment: Alignment.topCenter,
-        //ここからカード内部
         //children:<widget>[Container(
         //child: Row(
         child: Row(
@@ -53,7 +52,6 @@ class PostCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    //ここからID
                     Container(
                       padding: EdgeInsets.fromLTRB(10, 11, 0, 0),
                       child: Text(
@@ -72,7 +70,7 @@ class PostCard extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(240, 10, 0, 10),
+                    padding: EdgeInsets.fromLTRB(220, 10, 0, 10),
                     child: Text(
                       DatetimeUtil.getCurrentDateString(),
                     ),
@@ -119,13 +117,9 @@ class PostCard extends StatelessWidget {
                     ),
                   ],
                 )),
-
-            //child: Text('あ'),
-            // ),
           ],
-          //),Container(),
         ),
-      ), //最初こんてな
+      ),
     );
   }
 }
