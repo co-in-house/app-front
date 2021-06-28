@@ -13,8 +13,8 @@ class PostNewCommunityService extends StateNotifier<NewCommunityInfo> {
     state = newCommunityInfo;
     final String _body = jsonEncode(newCommunityInfo);
     final response = await http.post(
-      // Uri.https('app-service.mybluemix.net', 'v1/community'),
-      Uri.http('localhost:8080', 'v1/community'),
+      Uri.https('app-service.mybluemix.net', 'v1/community'),
+      // Uri.http('localhost:8080', 'v1/community'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
