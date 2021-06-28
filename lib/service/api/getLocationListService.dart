@@ -15,9 +15,8 @@ class GetLocationListService extends StateNotifier<LocationList> {
       isLoading: true,
     );
 
-    final response = await http
-        // .get(Uri.https('app-service.mybluemix.net', 'v1/location'));
-        .get(Uri.http('localhost:8080', 'v1/location'));
+    final response =
+        await http.get(Uri.https('app-service.mybluemix.net', 'v1/location'));
 
     // テスト用
     // await new Future.delayed(new Duration(seconds: 1));
