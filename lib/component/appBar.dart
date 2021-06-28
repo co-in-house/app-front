@@ -9,15 +9,18 @@ class SliverAppBarSample extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       title: Text('Inhouse'),
-      backgroundColor: inhouseThemeColor.backgroundColor,
+      // backgroundColor: inhouseThemeColor.backgroundColor,
+      backgroundColor: Colors.transparent,
       textTheme: TextTheme(
         headline6: TextStyle(
-          color: inhouseThemeColor.primaryColor,
+          // color: inhouseThemeColor.primaryColor,
+          color: Colors.white,
           fontSize: 20,
         ),
       ),
       iconTheme: IconThemeData(
-        color: Theme.of(context).primaryColor,
+        // color: Theme.of(context).primaryColor,
+        color: Colors.white,
       ),
       floating: true,
       pinned: true,
@@ -79,15 +82,16 @@ class CustomAppBar {
   static AppBar newCommunity(BuildContext context) {
     return AppBar(
       title: Text("コミュニティを作成"),
-      backgroundColor: inhouseThemeColor.backgroundColor,
+      backgroundColor: Colors.transparent,
+      shadowColor: Color.fromRGBO(0, 0, 0, 2),
       textTheme: TextTheme(
         headline6: TextStyle(
-          color: inhouseThemeColor.primaryColor,
+          color: Colors.white,
           fontSize: 20,
         ),
       ),
       iconTheme: IconThemeData(
-        color: inhouseThemeColor.primaryColor,
+        color: Colors.white,
       ),
     );
   }
