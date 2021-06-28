@@ -1,8 +1,10 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:Inhouse/model/baseModel.dart';
 import 'package:Inhouse/model/locationList.dart';
 import 'package:Inhouse/model/tagList.dart';
+import 'package:Inhouse/util/util.dart';
 
 class NewCommunityInfo extends BaseModel {
   NewCommunityInfo({
@@ -15,7 +17,6 @@ class NewCommunityInfo extends BaseModel {
     this.requirement,
     this.note,
     this.iconImg,
-    this.headerImg,
   });
   bool isLoading;
   String name;
@@ -25,7 +26,6 @@ class NewCommunityInfo extends BaseModel {
   String requirement;
   String note;
   File iconImg;
-  File headerImg;
   LocationState selectedLocation;
 
   @override
@@ -37,8 +37,33 @@ class NewCommunityInfo extends BaseModel {
       'selectedLocation': this.selectedLocation,
       'requirement': this.requirement,
       'iconPath': this.iconImg.path,
-      'headerPath': this.headerImg.path,
       'note': this.note,
     }.toString();
+  }
+
+  Map<String, Object> toJson() {
+    List<String> _selectedTagList = [];
+    for (var item in this.tagList.contentsList) {
+      if (item.flag) {
+        _selectedTagList.add(item.label);
+      }
+    }
+    String image64 = "";
+
+    if (this.iconImg.path.substring(0, Const.assetDirName.length) !=
+        Const.assetDirName) {
+      final bytes = this.iconImg.readAsBytesSync();
+      image64 = base64Encode(bytes);
+    }
+
+    return {
+      'name': this.name,
+      'tagList': _selectedTagList,
+      'locationId': this.selectedLocation.index,
+      'content': this.content,
+      'image64': image64,
+      'requirement': this.requirement,
+      'note': this.note,
+    };
   }
 }

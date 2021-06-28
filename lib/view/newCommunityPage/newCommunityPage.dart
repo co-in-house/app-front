@@ -13,6 +13,7 @@ import 'package:Inhouse/model/tagList.dart';
 import 'package:Inhouse/service/api/postNewCommunityService.dart';
 import 'package:Inhouse/util/util.dart';
 import 'package:Inhouse/view/newCommunityPage/testConfirm.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:image_picker/image_picker.dart';
@@ -27,9 +28,11 @@ class NewCommunityPage extends StatefulWidget {
 }
 
 class _NewCommunityState extends State<NewCommunityPage> {
-  Text _submitLabel = Text("作成");
+  final PageController _pageController = PageController(viewportFraction: 0.9);
   double _pageNo = 0.0;
+  Text _submitLabel = Text("作成");
   final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _nameErrorController = TextEditingController();
   final TextEditingController _locationController = TextEditingController();
   final TextEditingController _contentController = TextEditingController();
   final TextEditingController _requirementController = TextEditingController();
@@ -38,7 +41,7 @@ class _NewCommunityState extends State<NewCommunityPage> {
   @override
   Widget build(BuildContext context) {
     List<Widget> _contentList = [
-      NewCommunityNameCard(this._nameController),
+      NewCommunityNameCard(this._nameController, this._nameErrorController),
       NewCommunityTagCard(this._getTagList(widget.newCommunityInfo.tagList)),
       NewCommunityLocationCard(
           this._locationController, widget.newCommunityInfo),
@@ -46,10 +49,7 @@ class _NewCommunityState extends State<NewCommunityPage> {
       NewCommunityRequirementCard(this._requirementController),
       NewCommunityImageCard(
         widget.newCommunityInfo,
-        this._iconFromGallaryButton(),
-        this._iconFromCameraButton(),
-        this._headerFromGallaryButton(),
-        this._headerFromCameraButton(),
+        this._iconButton(),
       ),
       NewCommunityNoteCard(this._noteController),
     ];
@@ -57,66 +57,88 @@ class _NewCommunityState extends State<NewCommunityPage> {
     if (widget.newCommunityInfo.iconImg == null) {
       widget.newCommunityInfo.iconImg = File('images/logo.png');
     }
-    if (widget.newCommunityInfo.headerImg == null) {
-      widget.newCommunityInfo.headerImg = File('images/logo_w.png');
-    }
 
-    return Scaffold(
-      appBar: CustomAppBar.newCommunity(context),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.6,
-              child: PageView(
-                controller: PageController(viewportFraction: 0.9),
-                onPageChanged: _onPageViewChange,
-                children: _contentList,
-              ),
-            ),
-            LinearProgressIndicator(
-              value: this._pageNo == 0
-                  ? 0.1
-                  : this._pageNo / (_contentList.length - 1),
-            ),
-            this._pageNo == (_contentList.length - 1)
-                ? ElevatedButton(
-                    child: _submitLabel,
-                    style: ElevatedButton.styleFrom(elevation: 16),
-                    onPressed: () {
-                      widget.newCommunityInfo.name = this._nameController.text;
-                      widget.newCommunityInfo.content =
-                          this._contentController.text;
-                      widget.newCommunityInfo.requirement =
-                          this._requirementController.text;
-                      widget.newCommunityInfo.note = this._noteController.text;
-                      print(widget.newCommunityInfo);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MultiProvider(
-                            providers: [
-                              StateNotifierProvider<PostNewCommunityService,
-                                  NewCommunityInfo>(
-                                create: (context) => PostNewCommunityService(),
-                              ),
-                            ],
-                            child: TestConfirm(
-                                newCommunityInfo: widget.newCommunityInfo),
-                          ),
-                        ),
-                      );
-                    },
-                  )
-                : ElevatedButton(
-                    child: _submitLabel,
-                    style: ElevatedButton.styleFrom(elevation: 16),
-                    onPressed: null),
-          ],
+    return Stack(children: <Widget>[
+      Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: new BoxDecoration(
+          image: new DecorationImage(
+            image: AssetImage('images/bg_f2.jpg'),
+            fit: BoxFit.cover,
+          ),
         ),
       ),
-    );
+      Scaffold(
+        appBar: CustomAppBar.newCommunity(context),
+        backgroundColor: Colors.transparent,
+        body: Container(
+          // color: Colors.blue,
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.6,
+                  child: PageView(
+                    controller: _pageController,
+                    onPageChanged: _onPageViewChange,
+                    children: _contentList,
+                  ),
+                ),
+                LinearProgressIndicator(
+                  value: this._pageNo == 0
+                      ? 0.1
+                      : this._pageNo / (_contentList.length - 1),
+                ),
+                this._pageNo == (_contentList.length - 1)
+                    ? ElevatedButton(
+                        child: _submitLabel,
+                        style: ElevatedButton.styleFrom(elevation: 16),
+                        onPressed: () {
+                          widget.newCommunityInfo.name =
+                              this._nameController.text;
+                          widget.newCommunityInfo.content =
+                              this._contentController.text;
+                          widget.newCommunityInfo.requirement =
+                              this._requirementController.text;
+                          widget.newCommunityInfo.note =
+                              this._noteController.text;
+                          print(widget.newCommunityInfo);
+                          if (_validate()) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MultiProvider(
+                                  providers: [
+                                    StateNotifierProvider<
+                                        PostNewCommunityService,
+                                        NewCommunityInfo>(
+                                      create: (context) =>
+                                          PostNewCommunityService(),
+                                    ),
+                                  ],
+                                  child: TestConfirm(
+                                      newCommunityInfo:
+                                          widget.newCommunityInfo),
+                                ),
+                              ),
+                            );
+                          }
+                        },
+                      )
+                    : ElevatedButton(
+                        child: _submitLabel,
+                        style: ElevatedButton.styleFrom(elevation: 16),
+                        onPressed: null),
+              ],
+            ),
+          ),
+          // backgroundColor: Color.fromARGB(255, 255, 200, 0),
+          // backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        ),
+      ),
+    ]);
   }
 
   _onPageViewChange(int page) {
@@ -124,6 +146,21 @@ class _NewCommunityState extends State<NewCommunityPage> {
     setState(() {
       _pageNo = page.toDouble();
     });
+  }
+
+  bool _validate() {
+    print("validate");
+
+    // 1 name
+    // required
+    if (this._nameController.text.isEmpty ||
+        this._nameController.text.trim() == "") {
+      this._nameErrorController.text = "Required";
+      this._pageController.jumpToPage(0);
+      return false;
+    }
+
+    return true;
   }
 
   List<Widget> _getTagList(TagList tagList) {
@@ -153,63 +190,59 @@ class _NewCommunityState extends State<NewCommunityPage> {
     );
   }
 
-  Widget _iconFromGallaryButton() {
+  Widget _iconButton() {
     return ElevatedButton(
-      // tooltip: 'Pick Image From Gallery',
-      onPressed: () async {
-        final PickedFile iconFile = await OsAccess.getImageFromGallery();
-        setState(() {
-          if (iconFile != null) {
-            widget.newCommunityInfo.iconImg = File(iconFile.path);
-          }
-        });
+      // color: Colors.blue,
+      // borderRadius: new BorderRadius.circular(0.0),
+      onPressed: () {
+        showCupertinoModalPopup(
+            context: context,
+            builder: (BuildContext context) {
+              return CupertinoActionSheet(
+                  actions: <Widget>[
+                    CupertinoActionSheetAction(
+                      child: const Text('写真を撮影'),
+                      onPressed: () async {
+                        final PickedFile iconFile =
+                            await OsAccess.getImageFromCamera();
+                        setState(() {
+                          if (iconFile != null) {
+                            widget.newCommunityInfo.iconImg =
+                                File(iconFile.path);
+                          }
+                        });
+                        Navigator.pop(context);
+                      },
+                    ),
+                    CupertinoActionSheetAction(
+                      child: const Text('アルバムから選択'),
+                      onPressed: () async {
+                        print("onPressed select 1");
+                        final PickedFile iconFile =
+                            await OsAccess.getImageFromGallery();
+                        setState(() {
+                          print("onPressed select 2");
+                          if (iconFile != null) {
+                            print("onPressed select 3");
+                            widget.newCommunityInfo.iconImg =
+                                File(iconFile.path);
+                          }
+                        });
+                        print("onPressed select 4");
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                  cancelButton: CupertinoActionSheetAction(
+                    child: const Text('キャンセル'),
+                    isDefaultAction: true,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ));
+            });
       },
-      child: Icon(Icons.photo_library),
-    );
-  }
-
-  Widget _iconFromCameraButton() {
-    return ElevatedButton(
-      // tooltip: 'Pick Image From Camera',
-      onPressed: () async {
-        final PickedFile iconFile = await OsAccess.getImageFromCamera();
-        setState(() {
-          if (iconFile != null) {
-            widget.newCommunityInfo.iconImg = File(iconFile.path);
-          }
-        });
-      },
-      child: Icon(Icons.add_a_photo),
-    );
-  }
-
-  Widget _headerFromGallaryButton() {
-    return ElevatedButton(
-      // tooltip: 'Pick Image From Gallery',
-      onPressed: () async {
-        final PickedFile iconFile = await OsAccess.getImageFromGallery();
-        setState(() {
-          if (iconFile != null) {
-            widget.newCommunityInfo.headerImg = File(iconFile.path);
-          }
-        });
-      },
-      child: Icon(Icons.photo_library),
-    );
-  }
-
-  Widget _headerFromCameraButton() {
-    return ElevatedButton(
-      // tooltip: 'Pick Image From Camera',
-      onPressed: () async {
-        final PickedFile iconFile = await OsAccess.getImageFromCamera();
-        setState(() {
-          if (iconFile != null) {
-            widget.newCommunityInfo.headerImg = File(iconFile.path);
-          }
-        });
-      },
-      child: Icon(Icons.add_a_photo),
+      child: Text('プロフィール画像を選択'),
     );
   }
 }

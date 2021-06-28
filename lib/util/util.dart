@@ -14,6 +14,9 @@ class Const {
   static final double containerHightPercentage = 0.9;
 
   static final double refreshIndicatorDisplacement = 100.0;
+
+  // label
+  static final String assetDirName = 'images';
 }
 
 class OsAccess {

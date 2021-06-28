@@ -3,8 +3,9 @@ import 'package:Inhouse/util/theme.dart';
 import 'package:flutter/material.dart';
 
 class NewCommunityNameCard extends NewCommunityBaseCard {
-  NewCommunityNameCard(this._controller);
+  NewCommunityNameCard(this._controller, this._error);
   final TextEditingController _controller;
+  final TextEditingController _error;
 
   @override
   Widget buildChild(BuildContext context) {
@@ -12,6 +13,7 @@ class NewCommunityNameCard extends NewCommunityBaseCard {
       child: TextField(
         controller: this._controller,
         decoration: new InputDecoration(
+          errorText: this._error.text != "" ? this._error.text : null,
           suffixIcon: IconButton(
             icon: Icon(Icons.sentiment_satisfied_alt,
                 color: inhouseThemeColor.primaryColor),
