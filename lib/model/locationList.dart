@@ -16,8 +16,8 @@ class LocationList extends BaseModel {
     List<LocationState> obj = [];
     for (int i = 0; i < _list.length; i++) {
       var content = LocationState(
-        index: _list[i]['index'],
-        label: _list[i]['label'],
+        index: _list[i]['locationId'],
+        label: _list[i]['locationName'],
       );
       obj.add(content);
     }

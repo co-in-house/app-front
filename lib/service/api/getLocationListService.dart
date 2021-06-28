@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:Inhouse/model/locationList.dart';
 import 'package:state_notifier/state_notifier.dart';
+import 'package:http/http.dart' as http;
 
 // Location List Service class
 class GetLocationListService extends StateNotifier<LocationList> {
@@ -13,14 +14,24 @@ class GetLocationListService extends StateNotifier<LocationList> {
       contentsList: state.contentsList,
       isLoading: true,
     );
+
+    final response = await http
+        // .get(Uri.https('app-service.mybluemix.net', 'v1/location'));
+        .get(Uri.http('localhost:8080', 'v1/location'));
+
     // テスト用
-    await new Future.delayed(new Duration(seconds: 1));
-    final response = _MockResponse();
+    // await new Future.delayed(new Duration(seconds: 1));
+    // final response = _MockResponse();
 
     if (response.statusCode == 200) {
       print("GetLocationListService Response: 200");
-      LocationList locationList =
-          LocationList.fromJson(jsonDecode(response.body));
+      LocationList locationList = LocationList.fromJson(
+        jsonDecode(
+          utf8.decode(
+            response.body.runes.toList(),
+          ),
+        ),
+      );
       state = locationList;
     } else {
       throw Exception('Failed to get LocationList');
