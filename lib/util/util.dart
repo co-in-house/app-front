@@ -53,6 +53,8 @@ class DatetimeUtil {
     String day = now.day.toString();
     String month = now.month.toString();
     String year = now.year.toString();
-    return year + "/" + month + "/" + day;
+    String hour = now.hour.toString();
+    String minute = now.minute.toString();
+    return year + "/" + month + "/" + day + " " + hour + ":" + minute;
   }
 }
