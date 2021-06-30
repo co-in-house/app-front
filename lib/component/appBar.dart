@@ -1,3 +1,6 @@
+import 'dart:core';
+import 'dart:core';
+
 import 'package:Inhouse/service/api/getCommunityListService.dart';
 import 'package:Inhouse/util/theme.dart';
 import 'package:flutter/material.dart';
@@ -76,10 +79,108 @@ class SliverAppBarSearch extends StatelessWidget {
   }
 }
 
+// SliverAppBar for Community Hero Image
+class SliverAppBarCommunityImage extends StatelessWidget {
+  SliverAppBarCommunityImage(
+      {@required this.imagePath,
+      @required this.label,
+      @required this.locationLabel})
+      : super();
+  final String imagePath;
+  final String label;
+  final String locationLabel;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      automaticallyImplyLeading: false,
+      stretch: true,
+      floating: true,
+      pinned: true,
+      snap: true,
+      expandedHeight: MediaQuery.of(context).size.width, //正方形
+
+      flexibleSpace: Stack(
+        children: [
+          Positioned(
+              child: Image(
+                fit: BoxFit.cover,
+                image: AssetImage(this.imagePath),
+              ),
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0),
+          Positioned(
+            child: Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween, // これで両端に寄せる
+                children: <Widget>[
+                  Text(
+                    this.label,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+                  Text(
+                    this.locationLabel,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
+              ),
+              padding: EdgeInsets.symmetric(
+                  vertical: 4,
+                  horizontal: MediaQuery.of(context).size.width * 0.1),
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    spreadRadius: 0.0,
+                    blurRadius: 10.0,
+                  ),
+                ],
+              ),
+            ),
+            bottom: 0,
+            left: 0,
+            right: 0,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 // CustomAppBar
 class CustomAppBar {
 // for create new community
   static AppBar newCommunity(BuildContext context) {
+    return AppBar(
+      title: Text("コミュニティを作成"),
+      backgroundColor: Colors.transparent,
+      shadowColor: Color.fromRGBO(0, 0, 0, 2),
+      textTheme: TextTheme(
+        headline6: TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+        ),
+      ),
+      iconTheme: IconThemeData(
+        color: Colors.white,
+      ),
+    );
+  }
+
+// for create new community confirm
+  static AppBar newCommunityConfirm(BuildContext context) {
     return AppBar(
       title: Text("コミュニティを作成"),
       backgroundColor: Colors.transparent,
