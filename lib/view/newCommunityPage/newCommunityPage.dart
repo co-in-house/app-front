@@ -1,13 +1,13 @@
 import 'dart:io';
 
 import 'package:Inhouse/component/appBar.dart';
-import 'package:Inhouse/component/newCommunity/newCommuityImageCard.dart';
-import 'package:Inhouse/component/newCommunity/newCommunityContentCard.dart';
-import 'package:Inhouse/component/newCommunity/newCommunityLocationCard.dart';
-import 'package:Inhouse/component/newCommunity/newCommunityNameCard.dart';
-import 'package:Inhouse/component/newCommunity/newCommunityNoteCard.dart';
-import 'package:Inhouse/component/newCommunity/newCommunityRequirementCard.dart';
-import 'package:Inhouse/component/newCommunity/newCommunityTagCard.dart';
+import 'package:Inhouse/component/community/newCommunity/newCommuityImageCard.dart';
+import 'package:Inhouse/component/community/newCommunity/newCommunityContentCard.dart';
+import 'package:Inhouse/component/community/newCommunity/newCommunityLocationCard.dart';
+import 'package:Inhouse/component/community/newCommunity/newCommunityNameCard.dart';
+import 'package:Inhouse/component/community/newCommunity/newCommunityNoteCard.dart';
+import 'package:Inhouse/component/community/newCommunity/newCommunityRequirementCard.dart';
+import 'package:Inhouse/component/community/newCommunity/newCommunityTagCard.dart';
 import 'package:Inhouse/model/newCommunityInfo.dart';
 import 'package:Inhouse/model/tagList.dart';
 import 'package:Inhouse/service/api/postNewCommunityService.dart';
