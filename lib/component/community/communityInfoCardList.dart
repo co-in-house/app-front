@@ -15,12 +15,19 @@ class _CommunityInfoCardList {
   static List<Widget> build(
       BuildContext context, NewCommunityInfo newCommunityInfo) {
     print("build CommunityInfoCardList");
+    print("MediaQuery.of(context).viewInsets.bottom," +
+        MediaQuery.of(context).viewInsets.bottom.toString());
     List<Widget> list = [];
     list.add(TagCard(newCommunityInfo: newCommunityInfo));
     list.add(CommunityContentCard(content: newCommunityInfo.content));
     list.add(
         CommunityRequirementCard(requirement: newCommunityInfo.requirement));
     list.add(CommunityNoteCard(note: newCommunityInfo.note));
+    list.add(
+      SizedBox(
+        height: MediaQuery.of(context).size.height * 0.05,
+      ),
+    );
     return list;
   }
 }
