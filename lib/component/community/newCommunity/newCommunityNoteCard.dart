@@ -5,12 +5,14 @@ import 'package:flutter/material.dart';
 class NewCommunityNoteCard extends NewCommunityBaseCard {
   NewCommunityNoteCard(this._controller);
   final TextEditingController _controller;
+  final int _maxLength = 500;
   @override
   Widget buildChild(BuildContext context) {
     return TextField(
       autocorrect: false,
       keyboardType: TextInputType.multiline,
-      maxLines: 3,
+      maxLines: 10,
+      maxLength: _maxLength,
       controller: this._controller,
       decoration: new InputDecoration(
         border: OutlineInputBorder(),
@@ -21,9 +23,6 @@ class NewCommunityNoteCard extends NewCommunityBaseCard {
         ),
         hintText: "備考を入力",
       ),
-      onSubmitted: (String inputName) {
-        print("submitted : " + inputName);
-      },
     );
   }
 }
