@@ -73,69 +73,70 @@ class _NewCommunityState extends State<NewCommunityPage> {
         appBar: CustomAppBar.newCommunity(context),
         backgroundColor: Colors.transparent,
         body: Container(
+          height: MediaQuery.of(context).size.height,
           // color: Colors.blue,
           child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.6,
-                  child: PageView(
-                    controller: _pageController,
-                    onPageChanged: _onPageViewChange,
-                    children: _contentList,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.6,
+                    child: PageView(
+                      controller: _pageController,
+                      onPageChanged: _onPageViewChange,
+                      children: _contentList,
+                    ),
                   ),
-                ),
-                LinearProgressIndicator(
-                  value: this._pageNo == 0
-                      ? 0.1
-                      : this._pageNo / (_contentList.length - 1),
-                ),
-                this._pageNo == (_contentList.length - 1)
-                    ? ElevatedButton(
-                        child: _submitLabel,
-                        style: ElevatedButton.styleFrom(elevation: 16),
-                        onPressed: () {
-                          widget.newCommunityInfo.name =
-                              this._nameController.text;
-                          widget.newCommunityInfo.content =
-                              this._contentController.text;
-                          widget.newCommunityInfo.requirement =
-                              this._requirementController.text;
-                          widget.newCommunityInfo.note =
-                              this._noteController.text;
-                          print(widget.newCommunityInfo);
-                          if (_validate()) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MultiProvider(
-                                  providers: [
-                                    StateNotifierProvider<
-                                        PostNewCommunityService,
-                                        NewCommunityInfo>(
-                                      create: (context) =>
-                                          PostNewCommunityService(),
-                                    ),
-                                  ],
-                                  child: NewCommunityConfirmPage(
-                                      newCommunityInfo:
-                                          widget.newCommunityInfo),
+                  LinearProgressIndicator(
+                    value: this._pageNo == 0
+                        ? 0.1
+                        : this._pageNo / (_contentList.length - 1),
+                  ),
+                  this._pageNo == (_contentList.length - 1)
+                      ? ElevatedButton(
+                          child: _submitLabel,
+                          style: ElevatedButton.styleFrom(elevation: 16),
+                          onPressed: () {
+                            widget.newCommunityInfo.name =
+                                this._nameController.text;
+                            widget.newCommunityInfo.content =
+                                this._contentController.text;
+                            widget.newCommunityInfo.requirement =
+                                this._requirementController.text;
+                            widget.newCommunityInfo.note =
+                                this._noteController.text;
+                            print(widget.newCommunityInfo);
+                            if (_validate()) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MultiProvider(
+                                    providers: [
+                                      StateNotifierProvider<
+                                          PostNewCommunityService,
+                                          NewCommunityInfo>(
+                                        create: (context) =>
+                                            PostNewCommunityService(),
+                                      ),
+                                    ],
+                                    child: NewCommunityConfirmPage(
+                                        newCommunityInfo:
+                                            widget.newCommunityInfo),
+                                  ),
                                 ),
-                              ),
-                            );
-                          }
-                        },
-                      )
-                    : ElevatedButton(
-                        child: _submitLabel,
-                        style: ElevatedButton.styleFrom(elevation: 16),
-                        onPressed: null),
-              ],
+                              );
+                            }
+                          },
+                        )
+                      : ElevatedButton(
+                          child: _submitLabel,
+                          style: ElevatedButton.styleFrom(elevation: 16),
+                          onPressed: null),
+                ],
+              ),
             ),
           ),
-          // backgroundColor: Color.fromARGB(255, 255, 200, 0),
-          // backgroundColor: Color.fromARGB(255, 255, 255, 255),
         ),
       ),
     ]);
