@@ -9,7 +9,7 @@ class CommunityDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar.newCommunityConfirm(context),
+      appBar: CustomAppBar.newCommunityDetail(context),
       extendBodyBehindAppBar: true,
       body: CustomScrollView(
         slivers: <Widget>[

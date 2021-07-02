@@ -196,4 +196,22 @@ class CustomAppBar {
       ),
     );
   }
+
+  // for create new community detail
+  static AppBar newCommunityDetail(BuildContext context) {
+    return AppBar(
+      title: Text('コミュニティ詳細'),
+      backgroundColor: Colors.transparent,
+      shadowColor: Color.fromRGBO(0, 0, 0, 2),
+      textTheme: TextTheme(
+        headline6: TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+        ),
+      ),
+      iconTheme: IconThemeData(
+        color: Colors.white,
+      ),
+    );
+  }
 }
