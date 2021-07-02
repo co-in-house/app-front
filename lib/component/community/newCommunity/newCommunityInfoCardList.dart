@@ -18,9 +18,7 @@ class NewCommunityInfoCardList extends SliverChildListDelegate {
 class _CommunityInfoCardList {
   static List<Widget> build(
       BuildContext context, NewCommunityInfo newCommunityInfo) {
-    print("build CommunityInfoCardList");
-    print("MediaQuery.of(context).viewInsets.bottom," +
-        MediaQuery.of(context).viewInsets.bottom.toString());
+    print("build NewCommunityInfoCardList");
     List<Widget> list = [];
     list.add(TagCard(newCommunityInfo: newCommunityInfo));
     list.add(CommunityContentCard(content: newCommunityInfo.content));

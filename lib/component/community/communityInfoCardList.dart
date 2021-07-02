@@ -13,8 +13,6 @@ class CommunityInfoCardList extends SliverChildListDelegate {
 class _CommunityInfoCardList {
   static List<Widget> build(BuildContext context, Community community) {
     print("build CommunityInfoCardList");
-    print("MediaQuery.of(context).viewInsets.bottom," +
-        MediaQuery.of(context).viewInsets.bottom.toString());
     List<Widget> list = [];
     // list.add(TagCard(newCommunityInfo: newCommunityInfo));
     list.add(CommunityContentCard(content: community.content));
