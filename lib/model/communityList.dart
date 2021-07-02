@@ -33,7 +33,6 @@ class CommunityList extends BaseModel {
         locationName: _list[i]['locationName'],
         note: _list[i]['note'],
         profileImgUrl: _list[i]['profileImgUrl'],
-        headerImgUrl: _list[i]['headerImgUrl'],
         tags: _tags,
         created: _list[i]['created'],
       );
@@ -53,7 +52,6 @@ class Community {
     this.locationName,
     this.note,
     this.profileImgUrl,
-    this.headerImgUrl,
     this.tags,
     this.created,
   });
@@ -66,9 +64,24 @@ class Community {
   String locationName;
   String note;
   String profileImgUrl;
-  String headerImgUrl;
   String created;
   List<Tag> tags;
+
+  @override
+  String toString() {
+    return {
+      'id': this.communityId,
+      'name': this.communityName,
+      'content': this.content,
+      'requirement': this.requirement,
+      'locationId': this.locationId,
+      'locationName': this.locationName,
+      'note': this.note,
+      'profileImgUrl': this.profileImgUrl,
+      'created': this.created,
+      'tags': this.tags,
+    }.toString();
+  }
 }
 
 class Tag {
@@ -78,4 +91,12 @@ class Tag {
   });
   int tagId;
   String tagName;
+
+  @override
+  String toString() {
+    return {
+      'tagId': this.tagId,
+      'tagName:': this.tagName,
+    }.toString();
+  }
 }

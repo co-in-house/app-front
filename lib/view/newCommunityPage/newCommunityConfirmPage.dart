@@ -1,5 +1,5 @@
 import 'package:Inhouse/component/appBar.dart';
-import 'package:Inhouse/component/community/communityInfoCardList.dart';
+import 'package:Inhouse/component/community/newCommunity/newCommunityInfoCardList.dart';
 import 'package:Inhouse/model/newCommunityInfo.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,8 @@ class NewCommunityConfirmPage extends StatelessWidget {
             locationLabel: newCommunityInfo.selectedLocation.label,
           ),
           SliverList(
-              delegate: CommunityInfoCardList(context, this.newCommunityInfo)),
+              delegate:
+                  NewCommunityInfoCardList(context, this.newCommunityInfo)),
         ],
       ),
     );
