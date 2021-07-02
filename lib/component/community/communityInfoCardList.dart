@@ -2,6 +2,7 @@ import 'package:Inhouse/component/community/communityContentCard.dart';
 import 'package:Inhouse/component/community/communityNoteCard.dart';
 import 'package:Inhouse/component/community/communityRequirementCard.dart';
 import 'package:Inhouse/component/community/communityTagCard.dart';
+import 'package:Inhouse/component/loading/loadingDialog.dart';
 import 'package:Inhouse/model/newCommunityInfo.dart';
 import 'package:Inhouse/service/api/postNewCommunityService.dart';
 import 'package:flutter/material.dart';
@@ -31,18 +32,9 @@ class _CommunityInfoCardList {
         style: ElevatedButton.styleFrom(elevation: 0),
         onPressed: () async {
           print("confirm");
-          showGeneralDialog(
-              context: context,
-              barrierDismissible: false,
-              transitionDuration: Duration(milliseconds: 300),
-              barrierColor: Colors.black.withOpacity(0.5),
-              pageBuilder: (BuildContext context, Animation animation,
-                  Animation secondaryAnimation) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              });
+          await LoadingDialog().showIndicator(context);
           await context.read<PostNewCommunityService>().call(newCommunityInfo);
+          await LoadingDialog().showCompleted(context);
           Navigator.popUntil(context, (route) => route.isFirst);
         },
       ),
