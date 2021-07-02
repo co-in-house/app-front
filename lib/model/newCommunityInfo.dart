@@ -66,4 +66,15 @@ class NewCommunityInfo extends BaseModel {
       'note': this.note,
     };
   }
+
+  List<String> getTagLabelList() {
+    List<String> labelList = [];
+    for (var index = 0; index < this.tagList.contentsList.length; index++) {
+      if (this.tagList.contentsList[index].flag) {
+        labelList.add(this.tagList.contentsList[index].label);
+      }
+    }
+
+    return labelList;
+  }
 }

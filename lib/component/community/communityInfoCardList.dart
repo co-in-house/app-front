@@ -1,6 +1,7 @@
 import 'package:Inhouse/component/community/communityContentCard.dart';
 import 'package:Inhouse/component/community/communityNoteCard.dart';
 import 'package:Inhouse/component/community/communityRequirementCard.dart';
+import 'package:Inhouse/component/community/communityTagCard.dart';
 import 'package:Inhouse/model/communityList.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class _CommunityInfoCardList {
   static List<Widget> build(BuildContext context, Community community) {
     print("build CommunityInfoCardList");
     List<Widget> list = [];
-    // list.add(TagCard(newCommunityInfo: newCommunityInfo));
+    list.add(CommunityTagCard(tagLabelList: community.getTagLabelList()));
     list.add(CommunityContentCard(content: community.content));
     list.add(CommunityRequirementCard(requirement: community.requirement));
     list.add(CommunityNoteCard(note: community.note));

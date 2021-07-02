@@ -1,21 +1,13 @@
 import 'package:Inhouse/component/community/communityInfoCardList.dart';
 import 'package:Inhouse/component/text/tag.dart';
-import 'package:Inhouse/model/newCommunityInfo.dart';
 import 'package:flutter/material.dart';
 
-class TagCard extends CommunityBaseCard {
-  TagCard({this.newCommunityInfo});
-  final NewCommunityInfo newCommunityInfo;
+class CommunityTagCard extends CommunityBaseCard {
+  CommunityTagCard({this.tagLabelList});
+  final List<String> tagLabelList;
 
   List<Widget> getWidgetList() {
-    List<String> labelList = [];
-    for (var index = 0;
-        index < newCommunityInfo.tagList.contentsList.length;
-        index++) {
-      if (newCommunityInfo.tagList.contentsList[index].flag) {
-        labelList.add(newCommunityInfo.tagList.contentsList[index].label);
-      }
-    }
+    List<String> labelList = tagLabelList;
     List<Widget> tagList = List<Widget>.generate(
         labelList.length, (int index) => Tag(label: labelList[index]));
 

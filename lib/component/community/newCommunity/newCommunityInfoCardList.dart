@@ -20,7 +20,8 @@ class _CommunityInfoCardList {
       BuildContext context, NewCommunityInfo newCommunityInfo) {
     print("build NewCommunityInfoCardList");
     List<Widget> list = [];
-    list.add(TagCard(newCommunityInfo: newCommunityInfo));
+    list.add(
+        CommunityTagCard(tagLabelList: newCommunityInfo.getTagLabelList()));
     list.add(CommunityContentCard(content: newCommunityInfo.content));
     list.add(
         CommunityRequirementCard(requirement: newCommunityInfo.requirement));

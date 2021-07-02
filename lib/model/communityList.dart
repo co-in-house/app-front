@@ -82,6 +82,14 @@ class Community {
       'tags': this.tags,
     }.toString();
   }
+
+  List<String> getTagLabelList() {
+    List<String> list = [];
+    for (int index = 0; index < this.tags.length; index++) {
+      list.add(this.tags[index].tagName);
+    }
+    return list;
+  }
 }
 
 class Tag {
