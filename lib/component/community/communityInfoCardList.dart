@@ -31,6 +31,17 @@ class _CommunityInfoCardList {
         style: ElevatedButton.styleFrom(elevation: 0),
         onPressed: () async {
           print("confirm");
+          showGeneralDialog(
+              context: context,
+              barrierDismissible: false,
+              transitionDuration: Duration(milliseconds: 300),
+              barrierColor: Colors.black.withOpacity(0.5),
+              pageBuilder: (BuildContext context, Animation animation,
+                  Animation secondaryAnimation) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              });
           await context.read<PostNewCommunityService>().call(newCommunityInfo);
           Navigator.popUntil(context, (route) => route.isFirst);
         },
