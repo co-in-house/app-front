@@ -25,8 +25,8 @@ class ExplorePage extends StatelessWidget {
             parent: AlwaysScrollableScrollPhysics()),
         slivers: <Widget>[
           SliverAppBarSearch(searchTextController: this.searchTextController),
-          SliverFixedExtentList(
-            itemExtent: 153.0,
+          SliverList(
+            // itemExtent: 153.0,
             delegate: CommunityCardList(
               context.select((CommunityList communityList) => communityList),
             ),
