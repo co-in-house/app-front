@@ -8,7 +8,6 @@ class PostNewCommunityService extends StateNotifier<NewCommunityInfo> {
   PostNewCommunityService() : super(NewCommunityInfo());
 
   Future<void> call(NewCommunityInfo newCommunityInfo) async {
-    List<String> l = [];
     newCommunityInfo.isLoading = true;
     state = newCommunityInfo;
     final String _body = jsonEncode(newCommunityInfo);

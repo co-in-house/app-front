@@ -2,7 +2,6 @@ import 'package:Inhouse/component/community/communityContentCard.dart';
 import 'package:Inhouse/component/community/communityNoteCard.dart';
 import 'package:Inhouse/component/community/communityRequirementCard.dart';
 import 'package:Inhouse/component/community/communityTagCard.dart';
-import 'package:Inhouse/main.dart';
 import 'package:Inhouse/model/newCommunityInfo.dart';
 import 'package:Inhouse/service/api/postNewCommunityService.dart';
 import 'package:flutter/material.dart';
@@ -28,10 +27,10 @@ class _CommunityInfoCardList {
     list.add(CommunityNoteCard(note: newCommunityInfo.note));
     list.add(
       ElevatedButton(
-        child: Text("submit"),
-        style: ElevatedButton.styleFrom(elevation: 16),
+        child: Text("作成する"),
+        style: ElevatedButton.styleFrom(elevation: 0),
         onPressed: () async {
-          print("submit");
+          print("confirm");
           await context.read<PostNewCommunityService>().call(newCommunityInfo);
           Navigator.popUntil(context, (route) => route.isFirst);
         },

@@ -88,10 +88,6 @@ class RedeemConfirmationScreen extends StatelessWidget {
                 print("onPressed");
                 Navigator.push(
                   context,
-                  //     // MaterialPageRoute(
-                  //     //   builder: (context) => NewCommunityNamePage(
-                  //     //       newCommunityInfo: newCommunityInfo),
-                  //     // ),
                   MaterialPageRoute(
                     builder: (context) => NewCommunityPage(
                       newCommunityInfo: newCommunityInfo,
