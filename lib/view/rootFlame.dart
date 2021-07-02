@@ -30,11 +30,9 @@ class RootFlame extends StatelessWidget {
       onInit: () async {
         // 初期API call
         // master list 取得
-        print('Async Master List Load ');
-        await context.read<GetPostListService>().call();
-        await context.read<GetTagListService>().call();
-        await context.read<GetLocationListService>().call();
-        print('Async Master List Load Done');
+        context.read<GetLocationListService>().call();
+        context.read<GetPostListService>().call();
+        context.read<GetTagListService>().call();
       },
       child: Scaffold(
           drawer: CustomDrawer(context: context),
