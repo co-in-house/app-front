@@ -54,11 +54,11 @@ class FirebaseStorageAccess {
     // await Firebase.initializeApp(
     //     name: 'com.inhouse.front',
     //     options: FirebaseOptions(
-    //       appId: '1:875475073617:ios:9b978032c79e8974d21670',
-    //       //  Platform.isIOS ? '1:875475073617:ios:9b978032c79e8974d21670' : '',
-    //       apiKey: 'AIzaSyA85xEuo1_rPA_yJg3IrD0BBRTAj2UQ-o4',
-    //       messagingSenderId: '875475073617',
-    //       projectId: 'com-inhouse-app',
+    //       appId: '',
+    //       //  Platform.isIOS ? '' : '',
+    //       apiKey: '',
+    //       messagingSenderId: '',
+    //       projectId: '',
     //     ));
   }
 }
