@@ -33,5 +33,5 @@ class _MockResponse {
 
   int _statusCode = 200;
   String _body =
-      '{"postList": [{"img":"logo.png"},{"img":"ntt.png"},{"img":"ibm.png"}]}';
+      '{"postList": [{"img":"logo.png"},{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"},{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"},{"img":"ntt.png"},{"img":"ibm.png"}]}';
 }

@@ -12,14 +12,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     print("========HomePage build========");
     return Container(
-      decoration: new BoxDecoration(
-        image: new DecorationImage(
-          image: AssetImage('images/bg.jpg'),
-          fit: BoxFit.cover,
-        ),
-      ),
-
-      // color: Colors.white,
+      color: Colors.white,
       child: RefreshIndicator(
         displacement: Const.refreshIndicatorDisplacement,
         onRefresh: () async {
@@ -29,9 +22,8 @@ class HomePage extends StatelessWidget {
           physics: const BouncingScrollPhysics(
               parent: AlwaysScrollableScrollPhysics()),
           slivers: <Widget>[
-            SliverAppBarSample(),
+            SliverAppBarHome(),
             SliverList(
-              // itemExtent: 108.0,
               delegate: PostCardList(
                   context, context.select((PostList postList) => postList)),
             ),

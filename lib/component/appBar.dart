@@ -46,6 +46,44 @@ class SliverAppBarSample extends StatelessWidget {
   }
 }
 
+// SliverAppBar for Home
+class SliverAppBarHome extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      title: Text('Inhouse'),
+      backgroundColor: inhouseThemeColor.backgroundColor,
+      // backgroundColor: Colors.transparent,
+      textTheme: TextTheme(
+        headline6: TextStyle(
+          color: inhouseThemeColor.primaryColor,
+          fontSize: 20,
+        ),
+      ),
+      iconTheme: IconThemeData(
+        color: Theme.of(context).primaryColor,
+      ),
+      floating: true,
+      pinned: false,
+      snap: false,
+      // bottom: PreferredSize(
+      //   preferredSize: const Size.fromHeight(50),
+      //   child: Column(
+      //     mainAxisAlignment: MainAxisAlignment.center,
+      //     children: [
+      //       TextField(
+      //           decoration: new InputDecoration(
+      //         suffixIcon:
+      //             new Icon(Icons.search, color: Theme.of(context).primaryColor),
+      //         hintText: "fixed object",
+      //       ))
+      //     ],
+      //   ),
+      // ),
+    );
+  }
+}
+
 // SliverAppBar for Search
 class SliverAppBarSearch extends StatelessWidget {
   SliverAppBarSearch({this.searchTextController});

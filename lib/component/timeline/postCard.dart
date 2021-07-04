@@ -11,8 +11,9 @@ class PostCard extends StatelessWidget {
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
+        side: BorderSide(color: Colors.grey, width: 0.5),
       ),
-      elevation: 2.0,
+      elevation: 0.5,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
         width: 300,
