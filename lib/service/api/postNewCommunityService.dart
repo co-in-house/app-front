@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:Inhouse/model/newCommunityInfo.dart';
+import 'package:Inhouse/service/external/content/firebaseStorageController.dart';
 import 'package:http/http.dart' as http;
 import 'package:state_notifier/state_notifier.dart';
 
@@ -10,6 +11,12 @@ class PostNewCommunityService extends StateNotifier<NewCommunityInfo> {
   Future<void> call(NewCommunityInfo newCommunityInfo) async {
     newCommunityInfo.isLoading = true;
     state = newCommunityInfo;
+
+    // 画像のアップロード
+    newCommunityInfo.iconImgUrl =
+        await FirebaseStorageController.uploadCommunityIcon(
+            newCommunityInfo.iconImg, newCommunityInfo.name);
+
     final String _body = jsonEncode(newCommunityInfo);
     final response = await http.post(
       Uri.https('app-service.mybluemix.net', 'v1/community'),

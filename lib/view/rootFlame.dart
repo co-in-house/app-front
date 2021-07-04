@@ -5,6 +5,7 @@ import 'package:Inhouse/model/routingState.dart';
 import 'package:Inhouse/service/api/getLocationListService.dart';
 import 'package:Inhouse/service/api/getPostListService.dart';
 import 'package:Inhouse/service/api/getTagListService.dart';
+import 'package:Inhouse/service/external/content/firebaseStorageController.dart';
 import 'package:Inhouse/util/wrapper.dart';
 import 'package:Inhouse/view/eventPage.dart';
 import 'package:Inhouse/view/explorePage.dart';
@@ -28,6 +29,7 @@ class RootFlame extends StatelessWidget {
   Widget build(BuildContext context) {
     return StatefulWrapper(
       onInit: () async {
+        await FirebaseStorageAccess().initialize();
         // 初期API call
         // master list 取得
         context.read<GetLocationListService>().call();
