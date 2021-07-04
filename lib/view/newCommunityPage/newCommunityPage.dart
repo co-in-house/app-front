@@ -58,88 +58,76 @@ class _NewCommunityState extends State<NewCommunityPage> {
       widget.newCommunityInfo.iconImg = File('images/logo.png');
     }
 
-    return Stack(children: <Widget>[
-      Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: new BoxDecoration(
-          image: new DecorationImage(
-            image: AssetImage('images/bg_f2.jpg'),
-            fit: BoxFit.cover,
-          ),
-        ),
-      ),
-      Scaffold(
-        appBar: CustomAppBar.newCommunity(context),
-        backgroundColor: Colors.transparent,
-        body: Container(
-          height: MediaQuery.of(context).size.height,
-          // color: Colors.blue,
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.6,
-                    child: PageView(
-                      controller: _pageController,
-                      onPageChanged: _onPageViewChange,
-                      children: _contentList,
-                    ),
+    return Scaffold(
+      appBar: CustomAppBar.newCommunity(context),
+      backgroundColor: Colors.white,
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        // color: Colors.blue,
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.6,
+                  child: PageView(
+                    controller: _pageController,
+                    onPageChanged: _onPageViewChange,
+                    children: _contentList,
                   ),
-                  LinearProgressIndicator(
-                    value: this._pageNo == 0
-                        ? 0.1
-                        : this._pageNo / (_contentList.length - 1),
-                  ),
-                  this._pageNo == (_contentList.length - 1)
-                      ? ElevatedButton(
-                          child: _submitLabel,
-                          style: ElevatedButton.styleFrom(elevation: 16),
-                          onPressed: () {
-                            widget.newCommunityInfo.name =
-                                this._nameController.text;
-                            widget.newCommunityInfo.content =
-                                this._contentController.text;
-                            widget.newCommunityInfo.requirement =
-                                this._requirementController.text;
-                            widget.newCommunityInfo.note =
-                                this._noteController.text;
-                            print(widget.newCommunityInfo);
-                            if (_validate()) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => MultiProvider(
-                                    providers: [
-                                      StateNotifierProvider<
-                                          PostNewCommunityService,
-                                          NewCommunityInfo>(
-                                        create: (context) =>
-                                            PostNewCommunityService(),
-                                      ),
-                                    ],
-                                    child: NewCommunityConfirmPage(
-                                        newCommunityInfo:
-                                            widget.newCommunityInfo),
-                                  ),
+                ),
+                LinearProgressIndicator(
+                  value: this._pageNo == 0
+                      ? 0.1
+                      : this._pageNo / (_contentList.length - 1),
+                ),
+                this._pageNo == (_contentList.length - 1)
+                    ? ElevatedButton(
+                        child: _submitLabel,
+                        style: ElevatedButton.styleFrom(elevation: 16),
+                        onPressed: () {
+                          widget.newCommunityInfo.name =
+                              this._nameController.text;
+                          widget.newCommunityInfo.content =
+                              this._contentController.text;
+                          widget.newCommunityInfo.requirement =
+                              this._requirementController.text;
+                          widget.newCommunityInfo.note =
+                              this._noteController.text;
+                          print(widget.newCommunityInfo);
+                          if (_validate()) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MultiProvider(
+                                  providers: [
+                                    StateNotifierProvider<
+                                        PostNewCommunityService,
+                                        NewCommunityInfo>(
+                                      create: (context) =>
+                                          PostNewCommunityService(),
+                                    ),
+                                  ],
+                                  child: NewCommunityConfirmPage(
+                                      newCommunityInfo:
+                                          widget.newCommunityInfo),
                                 ),
-                              );
-                            }
-                          },
-                        )
-                      : ElevatedButton(
-                          child: _submitLabel,
-                          style: ElevatedButton.styleFrom(elevation: 16),
-                          onPressed: null),
-                ],
-              ),
+                              ),
+                            );
+                          }
+                        },
+                      )
+                    : ElevatedButton(
+                        child: _submitLabel,
+                        style: ElevatedButton.styleFrom(elevation: 16),
+                        onPressed: null),
+              ],
             ),
           ),
         ),
       ),
-    ]);
+    );
   }
 
   _onPageViewChange(int page) {

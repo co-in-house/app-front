@@ -10,8 +10,9 @@ abstract class NewCommunityBaseCard extends StatelessWidget {
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
+          side: BorderSide(color: Colors.grey, width: 0.5),
         ),
-        elevation: 2.0,
+        elevation: 0.0,
         child: Container(
           margin: const EdgeInsets.all(10.0),
           width: MediaQuery.of(context).size.width * 0.80,

@@ -205,16 +205,16 @@ class CustomAppBar {
   static AppBar newCommunity(BuildContext context) {
     return AppBar(
       title: Text("コミュニティを作成"),
-      backgroundColor: Colors.transparent,
-      shadowColor: Color.fromRGBO(0, 0, 0, 2),
+      backgroundColor: Colors.white,
+      shadowColor: Color.fromRGBO(0, 0, 0, 0),
       textTheme: TextTheme(
         headline6: TextStyle(
-          color: Colors.white,
+          color: inhouseThemeColor.primaryColor,
           fontSize: 20,
         ),
       ),
       iconTheme: IconThemeData(
-        color: Colors.white,
+        color: inhouseThemeColor.primaryColor,
       ),
     );
   }
