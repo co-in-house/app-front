@@ -32,7 +32,7 @@ class CommunityList extends BaseModel {
         locationId: _list[i]['locationId'],
         locationName: _list[i]['locationName'],
         note: _list[i]['note'],
-        profileImgUrl: _list[i]['profileImgUrl'],
+        profileImgUrl: _list[i]['iconImgUrl'],
         tags: _tags,
         created: _list[i]['created'],
       );

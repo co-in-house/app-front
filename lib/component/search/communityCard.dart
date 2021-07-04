@@ -72,6 +72,9 @@ class CommunityCard extends StatelessWidget {
                     Text(content.created),
                     Text(content.locationName),
                     Text(content.note),
+                    content.profileImgUrl != null
+                        ? Text(content.profileImgUrl)
+                        : Text("urlなし"),
                     TagTextListRow(tagList: content.tags),
                   ],
                 ),

@@ -58,3 +58,25 @@ class DatetimeUtil {
     return year + "/" + month + "/" + day + " " + hour + ":" + minute;
   }
 }
+
+class Check {
+  static bool isAssetPath(String path) {
+    if (path != null &&
+        path.trim().length > Const.assetDirName.length &&
+        path.trim().substring(0, Const.assetDirName.length) ==
+            Const.assetDirName) {
+      return true;
+    }
+    return false;
+  }
+
+  static bool isUrlPath(String path) {
+    String prt = 'http';
+    if (path != null &&
+        path.trim().length > prt.length &&
+        path.trim().substring(0, prt.length) == prt) {
+      return true;
+    }
+    return false;
+  }
+}

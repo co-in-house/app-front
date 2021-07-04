@@ -1,8 +1,8 @@
 import 'dart:core';
-import 'dart:core';
 
 import 'package:Inhouse/service/api/getCommunityListService.dart';
 import 'package:Inhouse/util/theme.dart';
+import 'package:Inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -105,7 +105,9 @@ class SliverAppBarCommunityImage extends StatelessWidget {
           Positioned(
               child: Image(
                 fit: BoxFit.cover,
-                image: AssetImage(this.imagePath),
+                image: Check.isUrlPath(this.imagePath)
+                    ? NetworkImage(this.imagePath)
+                    : AssetImage(this.imagePath),
               ),
               top: 0,
               left: 0,

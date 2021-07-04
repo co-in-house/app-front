@@ -14,8 +14,10 @@ class CommunityDetailPage extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBarCommunityImage(
-            // imagePath: community.profileImgUrl,
-            imagePath: 'images/bg_f.jpg',
+            imagePath: (community.profileImgUrl == null ||
+                    community.profileImgUrl.trim().isEmpty)
+                ? 'images/bg_f.jpg'
+                : community.profileImgUrl,
             label: community.communityName,
             locationLabel: community.locationName,
           ),
