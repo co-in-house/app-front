@@ -130,6 +130,28 @@ class SliverAppBarLounge extends StatelessWidget {
   }
 }
 
+// SliverAppBar for Chat
+class SliverAppBarChat extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      title: Text('チャットルーム'),
+      textTheme: TextTheme(
+        headline6: TextStyle(
+          color: inhouseThemeColor.primaryColor,
+          fontSize: 20,
+        ),
+      ),
+      iconTheme: IconThemeData(
+        color: Theme.of(context).primaryColor,
+      ),
+      floating: true,
+      pinned: true,
+      snap: true,
+    );
+  }
+}
+
 // SliverAppBar for Community Hero Image
 class SliverAppBarCommunityImage extends StatelessWidget {
   SliverAppBarCommunityImage(
