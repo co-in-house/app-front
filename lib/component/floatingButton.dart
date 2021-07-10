@@ -1,4 +1,4 @@
-import 'package:Inhouse/view/community/choosingCommunity.dart';
+//import 'package:Inhouse/view/community/choosingCommunity.dart';
 import 'package:flutter/material.dart';
 
 class CustomFloatingButton extends StatelessWidget {
@@ -7,38 +7,18 @@ class CustomFloatingButton extends StatelessWidget {
     return FloatingActionButton(
       child: Icon(Icons.add),
       onPressed: () {
-        Navigator.push(
+        /*Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => NextPage()),
-        );
+        );*/
 
-        /*
         print("pressed floatingActionButton");
         showDialog(
           context: context,
           builder: (context) {
             return AlertDialog(
-              content: Container(
-                width: 10,
-                height: 10,
-                color: Colors.lightGreen[200],
-              ),
-              backgroundColor: Colors.lightGreen[200],
+              //Column(
               actions: <Widget>[
-                ElevatedButton(
-                  child: Text("btn"),
-                  style: ElevatedButton.styleFrom(
-                    elevation: 16,
-                    shape: const CircleBorder(),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => CommunityNamePage()),
-                    );
-                  },
-                ),
                 ElevatedButton(
                   child: Text("CANCEL"),
                   style: ElevatedButton.styleFrom(
@@ -49,10 +29,78 @@ class CustomFloatingButton extends StatelessWidget {
                   onPressed: () => Navigator.pop(context),
                 ),
               ],
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: <Widget>[
+                    Column(children: [
+                      //button
+                      Container(
+                          child: Column(children: [
+                        Container(
+                            child: (RaisedButton(
+                          color: Colors.white,
+                          shape: CircleBorder(),
+                          elevation: 0.0,
+                          onPressed: () {},
+                          child: ClipOval(
+                              child: Image(
+                            width: 60,
+                            image: AssetImage('images/ibm.png'),
+                            //image: AssetImage('images/' + content.img),
+                            fit: BoxFit.contain,
+                          )),
+                        ))),
+                        Container(
+                          child: Text('IBM'),
+                        )
+                      ])),
+                      Container(
+                          child: Column(children: [
+                        RaisedButton(
+                          color: Colors.white,
+                          shape: CircleBorder(),
+                          elevation: 0.0,
+                          onPressed: () {},
+                          child: ClipOval(
+                              child: Image(
+                            width: 70,
+                            image: AssetImage('images/ntt.png'),
+                            //image: AssetImage('images/' + content.img),
+                            fit: BoxFit.contain,
+                          )),
+                        ),
+                        Container(
+                          child: Text('ntt'),
+                        )
+                      ])),
+                      Container(
+                          child: Column(children: [
+                        RaisedButton(
+                          color: Colors.white,
+                          onPressed: () {},
+                          shape: CircleBorder(),
+                          elevation: 0.0,
+                          child: ClipOval(
+                              child: Image(
+                            width: 70,
+                            image: AssetImage('images/logo.png'),
+                            //image: AssetImage('images/' + content.img),
+                            fit: BoxFit.contain,
+                          )),
+                        ),
+                        Container(
+                          child: Text('inhouse'),
+                        )
+                      ])),
+                      //this
+                    ]),
+                  ],
+                ),
+              ),
+              backgroundColor: Colors.lightGreen[200],
             );
           },
         );
-        */
       },
     );
   }
