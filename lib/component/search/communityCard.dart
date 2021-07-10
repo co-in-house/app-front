@@ -9,23 +9,23 @@ class CommunityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        print("tapped! communityCard : " + content.toString());
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => CommunityDetailPage(
-              community: content,
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
+      elevation: 2.0,
+      child: InkWell(
+        onTap: () {
+          print("tapped! communityCard : " + content.toString());
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CommunityDetailPage(
+                community: content,
+              ),
             ),
-          ),
-        );
-      },
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        elevation: 2.0,
+          );
+        },
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
           width: 300,
