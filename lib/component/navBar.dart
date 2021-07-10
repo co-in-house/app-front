@@ -17,7 +17,7 @@ class CustomNavBar extends StatelessWidget {
       ],
       color: Colors.white,
       buttonBackgroundColor: Colors.white,
-      backgroundColor: inhouseThemeColor.primaryColor,
+      backgroundColor: inhouseThemeColor.bannerTheme.backgroundColor,
       animationCurve: Curves.easeInOut,
       animationDuration: Duration(milliseconds: 600),
       onTap: (index) {

@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     print("========HomePage build========");
     return Container(
-      color: Colors.white,
+      // color: Colors.white,
       child: RefreshIndicator(
         displacement: Const.refreshIndicatorDisplacement,
         onRefresh: () async {

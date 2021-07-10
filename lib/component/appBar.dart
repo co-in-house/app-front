@@ -52,8 +52,8 @@ class SliverAppBarHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       title: Text('Inhouse'),
-      backgroundColor: inhouseThemeColor.backgroundColor,
-      // backgroundColor: Colors.transparent,
+      // backgroundColor: inhouseThemeColor.backgroundColor,
+      backgroundColor: Colors.transparent,
       textTheme: TextTheme(
         headline6: TextStyle(
           color: inhouseThemeColor.primaryColor,
@@ -106,13 +106,26 @@ class SliverAppBarSearch extends StatelessWidget {
           hintText: "serach text",
         ),
       ),
-      backgroundColor: inhouseThemeColor.backgroundColor,
+      // backgroundColor: inhouseThemeColor.backgroundColor,
       iconTheme: IconThemeData(
         color: inhouseThemeColor.primaryColor,
       ),
       floating: true,
       pinned: true,
       snap: true,
+    );
+  }
+}
+
+// SliverAppBar for Lounge
+class SliverAppBarLounge extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      automaticallyImplyLeading: false,
+      floating: false,
+      pinned: false,
+      snap: false,
     );
   }
 }
