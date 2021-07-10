@@ -1,42 +1,28 @@
-import 'package:Inhouse/model/routingState.dart';
 import 'package:Inhouse/service/changePage.dart';
+import 'package:Inhouse/util/theme.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CustomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      type: BottomNavigationBarType.fixed,
-      currentIndex: context.select((RoutingState state) => state).routingState,
+    return CurvedNavigationBar(
+      items: <Widget>[
+        Icon(Icons.home, size: 30),
+        Icon(Icons.explore, size: 30),
+        Icon(Icons.apps, size: 30),
+        Icon(Icons.event_available, size: 30),
+        Icon(Icons.message_rounded, size: 30),
+      ],
+      color: Colors.white,
+      buttonBackgroundColor: Colors.white,
+      backgroundColor: inhouseThemeColor.primaryColor,
+      animationCurve: Curves.easeInOut,
+      animationDuration: Duration(milliseconds: 600),
       onTap: (index) {
         context.read<ChangePage>().set(index);
       },
-      items: [
-        BottomNavigationBarItem(
-          label: 'Home',
-          icon: Icon(Icons.home),
-        ),
-        BottomNavigationBarItem(
-          label: 'Explore',
-          icon: Icon(Icons.explore),
-        ),
-        BottomNavigationBarItem(
-          label: 'Lounge',
-          icon: Icon(Icons.apps),
-        ),
-        BottomNavigationBarItem(
-          label: 'Event',
-          icon: Icon(Icons.event_available),
-        ),
-        BottomNavigationBarItem(
-          label: 'Message',
-          icon: Icon(Icons.message_rounded),
-        ),
-      ],
     );
   }
 }
