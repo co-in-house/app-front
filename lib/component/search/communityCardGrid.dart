@@ -2,8 +2,8 @@ import 'package:Inhouse/component/search/communityCard.dart';
 import 'package:Inhouse/model/communityList.dart';
 import 'package:flutter/material.dart';
 
-class CommunityCardList extends SliverChildListDelegate {
-  CommunityCardList(CommunityList communityList)
+class CommunityCardGrid extends SliverChildListDelegate {
+  CommunityCardGrid(CommunityList communityList)
       : super(_CommunityList.buildCommunityList(communityList));
 }
 
