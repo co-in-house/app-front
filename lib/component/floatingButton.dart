@@ -1,4 +1,4 @@
-//import 'package:Inhouse/view/community/choosingCommunity.dart';
+import 'package:Inhouse/view/community/choosingCommunity.dart';
 import 'package:flutter/material.dart';
 
 class CustomFloatingButton extends StatelessWidget {
@@ -7,12 +7,12 @@ class CustomFloatingButton extends StatelessWidget {
     return FloatingActionButton(
       child: Icon(Icons.add),
       onPressed: () {
-        /*Navigator.push(
+        Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => NextPage()),
-        );*/
+        );
 
-        print("pressed floatingActionButton");
+        /*print("pressed floatingActionButton");
         showDialog(
           context: context,
           builder: (context) {
@@ -101,6 +101,7 @@ class CustomFloatingButton extends StatelessWidget {
             );
           },
         );
+        */
       },
     );
   }
