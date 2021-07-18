@@ -1,21 +1,67 @@
 import 'package:Inhouse/component/appBar.dart';
+import 'package:Inhouse/component/lounge/communityLine.dart';
+import 'package:Inhouse/model/lounge/roomState.dart';
+import 'package:Inhouse/service/lounge/changeRoom.dart';
+import 'package:Inhouse/util/util.dart';
 import 'package:Inhouse/view/lounge/chatPage.dart';
 import 'package:flutter/material.dart';
+import 'package:miniplayer/miniplayer.dart';
+import 'package:provider/provider.dart';
 
 class LoungePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("========LoungePage build========");
-    return Container(
-      padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * 0.05),
-      child: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBarLounge(),
-          SliverList(delegate: _LoungeDelegate(context))
-        ],
+    final int _roomIndex =
+        context.select((RoomState roomState) => roomState).index;
+    Const.miniplayerController.animateToHeight(state: PanelState.MAX);
+
+    return Stack(children: [
+      Container(
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBarLounge(),
+            SliverList(
+              delegate: _LoungeDelegate(context),
+            ),
+          ],
+        ),
       ),
-    );
+      Offstage(
+        offstage: _roomIndex == 0,
+        child: Miniplayer(
+          valueNotifier: Const.playerExpandProgress,
+          curve: Curves.easeInOut,
+          controller: Const.miniplayerController,
+          minHeight: Const.miniPlayerMinimumSize,
+          maxHeight: MediaQuery.of(context).size.height,
+          onDismiss: () {
+            print("dismiss!!!");
+          },
+          builder: (height, percentage) {
+            print(Const.playerExpandProgress.value.toString());
+            if (_roomIndex == 0) return const SizedBox.shrink();
+            if (percentage <= 0.5) {
+              return Container(
+                decoration: BoxDecoration(
+                  gradient: CustomColor.linearGradient(_roomIndex),
+                ),
+                child: Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.close),
+                      onPressed: () => context.read<ChangeRoom>().set(0),
+                    ),
+                    Text('$height, $percentage'),
+                  ],
+                ),
+              );
+            }
+            return ChatPage();
+          },
+        ),
+      )
+    ]);
   }
 }
 
@@ -37,125 +83,21 @@ class _Lounge {
         child: Text('まだ何も実装していません。', style: TextStyle(fontSize: 20))));
     list.add(Container(
         padding: EdgeInsets.symmetric(horizontal: 2, vertical: 0),
-        margin: EdgeInsets.symmetric(vertical: 4),
+        margin: EdgeInsets.symmetric(vertical: 40),
         child: Text(
           '今後の実装に期待しましょう。検索中に見つけたお気に入りの宿泊先やアクティビティは、ハートのアイコンをタップすることでこちらに保存できます。（Airbnbより引用）',
         )));
 
+    list.add(CommunityLine(communityName: "Inhouse"));
+    list.add(CommunityLine(communityName: "NTT"));
+    list.add(CommunityLine(communityName: "軽音楽同好会"));
+    list.add(CommunityLine(communityName: "ジョジョの奇妙な冒険"));
     list.add(
-      Container(
-        padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * 0.1, vertical: 0),
-        margin: EdgeInsets.symmetric(vertical: 4),
-        child: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-            side: BorderSide(
-              color: Colors.grey,
-              width: 1,
-            ),
-          ),
-          elevation: 2.0,
-          shadowColor: Colors.black,
-          color: Colors.green,
-          child: InkWell(
-            onTap: () {
-              print("InkWell");
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ChatPage(),
-                ),
-              );
-            },
-            child: Container(
-              margin: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    'Room',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  Text(
-                    '1',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
+        CommunityLine(communityName: "俺は人間をやめるぞ同好会俺は人間をやめるぞ同好会俺は人間をやめるぞ同好会"));
+    list.add(CommunityLine(communityName: "軽音楽同好会"));
+    list.add(
+        Padding(padding: EdgeInsets.only(bottom: Const.miniPlayerMinimumSize)));
 
-    list.add(
-      Container(
-        padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * 0.1, vertical: 0),
-        margin: EdgeInsets.symmetric(vertical: 4),
-        child: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-            side: BorderSide(
-              color: Colors.grey,
-              width: 1,
-            ),
-          ),
-          elevation: 2.0,
-          shadowColor: Colors.black,
-          child: InkWell(
-            onTap: () {
-              print("InkWell");
-            },
-            child: Container(
-              margin: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text('Room'),
-                  Text('2'),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-
-    list.add(
-      Container(
-        padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * 0.1, vertical: 0),
-        margin: EdgeInsets.symmetric(vertical: 4),
-        child: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-            side: BorderSide(
-              color: Colors.grey,
-              width: 1,
-            ),
-          ),
-          elevation: 2.0,
-          shadowColor: Colors.black,
-          child: InkWell(
-            onTap: () {
-              print("InkWell");
-            },
-            child: Container(
-              margin: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text('Room'),
-                  Text('3'),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
     return list;
   }
 }

@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:miniplayer/miniplayer.dart';
 
 class Const {
   // rooting No
@@ -15,8 +17,16 @@ class Const {
 
   static final double refreshIndicatorDisplacement = 100.0;
 
+  static final double miniPlayerMinimumSize = 60;
+
   // label
   static final String assetDirName = 'images';
+
+  // global controller
+  static final MiniplayerController miniplayerController =
+      MiniplayerController();
+  static final ValueNotifier<double> playerExpandProgress =
+      ValueNotifier(Const.miniPlayerMinimumSize);
 }
 
 class OsAccess {
@@ -78,5 +88,74 @@ class Check {
       return true;
     }
     return false;
+  }
+}
+
+class CustomColor {
+  List<Color> _gradientColor(int index) {
+    switch (index.toString()) {
+      case '1':
+        return [
+          const Color(0xFFF7797D),
+          const Color(0xFFC471ED),
+          const Color(0xFF12C2E9),
+        ];
+        break;
+      case '2':
+        return [
+          const Color(0xFF5D26C1),
+          const Color(0xFFA17FE0),
+          const Color(0xFF59C173),
+        ];
+        break;
+      case '3':
+        return [
+          const Color(0xFF00F260),
+          const Color(0xFF0575E6),
+        ];
+        break;
+      case '4':
+        return [
+          const Color(0xFFEC2F4D),
+          const Color(0xFF009FFF),
+        ];
+        break;
+      case '5':
+        return [
+          const Color(0xFF5D26C1),
+          const Color(0xFF8A2387),
+          const Color(0xFFE94057),
+        ];
+        break;
+      case '6':
+        return [
+          const Color(0xFFF7797D),
+          const Color(0xFFFBD786),
+          const Color(0xFFC6FFDD),
+        ];
+        break;
+      case '7':
+        return [
+          const Color(0xFF536976),
+          const Color(0xFF292E49),
+        ];
+        break;
+      case '8':
+        return [
+          const Color(0xFFFF5F6D),
+          const Color(0xFFFFC371),
+        ];
+        break;
+      default:
+        return [Colors.green, Colors.green.shade50];
+    }
+  }
+
+  static LinearGradient linearGradient(int index) {
+    return LinearGradient(
+      colors: CustomColor()._gradientColor(index),
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+    );
   }
 }

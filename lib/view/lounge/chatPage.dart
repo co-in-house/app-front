@@ -5,14 +5,12 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("========ChatPage build========");
-    return Scaffold(
-      body: Container(
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverAppBarChat(),
-            SliverList(delegate: _ChatDelegate(context))
-          ],
-        ),
+    return Container(
+      child: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBarChat(),
+          SliverList(delegate: _ChatDelegate(context))
+        ],
       ),
     );
   }
