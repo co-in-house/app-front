@@ -31,7 +31,7 @@ class LoungePage extends StatelessWidget {
         offstage: _roomIndex == 0,
         child: Miniplayer(
           valueNotifier: Const.playerExpandProgress,
-          curve: Curves.easeInOut,
+          // curve: Curves.easeInOut,
           controller: Const.miniplayerController,
           minHeight: Const.miniPlayerMinimumSize,
           maxHeight: MediaQuery.of(context).size.height,
