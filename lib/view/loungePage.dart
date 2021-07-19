@@ -35,9 +35,6 @@ class LoungePage extends StatelessWidget {
           controller: Const.miniplayerController,
           minHeight: Const.miniPlayerMinimumSize,
           maxHeight: MediaQuery.of(context).size.height,
-          onDismiss: () {
-            print("dismiss!!!");
-          },
           builder: (height, percentage) {
             print(Const.playerExpandProgress.value.toString());
             if (_roomIndex == 0) return const SizedBox.shrink();

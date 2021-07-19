@@ -19,10 +19,14 @@ class CustomNavBar extends StatelessWidget {
 
         return AnimatedContainer(
           duration: Duration(milliseconds: 100),
-          height: _listenableValue > MediaQuery.of(context).size.height * 0.5
+          height: (context.select((RoomState roomState) => roomState).index !=
+                      0) &&
+                  (_listenableValue > MediaQuery.of(context).size.height * 0.5)
               ? 0
               : 75,
-          child: _listenableValue > MediaQuery.of(context).size.height * 0.5
+          child: (context.select((RoomState roomState) => roomState).index !=
+                      0) &&
+                  (_listenableValue > MediaQuery.of(context).size.height * 0.5)
               ? Container()
               : CurvedNavigationBar(
                   items: <Widget>[
