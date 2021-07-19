@@ -19,6 +19,7 @@ class CommunityDetailPage extends StatelessWidget {
                 ? 'images/bg_f.jpg'
                 : community.profileImgUrl,
             label: community.communityName,
+            id: community.communityId,
             locationLabel: community.locationName,
           ),
           SliverList(delegate: CommunityInfoCardList(context, this.community)),

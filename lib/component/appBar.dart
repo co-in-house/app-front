@@ -270,10 +270,12 @@ class SliverAppBarChat extends StatelessWidget {
 // SliverAppBar for Community Hero Image
 class SliverAppBarCommunityImage extends StatelessWidget {
   SliverAppBarCommunityImage(
-      {@required this.imagePath,
+      {@required this.id,
+      @required this.imagePath,
       @required this.label,
       @required this.locationLabel})
       : super();
+  final int id;
   final String imagePath;
   final String label;
   final String locationLabel;
@@ -291,11 +293,14 @@ class SliverAppBarCommunityImage extends StatelessWidget {
       flexibleSpace: Stack(
         children: [
           Positioned(
-              child: Image(
-                fit: BoxFit.cover,
-                image: Check.isUrlPath(this.imagePath)
-                    ? NetworkImage(this.imagePath)
-                    : AssetImage(this.imagePath),
+              child: Hero(
+                tag: 'testHero' + this.id.toString(),
+                child: Image(
+                  fit: BoxFit.cover,
+                  image: Check.isUrlPath(this.imagePath)
+                      ? NetworkImage(this.imagePath)
+                      : AssetImage(this.imagePath),
+                ),
               ),
               top: 0,
               left: 0,

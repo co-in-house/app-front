@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Tag extends StatelessWidget {
-  const Tag({this.label}) : super();
+class TagWidget extends StatelessWidget {
+  const TagWidget({this.label}) : super();
   final String label;
 
   @override

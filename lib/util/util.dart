@@ -19,6 +19,8 @@ class Const {
 
   static final double miniPlayerMinimumSize = 60;
 
+  // borderRadius
+  static final double borderRadius = 16.0;
   // label
   static final String assetDirName = 'images';
 
