@@ -17,6 +17,7 @@ class NewCommunityConfirmPage extends StatelessWidget {
             imagePath: newCommunityInfo.iconImg.path,
             label: newCommunityInfo.name,
             locationLabel: newCommunityInfo.selectedLocation.label,
+            id: null,
           ),
           SliverList(
               delegate:

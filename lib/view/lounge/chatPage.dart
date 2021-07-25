@@ -1,17 +1,27 @@
 import 'package:Inhouse/component/appBar.dart';
+import 'package:Inhouse/component/navBar.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("========ChatPage build========");
-    return Container(
-      child: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBarChat(),
-          SliverList(delegate: _ChatDelegate(context))
-        ],
+    return GestureDetector(
+      child: Scaffold(
+        body: Container(
+          // color: Colors.white,
+          child: CustomScrollView(
+            slivers: <Widget>[
+              SliverAppBarChat(),
+              SliverList(delegate: _ChatDelegate(context)),
+            ],
+          ),
+        ),
+        bottomNavigationBar: ChatBottomBar(),
       ),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
     );
   }
 }
@@ -24,11 +34,32 @@ class _ChatDelegate extends SliverChildListDelegate {
 class _Chat {
   static List<Widget> buildRoom(BuildContext context) {
     List<Widget> list = List.generate(
-        201,
-        (index) => Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.05),
-            child: Text('hoge' + index.toString())));
+      50,
+      (index) => Container(
+        padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * 0.05),
+        child: Container(
+          padding: EdgeInsets.only(left: 14, right: 14, top: 10, bottom: 10),
+          child: Align(
+            alignment:
+                (index % 2 == 0 ? Alignment.topLeft : Alignment.topRight),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color:
+                    (index % 2 == 0 ? Colors.grey.shade200 : Colors.green[100]),
+              ),
+              padding: EdgeInsets.all(16),
+              child: Text(
+                "TestMessage" + index.toString(),
+                style: TextStyle(fontSize: 15),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+
     return list;
   }
 }

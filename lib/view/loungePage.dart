@@ -12,53 +12,17 @@ class LoungePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("========LoungePage build========");
-    final int _roomIndex =
-        context.select((RoomState roomState) => roomState).index;
-    Const.miniplayerController.animateToHeight(state: PanelState.MAX);
 
-    return Stack(children: [
-      Container(
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverAppBarLounge(),
-            SliverList(
-              delegate: _LoungeDelegate(context),
-            ),
-          ],
-        ),
+    return Container(
+      child: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBarLounge(),
+          SliverList(
+            delegate: _LoungeDelegate(context),
+          ),
+        ],
       ),
-      Offstage(
-        offstage: _roomIndex == 0,
-        child: Miniplayer(
-          valueNotifier: Const.playerExpandProgress,
-          // curve: Curves.easeInOut,
-          controller: Const.miniplayerController,
-          minHeight: Const.miniPlayerMinimumSize,
-          maxHeight: MediaQuery.of(context).size.height,
-          builder: (height, percentage) {
-            print(Const.playerExpandProgress.value.toString());
-            if (_roomIndex == 0) return const SizedBox.shrink();
-            if (percentage <= 0.5) {
-              return Container(
-                decoration: BoxDecoration(
-                  gradient: CustomColor.linearGradient(_roomIndex),
-                ),
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.close),
-                      onPressed: () => context.read<ChangeRoom>().set(0),
-                    ),
-                    Text('$height, $percentage'),
-                  ],
-                ),
-              );
-            }
-            return ChatPage();
-          },
-        ),
-      )
-    ]);
+    );
   }
 }
 

@@ -1,6 +1,7 @@
 import 'package:Inhouse/service/lounge/changeRoom.dart';
 import 'package:Inhouse/util/util.dart';
 import 'package:flutter/material.dart';
+import 'package:miniplayer/miniplayer.dart';
 import 'package:provider/provider.dart';
 
 class RoomButton extends StatelessWidget {
@@ -24,6 +25,7 @@ class RoomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           print("onPressed!");
+          Const.miniplayerController.animateToHeight(state: PanelState.MAX);
           context.read<ChangeRoom>().set(index);
         },
         style: ElevatedButton.styleFrom(
