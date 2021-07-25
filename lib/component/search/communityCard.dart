@@ -1,7 +1,7 @@
 import 'package:Inhouse/component/text/tag.dart';
 import 'package:Inhouse/model/communityList.dart';
 import 'package:Inhouse/util/util.dart';
-import 'package:Inhouse/view/communityDetialPage.dart';
+import 'package:Inhouse/view/community/communityDetialPage.dart';
 import 'package:flutter/material.dart';
 
 class CommunityCard extends StatelessWidget {

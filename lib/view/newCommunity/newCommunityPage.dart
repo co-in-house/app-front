@@ -12,7 +12,7 @@ import 'package:Inhouse/model/newCommunityInfo.dart';
 import 'package:Inhouse/model/tagList.dart';
 import 'package:Inhouse/service/api/postNewCommunityService.dart';
 import 'package:Inhouse/util/util.dart';
-import 'package:Inhouse/view/newCommunityPage/newCommunityConfirmPage.dart';
+import 'package:Inhouse/view/newCommunity/newCommunityConfirmPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
