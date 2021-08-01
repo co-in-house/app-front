@@ -1,5 +1,6 @@
 import 'package:Inhouse/model/lounge/roomState.dart';
 import 'package:Inhouse/model/routingState.dart';
+import 'package:Inhouse/service/api/getCutListService.dart';
 import 'package:Inhouse/service/changePage.dart';
 import 'package:Inhouse/util/theme.dart';
 import 'package:Inhouse/util/util.dart';
@@ -29,12 +30,14 @@ class CustomNavBar extends StatelessWidget {
                   (_listenableValue > MediaQuery.of(context).size.height * 0.5)
               ? Container()
               : CurvedNavigationBar(
+                  height: Const.footerHeight,
                   items: <Widget>[
                     Icon(Icons.home, size: 30),
                     Icon(Icons.explore, size: 30),
                     Icon(Icons.apps, size: 30),
                     Icon(Icons.event_available, size: 30),
                     Icon(Icons.message_rounded, size: 30),
+                    Icon(Icons.video_library, size: 30),
                   ],
                   color: Colors.white,
                   index: context
@@ -47,6 +50,9 @@ class CustomNavBar extends StatelessWidget {
                   animationDuration: Duration(milliseconds: 600),
                   onTap: (index) {
                     context.read<ChangePage>().set(index);
+                    if (index == Const.routingNoCut) {
+                      context.read<GetCutListService>().call();
+                    }
                   },
                 ),
         );

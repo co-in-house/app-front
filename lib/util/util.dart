@@ -10,6 +10,7 @@ class Const {
   static final int routingNoLounge = 2;
   static final int routingNoEvent = 3;
   static final int routingNoMessage = 4;
+  static final int routingNoCut = 5;
 
   // size
   static final double containerWidthPercentage = 0.9;
@@ -18,6 +19,9 @@ class Const {
   static final double refreshIndicatorDisplacement = 100.0;
 
   static final double miniPlayerMinimumSize = 60;
+
+  // size
+  static final double footerHeight = 75;
 
   // borderRadius
   static final double borderRadius = 16.0;

@@ -269,6 +269,19 @@ class SliverAppBarChat extends StatelessWidget {
   }
 }
 
+// SliverAppBar for Cut
+class SliverAppBarCut extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      automaticallyImplyLeading: false,
+      floating: false,
+      pinned: false,
+      snap: false,
+    );
+  }
+}
+
 // SliverAppBar for Community Hero Image
 class SliverAppBarCommunityImage extends StatelessWidget {
   SliverAppBarCommunityImage(
