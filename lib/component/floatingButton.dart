@@ -51,7 +51,7 @@ class CustomFloatingButton extends StatelessWidget {
         //         ),
         //         ElevatedButton(
         //           child: Text("CANCEL"),
-        //           style: ElevatedButton.styleFrom(
+        //           style: .styleFrom(
         //             primary: Colors.white,
         //             onPrimary: Colors.black,
         //             elevation: 16,

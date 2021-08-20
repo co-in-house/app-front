@@ -10,7 +10,6 @@ import 'package:Inhouse/service/external/content/firebaseStorageController.dart'
 import 'package:Inhouse/service/lounge/changeRoom.dart';
 import 'package:Inhouse/util/util.dart';
 import 'package:Inhouse/util/wrapper.dart';
-import 'package:Inhouse/view/cut/cutPage.dart';
 import 'package:Inhouse/view/event/eventPage.dart';
 import 'package:Inhouse/view/explore/explorePage.dart';
 import 'package:Inhouse/view/login/login.dart';
@@ -31,7 +30,7 @@ class RootFlame extends StatelessWidget {
     LoungePage(),
     EventPage(),
     MessagePage(),
-    CutPage(),
+    // CutPage(),
   ];
 
   @override

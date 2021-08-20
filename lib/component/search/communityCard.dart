@@ -49,7 +49,7 @@ class CommunityCard extends StatelessWidget {
             children: [
               Positioned(
                   child: Hero(
-                    tag: 'testHero' + content.communityId.toString(),
+                    tag: '_heroNo' + content.communityId.toString(),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(
@@ -142,3 +142,16 @@ class CommunityCard extends StatelessWidget {
     );
   }
 }
+
+
+
+// Image.network(
+//                               content.profileImgUrl,
+//                               loadingBuilder: (BuildContext ctx, Widget child,
+//                                   ImageChunkEvent loadingProgress) {
+//                                 if (loadingProgress == null) {
+//                                   return child;
+//                                 } else {
+//                                   return CircularProgressIndicator();
+//                                 }
+//                               },

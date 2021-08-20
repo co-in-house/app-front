@@ -15,7 +15,11 @@ class CutList extends BaseModel {
     List<OneCut> obj = [];
     for (int i = 0; i < _list.length; i++) {
       var content = OneCut(
-        img: _list[i]['img'],
+        communityId: _list[i]['communityId'],
+        communityName: _list[i]['communityName'],
+        description: _list[i]['description'],
+        iconUrl: _list[i]['iconUrl'],
+        videoUrl: _list[i]['videoUrl'],
       );
       obj.add(content);
     }
@@ -24,6 +28,16 @@ class CutList extends BaseModel {
 }
 
 class OneCut {
-  OneCut({this.img});
-  String img;
+  OneCut({
+    this.communityId,
+    this.communityName,
+    this.description,
+    this.iconUrl,
+    this.videoUrl,
+  });
+  String iconUrl;
+  String videoUrl;
+  String description;
+  String communityName;
+  int communityId;
 }

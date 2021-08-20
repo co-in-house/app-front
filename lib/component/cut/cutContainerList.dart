@@ -1,6 +1,7 @@
 import 'package:Inhouse/component/cut/cutContainer.dart';
 import 'package:Inhouse/model/cutList.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class CutContainerList {
   static List<Widget> build(BuildContext context, CutList cutList) {
@@ -8,7 +9,7 @@ class CutContainerList {
     if (cutList.contentsList != null && cutList.contentsList.length > 0) {
       for (int i = 0; i < cutList.contentsList.length; i++) {
         _list.add(
-          CutContainer(img: cutList.contentsList[i].img),
+          CutContainer(cutInfo: cutList.contentsList[i]),
         );
       }
     } else {
@@ -18,6 +19,7 @@ class CutContainerList {
         ),
       );
     }
+
     return _list;
   }
 }

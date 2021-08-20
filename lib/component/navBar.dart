@@ -1,11 +1,14 @@
+import 'package:Inhouse/model/cutList.dart';
 import 'package:Inhouse/model/lounge/roomState.dart';
 import 'package:Inhouse/model/routingState.dart';
 import 'package:Inhouse/service/api/getCutListService.dart';
 import 'package:Inhouse/service/changePage.dart';
 import 'package:Inhouse/util/theme.dart';
 import 'package:Inhouse/util/util.dart';
+import 'package:Inhouse/view/cut/cutPage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
 
 class CustomNavBar extends StatelessWidget {
@@ -49,9 +52,22 @@ class CustomNavBar extends StatelessWidget {
                   animationCurve: Curves.easeInOut,
                   animationDuration: Duration(milliseconds: 600),
                   onTap: (index) {
-                    context.read<ChangePage>().set(index);
                     if (index == Const.routingNoCut) {
-                      context.read<GetCutListService>().call();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MultiProvider(
+                            providers: [
+                              StateNotifierProvider<GetCutListService, CutList>(
+                                create: (context) => GetCutListService(),
+                              ),
+                            ],
+                            child: CutPage(),
+                          ),
+                        ),
+                      );
+                    } else {
+                      context.read<ChangePage>().set(index);
                     }
                   },
                 ),

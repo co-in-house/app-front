@@ -1,7 +1,4 @@
-import 'package:Inhouse/component/community/communityContentCard.dart';
-import 'package:Inhouse/component/community/communityNoteCard.dart';
-import 'package:Inhouse/component/community/communityRequirementCard.dart';
-import 'package:Inhouse/component/community/communityTagCard.dart';
+import 'package:Inhouse/component/community/communityContentContainer.dart';
 import 'package:Inhouse/component/loading/loadingDialog.dart';
 import 'package:Inhouse/model/newCommunityInfo.dart';
 import 'package:Inhouse/service/api/postNewCommunityService.dart';
@@ -20,12 +17,15 @@ class _CommunityInfoCardList {
       BuildContext context, NewCommunityInfo newCommunityInfo) {
     print("build NewCommunityInfoCardList");
     List<Widget> list = [];
-    list.add(
-        CommunityTagCard(tagLabelList: newCommunityInfo.getTagLabelList()));
-    list.add(CommunityContentCard(content: newCommunityInfo.content));
-    list.add(
-        CommunityRequirementCard(requirement: newCommunityInfo.requirement));
-    list.add(CommunityNoteCard(note: newCommunityInfo.note));
+    // list.add(CommunityTagRow(tagLabelList: newCommunityInfo.getTagLabelList()));
+    list.add(CommunityBasicInfoContainer(
+      labelList: newCommunityInfo.getTagLabelList(),
+      location: newCommunityInfo.selectedLocation.label,
+      subscriber: 1729,
+    ));
+    // list.add(
+    // CommunityRequirementCard(requirement: newCommunityInfo.requirement));
+    // list.add(CommunityNoteCard(note: newCommunityInfo.note));
     list.add(
       ElevatedButton(
         child: Text("作成する"),

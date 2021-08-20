@@ -1,5 +1,4 @@
 import 'package:Inhouse/model/communityList.dart';
-import 'package:Inhouse/model/cutList.dart';
 import 'package:Inhouse/model/eventList.dart';
 import 'package:Inhouse/model/locationList.dart';
 import 'package:Inhouse/model/lounge/roomState.dart';
@@ -7,7 +6,6 @@ import 'package:Inhouse/model/postList.dart';
 import 'package:Inhouse/model/tagList.dart';
 import 'package:Inhouse/model/userState.dart';
 import 'package:Inhouse/service/api/getCommunityListService.dart';
-import 'package:Inhouse/service/api/getCutListService.dart';
 import 'package:Inhouse/service/api/getEventListService.dart';
 import 'package:Inhouse/service/api/getLocationListService.dart';
 import 'package:Inhouse/service/api/getPostListService.dart';
@@ -55,9 +53,6 @@ class MyApp extends StatelessWidget {
           ),
           StateNotifierProvider<GetCommunityListService, CommunityList>(
             create: (context) => GetCommunityListService(),
-          ),
-          StateNotifierProvider<GetCutListService, CutList>(
-            create: (context) => GetCutListService(),
           ),
           //マスター取得
           StateNotifierProvider<GetTagListService, TagList>(
