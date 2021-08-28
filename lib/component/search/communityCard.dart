@@ -5,8 +5,10 @@ import 'package:Inhouse/view/community/communityDetialPage.dart';
 import 'package:flutter/material.dart';
 
 class CommunityCard extends StatelessWidget {
+  final double width;
   final Community content;
-  CommunityCard({this.content});
+  final int genreId;
+  CommunityCard({@required this.content, this.width, this.genreId});
 
   @override
   Widget build(BuildContext context) {
@@ -35,21 +37,24 @@ class CommunityCard extends StatelessWidget {
             MaterialPageRoute(
               builder: (context) => CommunityDetailPage(
                 community: content,
+                genreId: genreId,
               ),
             ),
           );
         },
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
-          width: 300,
-          height: 200, // auto?
+          width: width,
+          // height: 200, // auto?
           alignment: Alignment.topCenter,
 
           child: Stack(
             children: [
               Positioned(
                   child: Hero(
-                    tag: '_heroNo' + content.communityId.toString(),
+                    tag: '_heroNo' +
+                        content.communityId.toString() +
+                        this.genreId.toString(),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(

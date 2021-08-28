@@ -4,8 +4,10 @@ import 'package:Inhouse/model/communityList.dart';
 import 'package:flutter/material.dart';
 
 class CommunityDetailPage extends StatelessWidget {
-  CommunityDetailPage({Key key, this.community}) : super(key: key);
+  CommunityDetailPage({Key key, this.community, this.genreId})
+      : super(key: key);
   final Community community;
+  final int genreId;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +22,7 @@ class CommunityDetailPage extends StatelessWidget {
                 : community.profileImgUrl,
             communityName: community.communityName,
             id: community.communityId,
+            genreId: genreId,
             cheer: 12345,
           ),
           SliverList(

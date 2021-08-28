@@ -13,7 +13,10 @@ class _AlbumListDelegate {
     print('length' + (imgUrlList.length.toString()));
     if (imgUrlList != null && imgUrlList.isNotEmpty && imgUrlList.length > 0) {
       for (int index = 0; index < imgUrlList.length; index++) {
-        list.add(OnePhotoPreviewContainer(url: imgUrlList[index]));
+        list.add(OnePhotoPreviewContainer(
+          urlList: imgUrlList,
+          currentIndex: index,
+        ));
       }
     }
     return list;

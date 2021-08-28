@@ -111,7 +111,7 @@ class SliverAppBarSearch extends StatelessWidget {
       floating: true,
       pinned: true,
       snap: false,
-      expandedHeight: MediaQuery.of(context).size.width, //正方形
+      expandedHeight: MediaQuery.of(context).size.width * 0.8, //正方形
       title: Container(
         width: MediaQuery.of(context).size.width * 0.6,
         child: ElevatedButton.icon(
@@ -143,7 +143,7 @@ class SliverAppBarSearch extends StatelessWidget {
               child: FlexibleSpaceBar(
                 collapseMode: CollapseMode.parallax,
                 background: Image(
-                  fit: BoxFit.fitHeight,
+                  fit: BoxFit.fitWidth,
                   image: AssetImage("images/wp.jpg"),
                 ),
               ),
@@ -410,11 +410,13 @@ class SliverAppBarCommunityImage extends StatelessWidget {
     @required this.imagePath,
     @required this.communityName,
     @required this.cheer,
+    this.genreId,
   }) : super();
   final int id;
   final String imagePath;
   final String communityName;
   final int cheer;
+  final int genreId;
   @override
   Widget build(BuildContext context) {
     return SliverPersistentHeader(
@@ -426,6 +428,7 @@ class SliverAppBarCommunityImage extends StatelessWidget {
         imagePath: this.imagePath,
         communityName: this.communityName,
         cheer: this.cheer,
+        genreId: this.genreId,
       ),
       floating: false,
       pinned: true,
@@ -441,6 +444,7 @@ class _SliverAppBarCommunityImage extends SliverPersistentHeaderDelegate {
   String imagePath;
   String communityName;
   int cheer;
+  int genreId;
 
   _SliverAppBarCommunityImage({
     this.toolBarHeight,
@@ -450,6 +454,7 @@ class _SliverAppBarCommunityImage extends SliverPersistentHeaderDelegate {
     this.imagePath,
     this.communityName,
     this.cheer,
+    this.genreId,
   });
 
   @override
@@ -476,7 +481,9 @@ class _SliverAppBarCommunityImage extends SliverPersistentHeaderDelegate {
                       height: MediaQuery.of(_).size.width,
                       width: MediaQuery.of(_).size.width,
                       child: Hero(
-                        tag: '_heroNo' + this.id.toString(),
+                        tag: '_heroNo' +
+                            this.id.toString() +
+                            this.genreId.toString(),
                         child: Image(
                           fit: BoxFit.cover,
                           alignment: FractionalOffset.topCenter,
