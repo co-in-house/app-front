@@ -32,6 +32,27 @@ class _MockResponse {
   String get body => _body;
 
   int _statusCode = 200;
-  String _body =
-      '{"eventList": [ [{"img":"logo.png"},{"img":"ntt.png"},{"img":"ibm.png"}],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ]]}';
+  // String _body =
+  //     '{"eventList": [ [{"img":"logo.png"},{"img":"ntt.png"},{"img":"ibm.png"}],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ],[{"img":"ibm.png"}],[{"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"} ],[{"img":"logo.png"},{"img":"ntt.png"} ]]}';
+  String _body = '''{"eventList": [ 
+        [
+          {"img":"ibm.png"},{"img":"logo.png"},{"img":"ntt.png"}
+        ],
+        [
+          {"img":"ibm.png"}
+        ],
+        [
+          {"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"}
+        ],
+           [
+          {"img":"logo.png"},{"img":"ntt.png"},{"img":"ibm.png"}
+        ],
+        [
+          {"img":"ibm.png"}
+        ],
+        [
+          {"img":"ntt.png"},{"img":"ibm.png"},{"img":"logo.png"}
+        ]
+      ]
+    }''';
 }

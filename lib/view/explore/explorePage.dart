@@ -1,4 +1,4 @@
-import 'package:Inhouse/component/appBar.dart';
+import 'package:Inhouse/component/appBar/sliverAppBarSearch.dart';
 import 'package:Inhouse/component/search/communityCardList.dart';
 import 'package:Inhouse/model/communityList.dart';
 import 'package:Inhouse/service/api/getCommunityListService.dart';

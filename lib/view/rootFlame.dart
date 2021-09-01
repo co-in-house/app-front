@@ -3,6 +3,8 @@ import 'package:Inhouse/component/drawer.dart';
 import 'package:Inhouse/model/lounge/roomState.dart';
 import 'package:Inhouse/model/routingState.dart';
 import 'package:Inhouse/model/userState.dart';
+import 'package:Inhouse/service/api/getCommunityListService.dart';
+import 'package:Inhouse/service/api/getEventListService.dart';
 import 'package:Inhouse/service/api/getLocationListService.dart';
 import 'package:Inhouse/service/api/getPostListService.dart';
 import 'package:Inhouse/service/api/getTagListService.dart';
@@ -17,7 +19,7 @@ import 'package:Inhouse/view/lounge/chatPage.dart';
 import 'package:Inhouse/view/lounge/loungePage.dart';
 import 'package:Inhouse/view/message/messagePage.dart';
 import 'package:flutter/material.dart';
-import 'package:Inhouse/view/timeline/homePage.dart';
+// import 'package:Inhouse/view/timeline/homePage.dart';
 import 'package:miniplayer/miniplayer.dart';
 import 'package:provider/provider.dart';
 
@@ -25,7 +27,7 @@ class RootFlame extends StatelessWidget {
   void init(BuildContext context) {}
 
   final List<Widget> _contentView = <Widget>[
-    HomePage(),
+    // HomePage(),
     ExplorePage(),
     LoungePage(),
     EventPage(),
@@ -45,6 +47,8 @@ class RootFlame extends StatelessWidget {
         // master list 取得
         context.read<GetLocationListService>().call();
         context.read<GetPostListService>().call();
+        context.read<GetCommunityListService>().call("");
+        context.read<GetEventListService>().call();
         context.read<GetTagListService>().call();
       },
       child: AnimatedSwitcher(

@@ -35,7 +35,7 @@ class CustomNavBar extends StatelessWidget {
               : CurvedNavigationBar(
                   height: Const.footerHeight,
                   items: <Widget>[
-                    Icon(Icons.home, size: 30),
+                    // Icon(Icons.home, size: 30),
                     Icon(Icons.explore, size: 30),
                     Icon(Icons.apps, size: 30),
                     Icon(Icons.event_available, size: 30),

@@ -31,6 +31,7 @@ class GetCommunityListService extends StateNotifier<CommunityList> {
 
     if (response.statusCode == 200) {
       print("GetCommunityListService Response: 200");
+
       CommunityList eventList = CommunityList.fromJson(
         jsonDecode(
           utf8.decode(
@@ -38,6 +39,7 @@ class GetCommunityListService extends StateNotifier<CommunityList> {
           ),
         ),
       );
+
       state = eventList;
     } else {
       print("response status: " + response.statusCode.toString());

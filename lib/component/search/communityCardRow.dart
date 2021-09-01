@@ -6,7 +6,6 @@ class CommunityCardRow extends StatelessWidget {
   CommunityCardRow({@required this.communityList, this.genreId});
   final List<Community> communityList;
   final int genreId;
-
   @override
   Widget build(BuildContext context) {
     final double _height = MediaQuery.of(context).size.width * 0.6;
@@ -26,6 +25,7 @@ class CommunityCardRow extends StatelessWidget {
             content: communityList[index],
             width: _height,
             genreId: genreId,
+            rankIndex: index + 1,
           );
         },
         itemCount: itemCount,

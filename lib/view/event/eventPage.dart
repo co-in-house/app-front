@@ -1,17 +1,19 @@
+import 'package:Inhouse/component/appBar/sliverAppBarEvent.dart';
 import 'package:Inhouse/component/event/eventCardRowList.dart';
 import 'package:Inhouse/model/eventList.dart';
 import 'package:Inhouse/service/api/getEventListService.dart';
+import 'package:Inhouse/util/theme.dart';
 import 'package:Inhouse/util/util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:Inhouse/component/appBar.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 
 class EventPage extends StatelessWidget {
+  final TextEditingController searchTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.green[50],
       child: RefreshIndicator(
         displacement: Const.refreshIndicatorDisplacement,
         onRefresh: () async {
@@ -21,15 +23,44 @@ class EventPage extends StatelessWidget {
           physics: const BouncingScrollPhysics(
               parent: AlwaysScrollableScrollPhysics()),
           slivers: <Widget>[
-            SliverAppBarSample(),
-            SliverFixedExtentList(
-              itemExtent: MediaQuery.of(context).size.height * 0.23,
-              delegate: EventCardRowList(
-                context.select((EventList eventList) => eventList),
-              ),
-            ),
+            SliverAppBarEvent(searchTextController: this.searchTextController),
+            SameMonthEventContainer(
+                label: "Nov",
+                eventList: context.select((EventList eventList) => eventList)),
+            SameMonthEventContainer(
+                label: "Oct",
+                eventList: context.select((EventList eventList) => eventList)),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class SameMonthEventContainer extends StatelessWidget {
+  const SameMonthEventContainer(
+      {Key key, @required this.eventList, @required this.label})
+      : super(key: key);
+  final EventList eventList;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverStickyHeader(
+      header: Container(
+        height: 60.0,
+        color: inhouseThemeColor.primaryColor,
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        alignment: Alignment.centerLeft,
+        child: Text(
+          this.label,
+          style: const TextStyle(color: Colors.white),
+        ),
+      ),
+      sliver: SliverFixedExtentList(
+        // itemExtent: MediaQuery.of(context).size.height * 0.30,
+        itemExtent: 250,
+        delegate: EventCardRowList(this.eventList),
       ),
     );
   }

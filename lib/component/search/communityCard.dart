@@ -1,3 +1,4 @@
+import 'package:Inhouse/component/search/communityBadgeContainer.dart';
 import 'package:Inhouse/component/text/tag.dart';
 import 'package:Inhouse/model/communityList.dart';
 import 'package:Inhouse/util/util.dart';
@@ -8,8 +9,14 @@ class CommunityCard extends StatelessWidget {
   final double width;
   final Community content;
   final int genreId;
-  CommunityCard({@required this.content, this.width, this.genreId});
-
+  final int rankIndex;
+  CommunityCard({
+    @required this.content,
+    @required this.width,
+    @required this.rankIndex,
+    this.genreId,
+  });
+  final double cardMarginVertical = 10.0;
   @override
   Widget build(BuildContext context) {
     print("content.profileImgUrl: " + content.profileImgUrl.toString());
@@ -24,11 +31,12 @@ class CommunityCard extends StatelessWidget {
     }
 
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      margin:
+          EdgeInsets.symmetric(vertical: cardMarginVertical, horizontal: 10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(Const.borderRadius),
       ),
-      elevation: 2.0,
+      elevation: 3.0,
       child: InkWell(
         onTap: () {
           print("tapped! communityCard : " + content.toString());
@@ -44,7 +52,7 @@ class CommunityCard extends StatelessWidget {
         },
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
-          width: width,
+          width: width - cardMarginVertical,
           // height: 200, // auto?
           alignment: Alignment.topCenter,
 
@@ -75,70 +83,24 @@ class CommunityCard extends StatelessWidget {
                   bottom: 0),
               Positioned(
                 child: Container(
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end, // これで両端に寄せる
-                      children: _tagList),
-                  padding: EdgeInsets.symmetric(
-                      vertical: 4,
-                      horizontal: MediaQuery.of(context).size.width * 0.1),
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        spreadRadius: 0.0,
-                        blurRadius: 10.0,
-                      ),
-                    ],
+                  child: CommunityBadgeContainer(
+                    rankIndex: this.rankIndex,
+                    height: this.width, // 円
                   ),
+                  padding: EdgeInsets.symmetric(
+                      vertical: 10, horizontal: Const.borderRadius),
+                  // decoration: BoxDecoration(
+                  //   boxShadow: [
+                  //     BoxShadow(
+                  //       color: Colors.black26,
+                  //       spreadRadius: 0.0,
+                  //       blurRadius: 10.0,
+                  //     ),
+                  //   ],
+                  // ),
                 ),
                 top: 0,
                 left: 0,
-                right: 0,
-              ),
-              Positioned(
-                child: Container(
-                  child: Row(
-                    mainAxisAlignment:
-                        MainAxisAlignment.spaceBetween, // これで両端に寄せる
-                    children: <Widget>[
-                      Flexible(
-                        child: Text(
-                          content.communityName,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        content.locationName,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ],
-                  ),
-                  padding: EdgeInsets.symmetric(
-                      vertical: 4,
-                      horizontal: MediaQuery.of(context).size.width * 0.1),
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        spreadRadius: 0.0,
-                        blurRadius: 10.0,
-                      ),
-                    ],
-                  ),
-                ),
-                bottom: 0,
-                left: 0,
-                right: 0,
               ),
             ],
           ),
