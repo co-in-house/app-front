@@ -8,21 +8,6 @@ class EventCard extends StatelessWidget {
   final OneCardOnEventList content;
   EventCard({this.content});
 
-  final String eventDate = "12月25日";
-  final String eventDayOfWeek = "土";
-  final String eventYear = "2021";
-
-  final String eventTitle = "イベントのタイトル";
-  final String eventDescription =
-      "イベントの詳細イベントの詳細イベントの詳細イベントの詳細イベントの詳細イベントの詳細イベントの詳細イベントの詳細";
-
-  final int eventAmountOfMember = 12345;
-
-  final String communityName = "CommunityName";
-  final String communityId = "CommunityId";
-  final String communityIconUrl =
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwy4yt4ozcMfk1kGbhgMPxolXmlawudTRujQ&usqp=CAU";
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -31,40 +16,7 @@ class EventCard extends StatelessWidget {
       ),
       elevation: 2.0,
       child: InkWell(
-        onTap: () {
-          showModalBottomSheet(
-            //モーダルの背景の色、透過
-            backgroundColor: Colors.transparent,
-            //ドラッグ可能にする（高さもハーフサイズからフルサイズになる様子）
-            isScrollControlled: true,
-            context: context,
-            builder: (BuildContext context) {
-              return Container(
-                margin: EdgeInsets.only(top: 1),
-                decoration: BoxDecoration(
-                  //モーダル自体の色
-                  color: Colors.white,
-                  //角丸にする
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                  ),
-                ),
-                child: Container(
-                  height: 600,
-                  // alignment: Alignment.topCenter,
-                  padding:
-                      EdgeInsets.symmetric(vertical: 100.0, horizontal: 0.0),
-                  child: Text(
-                    'イベント詳細',
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 3,
-                  ),
-                ),
-              );
-            },
-          );
-        },
+        onTap: () => eventModal(context),
         child: Container(
           margin: const EdgeInsets.all(10.0),
           width: MediaQuery.of(context).size.width * 0.80,
@@ -82,13 +34,13 @@ class EventCard extends StatelessWidget {
                     text: TextSpan(
                       style: TextStyle(color: Colors.black),
                       children: [
-                        TextSpan(text: this.eventDate + '('),
+                        TextSpan(text: this.content.eventDate + '('),
                         TextSpan(
-                            text: this.eventDayOfWeek,
+                            text: this.content.eventDayOfWeek,
                             style: TextStyle(color: Colors.red)),
                         TextSpan(text: ')'),
                         TextSpan(
-                            text: ' / ' + this.eventYear,
+                            text: ' / ' + this.content.eventYear,
                             style: TextStyle(color: Colors.grey)),
                       ],
                     ),
@@ -102,12 +54,13 @@ class EventCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    this.eventTitle,
+                    this.content.eventTitle,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    this.eventDescription,
+                    this.content.eventDescription,
                     maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(color: Colors.grey),
                   ),
                   Row(
@@ -116,7 +69,7 @@ class EventCard extends StatelessWidget {
                       Container(
                         child: Text(
                           NumberUtil.formattedInteger(
-                                  this.eventAmountOfMember) +
+                                  this.content.eventAmountOfMember) +
                               "人",
                           style: TextStyle(color: Colors.grey),
                         ),
@@ -157,13 +110,13 @@ class EventCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  IconContainer(size: 40, url: this.communityIconUrl),
+                  IconContainer(size: 40, url: this.content.communityIconUrl),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(this.communityName),
+                      Text(this.content.communityName),
                       Text(
-                        "@" + this.communityId,
+                        "@" + this.content.communityId,
                         style: TextStyle(color: Colors.grey),
                       ),
                     ],
@@ -172,17 +125,213 @@ class EventCard extends StatelessWidget {
               ),
             ],
           ),
-          // child: Container(
-          //   decoration: BoxDecoration(
-          //     shape: BoxShape.circle,
-          //     image: DecorationImage(
-          //       // fit: BoxFit.fill,
-          //       image: AssetImage('images/' + content.img),
-          //     ),
-          //   ),
-          // ),
         ),
       ),
+    );
+  }
+
+  void eventModal(BuildContext context) {
+    final double _circular = 20.0;
+    showModalBottomSheet(
+      //モーダルの背景の色、透過
+      backgroundColor: Colors.transparent,
+      //ドラッグ可能にする（高さもハーフサイズからフルサイズになる様子）
+      isScrollControlled: true,
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          margin: EdgeInsets.only(top: 1),
+          decoration: BoxDecoration(
+            //モーダル自体の色
+            color: Colors.white,
+            //角丸にする
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(_circular),
+              topRight: Radius.circular(_circular),
+            ),
+          ),
+          child: Container(
+            height: MediaQuery.of(context).size.height * 0.50,
+            // alignment: Alignment.topCenter,
+            padding: EdgeInsets.symmetric(
+                vertical: _circular,
+                horizontal: MediaQuery.of(context).size.width * 0.05),
+            child: Container(
+              margin: const EdgeInsets.all(10.0),
+              width: MediaQuery.of(context).size.width * 0.80,
+              // height: 120, // 呼び出しclass側で高さ固定。SliverFixedExtentList itemExtent
+              alignment: Alignment.centerLeft,
+              // child: Image.asset('images/' + content.img, fit: BoxFit.fill),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  // header date line
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      IconContainer(
+                          size: 40, url: this.content.communityIconUrl),
+                      Text(this.content.communityName),
+                      Text(
+                        "@" + this.content.communityId,
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                  Divider(),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(Icons.date_range_outlined, color: Colors.black),
+                          RichText(
+                            text: TextSpan(
+                              style: TextStyle(color: Colors.black),
+                              children: [
+                                TextSpan(text: '13:00~17:00 '),
+                                TextSpan(text: this.content.eventDate + '('),
+                                TextSpan(
+                                    text: this.content.eventDayOfWeek,
+                                    style: TextStyle(color: Colors.red)),
+                                TextSpan(text: ')'),
+                                TextSpan(
+                                    text: ' / ' + this.content.eventYear,
+                                    style: TextStyle(color: Colors.grey)),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        alignment: Alignment.centerRight,
+                        child: GestureDetector(
+                          onTap: () {
+                            print("onTap called.");
+                          },
+                          child: Text("カレンダーに追加",
+                              style: TextStyle(color: Colors.green)),
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.subject_outlined, color: Colors.black),
+                          Text(this.content.eventTitle),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.location_on, color: Colors.black),
+                          Text("住所とか表示する?"),
+                        ],
+                      ),
+                      Container(
+                        alignment: Alignment.centerRight,
+                        child: GestureDetector(
+                          onTap: () {
+                            mapModal(context);
+                          },
+                          child: Text("Mapで確認する",
+                              style: TextStyle(color: Colors.green)),
+                        ),
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(Icons.subtitles_outlined, color: Colors.black),
+                          Expanded(
+                            child: Container(
+                              child: Text(
+                                this.content.eventDescription,
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          IconOverLayContainer(),
+                          Container(
+                            child: Text(
+                              NumberUtil.formattedInteger(
+                                      this.content.eventAmountOfMember) +
+                                  "人",
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        alignment: Alignment.bottomRight,
+                        child: ElevatedButton.icon(
+                          icon: Icon(
+                            Icons.add_circle,
+                            color: Colors.white,
+                          ),
+                          label: Text(
+                            '参加する',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            animationDuration: Duration(seconds: 10),
+                            primary: Colors.grey,
+                            onPrimary: Colors.green,
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                          ),
+                          onPressed: () {
+                            print("onPressed");
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  void mapModal(BuildContext context) {
+    final double _circular = 20.0;
+    showModalBottomSheet(
+      //モーダルの背景の色、透過
+      backgroundColor: Colors.transparent,
+      //ドラッグ可能にする（高さもハーフサイズからフルサイズになる様子）
+      isScrollControlled: true,
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: MediaQuery.of(context).size.height - kToolbarHeight,
+          padding: EdgeInsets.symmetric(
+              vertical: _circular,
+              horizontal: MediaQuery.of(context).size.width * 0.05),
+          margin: EdgeInsets.only(top: 1),
+          decoration: BoxDecoration(
+            //モーダル自体の色
+            color: Colors.white,
+            //角丸にする
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(_circular),
+              topRight: Radius.circular(_circular),
+            ),
+          ),
+          child: Container(
+            child: Text("マップが表示されるといいよね"),
+          ),
+        );
+      },
     );
   }
 }

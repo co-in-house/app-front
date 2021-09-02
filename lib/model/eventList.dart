@@ -31,4 +31,18 @@ class EventList extends BaseModel {
 class OneCardOnEventList {
   OneCardOnEventList({this.img});
   String img;
+  String eventDate = "12月25日";
+  String eventDayOfWeek = "土";
+  String eventYear = "2021";
+
+  String eventTitle = "イベントのタイトル";
+  String eventDescription =
+      "イベントの詳細イベントの詳細イベントの詳細イベントの詳細イベントの詳細イベントの詳細イベントの詳細イベントの詳細";
+
+  int eventAmountOfMember = 12345;
+
+  String communityName = "CommunityName";
+  String communityId = "CommunityId";
+  String communityIconUrl =
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwy4yt4ozcMfk1kGbhgMPxolXmlawudTRujQ&usqp=CAU";
 }
