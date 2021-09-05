@@ -2,11 +2,17 @@ import 'package:Inhouse/component/icon/iconContainer.dart';
 import 'package:Inhouse/component/icon/iconOverlayContainer.dart';
 import 'package:Inhouse/model/eventList.dart';
 import 'package:Inhouse/util/format.dart';
+import 'package:Inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 
 class EventCard extends StatelessWidget {
   final OneCardOnEventList content;
   EventCard({this.content});
+
+  final String _url = 'comgooglemaps://?q=hokkaido';
+  final String _secondUrl =
+      'https://www.google.co.jp/maps/place/%E3%82%AA%E3%83%AA%E3%83%B3%E3%83%94%E3%83%83%E3%82%AF%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%A2%E3%83%A0%EF%BC%88%E6%9D%B1%E4%BA%AC2020%E5%A4%A7%E4%BC%9A%EF%BC%89/@35.6778995,139.7123581,17z/data=!3m1!4b1!4m5!3m4!1s0x60188d89aadfca4d:0xd846ee769ca6898e!8m2!3d35.6778952!4d139.7145468?hl=ja';
+  // final String _url = 'https://flutter.dev';
 
   @override
   Widget build(BuildContext context) {
@@ -232,7 +238,8 @@ class EventCard extends StatelessWidget {
                         alignment: Alignment.centerRight,
                         child: GestureDetector(
                           onTap: () {
-                            mapModal(context);
+                            // mapModal(context);
+                            OsAccess.launchURL(_url, secondUrl: _secondUrl);
                           },
                           child: Text("Mapで確認する",
                               style: TextStyle(color: Colors.green)),

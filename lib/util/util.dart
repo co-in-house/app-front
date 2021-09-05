@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:miniplayer/miniplayer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Const {
   // rooting No
@@ -15,8 +16,7 @@ class Const {
   static final int routingNoExplore = 0;
   static final int routingNoLounge = 1;
   static final int routingNoEvent = 2;
-  static final int routingNoMessage = 3;
-  static final int routingNoCut = 4;
+  static final int routingNoCut = 3;
 
   // size
   static final double containerWidthPercentage = 0.95;
@@ -43,6 +43,8 @@ class Const {
 
 class OsAccess {
   static final picker = ImagePicker();
+
+  // カメラから画像を取得
   static Future<PickedFile> getImageFromCamera() async {
     try {
       final pickedFile = await picker.getImage(source: ImageSource.camera);
@@ -55,6 +57,7 @@ class OsAccess {
     return null;
   }
 
+  // ギャラリーから画像を取得
   static Future<PickedFile> getImageFromGallery() async {
     PickedFile pickedFile;
     try {
@@ -66,6 +69,21 @@ class OsAccess {
       print(err);
     }
     return null;
+  }
+
+  // 別アプリを開く
+  static Future launchURL(String url, {String secondUrl}) async {
+    print("url: $url");
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else if (secondUrl != null && await canLaunch(secondUrl)) {
+      print("second!");
+      await launch(secondUrl);
+    } else {
+      var label;
+      secondUrl != null ? label = url : label = url + ' and ' + secondUrl;
+      throw 'Could not launch $label';
+    }
   }
 }
 

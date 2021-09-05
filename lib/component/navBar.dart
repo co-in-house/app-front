@@ -39,7 +39,7 @@ class CustomNavBar extends StatelessWidget {
                     Icon(Icons.explore, size: 30),
                     Icon(Icons.apps, size: 30),
                     Icon(Icons.event_available, size: 30),
-                    Icon(Icons.message_rounded, size: 30),
+                    // Icon(Icons.message_rounded, size: 30),
                     Icon(Icons.video_library, size: 30),
                   ],
                   color: Colors.white,
