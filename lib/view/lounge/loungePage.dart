@@ -1,7 +1,12 @@
 import 'package:Inhouse/component/appBar.dart';
 import 'package:Inhouse/component/lounge/notificationNumberBadge.dart';
+import 'package:Inhouse/component/lounge/roomModalContainer.dart';
+import 'package:Inhouse/service/lounge/changeRoom.dart';
+import 'package:Inhouse/util/modal.dart';
 import 'package:Inhouse/util/util.dart';
 import 'package:flutter/material.dart';
+import 'package:miniplayer/miniplayer.dart';
+import 'package:provider/provider.dart';
 
 class LoungePage extends StatelessWidget {
   final double _spacingWidth = 0.0;
@@ -124,8 +129,17 @@ class OnePhotoContainer extends StatelessWidget {
                 ),
                 elevation: 10.0,
                 child: InkWell(
-                  onTap: () {
-                    print("tapped! communityCard : " + "content".toString());
+                  onTap: () async {
+                    int tappedRoomNumber = await roomModal(
+                      context: context,
+                      content: RoomModalContainer(),
+                    );
+                    print("tappedRoomNumber is " + tappedRoomNumber.toString());
+                    if (tappedRoomNumber != null) {
+                      Const.miniplayerController
+                          .animateToHeight(state: PanelState.MAX);
+                      context.read<ChangeRoom>().set(tappedRoomNumber);
+                    }
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -153,4 +167,36 @@ class OnePhotoContainer extends StatelessWidget {
       ),
     );
   }
+
+  // void loungeDetailModal(BuildContext context) {
+  //   final double _circular = 20.0;
+  //   showModalBottomSheet(
+  //     //モーダルの背景の色、透過
+  //     backgroundColor: Colors.transparent,
+  //     //ドラッグ可能にする（高さもハーフサイズからフルサイズになる様子）
+  //     isScrollControlled: true,
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return Container(
+  //         height: MediaQuery.of(context).size.height - kToolbarHeight,
+  //         padding: EdgeInsets.symmetric(
+  //             vertical: _circular,
+  //             horizontal: MediaQuery.of(context).size.width * 0.05),
+  //         margin: EdgeInsets.only(top: 1),
+  //         decoration: BoxDecoration(
+  //           //モーダル自体の色
+  //           color: Colors.white,
+  //           //角丸にする
+  //           borderRadius: BorderRadius.only(
+  //             topLeft: Radius.circular(_circular),
+  //             topRight: Radius.circular(_circular),
+  //           ),
+  //         ),
+  //         child: Container(
+  //           child: Text("ラウンジ？"),
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 }

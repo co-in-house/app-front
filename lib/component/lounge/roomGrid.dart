@@ -49,20 +49,20 @@ class RoomGrid extends StatelessWidget {
       child: Row(
         children: [
           Column(children: [
-            RoomButton(index: 1, label: 'R1'),
-            RoomButton(index: 2, label: 'R2'),
+            ActiveRoomButton(index: 1, label: 'R1'),
+            ActiveRoomButton(index: 2, label: 'R2'),
           ]),
           Column(children: [
-            RoomButton(index: 3, label: 'R3'),
-            RoomButton(index: 4, label: 'R4'),
+            ActiveRoomButton(index: 3, label: 'R3'),
+            ActiveRoomButton(index: 4, label: 'R4'),
           ]),
           Column(children: [
-            RoomButton(index: 5, label: 'R5'),
-            RoomButton(index: 6, label: 'R6'),
+            ActiveRoomButton(index: 5, label: 'R5'),
+            ActiveRoomButton(index: 6, label: 'R6'),
           ]),
           Column(children: [
-            RoomButton(index: 7, label: 'R7'),
-            RoomButton(index: 8, label: 'R8'),
+            ActiveRoomButton(index: 7, label: 'R7'),
+            ActiveRoomButton(index: 8, label: 'R8'),
           ]),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
