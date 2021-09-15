@@ -17,7 +17,7 @@ class IconContainer extends StatelessWidget {
       width: this.size,
       height: this.size,
       alignment: Alignment.center,
-      margin: EdgeInsets.symmetric(horizontal: _horizontalMargin, vertical: 6),
+      margin: EdgeInsets.symmetric(horizontal: _horizontalMargin, vertical: 0),
       padding: EdgeInsets.zero,
       decoration: BoxDecoration(
         color: Colors.green,
@@ -25,7 +25,7 @@ class IconContainer extends StatelessWidget {
           image: NetworkImage(this.url),
           fit: BoxFit.cover,
         ),
-        borderRadius: BorderRadius.all(Radius.circular(50.0)),
+        borderRadius: BorderRadius.all(Radius.circular(10.0)),
         border: GradientBorder.uniform(
             width: 3.0,
             gradient: LinearGradient(

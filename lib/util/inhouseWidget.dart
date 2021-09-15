@@ -12,4 +12,10 @@ class InhouseWidget {
       ),
     );
   }
+
+  static Widget dividerContainer() {
+    return Container(
+      child: Divider(),
+    );
+  }
 }
