@@ -28,6 +28,7 @@ class Const {
 
   // size
   static final double footerHeight = 75;
+  static final double roomTypeIconSize = 80;
 
   // borderRadius
   static final double borderRadius = 16.0;

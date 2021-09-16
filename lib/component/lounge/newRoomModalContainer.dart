@@ -1,8 +1,11 @@
 import 'package:Inhouse/component/lounge/roomModalContainer.dart';
+import 'package:Inhouse/component/lounge/roomTypeSelectRow.dart';
 import 'package:Inhouse/util/inhouseWidget.dart';
+import 'package:Inhouse/util/theme.dart';
 import 'package:flutter/material.dart';
 
 class NewRoomModalContainer extends StatelessWidget {
+  final double _startButtonSize = 32;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,41 +16,43 @@ class NewRoomModalContainer extends StatelessWidget {
           InhouseWidget.dividerContainer(),
           RoomModalCommunityInfoRow(),
           InhouseWidget.dividerContainer(),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: 10,
-                ),
-                child: Icon(Icons.house),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.6,
-                child: TextField(
-                  decoration: InputDecoration(hintText: "ルーム名とかどうしますかー"),
-                  style: TextStyle(height: 1.2),
-                ),
-              ),
-            ],
+          Container(
+            width: MediaQuery.of(context).size.width * 0.6,
+            child: TextField(
+              decoration:
+                  InputDecoration(icon: Icon(Icons.label), hintText: "ルーム名"),
+              style: TextStyle(height: 1.2),
+            ),
           ),
-          Text("オープンにしますかーボタンとか"),
-          Text("コミュニティ内にしますかーボタンとか"),
-          Text("なんかいろいろ出しますか"),
-
-          // RoomModalContentHeader(
-          //   label: "開催中ルーム",
-          // ),
-          // RoomModalContentRow(
-          //   contentList: activeList,
-          // ),
-          // RoomModalContentHeader(
-          //   label: "過去ルーム",
-          // ),
-          // RoomModalContentRow(
-          //   contentList: closedList,
-          // ),
+          RoomTypeSelectRow(),
+          Container(
+            child: ElevatedButton.icon(
+              icon: Icon(
+                Icons.sports_handball,
+                color: Colors.white,
+                size: this._startButtonSize,
+              ),
+              label: Text(
+                'Let`s go!',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: this._startButtonSize,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                animationDuration: Duration(seconds: 10),
+                primary: inhouseThemeColor.primaryColor,
+                onPrimary: Colors.white,
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+              onPressed: () {
+                print("onPressed");
+              },
+            ),
+          ),
         ],
       ),
     );

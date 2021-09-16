@@ -115,7 +115,7 @@ class NewRoomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () async {
           print("onPressed!");
-          int tappedRoomNumber = await startNewRoomModal(
+          int tappedRoomNumber = await roomModal(
             context: context,
             content: NewRoomModalContainer(),
           );

@@ -130,7 +130,7 @@ class OnePhotoContainer extends StatelessWidget {
                 elevation: 10.0,
                 child: InkWell(
                   onTap: () async {
-                    int tappedRoomNumber = await selectRoomModal(
+                    int tappedRoomNumber = await roomModal(
                       context: context,
                       content: RoomModalContainer(),
                     );
