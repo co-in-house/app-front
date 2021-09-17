@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
 
-class CustomNavBar extends StatelessWidget {
+class InhouseNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<double>(
@@ -41,6 +41,11 @@ class CustomNavBar extends StatelessWidget {
                     Icon(Icons.event_available, size: 30),
                     // Icon(Icons.message_rounded, size: 30),
                     Icon(Icons.video_library, size: 30),
+                    _BottomUserIcon(
+                      size: 30,
+                      url:
+                          'https://66.media.tumblr.com/c063f0b98040e8ec4b07547263b8aa15/tumblr_inline_ppignaTjX21s9on4d_540.jpg',
+                    ),
                   ],
                   color: Colors.white,
                   index: context
@@ -77,57 +82,19 @@ class CustomNavBar extends StatelessWidget {
   }
 }
 
-class ChatBottomBar extends StatelessWidget {
+class _BottomUserIcon extends StatelessWidget {
+  const _BottomUserIcon({Key key, @required this.size, @required this.url})
+      : super(key: key);
+  final double size;
+  final String url;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 75,
-      decoration: BoxDecoration(color: inhouseThemeColor.backgroundColor),
-      child: Container(
-        margin: EdgeInsets.only(
-          left: MediaQuery.of(context).size.width * 0.05,
-          right: MediaQuery.of(context).size.width * 0.05,
-          top: 10,
-          bottom: 25,
-        ),
-        // decoration: BoxDecoration(color: Colors.red),
-        child: SafeArea(
-          child: Row(
-            children: [
-              Expanded(
-                child: Container(
-                    decoration: BoxDecoration(
-                      gradient: CustomColor.linearGradient(context
-                          .select((RoomState roomState) => roomState)
-                          .index),
-                      color: Colors.white.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                    padding: EdgeInsets.only(
-                      left: 4,
-                      right: 16,
-                      top: 4,
-                      bottom: 4,
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
-                          child: Icon(Icons.input),
-                        ),
-                        Expanded(
-                          child: TextField(
-                            decoration: InputDecoration(hintText: "おしゃべりしてみる"),
-                            style: TextStyle(height: 1.2),
-                          ),
-                        )
-                      ],
-                    )),
-              ),
-              Icon(Icons.send, color: Colors.black),
-            ],
-          ),
-        ),
+      child: CircleAvatar(
+        backgroundImage: NetworkImage(this.url),
+        backgroundColor: Colors.green,
+        radius: size * 0.6,
       ),
     );
   }

@@ -1,4 +1,5 @@
-import 'package:Inhouse/component/appBar.dart';
+import 'package:Inhouse/component/appBar/customAppBar.dart';
+import 'package:Inhouse/component/appBar/sliverAppBarCommunityDetail.dart';
 import 'package:Inhouse/component/community/newCommunity/newCommunityInfoCardList.dart';
 import 'package:Inhouse/model/newCommunityInfo.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class NewCommunityConfirmPage extends StatelessWidget {
       extendBodyBehindAppBar: true,
       body: CustomScrollView(
         slivers: <Widget>[
-          SliverAppBarCommunityImage(
+          SliverAppBarCommunityDetail(
             imagePath: newCommunityInfo.iconImg.path,
             communityName: newCommunityInfo.name,
             id: null,

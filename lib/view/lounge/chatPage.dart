@@ -1,5 +1,5 @@
-import 'package:Inhouse/component/appBar.dart';
-import 'package:Inhouse/component/navBar.dart';
+import 'package:Inhouse/component/appBar/sliverAppBarChat.dart';
+import 'package:Inhouse/component/bottomBar/chatBottomBar.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {

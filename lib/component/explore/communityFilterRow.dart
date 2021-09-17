@@ -1,4 +1,4 @@
-import 'package:Inhouse/component/search/communityFilterButton.dart';
+import 'package:Inhouse/component/explore/communityFilterButton.dart';
 import 'package:flutter/material.dart';
 
 class CommunityFilterRow extends StatelessWidget {

@@ -1,4 +1,3 @@
-// SliverAppBar for Search
 import 'package:flutter/material.dart';
 
 class SliverAppBarEvent extends StatelessWidget {

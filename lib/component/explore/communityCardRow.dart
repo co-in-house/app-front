@@ -1,4 +1,4 @@
-import 'package:Inhouse/component/search/communityCard.dart';
+import 'package:Inhouse/component/explore/communityCard.dart';
 import 'package:Inhouse/model/communityList.dart';
 import 'package:flutter/material.dart';
 

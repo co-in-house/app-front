@@ -1,4 +1,4 @@
-import 'package:Inhouse/component/appBar.dart';
+import 'package:Inhouse/component/appBar/sliverAppBarLounge.dart';
 import 'package:Inhouse/component/lounge/notificationNumberBadge.dart';
 import 'package:Inhouse/component/lounge/roomModalContainer.dart';
 import 'package:Inhouse/service/lounge/changeRoom.dart';

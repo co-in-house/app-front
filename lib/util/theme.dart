@@ -9,7 +9,7 @@ final ThemeData inhouseThemeColor = new ThemeData(
   primarySwatch: Colors.green,
   backgroundColor: Colors.grey[50],
   // scaffoldBackgroundColor: Colors.green[50],
-  scaffoldBackgroundColor: Colors.white,
+  scaffoldBackgroundColor: Colors.grey[50],
   // scaffoldBackgroundColor: Colors.grey[50],
   bannerTheme: MaterialBannerThemeData(
     // backgroundColor: Colors.green[50],

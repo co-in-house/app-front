@@ -1,4 +1,4 @@
-import 'package:Inhouse/component/search/communityBadgeContainer.dart';
+import 'package:Inhouse/component/explore/communityBadgeContainer.dart';
 import 'package:Inhouse/component/text/tag.dart';
 import 'package:Inhouse/model/communityList.dart';
 import 'package:Inhouse/util/util.dart';

@@ -5,7 +5,7 @@ import 'package:Inhouse/util/theme.dart';
 import 'package:flutter/material.dart';
 
 class NewRoomModalContainer extends StatelessWidget {
-  final double _startButtonSize = 32;
+  final double _startButtonSize = 24;
   @override
   Widget build(BuildContext context) {
     return Container(

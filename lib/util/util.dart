@@ -17,6 +17,7 @@ class Const {
   static final int routingNoLounge = 1;
   static final int routingNoEvent = 2;
   static final int routingNoCut = 3;
+  static final int routingNoProfile = 4;
 
   // size
   static final double containerWidthPercentage = 0.95;

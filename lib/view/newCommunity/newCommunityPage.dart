@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:Inhouse/component/appBar.dart';
+import 'package:Inhouse/component/appBar/customAppBar.dart';
 import 'package:Inhouse/component/community/newCommunity/newCommuityImageCard.dart';
 import 'package:Inhouse/component/community/newCommunity/newCommunityContentCard.dart';
 import 'package:Inhouse/component/community/newCommunity/newCommunityLocationCard.dart';

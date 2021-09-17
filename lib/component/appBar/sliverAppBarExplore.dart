@@ -1,9 +1,9 @@
-// SliverAppBar for Search
+// SliverAppBar for Explore
 import 'package:flutter/material.dart';
 
-class SliverAppBarSearch extends StatelessWidget {
-  SliverAppBarSearch({this.searchTextController});
-  final TextEditingController searchTextController;
+class SliverAppBarExplore extends StatelessWidget {
+  SliverAppBarExplore({this.exploreTextController});
+  final TextEditingController exploreTextController;
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
@@ -17,7 +17,7 @@ class SliverAppBarSearch extends StatelessWidget {
         child: ElevatedButton.icon(
           icon: Icon(Icons.search),
           label: Text(
-            '居場所を探す',
+            'キーワード検索',
             style: TextStyle(
               color: Colors.black,
             ),
