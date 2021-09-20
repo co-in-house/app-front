@@ -11,7 +11,7 @@ Future roomModal({BuildContext context, Widget content, double circular = 20}) {
     builder: (BuildContext context) {
       return Container(
         // height: MediaQuery.of(context).size.height - kToolbarHeight,
-        height: (MediaQuery.of(context).size.height - kToolbarHeight) / 2,
+        height: MediaQuery.of(context).size.height / 2,
         padding: EdgeInsets.symmetric(
           vertical: circular,
           //  horizontal: MediaQuery.of(context).size.width * 0.05, //横スクロールがあるから余白なし。

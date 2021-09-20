@@ -6,7 +6,11 @@ class RoomState extends BaseModel {
   RoomState({
     this.index = 0,
     this.communityId = 0,
+    this.communityName = "",
+    this.roomName = "",
   });
   final int index;
+  final String roomName;
   final int communityId;
+  final String communityName;
 }

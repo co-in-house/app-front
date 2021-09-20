@@ -3,6 +3,9 @@ import 'package:Inhouse/component/bottomBar/chatBottomBar.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
+  const ChatPage({Key key, @required this.roomName}) : super(key: key);
+  final String roomName;
+
   @override
   Widget build(BuildContext context) {
     print("========ChatPage build========");
@@ -12,7 +15,7 @@ class ChatPage extends StatelessWidget {
           // color: Colors.white,
           child: CustomScrollView(
             slivers: <Widget>[
-              SliverAppBarChat(),
+              SliverAppBarChat(roomName: this.roomName),
               SliverList(delegate: _ChatDelegate(context)),
             ],
           ),

@@ -1,5 +1,7 @@
 import 'package:Inhouse/component/bottomBar/inhouseNavBar.dart';
+import 'package:Inhouse/component/lounge/miniChatContainer.dart';
 import 'package:Inhouse/model/lounge/roomState.dart';
+import 'package:Inhouse/model/lounge/tappedRoomInfoForModal.dart';
 import 'package:Inhouse/model/routingState.dart';
 import 'package:Inhouse/model/userState.dart';
 import 'package:Inhouse/service/api/getCommunityListService.dart';
@@ -39,8 +41,11 @@ class RootFlame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     init(context);
-    final int _roomIndex =
-        context.select((RoomState roomState) => roomState).index;
+    // final int _roomIndex =
+    //     context.select((RoomState roomState) => roomState).index;
+    final RoomState _tappedRoomState =
+        context.select((RoomState roomState) => roomState);
+
     return StatefulWrapper(
       onInit: () async {
         await FirebaseStorageAccess().initialize();
@@ -67,7 +72,7 @@ class RootFlame extends StatelessWidget {
                         .select((RoutingState state) => state)
                         .routingState],
                     Offstage(
-                      offstage: _roomIndex == 0,
+                      offstage: _tappedRoomState.index == 0,
                       child: Miniplayer(
                         valueNotifier: Const.playerExpandProgress,
                         // curve: Curves.easeInOut,
@@ -76,26 +81,13 @@ class RootFlame extends StatelessWidget {
                         maxHeight: MediaQuery.of(context).size.height,
                         builder: (height, percentage) {
                           print(Const.playerExpandProgress.value.toString());
-                          if (_roomIndex == 0) return const SizedBox.shrink();
+                          if (_tappedRoomState.index == 0)
+                            return const SizedBox.shrink();
                           if (percentage <= 0.5) {
-                            return Container(
-                              decoration: BoxDecoration(
-                                gradient:
-                                    CustomColor.linearGradient(_roomIndex),
-                              ),
-                              child: Row(
-                                children: [
-                                  IconButton(
-                                    icon: const Icon(Icons.close),
-                                    onPressed: () =>
-                                        context.read<ChangeRoom>().set(0),
-                                  ),
-                                  Text('$height, $percentage'),
-                                ],
-                              ),
-                            );
+                            return MiniChatContainer(
+                                tappedRoomState: _tappedRoomState);
                           }
-                          return ChatPage();
+                          return ChatPage(roomName: _tappedRoomState.roomName);
                         },
                       ),
                     )

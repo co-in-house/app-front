@@ -6,6 +6,9 @@ import 'package:miniplayer/miniplayer.dart';
 import 'package:provider/provider.dart';
 
 class SliverAppBarChat extends StatelessWidget {
+  const SliverAppBarChat({Key key, @required this.roomName}) : super(key: key);
+  final String roomName;
+
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
@@ -15,7 +18,7 @@ class SliverAppBarChat extends StatelessWidget {
               context.select((RoomState roomState) => roomState).index),
         ),
       ),
-      title: Text('チャットルーム'),
+      title: Text(this.roomName),
       textTheme: TextTheme(
         headline6: TextStyle(
           color: Colors.white,

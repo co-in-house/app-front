@@ -1,4 +1,5 @@
 import 'package:Inhouse/component/lounge/newRoomModalContainer.dart';
+import 'package:Inhouse/model/lounge/tappedRoomInfoForModal.dart';
 import 'package:Inhouse/util/modal.dart';
 import 'package:Inhouse/util/theme.dart';
 import 'package:Inhouse/util/util.dart';
@@ -25,7 +26,8 @@ class ActiveRoomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           print("onPressed!");
-          Navigator.pop(context, this.index);
+          Navigator.pop(context,
+              TappedRoomInfoForModal(index: this.index, label: this.label));
         },
         style: ElevatedButton.styleFrom(
             elevation: 3.0,
@@ -109,7 +111,7 @@ class NewRoomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+      margin: EdgeInsets.symmetric(horizontal: 6, vertical: 20),
       width: MediaQuery.of(context).size.width * 0.4,
       height: _height,
       child: ElevatedButton(

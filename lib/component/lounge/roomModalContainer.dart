@@ -23,7 +23,7 @@ class RoomModalContainer extends StatelessWidget {
         children: [
           InhouseWidget.toggleContainer(),
           InhouseWidget.dividerContainer(),
-          RoomModalCommunityInfoRow(additionalWidgetList: [NewRoomButton()]),
+          RoomModalCommunityInfoRow(additionalWidgetList: []),
           InhouseWidget.dividerContainer(),
           RoomModalContentHeader(
             label: "開催中ルーム",
@@ -37,6 +37,7 @@ class RoomModalContainer extends StatelessWidget {
           RoomModalContentRow(
             contentList: closedList,
           ),
+          NewRoomButton(),
         ],
       ),
     );
