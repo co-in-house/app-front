@@ -6,18 +6,11 @@ import 'package:url_launcher/url_launcher.dart';
 
 class Const {
   // rooting No
-  // static final int routingNoHome = 0;
-  // static final int routingNoExplore = 1;
-  // static final int routingNoLounge = 2;
-  // static final int routingNoEvent = 3;
-  // static final int routingNoMessage = 4;
-  // static final int routingNoCut = 5;
-
-  static final int routingNoExplore = 0;
-  static final int routingNoLounge = 1;
-  static final int routingNoEvent = 2;
-  static final int routingNoCut = 3;
-  static final int routingNoProfile = 4;
+  static const int routingNoExplore = 0;
+  static const int routingNoEvent = 1;
+  static const int routingNoLounge = 2;
+  static const int routingNoCut = 3;
+  static const int routingNoProfile = 4;
 
   // size
   static final double containerWidthPercentage = 0.95;

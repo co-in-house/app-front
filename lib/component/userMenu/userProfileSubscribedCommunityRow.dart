@@ -17,35 +17,11 @@ class UserProfileSubscribedCommunityRow extends StatelessWidget {
         child: Container(
           color: Colors.white,
           child: ListTile(
-            // leading: CircleAvatar(
-            //   backgroundImage: NetworkImage(this.url),
-            //   backgroundColor: Colors.green,
-            // ),
             leading: _LeadingIcon(url: this.url),
-
-            // CircleAvatar(
-            //   backgroundColor: Colors.indigoAccent,
-            //   child: Text('ぺ！'),
-            //   foregroundColor: Colors.white,
-            // ),
             title: Text(this.communityName),
             subtitle: Text('追加情報なんか出すか？加入した日付とか？'),
           ),
         ),
-        // actions: <Widget>[
-        //   IconSlideAction(
-        //     caption: 'Archive',
-        //     color: Colors.blue,
-        //     icon: Icons.archive,
-        //     onTap: () => _showSnackBar('Archive'),
-        //   ),
-        //   IconSlideAction(
-        //     caption: 'Share',
-        //     color: Colors.indigo,
-        //     icon: Icons.share,
-        //     onTap: () => _showSnackBar('Share'),
-        //   ),
-        // ],
         secondaryActions: <Widget>[
           IconSlideAction(
             caption: 'More',

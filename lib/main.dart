@@ -10,6 +10,7 @@ import 'package:Inhouse/service/api/getEventListService.dart';
 import 'package:Inhouse/service/api/getLocationListService.dart';
 import 'package:Inhouse/service/api/getPostListService.dart';
 import 'package:Inhouse/service/api/getTagListService.dart';
+import 'package:Inhouse/service/changeColorMode.dart';
 import 'package:Inhouse/service/changePage.dart';
 import 'package:Inhouse/service/lounge/changeRoom.dart';
 import 'package:Inhouse/service/user/userService.dart';
@@ -18,6 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:Inhouse/view/rootFlame.dart' as root;
+import 'model/colorModeState.dart';
 import 'model/routingState.dart';
 
 void main() {
@@ -60,6 +62,9 @@ class MyApp extends StatelessWidget {
           ),
           StateNotifierProvider<GetLocationListService, LocationList>(
             create: (context) => GetLocationListService(),
+          ),
+          StateNotifierProvider<ChangeColorMode, ColorModeState>(
+            create: (context) => ChangeColorMode(),
           ),
         ],
         child: root.RootFlame(),

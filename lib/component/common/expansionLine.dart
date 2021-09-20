@@ -1,37 +1,26 @@
-import 'package:Inhouse/component/lounge/roomGrid.dart';
 import 'package:flutter/material.dart';
 
-class Item {
-  Item({
-    @required this.expandedValue,
+class ExpansionLineItem {
+  ExpansionLineItem({
     @required this.headerValue,
+    @required this.expandedWidget,
     this.isExpanded = false,
   });
 
-  String expandedValue;
-  String headerValue;
+  final String headerValue;
+  final Widget expandedWidget;
   bool isExpanded;
 }
 
-List<Item> generateItems(int numberOfItems) {
-  return List<Item>.generate(numberOfItems, (int index) {
-    return Item(
-      headerValue: 'Panel $index',
-      expandedValue: 'This is item number $index',
-    );
-  });
-}
-
 class ExpansionLine extends StatefulWidget {
-  const ExpansionLine({Key key}) : super(key: key);
+  const ExpansionLine({Key key, @required this.itemList}) : super(key: key);
+  final List<ExpansionLineItem> itemList;
 
   @override
   State<ExpansionLine> createState() => _ExpansionLine();
 }
 
 class _ExpansionLine extends State<ExpansionLine> {
-  final List<Item> _data = generateItems(8);
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -48,21 +37,19 @@ class _ExpansionLine extends State<ExpansionLine> {
       expandedHeaderPadding: EdgeInsets.symmetric(horizontal: 00, vertical: 0),
       expansionCallback: (int index, bool isExpanded) {
         setState(() {
-          _data[index].isExpanded = !isExpanded;
+          widget.itemList[index].isExpanded = !isExpanded;
         });
       },
-      children: _data.map<ExpansionPanel>((Item item) {
+      children: widget.itemList.map<ExpansionPanel>((ExpansionLineItem item) {
         return ExpansionPanel(
-          // backgroundColor: Colors.transparent,
-          // canTapOnHeader: true,
+          canTapOnHeader: true,
           headerBuilder: (BuildContext context, bool isExpanded) {
             return Container(
               margin: EdgeInsets.all(0),
-              padding: EdgeInsets.all(0),
-              // color: Colors.red,
+              padding: EdgeInsets.all(10),
               alignment: Alignment.centerLeft,
               child: Text(
-                '@' + "コミュニティ名",
+                item.headerValue,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
                 style: TextStyle(
@@ -72,7 +59,7 @@ class _ExpansionLine extends State<ExpansionLine> {
               ),
             );
           },
-          body: RoomGrid(),
+          body: item.expandedWidget,
           isExpanded: item.isExpanded,
         );
       }).toList(),

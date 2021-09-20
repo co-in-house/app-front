@@ -37,8 +37,9 @@ class InhouseNavBar extends StatelessWidget {
                   items: <Widget>[
                     // Icon(Icons.home, size: 30),
                     Icon(Icons.explore, size: 30),
-                    Icon(Icons.apps, size: 30),
                     Icon(Icons.event_available, size: 30),
+                    // Icon(Icons.apps, size: 30),
+                    _BottomLoungeIcon(size: 30),
                     // Icon(Icons.message_rounded, size: 30),
                     Icon(Icons.video_library, size: 30),
                     _BottomUserIcon(
@@ -95,6 +96,24 @@ class _BottomUserIcon extends StatelessWidget {
         backgroundImage: NetworkImage(this.url),
         backgroundColor: Colors.green,
         radius: size * 0.6,
+      ),
+    );
+  }
+}
+
+class _BottomLoungeIcon extends StatelessWidget {
+  const _BottomLoungeIcon({Key key, @required this.size}) : super(key: key);
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.zero,
+      padding: EdgeInsets.zero,
+      child: CircleAvatar(
+        backgroundImage: AssetImage("images/logo_w.png"),
+        backgroundColor: Colors.green,
+        radius: size * 0.8,
       ),
     );
   }

@@ -97,7 +97,7 @@ class SliverAppBarExplore extends StatelessWidget {
                   margin: EdgeInsets.symmetric(vertical: 0),
                   child: ElevatedButton(
                     child: Text(
-                      "アイディアを見る",
+                      "新しいコミュニティを作成する",
                       style: TextStyle(color: Colors.white),
                     ),
                     style: ElevatedButton.styleFrom(

@@ -1,5 +1,4 @@
 import 'package:Inhouse/component/bottomBar/inhouseNavBar.dart';
-import 'package:Inhouse/component/drawer.dart';
 import 'package:Inhouse/model/lounge/roomState.dart';
 import 'package:Inhouse/model/routingState.dart';
 import 'package:Inhouse/model/userState.dart';
@@ -18,7 +17,7 @@ import 'package:Inhouse/view/login/login.dart';
 import 'package:Inhouse/view/lounge/chatPage.dart';
 import 'package:Inhouse/view/lounge/loungePage.dart';
 import 'package:Inhouse/view/message/messagePage.dart';
-import 'package:Inhouse/view/profile/userProfilePage.dart';
+import 'package:Inhouse/view/userMenu/userMenuPage.dart';
 import 'package:flutter/material.dart';
 // import 'package:Inhouse/view/timeline/homePage.dart';
 import 'package:miniplayer/miniplayer.dart';
@@ -30,11 +29,11 @@ class RootFlame extends StatelessWidget {
   final List<Widget> _contentView = <Widget>[
     // HomePage(),
     ExplorePage(),
-    LoungePage(),
     EventPage(),
+    LoungePage(),
     MessagePage(),
     // CutPage(),
-    UserProfilePage(),
+    UserMenuPage(),
   ];
 
   @override
@@ -59,7 +58,7 @@ class RootFlame extends StatelessWidget {
         child: !context.select((UserState state) => state).isLogined
             ? LoginPage()
             : Scaffold(
-                drawer: CustomDrawer(context: context),
+                // drawer: CustomDrawer(context: context),
                 // floatingActionButton: CustomFloatingButton(),
                 bottomNavigationBar: InhouseNavBar(),
                 body: Stack(
