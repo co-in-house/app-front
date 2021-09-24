@@ -1,9 +1,11 @@
+import 'package:Inhouse/component/explore/communityBadgeContainer.dart';
 import 'package:Inhouse/component/icon/iconContainer.dart';
 import 'package:Inhouse/component/icon/iconOverlayContainer.dart';
 import 'package:Inhouse/model/eventList.dart';
 import 'package:Inhouse/util/format.dart';
 import 'package:Inhouse/util/util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class EventCard extends StatelessWidget {
   final OneCardOnEventList content;
@@ -29,29 +31,41 @@ class EventCard extends StatelessWidget {
           // height: 120, // 呼び出しclass側で高さ固定。SliverFixedExtentList itemExtent
           alignment: Alignment.centerLeft,
           // child: Image.asset('images/' + content.img, fit: BoxFit.fill),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(Const.borderRadius)),
+            image: DecorationImage(
+              image: NetworkImage(
+                  "https://64.media.tumblr.com/f3549bc0507982b3b1753c2e3f3930f8/d55773cd29b07d7e-ec/s2048x3072/cf8046ca4f57c3f93895baa24d99e46efe5e4e23.jpg"),
+              fit: BoxFit.cover,
+              alignment: Alignment.center,
+            ),
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               // header date line
-              Row(
-                children: [
-                  RichText(
-                    text: TextSpan(
-                      style: TextStyle(color: Colors.black),
-                      children: [
-                        TextSpan(text: this.content.eventDate + '('),
-                        TextSpan(
-                            text: this.content.eventDayOfWeek,
-                            style: TextStyle(color: Colors.red)),
-                        TextSpan(text: ')'),
-                        TextSpan(
-                            text: ' / ' + this.content.eventYear,
-                            style: TextStyle(color: Colors.grey)),
-                      ],
+              Container(
+                color: Colors.white.withOpacity(0.8),
+                child: Row(
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                        style: TextStyle(color: Colors.black),
+                        children: [
+                          TextSpan(text: this.content.eventDate + '('),
+                          TextSpan(
+                              text: this.content.eventDayOfWeek,
+                              style: TextStyle(color: Colors.red)),
+                          TextSpan(text: ')'),
+                          TextSpan(
+                              text: ' / ' + this.content.eventYear,
+                              style: TextStyle(color: Colors.grey)),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               // contents line
               Divider(),
@@ -61,7 +75,10 @@ class EventCard extends StatelessWidget {
                 children: [
                   Text(
                     this.content.eventTitle,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
                   ),
                   Text(
                     this.content.eventDescription,
@@ -339,6 +356,106 @@ class EventCard extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class EventCardContainer extends StatelessWidget {
+  EventCardContainer({this.content});
+  final OneCardOnEventList content;
+  final double cardMarginVertical = 10.0;
+  @override
+  Widget build(BuildContext context) {
+    double size =
+        MediaQuery.of(context).size.width * Const.eventCardWidthSizePercentage;
+    return Card(
+      margin:
+          EdgeInsets.symmetric(vertical: cardMarginVertical, horizontal: 10),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(Const.borderRadius),
+      ),
+      elevation: 3.0,
+      child: InkWell(
+        onTap: () {
+          print("tapped!");
+        },
+        child: Container(
+          margin: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
+          width: size - cardMarginVertical,
+          // height: 200, // auto?
+          alignment: Alignment.topCenter,
+
+          child: Stack(
+            children: [
+              Positioned(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.all(Radius.circular(Const.borderRadius)),
+                      image: DecorationImage(
+                        image: NetworkImage(content.img),
+                        fit: BoxFit.cover,
+                        alignment: Alignment.center,
+                      ),
+                    ),
+                  ),
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0),
+              Positioned(
+                child: Container(
+                  height: size * 0.25,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(Const.borderRadius)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26,
+                        spreadRadius: 10.0,
+                        blurRadius: 10.0,
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          child: Text(
+                            content.eventTitle + "&" + content.eventTitle,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          print("object");
+                        },
+                        child: Text("参加する"),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  padding: EdgeInsets.symmetric(
+                      vertical: 10, horizontal: Const.borderRadius),
+                ),
+                bottom: 0,
+                left: 0,
+                right: 0,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

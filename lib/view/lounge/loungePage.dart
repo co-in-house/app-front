@@ -93,13 +93,13 @@ class OnePhotoContainer extends StatelessWidget {
                       context: context,
                       content: RoomModalContainer(),
                     );
-                    print(
-                      "tappedRoomNumber : " +
-                          tappedRoomInfo.index.toString() +
-                          ", name : " +
-                          tappedRoomInfo.label,
-                    );
                     if (tappedRoomInfo.index != null) {
+                      print(
+                        "tappedRoomNumber : " +
+                            tappedRoomInfo.index.toString() +
+                            ", name : " +
+                            tappedRoomInfo.label,
+                      );
                       Const.miniplayerController
                           .animateToHeight(state: PanelState.MAX);
                       context.read<ChangeRoom>().set(

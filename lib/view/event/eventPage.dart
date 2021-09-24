@@ -57,9 +57,10 @@ class SameMonthEventContainer extends StatelessWidget {
           style: const TextStyle(color: Colors.white),
         ),
       ),
-      sliver: SliverFixedExtentList(
-        // itemExtent: MediaQuery.of(context).size.height * 0.30,
-        itemExtent: 250,
+      // sliver: SliverFixedExtentList(
+      sliver: SliverList(
+        // itemExtent: MediaQuery.of(context).size.width *
+        //     Const.eventCardWidthSizePercentage,
         delegate: EventCardRowList(this.eventList),
       ),
     );

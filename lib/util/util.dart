@@ -20,6 +20,8 @@ class Const {
 
   static final double miniPlayerMinimumSize = 60;
 
+  //// size event card
+  static final double eventCardWidthSizePercentage = 0.8;
   // size
   static final double footerHeight = 75;
   static final double roomTypeIconSize = 80;
