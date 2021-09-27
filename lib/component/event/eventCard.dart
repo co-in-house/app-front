@@ -1,4 +1,5 @@
-import 'package:Inhouse/component/explore/communityBadgeContainer.dart';
+import 'dart:ui';
+
 import 'package:Inhouse/component/icon/iconContainer.dart';
 import 'package:Inhouse/component/icon/iconOverlayContainer.dart';
 import 'package:Inhouse/model/eventList.dart';
@@ -409,13 +410,14 @@ class EventCardContainer extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(Const.borderRadius)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        spreadRadius: 10.0,
-                        blurRadius: 10.0,
-                      ),
-                    ],
+                    color: Colors.black.withOpacity(0.5),
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     color: Colors.black26,
+                    //     spreadRadius: 10.0,
+                    //     blurRadius: 10.0,
+                    //   ),
+                    // ],
                   ),
                   child: Row(
                     children: [
@@ -437,14 +439,15 @@ class EventCardContainer extends StatelessWidget {
                         onPressed: () {
                           print("object");
                         },
-                        child: Text("参加する"),
+                        child: Text("join"),
                         style: ElevatedButton.styleFrom(
                           primary: Colors.grey,
                         ),
                       ),
                     ],
                   ),
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  // margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  margin: EdgeInsets.zero,
                   padding: EdgeInsets.symmetric(
                       vertical: 10, horizontal: Const.borderRadius),
                 ),

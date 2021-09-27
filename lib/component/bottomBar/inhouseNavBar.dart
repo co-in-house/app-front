@@ -36,12 +36,12 @@ class InhouseNavBar extends StatelessWidget {
                   height: Const.footerHeight,
                   items: <Widget>[
                     // Icon(Icons.home, size: 30),
-                    Icon(Icons.explore, size: 30),
-                    Icon(Icons.event_available, size: 30),
+                    Icon(Icons.explore_outlined, size: 30),
+                    Icon(Icons.event, size: 30),
                     // Icon(Icons.apps, size: 30),
                     _BottomLoungeIcon(size: 30),
                     // Icon(Icons.message_rounded, size: 30),
-                    Icon(Icons.video_library, size: 30),
+                    Icon(Icons.ondemand_video, size: 30),
                     _BottomUserIcon(
                       size: 30,
                       url:
@@ -113,7 +113,7 @@ class _BottomLoungeIcon extends StatelessWidget {
       child: CircleAvatar(
         backgroundImage: AssetImage("images/logo_w.png"),
         backgroundColor: Colors.green,
-        radius: size * 0.8,
+        radius: size * 0.6,
       ),
     );
   }

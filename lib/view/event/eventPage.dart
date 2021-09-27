@@ -25,10 +25,10 @@ class EventPage extends StatelessWidget {
           slivers: <Widget>[
             SliverAppBarEvent(searchTextController: this.searchTextController),
             SameMonthEventContainer(
-                label: "Nov",
+                label: "November 2021",
                 eventList: context.select((EventList eventList) => eventList)),
             SameMonthEventContainer(
-                label: "Oct",
+                label: "October 2021",
                 eventList: context.select((EventList eventList) => eventList)),
           ],
         ),
@@ -49,12 +49,17 @@ class SameMonthEventContainer extends StatelessWidget {
     return SliverStickyHeader(
       header: Container(
         height: 60.0,
-        color: inhouseThemeColor.primaryColor,
+        // color: inhouseThemeColor.primaryColor,
+        color: inhouseThemeColor.backgroundColor,
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         alignment: Alignment.centerLeft,
         child: Text(
           this.label,
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       // sliver: SliverFixedExtentList(

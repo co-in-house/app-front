@@ -31,7 +31,7 @@ class LoungePage extends StatelessWidget {
           SliverAppBarLounge(),
           SliverGrid(
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: MediaQuery.of(context).size.width / 2,
+              maxCrossAxisExtent: MediaQuery.of(context).size.width,
               mainAxisSpacing: _spacingWidth,
               crossAxisSpacing: _spacingWidth,
               childAspectRatio: 1.0,
@@ -93,7 +93,8 @@ class OnePhotoContainer extends StatelessWidget {
                       context: context,
                       content: RoomModalContainer(),
                     );
-                    if (tappedRoomInfo.index != null) {
+                    if (tappedRoomInfo != null &&
+                        tappedRoomInfo.index != null) {
                       print(
                         "tappedRoomNumber : " +
                             tappedRoomInfo.index.toString() +

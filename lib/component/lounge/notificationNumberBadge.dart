@@ -5,7 +5,7 @@ class NotificationNumberBadge extends StatelessWidget {
       : super(key: key);
   final int value;
   final Color color = Colors.red;
-  final double size = 40;
+  final double size = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,11 @@ class NotificationNumberBadge extends StatelessWidget {
         ),
         Text(
           value > 100 ? "99+" : value.toString(),
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.white,
+            // fontWeight: FontWeight.bold,
+            fontSize: 24,
+          ),
         ),
       ],
     );
