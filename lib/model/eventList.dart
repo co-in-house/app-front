@@ -31,13 +31,12 @@ class EventList extends BaseModel {
 class OneCardOnEventList {
   OneCardOnEventList({this.img});
   String img;
-  String eventDate = "12月25日";
-  String eventDayOfWeek = "土";
+  String eventDate = "12/25";
+  String eventDayOfWeek = "Sat";
   String eventYear = "2021";
 
-  String eventTitle = "イベントのタイトル";
-  String eventDescription =
-      "イベントの詳細イベントの詳細イベントの詳細イベントの詳細イベントの詳細イベントの詳細イベントの詳細イベントの詳細";
+  String eventTitle = "「おそ松さん」スペシャルイベント";
+  String eventDescription = "ここでしか見ることの出来ないシリーズ構成：松原秀による書きおろし新作朗読劇もお楽しみに！";
 
   int eventAmountOfMember = 12345;
 

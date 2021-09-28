@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:Inhouse/component/icon/communityIconContainer.dart';
 import 'package:Inhouse/component/icon/iconContainer.dart';
 import 'package:Inhouse/component/icon/iconOverlayContainer.dart';
 import 'package:Inhouse/model/eventList.dart';
@@ -361,14 +362,16 @@ class EventCard extends StatelessWidget {
   }
 }
 
+// event 1 card container
 class EventCardContainer extends StatelessWidget {
   EventCardContainer({this.content});
   final OneCardOnEventList content;
   final double cardMarginVertical = 10.0;
   @override
   Widget build(BuildContext context) {
-    double size =
+    double cardSize =
         MediaQuery.of(context).size.width * Const.eventCardWidthSizePercentage;
+    double bottomContainerSize = cardSize * 0.25;
     return Card(
       margin:
           EdgeInsets.symmetric(vertical: cardMarginVertical, horizontal: 10),
@@ -382,12 +385,13 @@ class EventCardContainer extends StatelessWidget {
         },
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
-          width: size - cardMarginVertical,
+          width: cardSize - cardMarginVertical,
           // height: 200, // auto?
           alignment: Alignment.topCenter,
 
           child: Stack(
             children: [
+              // card background image
               Positioned(
                   child: Container(
                     decoration: BoxDecoration(
@@ -404,61 +408,172 @@ class EventCardContainer extends StatelessWidget {
                   left: 0,
                   right: 0,
                   bottom: 0),
+              // bottom line
+              //// blur
               Positioned(
-                child: Container(
-                  height: size * 0.25,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(Const.borderRadius)),
-                    color: Colors.black.withOpacity(0.5),
-                    // boxShadow: [
-                    //   BoxShadow(
-                    //     color: Colors.black26,
-                    //     spreadRadius: 10.0,
-                    //     blurRadius: 10.0,
-                    //   ),
-                    // ],
+                height: bottomContainerSize,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(Const.borderRadius),
+                    bottomRight: Radius.circular(Const.borderRadius),
                   ),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          child: Text(
-                            content.eventTitle + "&" + content.eventTitle,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          print("object");
-                        },
-                        child: Text("join"),
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.grey,
-                        ),
-                      ),
-                    ],
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                    child: Container(color: Colors.white.withOpacity(0.5)),
                   ),
-                  // margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                  margin: EdgeInsets.zero,
-                  padding: EdgeInsets.symmetric(
-                      vertical: 10, horizontal: Const.borderRadius),
                 ),
-                bottom: 0,
                 left: 0,
                 right: 0,
+                bottom: 0,
               ),
+              //// contents
+              Positioned(
+                  child: Container(
+                    height: bottomContainerSize,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(Const.borderRadius),
+                        bottomRight: Radius.circular(Const.borderRadius),
+                      ),
+                    ),
+                    child: _EventBottomContentsContainer(
+                      height: bottomContainerSize - 10,
+                      title: content.eventTitle,
+                      date: content.eventDayOfWeek + "," + content.eventDate,
+                      communityName: content.communityName,
+                      totalMemberOfMember: 12,
+                      maxMemberOfMember: 20,
+                    ),
+                    margin: EdgeInsets.zero,
+                    padding: EdgeInsets.symmetric(
+                        vertical: 10, horizontal: Const.borderRadius),
+                  ),
+                  left: 0,
+                  right: 0,
+                  bottom: 0),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class _EventBottomContentsContainer extends StatelessWidget {
+  const _EventBottomContentsContainer({
+    Key key,
+    this.title,
+    this.date,
+    this.maxMemberOfMember,
+    this.totalMemberOfMember,
+    this.height,
+    this.communityName,
+  }) : super(key: key);
+  final String communityName;
+  final String title;
+  final String date;
+  final int maxMemberOfMember;
+  final int totalMemberOfMember;
+  final double height;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Container(
+          child: Text(
+            this.title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              child: Column(
+                children: <Widget>[
+                  Icon(Icons.group),
+                  Text(
+                    this.communityName,
+                    maxLines: 2,
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  Icon(Icons.calendar_today),
+                  Text(
+                    this.date,
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  Icon(Icons.person),
+                  Text(
+                    this.totalMemberOfMember.toString() +
+                        "/" +
+                        this.maxMemberOfMember.toString(),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              child: ElevatedButton.icon(
+                icon: Icon(
+                  Icons.add,
+                  color: Colors.white,
+                ),
+                label: Text(
+                  '参加する',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  animationDuration: Duration(seconds: 10),
+                  primary: Colors.grey,
+                  onPrimary: Colors.green,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+                onPressed: () {
+                  print("onPressed");
+                },
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
