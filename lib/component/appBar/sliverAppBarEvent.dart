@@ -12,49 +12,71 @@ class SliverAppBarEvent extends StatelessWidget {
       floating: false,
       pinned: true,
       snap: false,
-      // expandedHeight: MediaQuery.of(context).size.width * 0.7, //正方形
+      expandedHeight: MediaQuery.of(context).size.width * 0.7, //正方形
+      elevation: 0.0,
       title: Container(
         alignment: Alignment.center,
         width: MediaQuery.of(context).size.width * 0.6,
-        // child: ElevatedButton.icon(
-        //   icon: Icon(Icons.search),
-        //   label: Text(
-        //     '活動を探す',
-        //     style: TextStyle(
-        //       color: Colors.black,
-        //     ),
-        //   ),
-        //   style: ElevatedButton.styleFrom(
-        //     animationDuration: Duration(seconds: 10),
-        //     primary: Colors.white,
-        //     onPrimary: Colors.green,
-        //     elevation: 0,
-        //     shape: RoundedRectangleBorder(
-        //       borderRadius: BorderRadius.circular(15),
-        //     ),
-        //   ),
-        //   onPressed: () {
-        //     print("onPressed");
-        //   },
-        // ),
-        child: Text("活動を探す"),
+        child: ElevatedButton.icon(
+          icon: Icon(Icons.search),
+          label: Text(
+            '活動を探す',
+            style: TextStyle(
+              color: Colors.black,
+            ),
+          ),
+          style: ElevatedButton.styleFrom(
+            animationDuration: Duration(seconds: 10),
+            primary: Colors.white,
+            onPrimary: Colors.green,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+          ),
+          onPressed: () {
+            print("onPressed");
+          },
+        ),
+        // child: Text("活動を探す"),
       ),
 
       flexibleSpace: Stack(
         children: [
           Positioned(
-              // child: FlexibleSpaceBar(
-              //   collapseMode: CollapseMode.parallax,
-              //   background: Image(
-              //     fit: BoxFit.cover,
-              //     image: AssetImage("images/sport.jpg"),
-              //   ),
-              // ),
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: CustomColor.linearGradient(1),
+              child: FlexibleSpaceBar(
+                collapseMode: CollapseMode.parallax,
+                // background: Image(
+                //   fit: BoxFit.cover,
+                //   image: AssetImage("images/sport.jpg"),
+                // ),
+                background: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        // const Color(0xFFF7797D),
+                        // const Color(0xFFC471ED),
+                        // const Color(0xFF12C2E9),
+                        // const Color(0xFF8e9eab),
+                        // const Color(0xFFeef2f3),
+                        const Color(0xFF005AA7),
+                        const Color(0xFFFFFDE4),
+                        // const Color(0xFFc471ed),
+                        inhouseThemeColor.backgroundColor,
+                      ],
+                      // begin: Alignment.topLeft,
+                      // end: Alignment.bottomRight,
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                  ),
                 ),
               ),
+              // child: Container(
+              //   decoration: BoxDecoration(
+              //     gradient: CustomColor.linearGradient(1),
+              //   ),
+              // ),
               top: 0,
               left: 0,
               right: 0,
@@ -65,32 +87,44 @@ class SliverAppBarEvent extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 2),
-                  child: Text(
-                    "Check Your Events！",
-                    maxLines: 3,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "Arial",
-                      height: 1.2,
-                      // shadows: [
-                      //   Shadow(
-                      //       color: Colors.green,
-                      //       offset: Offset.fromDirection(0.5, 4),
-                      //       blurRadius: 1.0)
-                      // ],
-                      fontSize: 36,
+                  child: ListTile(
+                    title: Text(
+                      "Eventに参加しよう",
+                      maxLines: 3,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Robot",
+                        height: 1.2,
+                        // shadows: [
+                        //   Shadow(
+                        //       color: Colors.white,
+                        //       offset: Offset.fromDirection(0.5, 4),
+                        //       blurRadius: 1.0)
+                        // ],
+                        fontSize: 36,
+                      ),
+                    ),
+                    subtitle: Text(
+                      "更なる高み、目指しちゃう？",
+                      maxLines: 3,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Robot",
+                        height: 1.2,
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
-            top: MediaQuery.of(context).size.width * 0.3,
+            top: MediaQuery.of(context).size.width * 0.45,
             left: MediaQuery.of(context).size.width * 0.05,
             right: MediaQuery.of(context).size.width * 0.05,
           ),
           // Positioned(
-          //   height: 10,
+          //   height: 50,
           //   child: Container(
           //     decoration: BoxDecoration(
           //       borderRadius: BorderRadius.only(
