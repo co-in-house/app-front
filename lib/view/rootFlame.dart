@@ -1,4 +1,5 @@
 import 'package:Inhouse/component/bottomBar/inhouseNavBar.dart';
+import 'package:Inhouse/component/floatingButton.dart';
 import 'package:Inhouse/component/lounge/miniChatContainer.dart';
 import 'package:Inhouse/model/lounge/roomState.dart';
 import 'package:Inhouse/model/lounge/tappedRoomInfoForModal.dart';
@@ -64,7 +65,7 @@ class RootFlame extends StatelessWidget {
             ? LoginPage()
             : Scaffold(
                 // drawer: CustomDrawer(context: context),
-                // floatingActionButton: CustomFloatingButton(),
+                floatingActionButton: CustomFloatingButton(),
                 bottomNavigationBar: InhouseNavBar(),
                 body: Stack(
                   children: [
