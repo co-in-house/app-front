@@ -457,8 +457,10 @@ class EventCardContainer extends StatelessWidget {
                       maxMemberOfMember: 20,
                     ),
                     margin: EdgeInsets.zero,
-                    padding: EdgeInsets.symmetric(
-                        vertical: 10, horizontal: Const.borderRadius),
+                    padding: EdgeInsets.only(
+                      left: Const.borderRadius,
+                      right: Const.borderRadius,
+                    ),
                   ),
                   left: 0,
                   right: 0,
