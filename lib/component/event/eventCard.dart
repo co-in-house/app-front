@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:Inhouse/component/event/dateOvalContainer.dart';
 import 'package:Inhouse/component/icon/communityIconContainer.dart';
 import 'package:Inhouse/component/icon/iconContainer.dart';
 import 'package:Inhouse/component/icon/iconOverlayContainer.dart';
@@ -408,6 +409,17 @@ class EventCardContainer extends StatelessWidget {
                   left: 0,
                   right: 0,
                   bottom: 0),
+              // dateOvalContainer
+              Positioned(
+                child: EventDateOvalContainer(
+                  size: (cardSize - cardMarginVertical) * 0.25,
+                  date: "2 4",
+                  dayOfWeek: "WED",
+                ),
+                top: 0,
+                left: 0,
+              ),
+
               // bottom line
               //// blur
               Positioned(
@@ -418,8 +430,8 @@ class EventCardContainer extends StatelessWidget {
                     bottomRight: Radius.circular(Const.borderRadius),
                   ),
                   child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                    child: Container(color: Colors.white.withOpacity(0.5)),
+                    filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                    child: Container(color: Colors.white.withOpacity(0.7)),
                   ),
                 ),
                 left: 0,
@@ -451,6 +463,32 @@ class EventCardContainer extends StatelessWidget {
                   left: 0,
                   right: 0,
                   bottom: 0),
+              // joined Container
+              // Positioned(
+              //   child: Container(
+              //     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+              //     transform: Matrix4.rotationZ(-0.20),
+              //     decoration: BoxDecoration(
+              //       color: Colors.green.withOpacity(0.8),
+              //       // borderRadius: BorderRadius.all(
+              //       //   Radius.circular(Const.borderRadius),
+              //       // ),
+              //       border: Border.all(
+              //         color: Colors.white,
+              //         width: 2,
+              //       ),
+              //     ),
+              //     child: Text(
+              //       "I PLAN TO JOIN",
+              //       style: TextStyle(
+              //         color: Colors.white,
+              //         fontSize: 32,
+              //       ),
+              //     ),
+              //   ),
+              //   top: cardSize / 2.5,
+              //   left: cardSize / 10,
+              // ),
             ],
           ),
         ),
@@ -496,81 +534,47 @@ class _EventBottomContentsContainer extends StatelessWidget {
         ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
+              margin: EdgeInsets.only(right: 10),
+              child: CommunityIconContainer(
+                size: 45,
+                url:
+                    "https://pbs.twimg.com/media/DptRhNTUcAAILew?format=jpg&name=large",
+              ),
+            ),
+            Expanded(
               child: Column(
-                children: <Widget>[
-                  Icon(Icons.group),
-                  Text(
-                    this.communityName,
-                    maxLines: 2,
-                    style: TextStyle(
-                      color: Colors.grey[700],
-                      fontWeight: FontWeight.normal,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    child: Text(
+                      "軽音楽同好会",
+                      style: TextStyle(
+                        color: Colors.grey[700],
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    child: Text(
+                      "オンライン | 12:00-19:00 | 12人",
+                      style: TextStyle(
+                        color: Colors.grey[700],
+                        fontWeight: FontWeight.normal,
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             Container(
-              child: Column(
-                children: <Widget>[
-                  Icon(Icons.calendar_today),
-                  Text(
-                    this.date,
-                    style: TextStyle(
-                      color: Colors.grey[700],
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  Icon(Icons.person),
-                  Text(
-                    this.totalMemberOfMember.toString() +
-                        "/" +
-                        this.maxMemberOfMember.toString(),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.grey[700],
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              child: ElevatedButton.icon(
-                icon: Icon(
-                  Icons.add,
-                  color: Colors.white,
-                ),
-                label: Text(
-                  '参加する',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  animationDuration: Duration(seconds: 10),
-                  primary: Colors.grey,
-                  onPrimary: Colors.green,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-                onPressed: () {
-                  print("onPressed");
-                },
-              ),
-            ),
+                child: Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.grey[700],
+            )),
           ],
         ),
       ],

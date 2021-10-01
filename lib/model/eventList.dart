@@ -35,7 +35,7 @@ class OneCardOnEventList {
   String eventDayOfWeek = "Sat";
   String eventYear = "2021";
 
-  String eventTitle = "「おそ松さん」スペシャルイベント";
+  String eventTitle = "おそ松さんスペシャルイベント";
   String eventDescription = "ここでしか見ることの出来ないシリーズ構成：松原秀による書きおろし新作朗読劇もお楽しみに！";
 
   int eventAmountOfMember = 12345;

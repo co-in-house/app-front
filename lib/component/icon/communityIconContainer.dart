@@ -1,4 +1,3 @@
-import 'package:Inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 
 class CommunityIconContainer extends StatelessWidget {
@@ -25,15 +24,6 @@ class CommunityIconContainer extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-        // border: GradientBorder.uniform(
-        //     width: 1.0,
-        //     gradient: LinearGradient(
-        //       colors: <Color>[
-        //         Colors.yellow.shade600,
-        //         Colors.orange,
-        //         Colors.red
-        //       ],
-        //     )),
       ),
     );
   }
