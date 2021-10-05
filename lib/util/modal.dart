@@ -1,3 +1,5 @@
+import 'package:Inhouse/util/util.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // room modal
@@ -30,5 +32,111 @@ Future roomModal({BuildContext context, Widget content, double circular = 20}) {
       );
     },
   );
+  return result;
+}
+
+// room modal
+Future eventJoinConfirmModal(BuildContext context) {
+  Future result = showDialog(
+    context: context,
+    builder: (context) {
+      return Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Const.borderRadius),
+        ),
+        elevation: 10,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 10,
+          ),
+          child: Container(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // title
+                Container(
+                  child: Text(
+                    "Eventに参加する",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "Robot",
+                      height: 1.2,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+                // content
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                  child: Text(
+                    "イベント主催者に参加通知が届きます。",
+                    style: TextStyle(
+                      color: Colors.grey,
+                      // fontWeight: FontWeight.bold,
+                      fontFamily: "Robot",
+                      height: 1.2,
+                      // fontSize: 28,
+                    ),
+                  ),
+                ),
+                // Container(
+                //   margin: EdgeInsets.only(bottom: 10),
+                //   child: Text(
+                //     "カレンダー同期していた場合、あなたのカレンダーにこの予定が追加されます。",
+                //     style: TextStyle(
+                //       color: Colors.grey,
+                //       // fontWeight: FontWeight.bold,
+                //       fontFamily: "Robot",
+                //       height: 1.2,
+                //       // fontSize: 28,
+                //     ),
+                //   ),
+                // ),
+                // action
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Flexible(
+                      flex: 1,
+                      child: Container(
+                        width: double.infinity,
+                        margin: EdgeInsets.symmetric(horizontal: 4),
+                        child: ElevatedButton(
+                          onPressed: () => Navigator.pop(context, false),
+                          child: Text("CANCEL"),
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.grey,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: Container(
+                        width: double.infinity,
+                        margin: EdgeInsets.symmetric(horizontal: 4),
+                        child: ElevatedButton(
+                          onPressed: () => Navigator.pop(context, true),
+                          child: Text("OK"),
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.green[400],
+                            // elevation: 30,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  );
+
   return result;
 }
