@@ -7,8 +7,8 @@ import 'package:Inhouse/component/icon/iconContainer.dart';
 import 'package:Inhouse/component/icon/iconOverlayContainer.dart';
 import 'package:Inhouse/model/eventList.dart';
 import 'package:Inhouse/util/format.dart';
-import 'package:Inhouse/util/modal.dart';
 import 'package:Inhouse/util/util.dart';
+import 'package:Inhouse/view/event/eventDetailPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -34,7 +34,15 @@ class EventCardContainer extends StatelessWidget {
       ),
       elevation: 3.0,
       child: InkWell(
-        onTap: () => eventModal(context),
+        // onTap: () => eventModal(context),
+        onTap: () => {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => EventDetailPage(eventInfo: this.content),
+            ),
+          ),
+        },
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
           width: cardSize - cardMarginVertical,
@@ -45,14 +53,17 @@ class EventCardContainer extends StatelessWidget {
             children: [
               // card background image
               Positioned(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius:
-                          BorderRadius.all(Radius.circular(Const.borderRadius)),
-                      image: DecorationImage(
-                        image: NetworkImage(content.img),
-                        fit: BoxFit.cover,
-                        alignment: Alignment.center,
+                  child: Hero(
+                    tag: '_eventHeroNo' + this.content.id.toString(),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(Const.borderRadius)),
+                        image: DecorationImage(
+                          image: NetworkImage(content.img),
+                          fit: BoxFit.cover,
+                          alignment: Alignment.center,
+                        ),
                       ),
                     ),
                   ),
@@ -116,32 +127,6 @@ class EventCardContainer extends StatelessWidget {
                   left: 0,
                   right: 0,
                   bottom: 0),
-              // joined Container
-              // Positioned(
-              //   child: Container(
-              //     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-              //     transform: Matrix4.rotationZ(-0.20),
-              //     decoration: BoxDecoration(
-              //       color: Colors.green.withOpacity(0.8),
-              //       // borderRadius: BorderRadius.all(
-              //       //   Radius.circular(Const.borderRadius),
-              //       // ),
-              //       border: Border.all(
-              //         color: Colors.white,
-              //         width: 2,
-              //       ),
-              //     ),
-              //     child: Text(
-              //       "I PLAN TO JOIN",
-              //       style: TextStyle(
-              //         color: Colors.white,
-              //         fontSize: 32,
-              //       ),
-              //     ),
-              //   ),
-              //   top: cardSize / 2.5,
-              //   left: cardSize / 10,
-              // ),
             ],
           ),
         ),

@@ -19,6 +19,7 @@ class EventList extends BaseModel {
       for (int j = 0; j < _row.length; j++) {
         var content = OneCardOnEventList(
           img: _row[j]['img'],
+          id: (i + 1) * 100 + (j + 1) * 3,
         );
         rowContents.add(content);
       }
@@ -29,7 +30,8 @@ class EventList extends BaseModel {
 }
 
 class OneCardOnEventList {
-  OneCardOnEventList({this.img});
+  OneCardOnEventList({this.img, this.id});
+  int id;
   String img;
   String eventDate = "12/25";
   String eventDayOfWeek = "Sat";

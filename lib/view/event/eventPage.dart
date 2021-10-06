@@ -27,9 +27,9 @@ class EventPage extends StatelessWidget {
             SameMonthEventContainer(
                 label: "November 2021",
                 eventList: context.select((EventList eventList) => eventList)),
-            SameMonthEventContainer(
-                label: "October 2021",
-                eventList: context.select((EventList eventList) => eventList)),
+            // SameMonthEventContainer(
+            //     label: "October 2021",
+            //     eventList: context.select((EventList eventList) => eventList)),
           ],
         ),
       ),

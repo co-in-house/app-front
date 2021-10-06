@@ -45,10 +45,10 @@ class _EventJoinButtonContainer extends State<EventJoinButtonContainer> {
             ? const Duration(milliseconds: 500)
             : const Duration(milliseconds: 0),
         height: _height,
-        width: _isJoin ? 45 : 45 * 1.75,
+        width: _isJoin ? 45 : 45 * 1.8,
         padding: _padding,
         decoration: BoxDecoration(
-          color: _isJoin ? Colors.green[400] : Colors.grey,
+          color: _isJoin ? Colors.grey : Colors.green[400],
           borderRadius: _borderRadius,
         ),
         child: AnimatedSwitcher(
@@ -60,14 +60,22 @@ class _EventJoinButtonContainer extends State<EventJoinButtonContainer> {
           child: _isJoin
               ? Icon(
                   Icons.event_available,
-                  color: Colors.white,
+                  color: Colors.black,
                 )
               : Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(Icons.event),
-                    Text("Join"),
+                    Icon(
+                      Icons.event,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      "Join",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
                   ],
                 ),
         ),
