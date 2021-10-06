@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:Inhouse/component/event/dateOvalContainer.dart';
+import 'package:Inhouse/component/event/eventJoinButtonContainer.dart';
 import 'package:Inhouse/component/icon/communityIconContainer.dart';
 import 'package:Inhouse/component/icon/iconContainer.dart';
 import 'package:Inhouse/component/icon/iconOverlayContainer.dart';
@@ -395,40 +396,7 @@ class _EventBottomContentsContainer extends StatelessWidget {
                 ],
               ),
             ),
-            InkWell(
-              onTap: () async {
-                bool _joinConfirm = await eventJoinConfirmModal(context);
-                print("参加する : " + _joinConfirm.toString());
-              },
-              child: Container(
-                height: 45,
-                padding: EdgeInsets.symmetric(horizontal: 12),
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(Icons.event),
-                    Text("Join"),
-                  ],
-                ),
-              ),
-            ),
-            // Container(
-            //   height: 45,
-            //   padding: EdgeInsets.symmetric(horizontal: 12),
-            //   decoration: BoxDecoration(
-            //     color: Colors.green[400],
-            //     borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            //   ),
-            //   child: Icon(
-            //     Icons.event_available,
-            //     color: Colors.white,
-            //   ),
-            // ),
+            EventJoinButtonContainer(),
           ],
         ),
       ],
