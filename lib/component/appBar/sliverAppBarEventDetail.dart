@@ -1,18 +1,19 @@
 import 'package:Inhouse/model/eventList.dart';
-import 'package:Inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:flutter/rendering.dart';
+
 // SliverAppBar for Event Detail Hero Image
-class SliverAppBarEventDetail extends StatelessWidget {
-  SliverAppBarEventDetail({
+class SliverAppBarEventDetailTmp extends StatelessWidget {
+  SliverAppBarEventDetailTmp({
     @required this.eventInfo,
   }) : super();
   final OneCardOnEventList eventInfo;
   @override
   Widget build(BuildContext context) {
     return SliverPersistentHeader(
-      delegate: _SliverAppBarEventDetail(
+      delegate: _SliverAppBarEventDetailTmp(
         toolBarHeight: kToolbarHeight,
         openHeight: MediaQuery.of(context).size.width,
         closedHeight: MediaQuery.of(context).padding.top,
@@ -24,13 +25,13 @@ class SliverAppBarEventDetail extends StatelessWidget {
   }
 }
 
-class _SliverAppBarEventDetail extends SliverPersistentHeaderDelegate {
+class _SliverAppBarEventDetailTmp extends SliverPersistentHeaderDelegate {
   double toolBarHeight;
   double closedHeight;
   double openHeight;
   OneCardOnEventList eventInfo;
 
-  _SliverAppBarEventDetail({
+  _SliverAppBarEventDetailTmp({
     this.toolBarHeight,
     this.closedHeight,
     this.openHeight,
@@ -177,4 +178,87 @@ class _SliverAppBarEventDetail extends SliverPersistentHeaderDelegate {
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) => true;
+}
+
+class SliverAppBarEventDetail2 {
+  Widget build(BuildContext context, ScrollController scrollController) {
+    MediaQueryData screenInfo = MediaQuery.of(context);
+    return PreferredSize(
+      preferredSize: Size(screenInfo.size.width, kToolbarHeight),
+      child: Container(
+        height: kToolbarHeight + screenInfo.padding.top,
+        color: Colors.transparent,
+        padding: EdgeInsets.only(top: screenInfo.padding.top),
+        child: _AppBarContentRow(scrollController: scrollController),
+      ),
+    );
+  }
+}
+
+class _AppBarContentRow extends StatefulWidget {
+  const _AppBarContentRow({Key key, this.scrollController}) : super(key: key);
+  final ScrollController scrollController;
+
+  @override
+  State<StatefulWidget> createState() => _AppBarContentState();
+}
+
+class _AppBarContentState extends State<_AppBarContentRow> {
+  bool isOpen;
+
+  @override
+  void initState() {
+    setState(() {
+      isOpen = true;
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    widget.scrollController.addListener(() {
+      setState(() {
+        isOpen = widget.scrollController.position.userScrollDirection ==
+            ScrollDirection.forward;
+      });
+    });
+
+    return Container(
+      child: isOpen
+          ? Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.arrow_back, color: Colors.white),
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0.0,
+                      shape: CircleBorder(),
+                      primary: Colors.green[400],
+                      onPrimary: Colors.green,
+                    ),
+                  ),
+                ),
+                Container(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      print("pressed edit event");
+                    },
+                    child: Icon(Icons.edit, color: Colors.white),
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0.0,
+                      shape: CircleBorder(),
+                      primary: Colors.green[400],
+                      onPrimary: Colors.green,
+                    ),
+                  ),
+                ),
+              ],
+            )
+          : Container(),
+    );
+  }
 }

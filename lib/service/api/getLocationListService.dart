@@ -15,20 +15,21 @@ class GetLocationListService extends StateNotifier<LocationList> {
       isLoading: true,
     );
 
-    final response =
-        await http.get(Uri.https('app-service.mybluemix.net', 'v1/location'));
+    // final response =
+    //     await http.get(Uri.https('app-service.mybluemix.net', 'v1/location'));
 
     // テスト用
-    // await new Future.delayed(new Duration(seconds: 1));
-    // final response = _MockResponse();
+    await new Future.delayed(new Duration(seconds: 1));
+    final response = _MockResponse();
 
     if (response.statusCode == 200) {
       print("GetLocationListService Response: 200");
       LocationList locationList = LocationList.fromJson(
         jsonDecode(
-          utf8.decode(
-            response.body.runes.toList(),
-          ),
+          // utf8.decode(
+          //   response.body.runes.toList(),
+          // ),
+          response.body,
         ),
       );
       state = locationList;

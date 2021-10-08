@@ -15,28 +15,29 @@ class GetCommunityListService extends StateNotifier<CommunityList> {
       isLoading: true,
     );
     // // テスト用
-    // await new Future.delayed(new Duration(seconds: 1));
-    // final response = _MockResponse();
+    await new Future.delayed(new Duration(seconds: 1));
+    final response = _MockResponse();
 
-    final response = await http.get(
-      Uri.https(
-        'app-service.mybluemix.net',
-        'v1/community/list',
-        {
-          "keyword": keyword,
-        },
-      ),
-      headers: {},
-    );
+    // final response = await http.get(
+    //   Uri.https(
+    //     'app-service.mybluemix.net',
+    //     'v1/community/list',
+    //     {
+    //       "keyword": keyword,
+    //     },
+    //   ),
+    //   headers: {},
+    // );
 
     if (response.statusCode == 200) {
       print("GetCommunityListService Response: 200");
 
       CommunityList eventList = CommunityList.fromJson(
         jsonDecode(
-          utf8.decode(
-            response.body.runes.toList(),
-          ),
+          // utf8.decode(
+          //   response.body.runes.toList(),
+          // ),
+          response.body,
         ),
       );
 
