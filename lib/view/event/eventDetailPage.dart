@@ -1,4 +1,4 @@
-import 'package:Inhouse/component/appBar/sliverAppBarEventDetail.dart';
+import 'package:Inhouse/component/appBar/inhouseAppBar.dart';
 import 'package:Inhouse/component/event/joinFloatingButtonContainer.dart';
 import 'package:Inhouse/model/eventList.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +9,10 @@ class EventDetailPage extends StatelessWidget {
   final ScrollController scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
+    // var _bottom = SliverAppBarEventDetail2.build(context, scrollController);
+
     return Scaffold(
-      appBar: SliverAppBarEventDetail2().build(context, scrollController),
+      appBar: InhouseAppBar.build(context),
       floatingActionButton: JoinFloatingButton(),
       extendBodyBehindAppBar: true,
       body: CustomScrollView(
