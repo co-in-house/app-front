@@ -1,5 +1,5 @@
-import 'package:Inhouse/component/event/eventCardRow.dart';
-import 'package:Inhouse/model/eventList.dart';
+import 'package:Inhouse/component/event/browse/eventCardRow.dart';
+import 'package:Inhouse/model/event/eventList.dart';
 import 'package:flutter/material.dart';
 
 class EventCardRowList extends SliverChildListDelegate {

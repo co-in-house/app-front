@@ -1,5 +1,5 @@
 import 'package:Inhouse/model/communityList.dart';
-import 'package:Inhouse/model/eventList.dart';
+import 'package:Inhouse/model/event/eventList.dart';
 import 'package:Inhouse/model/locationList.dart';
 import 'package:Inhouse/model/lounge/roomState.dart';
 import 'package:Inhouse/model/postList.dart';

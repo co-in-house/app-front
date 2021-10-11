@@ -1,6 +1,6 @@
 import 'package:Inhouse/component/appBar/sliverAppBarEvent.dart';
-import 'package:Inhouse/component/event/eventCardRowList.dart';
-import 'package:Inhouse/model/eventList.dart';
+import 'package:Inhouse/component/event/browse/eventCardRowList.dart';
+import 'package:Inhouse/model/event/eventList.dart';
 import 'package:Inhouse/service/api/getEventListService.dart';
 import 'package:Inhouse/util/theme.dart';
 import 'package:Inhouse/util/util.dart';
@@ -62,10 +62,7 @@ class SameMonthEventContainer extends StatelessWidget {
           ),
         ),
       ),
-      // sliver: SliverFixedExtentList(
       sliver: SliverList(
-        // itemExtent: MediaQuery.of(context).size.width *
-        //     Const.eventCardWidthSizePercentage,
         delegate: EventCardRowList(this.eventList),
       ),
     );

@@ -1,8 +1,32 @@
+import 'package:Inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 
 class InhouseAppBar {
-  static Widget build(BuildContext context) {
+  static Widget build(BuildContext context, List<Widget> actions) {
     MediaQueryData screenInfo = MediaQuery.of(context);
+
+    List<Widget> children = [
+      SizedBox(
+        height: Const.headerButtonContainerHeight,
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back, color: Colors.white),
+          style: ElevatedButton.styleFrom(
+            elevation: 0.0,
+            shape: CircleBorder(),
+            primary: Colors.green[400],
+            onPrimary: Colors.green,
+          ),
+        ),
+      ),
+    ];
+
+    if (actions != null && actions.length > 0) {
+      children.addAll(actions);
+    }
+
     return PreferredSize(
       preferredSize: Size(screenInfo.size.width, kToolbarHeight),
       child: Container(
@@ -11,38 +35,7 @@ class InhouseAppBar {
         padding: EdgeInsets.only(top: screenInfo.padding.top),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SizedBox(
-              height: kToolbarHeight * 0.8,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(Icons.arrow_back, color: Colors.white),
-                style: ElevatedButton.styleFrom(
-                  elevation: 0.0,
-                  shape: CircleBorder(),
-                  primary: Colors.green[400],
-                  onPrimary: Colors.green,
-                ),
-              ),
-            ),
-            Container(
-              height: kToolbarHeight * 0.8,
-              child: ElevatedButton(
-                onPressed: () {
-                  print("pressed edit event");
-                },
-                child: Icon(Icons.edit, color: Colors.white),
-                style: ElevatedButton.styleFrom(
-                  elevation: 0.0,
-                  shape: CircleBorder(),
-                  primary: Colors.green[400],
-                  onPrimary: Colors.green,
-                ),
-              ),
-            ),
-          ],
+          children: children,
         ),
       ),
     );

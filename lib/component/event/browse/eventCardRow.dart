@@ -1,4 +1,4 @@
-import 'package:Inhouse/component/event/eventCard.dart';
+import 'package:Inhouse/component/event/browse/oneCard/eventCard.dart';
 import 'package:Inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 

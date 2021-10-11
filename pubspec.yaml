@@ -42,6 +42,7 @@ dependencies:
   drag_down_to_pop: ^1.0.0
   flutter_slidable: ^0.6.0
   flutter_sticky_header:
+  flutter_hooks: ^0.18.0
   flutter:
     sdk: flutter
 

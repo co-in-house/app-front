@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:Inhouse/model/eventList.dart';
+import 'package:Inhouse/model/event/eventList.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // イベントTL Service class

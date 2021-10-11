@@ -26,6 +26,9 @@ class Const {
   static final double footerHeight = 75;
   static final double roomTypeIconSize = 80;
 
+  // size header button container height
+  static final double headerButtonContainerHeight = kToolbarHeight * 0.8;
+
   // borderRadius
   static final double borderRadius = 16.0;
   // label
