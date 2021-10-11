@@ -1,3 +1,4 @@
+import 'package:Inhouse/util/inhouseWidget.dart';
 import 'package:Inhouse/util/util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -218,5 +219,48 @@ Future eventCancelConfirmModal(BuildContext context) {
     },
   );
 
+  return result;
+}
+
+// event attendee  modal
+Future attendeeModal(
+    {BuildContext context, Widget content, double circular = 20}) {
+  print("object!!");
+  Future result = showModalBottomSheet(
+    //モーダルの背景の色、透過
+    backgroundColor: Colors.transparent,
+    //ドラッグ可能にする（高さもハーフサイズからフルサイズになる様子）
+    isScrollControlled: true,
+    context: context,
+    builder: (BuildContext context) {
+      return Container(
+        // height: MediaQuery.of(context).size.height - kToolbarHeight,
+        height: MediaQuery.of(context).size.height / 2,
+        padding: EdgeInsets.symmetric(
+          vertical: circular,
+          //  horizontal: MediaQuery.of(context).size.width * 0.05, //横スクロールがあるから余白なし。
+        ),
+        margin: EdgeInsets.only(top: 1),
+        decoration: BoxDecoration(
+          //モーダル自体の色
+          color: Colors.white,
+          //角丸にする
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(circular),
+            topRight: Radius.circular(circular),
+          ),
+        ),
+        child: Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              InhouseWidget.toggleContainer(),
+              content,
+            ],
+          ),
+        ),
+      );
+    },
+  );
   return result;
 }
