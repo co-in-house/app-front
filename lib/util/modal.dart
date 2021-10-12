@@ -1,3 +1,4 @@
+import 'package:Inhouse/component/event/detail/AttendeeModalGridViewContainer.dart';
 import 'package:Inhouse/util/inhouseWidget.dart';
 import 'package:Inhouse/util/util.dart';
 import 'package:flutter/cupertino.dart';
@@ -224,8 +225,10 @@ Future eventCancelConfirmModal(BuildContext context) {
 
 // event attendee  modal
 Future attendeeModal(
-    {BuildContext context, Widget content, double circular = 20}) {
-  print("object!!");
+    {BuildContext context, List<Widget> userInfoList, double circular = 20}) {
+  final Size _screenSize = MediaQuery.of(context).size;
+  final Color _descriptionColor = Colors.grey;
+  final double _horizontalPadding = _screenSize.width * 0.05;
   Future result = showModalBottomSheet(
     //モーダルの背景の色、透過
     backgroundColor: Colors.transparent,
@@ -233,31 +236,63 @@ Future attendeeModal(
     isScrollControlled: true,
     context: context,
     builder: (BuildContext context) {
-      return Container(
-        // height: MediaQuery.of(context).size.height - kToolbarHeight,
-        height: MediaQuery.of(context).size.height / 2,
-        padding: EdgeInsets.symmetric(
-          vertical: circular,
-          //  horizontal: MediaQuery.of(context).size.width * 0.05, //横スクロールがあるから余白なし。
-        ),
-        margin: EdgeInsets.only(top: 1),
-        decoration: BoxDecoration(
-          //モーダル自体の色
-          color: Colors.white,
-          //角丸にする
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(circular),
-            topRight: Radius.circular(circular),
-          ),
-        ),
-        child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              InhouseWidget.toggleContainer(),
-              content,
-            ],
-          ),
+      return SizedBox.expand(
+        child: DraggableScrollableSheet(
+          initialChildSize: 0.5,
+          minChildSize: 0.5,
+          maxChildSize: 0.8,
+          expand: false,
+          builder: (BuildContext context, ScrollController scrollController) {
+            return Container(
+              padding: EdgeInsets.symmetric(
+                vertical: circular,
+                horizontal: _horizontalPadding,
+              ),
+              decoration: BoxDecoration(
+                //モーダル自体の色
+                color: Colors.white,
+                //角丸にする
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(circular),
+                  topRight: Radius.circular(circular),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  InhouseWidget.toggleContainer(),
+                  Container(
+                    child: Text(
+                      "Member",
+                      style: TextStyle(fontSize: 32),
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.people,
+                          color: _descriptionColor,
+                        ),
+                        Text(
+                          "123人参加予定",
+                          style: TextStyle(
+                            color: _descriptionColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  AttendeeModalGridViewContainer(
+                    scrollController: scrollController,
+                    size: _screenSize.width - _horizontalPadding * 2,
+                  ),
+                ],
+              ),
+            );
+          },
         ),
       );
     },
