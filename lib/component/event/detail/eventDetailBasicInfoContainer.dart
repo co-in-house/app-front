@@ -1,5 +1,4 @@
 import 'package:Inhouse/component/icon/iconOverlayContainer.dart';
-import 'package:Inhouse/util/modal.dart';
 import 'package:flutter/material.dart';
 
 class EventDetailBasicInfoContainer extends StatelessWidget {
@@ -74,6 +73,31 @@ class EventDetailBasicInfoContainer extends StatelessWidget {
               ],
             ),
           ),
+          // location
+          Container(
+            alignment: Alignment.centerLeft,
+            height: height,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: Row(
+                    children: [
+                      Container(
+                          child: Icon(Icons.location_on,
+                              color: descriptionFontColor)),
+                      Container(
+                        child: Text("東京都千代田区紀尾井町7-1",
+                            style: TextStyle(color: Colors.green[400])),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
           // Number of participants
           Container(
             alignment: Alignment.centerLeft,
@@ -100,31 +124,6 @@ class EventDetailBasicInfoContainer extends StatelessWidget {
                   flex: 1,
                   child: IconOverLayContainer(
                     size: height,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          // location
-          Container(
-            alignment: Alignment.centerLeft,
-            height: height,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Flexible(
-                  flex: 1,
-                  child: Row(
-                    children: [
-                      Container(
-                          child: Icon(Icons.location_on,
-                              color: descriptionFontColor)),
-                      Container(
-                        child: Text("東京都千代田区紀尾井町7-1",
-                            style: TextStyle(color: Colors.green[400])),
-                      ),
-                    ],
                   ),
                 ),
               ],
