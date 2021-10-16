@@ -9,7 +9,6 @@ class AttendeeIconContainer extends StatelessWidget {
   }) : super(key: key);
   final String url;
   final double size;
-  final double _horizontalMargin = 10.0;
 
   @override
   Widget build(BuildContext context) {

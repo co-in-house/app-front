@@ -1,4 +1,3 @@
-import 'package:Inhouse/component/event/browse/oneCard/eventJoinButtonContainer.dart';
 import 'package:Inhouse/component/icon/communityIconContainer.dart';
 import 'package:flutter/material.dart';
 
@@ -75,7 +74,12 @@ class EventCardBottomContainer extends StatelessWidget {
                 ],
               ),
             ),
-            EventJoinButtonContainer(),
+            // EventJoinButtonContainer(),
+            Container(
+                child: Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.grey[700],
+            )),
           ],
         ),
       ],

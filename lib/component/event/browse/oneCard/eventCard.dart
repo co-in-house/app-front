@@ -2,12 +2,16 @@ import 'dart:ui';
 
 import 'package:Inhouse/component/event/browse/dateOvalContainer.dart';
 import 'package:Inhouse/component/event/browse/oneCard/eventCardBottomContainer.dart';
+import 'package:Inhouse/model/event/attendee/attendees.dart';
 import 'package:Inhouse/model/event/eventList.dart';
+import 'package:Inhouse/service/api/event/getAttendeesService.dart';
 import 'package:Inhouse/util/util.dart';
 import 'package:Inhouse/view/event/eventDetailPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:provider/provider.dart';
 
 // event 1 card container
 class EventCardContainer extends HookWidget {
@@ -48,7 +52,14 @@ class EventCardContainer extends HookWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => EventDetailPage(eventInfo: this.content),
+                builder: (context) => MultiProvider(
+                  providers: [
+                    StateNotifierProvider<GetAttendeesService, Attendees>(
+                      create: (context) => GetAttendeesService(),
+                    ),
+                  ],
+                  child: EventDetailPage(eventInfo: this.content),
+                ),
               ),
             ),
           },

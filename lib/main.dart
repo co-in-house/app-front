@@ -6,7 +6,7 @@ import 'package:Inhouse/model/postList.dart';
 import 'package:Inhouse/model/tagList.dart';
 import 'package:Inhouse/model/userState.dart';
 import 'package:Inhouse/service/api/getCommunityListService.dart';
-import 'package:Inhouse/service/api/getEventListService.dart';
+import 'package:Inhouse/service/api/event/getEventListService.dart';
 import 'package:Inhouse/service/api/getLocationListService.dart';
 import 'package:Inhouse/service/api/getPostListService.dart';
 import 'package:Inhouse/service/api/getTagListService.dart';

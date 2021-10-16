@@ -1,7 +1,7 @@
 import 'package:Inhouse/component/appBar/sliverAppBarEvent.dart';
 import 'package:Inhouse/component/event/browse/eventCardRowList.dart';
 import 'package:Inhouse/model/event/eventList.dart';
-import 'package:Inhouse/service/api/getEventListService.dart';
+import 'package:Inhouse/service/api/event/getEventListService.dart';
 import 'package:Inhouse/util/theme.dart';
 import 'package:Inhouse/util/util.dart';
 import 'package:flutter/cupertino.dart';
@@ -48,11 +48,10 @@ class SameMonthEventContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverStickyHeader(
       header: Container(
-        height: 60.0,
-        // color: inhouseThemeColor.primaryColor,
+        height: kToolbarHeight + MediaQuery.of(context).padding.top, // 60.0 ,
         color: inhouseThemeColor.backgroundColor,
         padding: EdgeInsets.symmetric(horizontal: 16.0),
-        alignment: Alignment.centerLeft,
+        alignment: Alignment.bottomLeft,
         child: Text(
           this.label,
           style: const TextStyle(

@@ -35,7 +35,7 @@ class DetailHeroImageContainer extends StatelessWidget {
             ),
             image: DecorationImage(
               image: NetworkImage(this.imgUrl),
-              fit: BoxFit.fitWidth,
+              fit: BoxFit.cover,
             ),
           ),
         ),

@@ -1,9 +1,11 @@
-import 'package:Inhouse/component/event/detail/AttendeeModalGridViewContainer.dart';
 import 'package:Inhouse/util/modal.dart';
 import 'package:flutter/material.dart';
 
 class IconOverLayContainer extends StatelessWidget {
-  const IconOverLayContainer({Key key, @required this.size}) : super(key: key);
+  const IconOverLayContainer({
+    Key key,
+    @required this.size,
+  }) : super(key: key);
   final double size;
 
   @override
@@ -11,7 +13,7 @@ class IconOverLayContainer extends StatelessWidget {
     final double _diffPos = size * 0.8;
     return InkWell(
       onTap: () async {
-        await attendeeModal(context: context, userInfoList: []);
+        await attendeeModal(context: context);
       },
       child: Container(
         height: size,

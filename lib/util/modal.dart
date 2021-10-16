@@ -1,8 +1,12 @@
 import 'package:Inhouse/component/event/detail/AttendeeModalGridViewContainer.dart';
+import 'package:Inhouse/model/event/attendee/attendees.dart';
+import 'package:Inhouse/service/api/event/getAttendeesService.dart';
 import 'package:Inhouse/util/inhouseWidget.dart';
 import 'package:Inhouse/util/util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:provider/provider.dart';
 
 // room modal
 Future roomModal({BuildContext context, Widget content, double circular = 20}) {
@@ -224,11 +228,12 @@ Future eventCancelConfirmModal(BuildContext context) {
 }
 
 // event attendee  modal
-Future attendeeModal(
-    {BuildContext context, List<Widget> userInfoList, double circular = 20}) {
+Future attendeeModal({BuildContext context, double circular = 20}) {
   final Size _screenSize = MediaQuery.of(context).size;
   final Color _descriptionColor = Colors.grey;
   final double _horizontalPadding = _screenSize.width * 0.05;
+  // final Attendees attendees =
+  //     context.select((Attendees attendees) => attendees);
   Future result = showModalBottomSheet(
     //モーダルの背景の色、透過
     backgroundColor: Colors.transparent,
@@ -285,6 +290,9 @@ Future attendeeModal(
                       ],
                     ),
                   ),
+                  // attendees.isLoading
+                  //     ? CircularProgressIndicator()
+                  // :
                   AttendeeModalGridViewContainer(
                     scrollController: scrollController,
                     size: _screenSize.width - _horizontalPadding * 2,

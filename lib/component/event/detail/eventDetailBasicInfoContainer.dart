@@ -1,14 +1,14 @@
-import 'package:Inhouse/component/icon/iconOverlayContainer.dart';
+import 'package:Inhouse/component/icon/communityIconContainer.dart';
 import 'package:flutter/material.dart';
 
 class EventDetailBasicInfoContainer extends StatelessWidget {
-  const EventDetailBasicInfoContainer(
-      {Key key,
-      @required this.height,
-      @required this.horizontalPadding,
-      @required this.verticalRowMargin,
-      @required this.descriptionFontColor})
-      : super(key: key);
+  const EventDetailBasicInfoContainer({
+    Key key,
+    @required this.height,
+    @required this.horizontalPadding,
+    @required this.verticalRowMargin,
+    @required this.descriptionFontColor,
+  }) : super(key: key);
   final double height;
   final double horizontalPadding;
   final double verticalRowMargin;
@@ -23,13 +23,6 @@ class EventDetailBasicInfoContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          // community name
-          Container(
-            alignment: Alignment.centerLeft,
-            height: height,
-            child: Text("上智大学軽音楽同好会",
-                style: TextStyle(color: descriptionFontColor)),
-          ),
           // date
           Container(
             alignment: Alignment.centerLeft,
@@ -99,35 +92,86 @@ class EventDetailBasicInfoContainer extends StatelessWidget {
             ),
           ),
           // Number of participants
+          // Container(
+          //   alignment: Alignment.centerLeft,
+          //   height: height,
+          //   child: Row(
+          //     crossAxisAlignment: CrossAxisAlignment.center,
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Flexible(
+          //         flex: 1,
+          //         child: Row(
+          //           children: [
+          //             Container(
+          //                 child:
+          //                     Icon(Icons.people, color: descriptionFontColor)),
+          //             Container(
+          //               child: Text("123人参加予定",
+          //                   style: TextStyle(color: descriptionFontColor)),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //       Flexible(
+          //         flex: 1,
+          //         child: IconOverLayContainer(
+          //           size: height,
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           Container(
-            alignment: Alignment.centerLeft,
-            height: height,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Flexible(
-                  flex: 1,
-                  child: Row(
-                    children: [
-                      Container(
-                          child:
-                              Icon(Icons.people, color: descriptionFontColor)),
-                      Container(
-                        child: Text("123人参加予定",
-                            style: TextStyle(color: descriptionFontColor)),
+            // height: height,
+            child: Divider(),
+          ),
+          // community info
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                margin: EdgeInsets.only(right: 10),
+                child: CommunityIconContainer(
+                  size: 45,
+                  url:
+                      "https://pbs.twimg.com/media/DptRhNTUcAAILew?format=jpg&name=large",
+                ),
+              ),
+              Container(
+                alignment: Alignment.centerLeft,
+                // height: height,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "上智大学軽音楽同好会",
+                      style: TextStyle(
+                        // color: descriptionFontColor,
+                        color: Colors.black,
                       ),
-                    ],
-                  ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.90 - 60,
+                      child: Text(
+                        "上智内で最強なバンドサークル。俺たちが最強たる所以は",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: descriptionFontColor,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                Flexible(
-                  flex: 1,
-                  child: IconOverLayContainer(
-                    size: height,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
+          ),
+          Container(
+            // height: height,
+            child: Divider(),
           ),
         ],
       ),

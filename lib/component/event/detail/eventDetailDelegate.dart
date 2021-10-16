@@ -1,26 +1,28 @@
 import 'package:Inhouse/component/common/detailHeroImageContainer.dart';
 import 'package:Inhouse/component/event/detail/eventDetailBasicInfoContainer.dart';
-import 'package:Inhouse/component/icon/iconOverlayContainer.dart';
 import 'package:Inhouse/mock/mock.dart';
 import 'package:Inhouse/model/event/eventList.dart';
 import 'package:Inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 
 class EventDetailDelegate extends SliverChildListDelegate {
-  EventDetailDelegate(BuildContext context, OneCardOnEventList eventInfo)
-      : super(_EventDetailRowList.build(context, eventInfo));
+  EventDetailDelegate(
+    BuildContext context,
+    OneCardOnEventList eventInfo,
+  ) : super(_EventDetailRowList.build(context, eventInfo));
   BuildContext context;
   OneCardOnEventList eventInfo;
 }
 
 class _EventDetailRowList {
+  static final Color _titleColor = Colors.black; // Color(0xFF64B06E);
+  static final Color _descriptionFontColor = Colors.grey;
   static List<Widget> build(
       BuildContext context, OneCardOnEventList eventInfo) {
     final double _horizontalPadding = MediaQuery.of(context).size.width *
-        (1 - Const.containerWidthPercentage) /
-        2;
+        (1 - Const.containerWidthPercentage);
     final double _verticalRowMargin = _horizontalPadding / 3;
-    final Color _descriptionFontColor = Colors.grey;
+
     List<Widget> list = [];
     list.add(
       DetailHeroImageContainer(
@@ -31,12 +33,16 @@ class _EventDetailRowList {
     // title
     list.add(
       Container(
+        margin: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.02),
         padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
         child: Text(
           eventInfo.eventTitle,
+          // "【緊急開催】おそまつさん、イベント！俺たちのシェラをとりモドセ！",
+          // "This is it. We are the world.",
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
+            color: _titleColor,
           ),
         ),
       ),
@@ -50,7 +56,7 @@ class _EventDetailRowList {
         descriptionFontColor: _descriptionFontColor,
       ),
     );
-
+    // description
     list.add(
       Container(
         padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),

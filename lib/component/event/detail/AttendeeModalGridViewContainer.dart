@@ -15,6 +15,7 @@ class AttendeeModalGridViewContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double oneSize = size / crossAxisCount;
+
     return Flexible(
       child: ListView(
         controller: scrollController,
@@ -67,60 +68,6 @@ class AttendeeModalGridViewContainer extends StatelessWidget {
           ),
         ],
       ),
-      // child: ListView.builder(
-      //   // shrinkWrap: true,
-      //   controller: scrollController,
-      //   itemCount: 25,
-      //   itemBuilder: (BuildContext context, int index) {
-      //     return Container(width: oneSize, height: oneSize, color: Colors.red);
-      //   },
-      // ),
     );
-    // return Column(
-    //   children: [
-    //     Row(
-    //       children: [
-    //         Container(width: oneSize, height: oneSize, color: Colors.red),
-    //         Container(width: oneSize, height: oneSize, color: Colors.green),
-    //         Container(width: oneSize, height: oneSize, color: Colors.blue),
-    //       ],
-    //     ),
-    //     Row(
-    //       children: [
-    //         Container(width: oneSize, height: oneSize, color: Colors.pink),
-    //         Container(width: oneSize, height: oneSize, color: Colors.yellow),
-    //         Container(width: oneSize, height: oneSize, color: Colors.grey),
-    //       ],
-    //     ),
-    //     Row(
-    //       children: [
-    //         Container(width: oneSize, height: oneSize, color: Colors.red),
-    //         Container(width: oneSize, height: oneSize, color: Colors.green),
-    //         Container(width: oneSize, height: oneSize, color: Colors.blue),
-    //       ],
-    //     ),
-    //     Row(
-    //       children: [
-    //         Container(width: oneSize, height: oneSize, color: Colors.pink),
-    //         Container(width: oneSize, height: oneSize, color: Colors.yellow),
-    //         Container(width: oneSize, height: oneSize, color: Colors.grey),
-    //       ],
-    //     ),
-    //     Row(
-    //       children: [
-    //         Container(width: oneSize, height: oneSize, color: Colors.red),
-    //         Container(width: oneSize, height: oneSize, color: Colors.green),
-    //         Container(width: oneSize, height: oneSize, color: Colors.blue),
-    //       ],
-    //     ),
-    //     Row(
-    //       children: [
-    //         Container(width: oneSize, height: oneSize, color: Colors.pink),
-    //         Container(width: oneSize, height: oneSize, color: Colors.yellow),
-    //         Container(width: oneSize, height: oneSize, color: Colors.grey),
-    //       ],
-    //     ),
-    //   ],
-    // );
   }
 }
