@@ -14,9 +14,10 @@ class DetailHeroImageContainer extends StatelessWidget {
       tag: this.heroTag,
       child: Card(
         elevation: 30.0,
+        shadowColor: Colors.black,
         margin: EdgeInsets.only(
           top: 0,
-          bottom: 30,
+          bottom: MediaQuery.of(context).size.width * 0.1,
           left: 0,
           right: 0,
         ),

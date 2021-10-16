@@ -16,6 +16,7 @@ class EventDetailBasicInfoContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double _iconRightMargin = 10.0;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
       margin: EdgeInsets.symmetric(vertical: verticalRowMargin),
@@ -36,6 +37,7 @@ class EventDetailBasicInfoContainer extends StatelessWidget {
                   child: Row(
                     children: [
                       Container(
+                          margin: EdgeInsets.only(right: _iconRightMargin),
                           child:
                               Icon(Icons.event, color: descriptionFontColor)),
                       Container(
@@ -50,6 +52,7 @@ class EventDetailBasicInfoContainer extends StatelessWidget {
                   child: Row(
                     children: [
                       Container(
+                          margin: EdgeInsets.only(right: _iconRightMargin),
                           child:
                               Icon(Icons.timer, color: descriptionFontColor)),
                       Container(
@@ -59,10 +62,10 @@ class EventDetailBasicInfoContainer extends StatelessWidget {
                     ],
                   ),
                 ),
-                Flexible(
-                  flex: 1,
-                  child: Container(),
-                ),
+                // Flexible(
+                //   flex: 1,
+                //   child: Container(),
+                // ),
               ],
             ),
           ),
@@ -79,6 +82,7 @@ class EventDetailBasicInfoContainer extends StatelessWidget {
                   child: Row(
                     children: [
                       Container(
+                          margin: EdgeInsets.only(right: _iconRightMargin),
                           child: Icon(Icons.location_on,
                               color: descriptionFontColor)),
                       Container(
