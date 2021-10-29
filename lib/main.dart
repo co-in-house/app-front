@@ -1,3 +1,4 @@
+import 'package:Inhouse/model/community/JoinedCommunity.dart';
 import 'package:Inhouse/model/communityList.dart';
 import 'package:Inhouse/model/event/eventList.dart';
 import 'package:Inhouse/model/locationList.dart';
@@ -5,6 +6,7 @@ import 'package:Inhouse/model/lounge/roomState.dart';
 import 'package:Inhouse/model/postList.dart';
 import 'package:Inhouse/model/tagList.dart';
 import 'package:Inhouse/model/userState.dart';
+import 'package:Inhouse/service/api/community/GetJoinedComService.dart';
 import 'package:Inhouse/service/api/getCommunityListService.dart';
 import 'package:Inhouse/service/api/event/getEventListService.dart';
 import 'package:Inhouse/service/api/getLocationListService.dart';
@@ -55,6 +57,10 @@ class MyApp extends StatelessWidget {
           ),
           StateNotifierProvider<GetCommunityListService, CommunityList>(
             create: (context) => GetCommunityListService(),
+          ),
+          StateNotifierProvider<GetJoinedCommunityListService,
+              JoinedCommunityList>(
+            create: (context) => GetJoinedCommunityListService(),
           ),
           //マスター取得
           StateNotifierProvider<GetTagListService, TagList>(

@@ -5,6 +5,7 @@ import 'package:Inhouse/model/lounge/roomState.dart';
 import 'package:Inhouse/model/lounge/tappedRoomInfoForModal.dart';
 import 'package:Inhouse/model/routingState.dart';
 import 'package:Inhouse/model/userState.dart';
+import 'package:Inhouse/service/api/community/GetJoinedComService.dart';
 import 'package:Inhouse/service/api/getCommunityListService.dart';
 import 'package:Inhouse/service/api/event/getEventListService.dart';
 import 'package:Inhouse/service/api/getLocationListService.dart';
@@ -57,6 +58,7 @@ class RootFlame extends StatelessWidget {
         context.read<GetCommunityListService>().call("");
         context.read<GetEventListService>().call();
         context.read<GetTagListService>().call();
+        context.read<GetJoinedCommunityListService>().call(userid: 1);
       },
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 500),
