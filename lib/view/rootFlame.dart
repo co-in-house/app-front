@@ -1,5 +1,6 @@
 import 'package:Inhouse/component/bottomBar/inhouseNavBar.dart';
-import 'package:Inhouse/component/floatingButton.dart';
+import 'package:Inhouse/component/floating/floatingButton.dart';
+import 'package:Inhouse/component/floating/newEventFB.dart';
 import 'package:Inhouse/component/lounge/miniChatContainer.dart';
 import 'package:Inhouse/model/lounge/roomState.dart';
 import 'package:Inhouse/model/routingState.dart';
@@ -36,6 +37,14 @@ class RootFlame extends StatelessWidget {
     UserMenuPage(),
   ];
 
+  final List<Widget> _fbList = <Widget>[
+    Container(),
+    NewEventFB(),
+    Container(),
+    Container(),
+    Container(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     init(context);
@@ -62,7 +71,9 @@ class RootFlame extends StatelessWidget {
             ? LoginPage()
             : Scaffold(
                 // drawer: CustomDrawer(context: context),
-                floatingActionButton: CustomFloatingButton(),
+                floatingActionButton: _fbList[context
+                    .select((RoutingState state) => state)
+                    .routingState], //CustomFloatingButton(),
                 bottomNavigationBar: InhouseNavBar(),
                 body: Stack(
                   children: [
