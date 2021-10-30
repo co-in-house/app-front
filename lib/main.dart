@@ -3,14 +3,12 @@ import 'package:Inhouse/model/communityList.dart';
 import 'package:Inhouse/model/event/eventList.dart';
 import 'package:Inhouse/model/locationList.dart';
 import 'package:Inhouse/model/lounge/roomState.dart';
-import 'package:Inhouse/model/postList.dart';
 import 'package:Inhouse/model/tagList.dart';
 import 'package:Inhouse/model/userState.dart';
 import 'package:Inhouse/service/api/community/GetJoinedComService.dart';
 import 'package:Inhouse/service/api/getCommunityListService.dart';
 import 'package:Inhouse/service/api/event/getEventListService.dart';
 import 'package:Inhouse/service/api/getLocationListService.dart';
-import 'package:Inhouse/service/api/getPostListService.dart';
 import 'package:Inhouse/service/api/getTagListService.dart';
 import 'package:Inhouse/service/changeColorMode.dart';
 import 'package:Inhouse/service/changePage.dart';
@@ -49,11 +47,8 @@ class MyApp extends StatelessWidget {
           StateNotifierProvider<UserService, UserState>(
             create: (context) => UserService(),
           ),
-          StateNotifierProvider<GetEventListService, EventList>(
+          StateNotifierProvider<GetEventListService, EventMatrix>(
             create: (context) => GetEventListService(),
-          ),
-          StateNotifierProvider<GetPostListService, PostList>(
-            create: (context) => GetPostListService(),
           ),
           StateNotifierProvider<GetCommunityListService, CommunityList>(
             create: (context) => GetCommunityListService(),

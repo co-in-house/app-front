@@ -2,20 +2,20 @@ import 'package:Inhouse/component/event/browse/eventCardRow.dart';
 import 'package:Inhouse/model/event/eventList.dart';
 import 'package:flutter/material.dart';
 
-class EventCardRowList extends SliverChildListDelegate {
-  EventCardRowList(EventList eventList)
-      : super(_EventList.buildEventList(eventList));
+class EventCardMatrix extends SliverChildListDelegate {
+  EventCardMatrix(EventMatrix eventMatrix)
+      : super(_EventList.buildEventList(eventMatrix));
 }
 
 class _EventList {
-  static List<Widget> buildEventList(EventList eventList) {
+  static List<Widget> buildEventList(EventMatrix eventMatrix) {
     print("buildEventList");
-    if (eventList.col == null || eventList.col.length == 0) {
+    if (eventMatrix.contents == null || eventMatrix.contents.length == 0) {
       return [Text("No Content")];
     } else {
       List<Widget> list = [];
-      for (int index = 0; index < eventList.col.length; index++) {
-        list.add(EventCardRow(row: eventList.col[index]));
+      for (int index = 0; index < eventMatrix.contents.length; index++) {
+        list.add(EventCardRow(row: eventMatrix.contents[index]));
       }
       return list;
     }

@@ -15,7 +15,6 @@ class EventCardRow extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
-          // return EventCard(content: row[index]);
           return EventCardContainer(content: row[index]);
         },
         itemCount: row.length,

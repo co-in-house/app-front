@@ -8,17 +8,16 @@ import 'package:flutter/material.dart';
 class EventDetailDelegate extends SliverChildListDelegate {
   EventDetailDelegate(
     BuildContext context,
-    OneCardOnEventList eventInfo,
+    OneEvent eventInfo,
   ) : super(_EventDetailRowList.build(context, eventInfo));
   BuildContext context;
-  OneCardOnEventList eventInfo;
+  OneEvent eventInfo;
 }
 
 class _EventDetailRowList {
   static final Color _titleColor = Colors.black; // Color(0xFF64B06E);
   static final Color _descriptionFontColor = Colors.grey;
-  static List<Widget> build(
-      BuildContext context, OneCardOnEventList eventInfo) {
+  static List<Widget> build(BuildContext context, OneEvent eventInfo) {
     final double _horizontalPadding = MediaQuery.of(context).size.width *
         (1 - Const.containerWidthPercentage);
     final double _verticalRowMargin = _horizontalPadding / 3;
@@ -26,8 +25,8 @@ class _EventDetailRowList {
     List<Widget> list = [];
     list.add(
       DetailHeroImageContainer(
-        imgUrl: eventInfo.img,
-        heroTag: '_eventHeroNo' + eventInfo.id.toString(),
+        imgUrl: eventInfo.thumbnailImg,
+        heroTag: '_eventHeroNo' + eventInfo.eventId.toString(),
       ),
     );
     // title
@@ -36,9 +35,7 @@ class _EventDetailRowList {
         margin: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.02),
         padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
         child: Text(
-          eventInfo.eventTitle,
-          // "【緊急開催】おそまつさん、イベント！俺たちのシェラをとりモドセ！",
-          // "This is it. We are the world.",
+          eventInfo.title,
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,

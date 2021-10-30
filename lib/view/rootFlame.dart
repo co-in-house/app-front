@@ -2,17 +2,14 @@ import 'package:Inhouse/component/bottomBar/inhouseNavBar.dart';
 import 'package:Inhouse/component/floatingButton.dart';
 import 'package:Inhouse/component/lounge/miniChatContainer.dart';
 import 'package:Inhouse/model/lounge/roomState.dart';
-import 'package:Inhouse/model/lounge/tappedRoomInfoForModal.dart';
 import 'package:Inhouse/model/routingState.dart';
 import 'package:Inhouse/model/userState.dart';
 import 'package:Inhouse/service/api/community/GetJoinedComService.dart';
 import 'package:Inhouse/service/api/getCommunityListService.dart';
 import 'package:Inhouse/service/api/event/getEventListService.dart';
 import 'package:Inhouse/service/api/getLocationListService.dart';
-import 'package:Inhouse/service/api/getPostListService.dart';
 import 'package:Inhouse/service/api/getTagListService.dart';
 import 'package:Inhouse/service/external/content/firebaseStorageController.dart';
-import 'package:Inhouse/service/lounge/changeRoom.dart';
 import 'package:Inhouse/util/util.dart';
 import 'package:Inhouse/util/wrapper.dart';
 import 'package:Inhouse/view/event/eventPage.dart';
@@ -31,7 +28,6 @@ class RootFlame extends StatelessWidget {
   void init(BuildContext context) {}
 
   final List<Widget> _contentView = <Widget>[
-    // HomePage(),
     ExplorePage(),
     EventPage(),
     LoungePage(),
@@ -54,9 +50,8 @@ class RootFlame extends StatelessWidget {
         // 初期API call
         // master list 取得
         context.read<GetLocationListService>().call();
-        context.read<GetPostListService>().call();
         context.read<GetCommunityListService>().call("");
-        context.read<GetEventListService>().call();
+        context.read<GetEventListService>().call(communityIdList: [1, 2, 3]);
         context.read<GetTagListService>().call();
         context.read<GetJoinedCommunityListService>().call(userid: 1);
       },

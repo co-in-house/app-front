@@ -87,18 +87,6 @@ class OsAccess {
   }
 }
 
-class DatetimeUtil {
-  static String getCurrentDateString() {
-    DateTime now = DateTime.now();
-    String day = now.day.toString();
-    String month = now.month.toString();
-    String year = now.year.toString();
-    String hour = now.hour.toString();
-    String minute = now.minute.toString();
-    return year + "/" + month + "/" + day + " " + hour + ":" + minute;
-  }
-}
-
 class Check {
   static bool isAssetPath(String path) {
     if (path != null &&

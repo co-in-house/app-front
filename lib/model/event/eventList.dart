@@ -2,48 +2,56 @@ import 'package:Inhouse/model/baseModel.dart';
 import 'package:flutter/material.dart';
 
 @immutable
-class EventList extends BaseModel {
-  EventList({
-    this.col, // 初期値null
+class EventMatrix extends BaseModel {
+  EventMatrix({
+    this.contents, // 初期値null
     this.isLoading = false,
   });
-  final List<List<OneCardOnEventList>> col;
+  final List<List<OneEvent>> contents;
   final bool isLoading;
 
-  factory EventList.fromJson(Map<String, dynamic> json) {
-    List<dynamic> _col = json['eventList'];
-    List<List<OneCardOnEventList>> obj = [];
+  factory EventMatrix.fromJson(Map<String, dynamic> json) {
+    List<dynamic> _col = json['eventMatrix'];
+    List<List<OneEvent>> obj = [];
     for (int i = 0; i < _col.length; i++) {
       var _row = _col[i];
-      List<OneCardOnEventList> rowContents = [];
+      List<OneEvent> rowContents = [];
       for (int j = 0; j < _row.length; j++) {
-        var content = OneCardOnEventList(
-          img: _row[j]['img'],
-          id: (i + 1) * 100 + (j + 1) * 3,
+        var content = OneEvent(
+          communityId: _row[j]['communityId'],
+          eventId: _row[j]['eventId'],
+          title: _row[j]['title'],
+          start: _row[j]['start'],
+          end: _row[j]['end'],
+          location: _row[j]['location'],
+          thumbnailImg: _row[j]['thumbnailImg'],
+          description: _row[j]['description'],
         );
         rowContents.add(content);
       }
       obj.add(rowContents);
     }
-    return EventList(col: obj, isLoading: false);
+    return EventMatrix(contents: obj, isLoading: false);
   }
 }
 
-class OneCardOnEventList {
-  OneCardOnEventList({this.img, this.id});
-  int id;
-  String img;
-  String eventDate = "12/25";
-  String eventDayOfWeek = "Sat";
-  String eventYear = "2021";
-
-  String eventTitle = "おそ松さんスペシャルイベント";
-  String eventDescription = "ここでしか見ることの出来ないシリーズ構成：松原秀による書きおろし新作朗読劇もお楽しみに！";
-
-  int eventAmountOfMember = 12345;
-
-  String communityName = "CommunityName";
-  String communityId = "CommunityId";
-  String communityIconUrl =
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwy4yt4ozcMfk1kGbhgMPxolXmlawudTRujQ&usqp=CAU";
+class OneEvent {
+  OneEvent({
+    this.communityId,
+    this.eventId,
+    this.title,
+    this.start,
+    this.end,
+    this.location,
+    this.thumbnailImg,
+    this.description,
+  });
+  num communityId;
+  num eventId;
+  String title;
+  String start;
+  String end;
+  String location;
+  String thumbnailImg;
+  String description;
 }

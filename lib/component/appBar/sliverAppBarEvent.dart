@@ -2,9 +2,6 @@ import 'package:Inhouse/util/theme.dart';
 import 'package:flutter/material.dart';
 
 class SliverAppBarEvent extends StatelessWidget {
-  SliverAppBarEvent({this.searchTextController});
-  final TextEditingController searchTextController;
-
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
@@ -24,12 +21,8 @@ class SliverAppBarEvent extends StatelessWidget {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        // const Color(0xFF005AA7),
-                        // const Color(0xFFFFFDE4),
-                        // inhouseThemeColor.backgroundColor,
                         const Color(0xFF31C941),
                         const Color(0xFFFF9C61),
-                        // const Color(0xFFFFFFFF),
                         inhouseThemeColor.backgroundColor,
                       ],
                       begin: Alignment.topCenter,
