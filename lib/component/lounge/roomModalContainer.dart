@@ -1,6 +1,6 @@
-import 'package:Inhouse/component/icon/iconContainer.dart';
-import 'package:Inhouse/component/lounge/roomButton.dart';
-import 'package:Inhouse/util/inhouseWidget.dart';
+import 'package:inhouse/component/icon/iconContainer.dart';
+import 'package:inhouse/component/lounge/roomButton.dart';
+import 'package:inhouse/util/inhouseWidget.dart';
 import 'package:flutter/material.dart';
 
 class RoomModalContainer extends StatelessWidget {

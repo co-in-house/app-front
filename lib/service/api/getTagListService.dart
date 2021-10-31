@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:Inhouse/model/tagList.dart';
+import 'package:inhouse/model/tagList.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Tag List Service class

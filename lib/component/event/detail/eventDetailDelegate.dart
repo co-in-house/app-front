@@ -1,8 +1,8 @@
-import 'package:Inhouse/component/common/detailHeroImageContainer.dart';
-import 'package:Inhouse/component/event/detail/eventDetailBasicInfoContainer.dart';
-import 'package:Inhouse/mock/mock.dart';
-import 'package:Inhouse/model/event/eventList.dart';
-import 'package:Inhouse/util/util.dart';
+import 'package:inhouse/component/common/detailHeroImageContainer.dart';
+import 'package:inhouse/component/event/detail/eventDetailBasicInfoContainer.dart';
+import 'package:inhouse/mock/mock.dart';
+import 'package:inhouse/model/event/eventList.dart';
+import 'package:inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 
 class EventDetailDelegate extends SliverChildListDelegate {

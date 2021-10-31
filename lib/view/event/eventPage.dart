@@ -1,10 +1,10 @@
-import 'package:Inhouse/component/appBar/sliverAppBarEvent.dart';
-import 'package:Inhouse/component/event/browse/eventCardRowList.dart';
-import 'package:Inhouse/model/event/eventList.dart';
-import 'package:Inhouse/service/api/event/getEventListService.dart';
-import 'package:Inhouse/util/format.dart';
-import 'package:Inhouse/util/theme.dart';
-import 'package:Inhouse/util/util.dart';
+import 'package:inhouse/component/appBar/sliverAppBarEvent.dart';
+import 'package:inhouse/component/event/browse/eventCardRowList.dart';
+import 'package:inhouse/model/event/eventList.dart';
+import 'package:inhouse/service/api/event/getEventListService.dart';
+import 'package:inhouse/util/format.dart';
+import 'package:inhouse/util/theme.dart';
+import 'package:inhouse/util/util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

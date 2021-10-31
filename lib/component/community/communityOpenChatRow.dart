@@ -1,5 +1,5 @@
-import 'package:Inhouse/component/community/communityInfoListDelegate.dart';
-import 'package:Inhouse/util/util.dart';
+import 'package:inhouse/component/community/communityInfoListDelegate.dart';
+import 'package:inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 
 class CommunityOpenChatRow extends CommunityBaseContainer {

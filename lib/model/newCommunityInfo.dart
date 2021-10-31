@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:Inhouse/model/baseModel.dart';
-import 'package:Inhouse/model/locationList.dart';
-import 'package:Inhouse/model/tagList.dart';
+import 'package:inhouse/model/baseModel.dart';
+import 'package:inhouse/model/locationList.dart';
+import 'package:inhouse/model/tagList.dart';
 
 class NewCommunityInfo extends BaseModel {
   NewCommunityInfo({

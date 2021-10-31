@@ -1,4 +1,4 @@
-import 'package:Inhouse/model/userState.dart';
+import 'package:inhouse/model/userState.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 class UserService extends StateNotifier<UserState> {

@@ -1,4 +1,3 @@
-import 'package:drag_down_to_pop/drag_down_to_pop.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';

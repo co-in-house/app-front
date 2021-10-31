@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:Inhouse/model/locationList.dart';
+import 'package:inhouse/model/locationList.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:http/http.dart' as http;
 

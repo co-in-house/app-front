@@ -1,6 +1,6 @@
-import 'package:Inhouse/component/appBar/sliverAppBarChat.dart';
-import 'package:Inhouse/component/bottomBar/chatBottomBar.dart';
+import 'package:inhouse/component/appBar/sliverAppBarChat.dart';
 import 'package:flutter/material.dart';
+import 'package:inhouse/component/bottomNavBar/chatBottomBar.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({Key key, @required this.roomName}) : super(key: key);

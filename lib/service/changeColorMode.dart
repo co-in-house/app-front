@@ -1,4 +1,4 @@
-import 'package:Inhouse/model/colorModeState.dart';
+import 'package:inhouse/model/colorModeState.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 class ChangeColorMode extends StateNotifier<ColorModeState> {

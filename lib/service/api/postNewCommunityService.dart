@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:Inhouse/model/newCommunityInfo.dart';
-import 'package:Inhouse/service/external/content/firebaseStorageController.dart';
+import 'package:inhouse/model/newCommunityInfo.dart';
+import 'package:inhouse/service/external/content/firebaseStorageController.dart';
 import 'package:http/http.dart' as http;
 import 'package:state_notifier/state_notifier.dart';
 

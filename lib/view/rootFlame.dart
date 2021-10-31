@@ -1,27 +1,27 @@
-import 'package:Inhouse/component/bottomBar/inhouseNavBar.dart';
-import 'package:Inhouse/component/floating/floatingButton.dart';
-import 'package:Inhouse/component/floating/newEventFB.dart';
-import 'package:Inhouse/component/lounge/miniChatContainer.dart';
-import 'package:Inhouse/model/lounge/roomState.dart';
-import 'package:Inhouse/model/routingState.dart';
-import 'package:Inhouse/model/userState.dart';
-import 'package:Inhouse/service/api/community/GetJoinedComService.dart';
-import 'package:Inhouse/service/api/getCommunityListService.dart';
-import 'package:Inhouse/service/api/event/getEventListService.dart';
-import 'package:Inhouse/service/api/getLocationListService.dart';
-import 'package:Inhouse/service/api/getTagListService.dart';
-import 'package:Inhouse/service/external/content/firebaseStorageController.dart';
-import 'package:Inhouse/util/util.dart';
-import 'package:Inhouse/util/wrapper.dart';
-import 'package:Inhouse/view/event/eventPage.dart';
-import 'package:Inhouse/view/explore/explorePage.dart';
-import 'package:Inhouse/view/login/login.dart';
-import 'package:Inhouse/view/lounge/chatPage.dart';
-import 'package:Inhouse/view/lounge/loungePage.dart';
-import 'package:Inhouse/view/message/messagePage.dart';
-import 'package:Inhouse/view/userMenu/userMenuPage.dart';
+import 'package:inhouse/component/bottomNavBar/bkupBNB.dart';
+import 'package:inhouse/component/bottomNavBar/inhouseBNB.dart';
+import 'package:inhouse/component/floating/newEventFB.dart';
+import 'package:inhouse/component/lounge/miniChatContainer.dart';
+import 'package:inhouse/model/lounge/roomState.dart';
+import 'package:inhouse/model/routingState.dart';
+import 'package:inhouse/model/userState.dart';
+import 'package:inhouse/service/api/community/GetJoinedComService.dart';
+import 'package:inhouse/service/api/getCommunityListService.dart';
+import 'package:inhouse/service/api/event/getEventListService.dart';
+import 'package:inhouse/service/api/getLocationListService.dart';
+import 'package:inhouse/service/api/getTagListService.dart';
+import 'package:inhouse/service/external/content/firebaseStorageController.dart';
+import 'package:inhouse/util/util.dart';
+import 'package:inhouse/util/wrapper.dart';
+import 'package:inhouse/view/event/eventPage.dart';
+import 'package:inhouse/view/explore/explorePage.dart';
+import 'package:inhouse/view/login/login.dart';
+import 'package:inhouse/view/lounge/chatPage.dart';
+import 'package:inhouse/view/lounge/loungePage.dart';
+import 'package:inhouse/view/message/messagePage.dart';
+import 'package:inhouse/view/userMenu/userMenuPage.dart';
 import 'package:flutter/material.dart';
-// import 'package:Inhouse/view/timeline/homePage.dart';
+// import 'package:inhouse/view/timeline/homePage.dart';
 import 'package:miniplayer/miniplayer.dart';
 import 'package:provider/provider.dart';
 
@@ -29,19 +29,18 @@ class RootFlame extends StatelessWidget {
   void init(BuildContext context) {}
 
   final List<Widget> _contentView = <Widget>[
+    LoungePage(),
     ExplorePage(),
     EventPage(),
-    LoungePage(),
-    MessagePage(),
+    // MessagePage(),
     // CutPage(),
     UserMenuPage(),
   ];
 
   final List<Widget> _fbList = <Widget>[
     Container(),
+    Container(),
     NewEventFB(),
-    Container(),
-    Container(),
     Container(),
   ];
 
@@ -74,7 +73,7 @@ class RootFlame extends StatelessWidget {
                 floatingActionButton: _fbList[context
                     .select((RoutingState state) => state)
                     .routingState], //CustomFloatingButton(),
-                bottomNavigationBar: InhouseNavBar(),
+                bottomNavigationBar: InhouseBNB(),
                 body: Stack(
                   children: [
                     _contentView[context

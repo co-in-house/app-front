@@ -1,7 +1,7 @@
-import 'package:Inhouse/component/community/communityContentContainer.dart';
-import 'package:Inhouse/component/loading/loadingDialog.dart';
-import 'package:Inhouse/model/newCommunityInfo.dart';
-import 'package:Inhouse/service/api/postNewCommunityService.dart';
+import 'package:inhouse/component/community/communityContentContainer.dart';
+import 'package:inhouse/component/loading/loadingDialog.dart';
+import 'package:inhouse/model/newCommunityInfo.dart';
+import 'package:inhouse/service/api/postNewCommunityService.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,15 +1,15 @@
 import 'dart:ui';
 
-import 'package:Inhouse/component/event/browse/dateOvalContainer.dart';
-import 'package:Inhouse/component/event/browse/oneCard/eventCardBottomContainer.dart';
-import 'package:Inhouse/model/community/JoinedCommunity.dart';
-import 'package:Inhouse/model/event/attendee/attendees.dart';
-import 'package:Inhouse/model/event/eventList.dart';
-import 'package:Inhouse/service/api/event/getAttendeesService.dart';
-import 'package:Inhouse/util/dataQuery.dart';
-import 'package:Inhouse/util/format.dart';
-import 'package:Inhouse/util/util.dart';
-import 'package:Inhouse/view/event/eventDetailPage.dart';
+import 'package:inhouse/component/event/browse/dateOvalContainer.dart';
+import 'package:inhouse/component/event/browse/oneCard/eventCardBottomContainer.dart';
+import 'package:inhouse/model/community/JoinedCommunity.dart';
+import 'package:inhouse/model/event/attendee/attendees.dart';
+import 'package:inhouse/model/event/eventList.dart';
+import 'package:inhouse/service/api/event/getAttendeesService.dart';
+import 'package:inhouse/util/dataQuery.dart';
+import 'package:inhouse/util/format.dart';
+import 'package:inhouse/util/util.dart';
+import 'package:inhouse/view/event/eventDetailPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';

@@ -1,8 +1,8 @@
-import 'package:Inhouse/component/explore/communityBadgeContainer.dart';
-import 'package:Inhouse/component/text/tag.dart';
-import 'package:Inhouse/model/communityList.dart';
-import 'package:Inhouse/util/util.dart';
-import 'package:Inhouse/view/community/communityDetialPage.dart';
+import 'package:inhouse/component/explore/communityBadgeContainer.dart';
+import 'package:inhouse/component/text/tag.dart';
+import 'package:inhouse/model/communityList.dart';
+import 'package:inhouse/util/util.dart';
+import 'package:inhouse/view/community/communityDetialPage.dart';
 import 'package:flutter/material.dart';
 
 class CommunityCard extends StatelessWidget {

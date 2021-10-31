@@ -1,10 +1,10 @@
-import 'package:Inhouse/component/appBar/sliverAppBarLounge.dart';
-import 'package:Inhouse/component/lounge/notificationNumberBadge.dart';
-import 'package:Inhouse/component/lounge/roomModalContainer.dart';
-import 'package:Inhouse/model/lounge/tappedRoomInfoForModal.dart';
-import 'package:Inhouse/service/lounge/changeRoom.dart';
-import 'package:Inhouse/util/modal.dart';
-import 'package:Inhouse/util/util.dart';
+import 'package:inhouse/component/appBar/sliverAppBarLounge.dart';
+import 'package:inhouse/component/lounge/notificationNumberBadge.dart';
+import 'package:inhouse/component/lounge/roomModalContainer.dart';
+import 'package:inhouse/model/lounge/tappedRoomInfoForModal.dart';
+import 'package:inhouse/service/lounge/changeRoom.dart';
+import 'package:inhouse/util/modal.dart';
+import 'package:inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 import 'package:miniplayer/miniplayer.dart';
 import 'package:provider/provider.dart';

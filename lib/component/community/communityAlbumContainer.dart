@@ -1,8 +1,8 @@
-import 'package:Inhouse/component/community/communityInfoListDelegate.dart';
-import 'package:Inhouse/mock/mock.dart';
-import 'package:Inhouse/model/album.dart';
-import 'package:Inhouse/util/util.dart';
-import 'package:Inhouse/view/album/albumPage.dart';
+import 'package:inhouse/component/community/communityInfoListDelegate.dart';
+import 'package:inhouse/mock/mock.dart';
+import 'package:inhouse/model/album.dart';
+import 'package:inhouse/util/util.dart';
+import 'package:inhouse/view/album/albumPage.dart';
 import 'package:flutter/material.dart';
 
 class CommunityAlbumListContainer extends StatelessWidget {

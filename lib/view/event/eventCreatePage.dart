@@ -1,5 +1,5 @@
-import 'package:Inhouse/component/appBar/inhouseAppBar.dart';
-import 'package:Inhouse/component/event/detail/headerButtonEdit.dart';
+import 'package:inhouse/component/appBar/inhouseAppBar.dart';
+import 'package:inhouse/component/event/detail/headerButtonEdit.dart';
 import 'package:flutter/material.dart';
 
 class EventCreatePage extends StatefulWidget {

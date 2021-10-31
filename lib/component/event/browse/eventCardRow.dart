@@ -1,5 +1,5 @@
-import 'package:Inhouse/component/event/browse/oneCard/eventCard.dart';
-import 'package:Inhouse/util/util.dart';
+import 'package:inhouse/component/event/browse/oneCard/eventCard.dart';
+import 'package:inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 
 class EventCardRow extends StatelessWidget {

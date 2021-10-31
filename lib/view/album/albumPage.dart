@@ -1,6 +1,6 @@
-import 'package:Inhouse/component/album/albumGrid.dart';
-import 'package:Inhouse/component/appBar/sliverAppBarAlbum.dart';
-import 'package:Inhouse/model/album.dart';
+import 'package:inhouse/component/album/albumGrid.dart';
+import 'package:inhouse/component/appBar/sliverAppBarAlbum.dart';
+import 'package:inhouse/model/album.dart';
 import 'package:flutter/material.dart';
 
 class AlbumPage extends StatelessWidget {

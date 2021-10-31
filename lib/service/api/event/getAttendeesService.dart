@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:Inhouse/model/event/attendee/attendees.dart';
+import 'package:inhouse/model/event/attendee/attendees.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 class GetAttendeesService extends StateNotifier<Attendees> {

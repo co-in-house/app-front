@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:Inhouse/model/communityList.dart';
+import 'package:inhouse/model/communityList.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Community Service class

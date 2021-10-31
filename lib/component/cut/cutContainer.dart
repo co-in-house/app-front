@@ -1,4 +1,4 @@
-import 'package:Inhouse/model/cutList.dart';
+import 'package:inhouse/model/cutList.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
 import 'package:video_player/video_player.dart';

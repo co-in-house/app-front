@@ -1,4 +1,4 @@
-import 'package:Inhouse/component/community/newCommunity/newCommunityBaseCard.dart';
+import 'package:inhouse/component/community/newCommunity/newCommunityBaseCard.dart';
 import 'package:flutter/material.dart';
 
 class NewCommunityTagCard extends NewCommunityBaseCard {

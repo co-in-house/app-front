@@ -1,6 +1,6 @@
-import 'package:Inhouse/model/lounge/roomState.dart';
-import 'package:Inhouse/service/lounge/changeRoom.dart';
-import 'package:Inhouse/util/util.dart';
+import 'package:inhouse/model/lounge/roomState.dart';
+import 'package:inhouse/service/lounge/changeRoom.dart';
+import 'package:inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

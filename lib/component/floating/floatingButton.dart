@@ -1,7 +1,7 @@
-import 'package:Inhouse/model/locationList.dart';
-import 'package:Inhouse/model/newCommunityInfo.dart';
-import 'package:Inhouse/model/tagList.dart';
-import 'package:Inhouse/view/newCommunity/newCommunityPage.dart';
+import 'package:inhouse/model/locationList.dart';
+import 'package:inhouse/model/newCommunityInfo.dart';
+import 'package:inhouse/model/tagList.dart';
+import 'package:inhouse/view/newCommunity/newCommunityPage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

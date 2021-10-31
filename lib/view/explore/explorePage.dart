@@ -1,8 +1,8 @@
-import 'package:Inhouse/component/appBar/sliverAppBarExplore.dart';
-import 'package:Inhouse/component/explore/communityCardList.dart';
-import 'package:Inhouse/model/communityList.dart';
-import 'package:Inhouse/service/api/getCommunityListService.dart';
-import 'package:Inhouse/util/util.dart';
+import 'package:inhouse/component/appBar/sliverAppBarExplore.dart';
+import 'package:inhouse/component/explore/communityCardList.dart';
+import 'package:inhouse/model/communityList.dart';
+import 'package:inhouse/service/api/getCommunityListService.dart';
+import 'package:inhouse/util/util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:Inhouse/model/cutList.dart';
+import 'package:inhouse/model/cutList.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Cut Service class

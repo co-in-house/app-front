@@ -1,4 +1,4 @@
-import 'package:Inhouse/model/lounge/roomState.dart';
+import 'package:inhouse/model/lounge/roomState.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 class ChangeRoom extends StateNotifier<RoomState> {

@@ -1,4 +1,4 @@
-import 'package:Inhouse/util/modal.dart';
+import 'package:inhouse/util/modal.dart';
 import 'package:flutter/material.dart';
 
 class EventJoinButtonContainer extends StatefulWidget {

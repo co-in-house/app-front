@@ -1,8 +1,8 @@
-import 'package:Inhouse/component/appBar/inhouseAppBar.dart';
-import 'package:Inhouse/component/event/detail/eventDetailDelegate.dart';
-import 'package:Inhouse/component/event/detail/headerButtonEdit.dart';
-import 'package:Inhouse/model/event/eventList.dart';
-import 'package:Inhouse/service/api/event/getAttendeesService.dart';
+import 'package:inhouse/component/appBar/inhouseAppBar.dart';
+import 'package:inhouse/component/event/detail/eventDetailDelegate.dart';
+import 'package:inhouse/component/event/detail/headerButtonEdit.dart';
+import 'package:inhouse/model/event/eventList.dart';
+import 'package:inhouse/service/api/event/getAttendeesService.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,5 +1,5 @@
-import 'package:Inhouse/component/explore/communityCardRow.dart';
-import 'package:Inhouse/model/communityList.dart';
+import 'package:inhouse/component/explore/communityCardRow.dart';
+import 'package:inhouse/model/communityList.dart';
 import 'package:flutter/material.dart';
 
 class CommunityCardList extends SliverChildListDelegate {

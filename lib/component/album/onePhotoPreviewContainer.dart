@@ -1,4 +1,4 @@
-import 'package:Inhouse/view/photo/photoViewPage.dart';
+import 'package:inhouse/view/photo/photoViewPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

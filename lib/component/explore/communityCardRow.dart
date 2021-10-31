@@ -1,5 +1,5 @@
-import 'package:Inhouse/component/explore/communityCard.dart';
-import 'package:Inhouse/model/communityList.dart';
+import 'package:inhouse/component/explore/communityCard.dart';
+import 'package:inhouse/model/communityList.dart';
 import 'package:flutter/material.dart';
 
 class CommunityCardRow extends StatelessWidget {

@@ -1,6 +1,6 @@
-import 'package:Inhouse/component/cut/cutContainerList.dart';
-import 'package:Inhouse/model/cutList.dart';
-import 'package:Inhouse/service/api/getCutListService.dart';
+import 'package:inhouse/component/cut/cutContainerList.dart';
+import 'package:inhouse/model/cutList.dart';
+import 'package:inhouse/service/api/getCutListService.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

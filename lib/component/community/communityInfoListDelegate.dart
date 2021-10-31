@@ -1,10 +1,10 @@
-import 'package:Inhouse/component/community/communityAlbumContainer.dart';
-import 'package:Inhouse/component/community/communityContentContainer.dart';
-import 'package:Inhouse/component/community/communityInfoDivider.dart';
-import 'package:Inhouse/component/community/communityOpenChatRow.dart';
-import 'package:Inhouse/component/community/communiyCutIconRow.dart';
-import 'package:Inhouse/model/communityList.dart';
-import 'package:Inhouse/util/util.dart';
+import 'package:inhouse/component/community/communityAlbumContainer.dart';
+import 'package:inhouse/component/community/communityContentContainer.dart';
+import 'package:inhouse/component/community/communityInfoDivider.dart';
+import 'package:inhouse/component/community/communityOpenChatRow.dart';
+import 'package:inhouse/component/community/communiyCutIconRow.dart';
+import 'package:inhouse/model/communityList.dart';
+import 'package:inhouse/util/util.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

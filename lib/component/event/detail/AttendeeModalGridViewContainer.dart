@@ -1,4 +1,4 @@
-import 'package:Inhouse/component/icon/attendeeIconContainer.dart';
+import 'package:inhouse/component/icon/attendeeIconContainer.dart';
 import 'package:flutter/material.dart';
 
 class AttendeeModalGridViewContainer extends StatelessWidget {

@@ -2,15 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:miniplayer/miniplayer.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class Const {
+  // private constructor
+  Const._() {
+    throw new AssertionError("private Constructor");
+  }
+
+  // app-service-hose
+  static const String APP_SERVIE_HOST = 'app-service.au-syd.mybluemix.net';
+
   // rooting No
-  static const int routingNoExplore = 0;
-  static const int routingNoEvent = 1;
-  static const int routingNoLounge = 2;
-  static const int routingNoCut = 3;
-  static const int routingNoProfile = 4;
+  static const int routingNoLounge = 0;
+  static const int routingNoExplore = 1;
+  static const int routingNoEvent = 2;
+  static const int routingNoProfile = 3;
+  // static const int routingNoCut = 3;
 
   // size
   static final double containerWidthPercentage = 0.95;
@@ -72,19 +79,19 @@ class OsAccess {
   }
 
   // 別アプリを開く
-  static Future launchURL(String url, {String secondUrl}) async {
-    print("url: $url");
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else if (secondUrl != null && await canLaunch(secondUrl)) {
-      print("second!");
-      await launch(secondUrl);
-    } else {
-      var label;
-      secondUrl != null ? label = url : label = url + ' and ' + secondUrl;
-      throw 'Could not launch $label';
-    }
-  }
+  // static Future launchURL(String url, {String secondUrl}) async {
+  //   print("url: $url");
+  //   if (await canLaunch(url)) {
+  //     await launch(url);
+  //   } else if (secondUrl != null && await canLaunch(secondUrl)) {
+  //     print("second!");
+  //     await launch(secondUrl);
+  //   } else {
+  //     var label;
+  //     secondUrl != null ? label = url : label = url + ' and ' + secondUrl;
+  //     throw 'Could not launch $label';
+  //   }
+  // }
 }
 
 class Check {

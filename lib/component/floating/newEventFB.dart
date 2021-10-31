@@ -1,4 +1,4 @@
-import 'package:Inhouse/view/event/eventCreatePage.dart';
+import 'package:inhouse/view/event/eventCreatePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

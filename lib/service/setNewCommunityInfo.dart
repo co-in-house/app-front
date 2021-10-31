@@ -1,5 +1,5 @@
-import 'package:Inhouse/model/newCommunityInfo.dart';
-import 'package:Inhouse/model/tagList.dart';
+import 'package:inhouse/model/newCommunityInfo.dart';
+import 'package:inhouse/model/tagList.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 class SetNewCommunityInfo extends StateNotifier<NewCommunityInfo> {

@@ -1,4 +1,4 @@
-import 'package:Inhouse/component/lounge/roomGrid.dart';
+import 'package:inhouse/component/lounge/roomGrid.dart';
 import 'package:flutter/material.dart';
 
 class CommunityLine extends StatelessWidget {

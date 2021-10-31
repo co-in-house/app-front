@@ -1,4 +1,4 @@
-import 'package:Inhouse/util/theme.dart';
+import 'package:inhouse/util/theme.dart';
 import 'package:flutter/material.dart';
 
 class SliverAppBarEvent extends StatelessWidget {

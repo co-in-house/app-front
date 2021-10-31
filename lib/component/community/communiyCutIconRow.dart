@@ -1,5 +1,5 @@
-import 'package:Inhouse/util/theme.dart';
-import 'package:Inhouse/util/util.dart';
+import 'package:inhouse/util/theme.dart';
+import 'package:inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 
 class CommunityOnAirCutListRow extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:Inhouse/model/sample.dart';
+import 'package:inhouse/model/sample.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // sample post service

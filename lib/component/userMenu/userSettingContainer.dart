@@ -1,5 +1,5 @@
-import 'package:Inhouse/model/colorModeState.dart';
-import 'package:Inhouse/service/changeColorMode.dart';
+import 'package:inhouse/model/colorModeState.dart';
+import 'package:inhouse/service/changeColorMode.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';

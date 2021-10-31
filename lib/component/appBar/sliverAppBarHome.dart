@@ -1,6 +1,6 @@
 // SliverAppBar for Home
-import 'package:Inhouse/service/user/userService.dart';
-import 'package:Inhouse/util/theme.dart';
+import 'package:inhouse/service/user/userService.dart';
+import 'package:inhouse/util/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

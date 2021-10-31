@@ -1,8 +1,8 @@
-import 'package:Inhouse/component/event/detail/AttendeeModalGridViewContainer.dart';
-import 'package:Inhouse/model/event/attendee/attendees.dart';
-import 'package:Inhouse/service/api/event/getAttendeesService.dart';
-import 'package:Inhouse/util/inhouseWidget.dart';
-import 'package:Inhouse/util/util.dart';
+import 'package:inhouse/component/event/detail/AttendeeModalGridViewContainer.dart';
+import 'package:inhouse/model/event/attendee/attendees.dart';
+import 'package:inhouse/service/api/event/getAttendeesService.dart';
+import 'package:inhouse/util/inhouseWidget.dart';
+import 'package:inhouse/util/util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';

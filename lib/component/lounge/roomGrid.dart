@@ -1,4 +1,4 @@
-import 'package:Inhouse/component/lounge/roomButton.dart';
+import 'package:inhouse/component/lounge/roomButton.dart';
 import 'package:flutter/material.dart';
 
 class RoomGrid extends StatelessWidget {

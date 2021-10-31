@@ -1,4 +1,4 @@
-import 'package:Inhouse/component/userMenu/userProfileSubscribedCommunityRow.dart';
+import 'package:inhouse/component/userMenu/userProfileSubscribedCommunityRow.dart';
 import 'package:flutter/material.dart';
 
 class CommunityListScrollViewContainer extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:Inhouse/model/community/JoinedCommunity.dart';
+import 'package:inhouse/model/community/JoinedCommunity.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:state_notifier/state_notifier.dart';

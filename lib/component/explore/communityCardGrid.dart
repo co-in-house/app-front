@@ -1,5 +1,5 @@
-// import 'package:Inhouse/component/search/communityCard.dart';
-// import 'package:Inhouse/model/communityList.dart';
+// import 'package:inhouse/component/search/communityCard.dart';
+// import 'package:inhouse/model/communityList.dart';
 // import 'package:flutter/material.dart';
 
 // class CommunityCardGrid extends SliverChildListDelegate {

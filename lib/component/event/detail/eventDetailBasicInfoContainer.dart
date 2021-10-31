@@ -1,4 +1,4 @@
-import 'package:Inhouse/component/icon/communityIconContainer.dart';
+import 'package:inhouse/component/icon/communityIconContainer.dart';
 import 'package:flutter/material.dart';
 
 class EventDetailBasicInfoContainer extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:Inhouse/util/util.dart';
+import 'package:inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 
 class AttendeeIconContainer extends StatelessWidget {

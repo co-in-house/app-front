@@ -1,4 +1,4 @@
-import 'package:Inhouse/component/album/onePhotoPreviewContainer.dart';
+import 'package:inhouse/component/album/onePhotoPreviewContainer.dart';
 import 'package:flutter/material.dart';
 
 class AlbumListDelegate extends SliverChildListDelegate {

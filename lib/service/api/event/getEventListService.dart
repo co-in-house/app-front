@@ -1,5 +1,6 @@
 import 'dart:convert';
-import 'package:Inhouse/model/event/eventList.dart';
+import 'package:inhouse/model/event/eventList.dart';
+import 'package:inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:http/http.dart' as http;
@@ -23,7 +24,7 @@ class GetEventListService extends StateNotifier<EventMatrix> {
     param = param.substring(0, param.length - 1);
 
     final response = await http.get(
-      Uri.https('app-service.au-syd.mybluemix.net', 'service/api/event/list',
+      Uri.https(Const.APP_SERVIE_HOST, 'service/api/event/list',
           {"communityids": param}),
     );
 

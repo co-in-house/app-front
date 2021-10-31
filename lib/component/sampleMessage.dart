@@ -1,4 +1,4 @@
-import 'package:Inhouse/model/sample.dart';
+import 'package:inhouse/model/sample.dart';
 import 'package:flutter/material.dart';
 
 class SampleMessage extends StatelessWidget {

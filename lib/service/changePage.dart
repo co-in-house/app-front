@@ -1,4 +1,4 @@
-import 'package:Inhouse/model/routingState.dart';
+import 'package:inhouse/model/routingState.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 class ChangePage extends StateNotifier<RoutingState> {

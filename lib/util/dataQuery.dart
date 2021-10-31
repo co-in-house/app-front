@@ -1,4 +1,4 @@
-import 'package:Inhouse/model/community/JoinedCommunity.dart';
+import 'package:inhouse/model/community/JoinedCommunity.dart';
 import 'package:flutter/material.dart';
 
 class CommunityDataQuery {

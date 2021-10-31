@@ -1,5 +1,5 @@
-import 'package:Inhouse/component/cut/cutContainer.dart';
-import 'package:Inhouse/model/cutList.dart';
+import 'package:inhouse/component/cut/cutContainer.dart';
+import 'package:inhouse/model/cutList.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

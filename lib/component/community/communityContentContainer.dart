@@ -1,6 +1,6 @@
-import 'package:Inhouse/component/community/communityInfoListDelegate.dart';
-import 'package:Inhouse/component/text/tag.dart';
-import 'package:Inhouse/util/format.dart';
+import 'package:inhouse/component/community/communityInfoListDelegate.dart';
+import 'package:inhouse/component/text/tag.dart';
+import 'package:inhouse/util/format.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 

@@ -1,4 +1,4 @@
-import 'package:Inhouse/component/icon/iconContainer.dart';
+import 'package:inhouse/component/icon/iconContainer.dart';
 import 'package:flutter/material.dart';
 
 class UserProfileContainer extends StatelessWidget {

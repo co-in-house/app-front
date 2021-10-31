@@ -1,7 +1,7 @@
-import 'package:Inhouse/component/lounge/roomModalContainer.dart';
-import 'package:Inhouse/component/lounge/roomTypeSelectRow.dart';
-import 'package:Inhouse/util/inhouseWidget.dart';
-import 'package:Inhouse/util/theme.dart';
+import 'package:inhouse/component/lounge/roomModalContainer.dart';
+import 'package:inhouse/component/lounge/roomTypeSelectRow.dart';
+import 'package:inhouse/util/inhouseWidget.dart';
+import 'package:inhouse/util/theme.dart';
 import 'package:flutter/material.dart';
 
 class NewRoomModalContainer extends StatelessWidget {

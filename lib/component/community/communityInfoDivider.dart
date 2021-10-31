@@ -1,4 +1,4 @@
-import 'package:Inhouse/component/community/communityInfoListDelegate.dart';
+import 'package:inhouse/component/community/communityInfoListDelegate.dart';
 import 'package:flutter/material.dart';
 
 class CommunityInfoDivider extends CommunityBaseContainer {
