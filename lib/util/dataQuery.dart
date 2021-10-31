@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:inhouse/model/community/JoinedCommunity.dart';
 import 'package:flutter/material.dart';
 
@@ -15,5 +17,18 @@ class CommunityDataQuery {
       }
     }
     return {};
+  }
+}
+
+class EventImageDataQuery {
+  static List<String> _list = [
+    "dflt_com_01.png",
+    "dflt_com_02.png",
+    "dflt_com_03.png"
+  ];
+  static String getDefaultImgRandom() {
+    var _target = _list[Random().nextInt(_list.length)];
+
+    return 'images/default/$_target';
   }
 }
