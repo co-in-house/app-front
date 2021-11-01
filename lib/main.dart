@@ -17,6 +17,7 @@ import 'package:inhouse/service/user/userService.dart';
 import 'package:inhouse/util/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:inhouse/view/rootFlame.dart' as root;
 import 'model/colorModeState.dart';
@@ -33,6 +34,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Inhouse',
       theme: inhouseThemeColor,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [Locale('en'), Locale('ja')],
+      locale: Locale('ja', 'JP'),
       home: MultiProvider(
         providers: [
           //level1ページング

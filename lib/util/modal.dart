@@ -1,12 +1,8 @@
 import 'package:inhouse/component/event/detail/AttendeeModalGridViewContainer.dart';
-import 'package:inhouse/model/event/attendee/attendees.dart';
-import 'package:inhouse/service/api/event/getAttendeesService.dart';
 import 'package:inhouse/util/inhouseWidget.dart';
 import 'package:inhouse/util/util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_state_notifier/flutter_state_notifier.dart';
-import 'package:provider/provider.dart';
 
 // room modal
 Future roomModal({BuildContext context, Widget content, double circular = 20}) {
@@ -228,7 +224,7 @@ Future eventCancelConfirmModal(BuildContext context) {
 }
 
 // event attendee  modal
-Future attendeeModal({BuildContext context, double circular = 20}) {
+Future attendeeModal({@required BuildContext context, double circular = 20}) {
   final Size _screenSize = MediaQuery.of(context).size;
   final Color _descriptionColor = Colors.grey;
   final double _horizontalPadding = _screenSize.width * 0.05;
@@ -301,6 +297,61 @@ Future attendeeModal({BuildContext context, double circular = 20}) {
               ),
             );
           },
+        ),
+      );
+    },
+  );
+  return result;
+}
+
+// custom date picker modal
+Future<DateTime> datePickerModal(
+    {@required BuildContext context,
+    @required DateTime minimumDate,
+    double circular = 20}) {
+  Future result = showModalBottomSheet<DateTime>(
+    context: context,
+    builder: (BuildContext context) {
+      DateTime tempPickedDate;
+      return Container(
+        height: 250,
+        child: Column(
+          children: <Widget>[
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  CupertinoButton(
+                    child: Text('キャンセル'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  CupertinoButton(
+                    child: Text('決定'),
+                    onPressed: () {
+                      Navigator.of(context).pop(tempPickedDate);
+                    },
+                  ),
+                ],
+              ),
+            ),
+            Divider(
+              height: 0,
+              thickness: 1,
+            ),
+            Expanded(
+              child: Container(
+                child: CupertinoDatePicker(
+                  use24hFormat: true,
+                  minimumDate: minimumDate,
+                  onDateTimeChanged: (DateTime dateTime) {
+                    tempPickedDate = dateTime;
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
       );
     },

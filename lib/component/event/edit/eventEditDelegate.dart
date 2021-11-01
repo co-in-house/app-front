@@ -1,8 +1,10 @@
-import 'package:inhouse/component/common/detailHeroImageContainer.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
+import 'package:inhouse/component/common/dateTimeEditableContainer.dart';
 import 'package:inhouse/component/common/editHeroImageContainer.dart';
-import 'package:inhouse/component/event/detail/eventDetailBasicInfoContainer.dart';
 import 'package:inhouse/mock/mock.dart';
 import 'package:inhouse/model/event/eventList.dart';
+import 'package:inhouse/util/dataQuery.dart';
 import 'package:inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 
@@ -11,13 +13,14 @@ class EventEditDelegate extends SliverChildListDelegate {
     BuildContext context,
     OneEvent content,
   ) : super(_EventEditRowList.build(context, content));
-  // BuildContext context;
-  // OneEvent content;
 }
 
 class _EventEditRowList {
-  static final TextEditingController _titleCtrl = new TextEditingController();
-  static final Color _titleColor = Colors.black; // Color(0xFF64B06E);
+  static TextEditingController _titleCtrl;
+  static TextEditingController _titleErrorCtrl;
+  static TextEditingController _startCtrl;
+  static TextEditingController _endCtrl;
+  static final Color _titleColor = Colors.black;
   static final Color _descriptionFontColor = Colors.grey;
 
   static void _handleTitle() {
@@ -25,6 +28,10 @@ class _EventEditRowList {
   }
 
   static List<Widget> build(BuildContext context, OneEvent content) {
+    _titleCtrl = new TextEditingController();
+    _titleErrorCtrl = new TextEditingController();
+    _startCtrl = new TextEditingController();
+    _endCtrl = new TextEditingController();
     final double _horizontalPadding = MediaQuery.of(context).size.width *
         (1 - Const.containerWidthPercentage);
     final double _verticalRowMargin = _horizontalPadding / 3;
@@ -37,9 +44,12 @@ class _EventEditRowList {
     List<Widget> list = [];
     // thumbnail image
     list.add(
-      EditHeroImageContainer(imgUrl: _isNew ? null : content.thumbnailImg),
+      EditHeroImageContainer(
+        networkImgUrl: _isNew ? null : content.thumbnailImg,
+        assetImgPath: _isNew ? EventImageDataQuery.getDefaultImgRandom() : null,
+      ),
     );
-
+    // _titleErrorCtrl.text = "";
     // title
     list.add(
       Container(
@@ -54,22 +64,50 @@ class _EventEditRowList {
           controller: _titleCtrl,
           onChanged: (String s) => _handleTitle(),
           style: TextStyle(color: _titleColor),
-          maxLengthEnforced: false,
-          decoration: const InputDecoration(
+          maxLengthEnforcement: MaxLengthEnforcement.none,
+          decoration: InputDecoration(
+            errorText: _titleErrorCtrl.text != "" ? _titleErrorCtrl.text : null,
             hintText: 'Title',
           ),
         ),
       ),
     );
-    // basic info container
+    // start
     list.add(
-      EventDetailBasicInfoContainer(
-        height: 35,
-        horizontalPadding: _horizontalPadding,
-        verticalRowMargin: _verticalRowMargin,
-        descriptionFontColor: _descriptionFontColor,
+      Container(
+        margin: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.02),
+        padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
+        child: DateTimeEditableContainer(
+          label: "start",
+          descriptionFontColor: _descriptionFontColor,
+          minimumDate: DateTime.now(),
+          dateTextCtrl: _startCtrl,
+        ),
       ),
     );
+    // start
+    list.add(
+      Container(
+        margin: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.02),
+        padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
+        child: DateTimeEditableContainer(
+          label: "end",
+          descriptionFontColor: _descriptionFontColor,
+          minimumDate: DateTime.now(),
+          dateTextCtrl: _endCtrl,
+        ),
+      ),
+    );
+
+    // // basic info container
+    // list.add(
+    //   EventDetailBasicInfoContainer(
+    //     height: 35,
+    //     horizontalPadding: _horizontalPadding,
+    //     verticalRowMargin: _verticalRowMargin,
+    //     descriptionFontColor: _descriptionFontColor,
+    //   ),
+    // );
     // description
     list.add(
       Container(

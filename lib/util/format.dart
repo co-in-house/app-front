@@ -8,6 +8,8 @@ class NumberUtil {
 }
 
 class DatetimeUtil {
+  static final _dateFormatter = DateFormat("yyyy-MM-dd HH:mm:ss.SZ");
+
   static String getCurrentDateString() {
     DateTime now = DateTime.now();
     String day = now.day.toString();
@@ -16,6 +18,43 @@ class DatetimeUtil {
     String hour = now.hour.toString();
     String minute = now.minute.toString();
     return year + "/" + month + "/" + day + " " + hour + ":" + minute;
+  }
+
+  // 2021-11-02 03:22:00.000
+  static String getYearMonthDateDayStringByString(String dtStr,
+      [String delimiter = "/"]) {
+    return dtStr.substring(0, 4) +
+        delimiter +
+        dtStr.substring(5, 7) +
+        delimiter +
+        dtStr.substring(8, 10) +
+        " " +
+        getDayJaStringByIndex(_dateFormatter.parseUTC(dtStr).toLocal().weekday);
+  }
+
+  static String getTimeStringByString(String dtStr) {
+    return dtStr.substring(11, 13) + ":" + dtStr.substring(14, 16);
+  }
+
+  static String getDayJaStringByIndex(int i) {
+    switch (i) {
+      case 1:
+        return "月";
+      case 2:
+        return "火";
+      case 3:
+        return "水";
+      case 4:
+        return "木";
+      case 5:
+        return "金";
+      case 6:
+        return "土";
+      case 7:
+        return "日";
+      default:
+        return "";
+    }
   }
 }
 
