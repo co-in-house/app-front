@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class NumberUtil {
@@ -8,16 +9,11 @@ class NumberUtil {
 }
 
 class DatetimeUtil {
-  static final _dateFormatter = DateFormat("yyyy-MM-dd HH:mm:ss.SZ");
-
-  static String getCurrentDateString() {
+  // 現在時刻を丸めて1日後
+  static DateTime getInitialTargetDateTime() {
     DateTime now = DateTime.now();
-    String day = now.day.toString();
-    String month = now.month.toString();
-    String year = now.year.toString();
-    String hour = now.hour.toString();
-    String minute = now.minute.toString();
-    return year + "/" + month + "/" + day + " " + hour + ":" + minute;
+    Duration addDuration = Duration(days: 1, minutes: 5 - now.minute % 5);
+    return now.add(addDuration);
   }
 
   // 2021-11-02 03:22:00.000
@@ -29,7 +25,7 @@ class DatetimeUtil {
         delimiter +
         dtStr.substring(8, 10) +
         " " +
-        getDayJaStringByIndex(_dateFormatter.parseUTC(dtStr).toLocal().weekday);
+        getDayJaStringByIndex(DateTime.parse(dtStr).weekday);
   }
 
   static String getTimeStringByString(String dtStr) {
@@ -130,5 +126,11 @@ class TimestampUtil {
       default:
         return "";
     }
+  }
+}
+
+class CtrlUtil {
+  static bool isEmptyTextEditingCtrl(TextEditingController tec) {
+    return tec == null || tec.text == null || tec.text.trim() == "";
   }
 }

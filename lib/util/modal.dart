@@ -307,7 +307,7 @@ Future attendeeModal({@required BuildContext context, double circular = 20}) {
 // custom date picker modal
 Future<DateTime> datePickerModal(
     {@required BuildContext context,
-    @required DateTime minimumDate,
+    @required DateTime initialDateTime,
     double circular = 20}) {
   Future result = showModalBottomSheet<DateTime>(
     context: context,
@@ -344,7 +344,8 @@ Future<DateTime> datePickerModal(
               child: Container(
                 child: CupertinoDatePicker(
                   use24hFormat: true,
-                  minimumDate: minimumDate,
+                  minuteInterval: 5,
+                  initialDateTime: initialDateTime,
                   onDateTimeChanged: (DateTime dateTime) {
                     tempPickedDate = dateTime;
                   },
