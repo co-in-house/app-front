@@ -5,6 +5,7 @@ import 'package:inhouse/component/common/editHeroImageContainer.dart';
 import 'package:inhouse/model/event/eventList.dart';
 import 'package:inhouse/util/dataQuery.dart';
 import 'package:inhouse/util/format.dart';
+import 'package:inhouse/util/modal.dart';
 import 'package:inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 
@@ -216,25 +217,30 @@ class _EventEditRowList {
       Container(
         margin: EdgeInsets.only(top: _screenSize.width * 0.02),
         padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
-        child: Container(
-          alignment: Alignment.centerLeft,
-          height: 80,
-          padding: EdgeInsets.all(25),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(width: 30),
-              Text(
-                "主催コミュニティを追加する",
-                style: TextStyle(color: _descriptionFontColor),
-              ),
-              Icon(Icons.add, color: Colors.green),
-            ],
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(25)),
-            color: Colors.grey[300],
+        child: InkWell(
+          onTap: () async {
+            var result = await selectCommunityForEventModal(context: context);
+          },
+          child: Container(
+            alignment: Alignment.centerLeft,
+            height: 80,
+            padding: EdgeInsets.all(25),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(width: 30),
+                Text(
+                  "主催コミュニティを追加する",
+                  style: TextStyle(color: _descriptionFontColor),
+                ),
+                Icon(Icons.add, color: Colors.green),
+              ],
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(25)),
+              color: Colors.grey[300],
+            ),
           ),
         ),
       ),

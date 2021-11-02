@@ -359,3 +359,34 @@ Future<DateTime> datePickerModal(
   );
   return result;
 }
+
+// select community for event modal
+Future selectCommunityForEventModal(
+    {@required BuildContext context, double circular = 20}) {
+  Future result = showDialog(
+    context: context,
+    builder: (context) {
+      return SimpleDialog(
+        title: Text(
+          "イベントを主催する\nコミュニティを選んでね！",
+          textAlign: TextAlign.center,
+        ),
+        children: <Widget>[
+          // コンテンツ領域
+          SimpleDialogOption(
+            onPressed: () => Navigator.pop(context),
+            child: Text("１項目目"),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text("閉じる"),
+            ),
+          ),
+        ],
+      );
+    },
+  );
+  return result;
+}
