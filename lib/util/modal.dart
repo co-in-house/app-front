@@ -1,5 +1,9 @@
+import 'package:inhouse/component/event/common/commOverviewContainer.dart';
 import 'package:inhouse/component/event/detail/AttendeeModalGridViewContainer.dart';
+import 'package:inhouse/model/community/CommunityOverview.dart';
+import 'package:inhouse/model/community/JoinedCommunity.dart';
 import 'package:inhouse/util/inhouseWidget.dart';
+import 'package:inhouse/util/theme.dart';
 import 'package:inhouse/util/util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -361,30 +365,54 @@ Future<DateTime> datePickerModal(
 }
 
 // select community for event modal
-Future selectCommunityForEventModal(
-    {@required BuildContext context, double circular = 20}) {
-  Future result = showDialog(
+Future<CommunityOverview> selectCommunityForEventModal(
+    {@required BuildContext context,
+    @required JoinedCommunityList joinedCommunityList,
+    double circular = 20}) {
+  final Size _screenSize = MediaQuery.of(context).size;
+  Future<CommunityOverview> result = showModalBottomSheet(
+    backgroundColor: Colors.transparent,
+    isScrollControlled: true,
     context: context,
-    builder: (context) {
-      return SimpleDialog(
-        title: Text(
-          "イベントを主催する\nコミュニティを選んでね！",
-          textAlign: TextAlign.center,
+    builder: (BuildContext context) {
+      return Container(
+        height: _screenSize.height * 0.6,
+        padding: EdgeInsets.symmetric(
+          vertical: circular,
+          horizontal: _screenSize.width * 0.025,
         ),
-        children: <Widget>[
-          // コンテンツ領域
-          SimpleDialogOption(
-            onPressed: () => Navigator.pop(context),
-            child: Text("１項目目"),
+        margin: EdgeInsets.only(top: 1),
+        decoration: BoxDecoration(
+          color: inhouseThemeColor.backgroundColor, //モーダル自体の色
+          borderRadius: BorderRadius.only(
+            //角丸にする
+            topLeft: Radius.circular(circular),
+            topRight: Radius.circular(circular),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 30),
-            child: ElevatedButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text("閉じる"),
+        ),
+        child: Column(
+          children: [
+            InhouseWidget.toggleContainer(),
+            Container(
+              child: Text("主催コミュニティを選ぼう!"),
             ),
-          ),
-        ],
+            Flexible(
+              child: Scrollbar(
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  itemCount: joinedCommunityList.contentsList.length,
+                  itemBuilder: (BuildContext context, int index) =>
+                      CommOverviewContainer(
+                    commOverview: joinedCommunityList.contentsList[index],
+                    doPop: true,
+                  ),
+                  separatorBuilder: (BuildContext context, int index) =>
+                      Divider(),
+                ),
+              ),
+            ),
+          ],
+        ),
       );
     },
   );

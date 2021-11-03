@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:inhouse/component/common/dateTimeEditableContainer.dart';
 import 'package:inhouse/component/common/editHeroImageContainer.dart';
+import 'package:inhouse/component/event/edit/commSelectContainer.dart';
+import 'package:inhouse/model/community/JoinedCommunity.dart';
 import 'package:inhouse/model/event/eventList.dart';
 import 'package:inhouse/util/dataQuery.dart';
 import 'package:inhouse/util/format.dart';
-import 'package:inhouse/util/modal.dart';
+import 'package:inhouse/util/inhouseWidget.dart';
 import 'package:inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +15,8 @@ class EventEditDelegate extends SliverChildListDelegate {
   EventEditDelegate(
     BuildContext context,
     OneEvent content,
-  ) : super(_EventEditRowList.build(context, content));
+    JoinedCommunityList joinedCommunityList,
+  ) : super(_EventEditRowList.build(context, content, joinedCommunityList));
 }
 
 class _EventEditRowList {
@@ -33,7 +36,8 @@ class _EventEditRowList {
 
   static void _handleDescription() {}
 
-  static List<Widget> build(BuildContext context, OneEvent content) {
+  static List<Widget> build(BuildContext context, OneEvent content,
+      JoinedCommunityList joinedCommunityList) {
     final DateTime _targetNow = DatetimeUtil.getInitialTargetDateTime();
     Size _screenSize = MediaQuery.of(context).size;
     _titleCtrl = new TextEditingController();
@@ -69,10 +73,6 @@ class _EventEditRowList {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Container(
-            //   width: 0,
-            //   margin: EdgeInsets.only(right: 5),
-            // ),
             Flexible(
               child: TextField(
                 maxLines: 1,
@@ -103,7 +103,7 @@ class _EventEditRowList {
       Container(
         margin: EdgeInsets.only(top: _screenSize.width * 0.02),
         padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
-        child: Divider(color: _descriptionFontColor),
+        child: InhouseWidget.dividerContainer(),
       ),
     );
     // start
@@ -158,7 +158,7 @@ class _EventEditRowList {
       Container(
         margin: EdgeInsets.only(top: _screenSize.width * 0.02),
         padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
-        child: Divider(color: _descriptionFontColor),
+        child: InhouseWidget.dividerContainer(),
       ),
     );
     // location
@@ -209,7 +209,7 @@ class _EventEditRowList {
       Container(
         margin: EdgeInsets.only(top: _screenSize.width * 0.02),
         padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
-        child: Divider(color: _descriptionFontColor),
+        child: InhouseWidget.dividerContainer(),
       ),
     );
     // select community
@@ -217,31 +217,9 @@ class _EventEditRowList {
       Container(
         margin: EdgeInsets.only(top: _screenSize.width * 0.02),
         padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
-        child: InkWell(
-          onTap: () async {
-            var result = await selectCommunityForEventModal(context: context);
-          },
-          child: Container(
-            alignment: Alignment.centerLeft,
-            height: 80,
-            padding: EdgeInsets.all(25),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(width: 30),
-                Text(
-                  "主催コミュニティを追加する",
-                  style: TextStyle(color: _descriptionFontColor),
-                ),
-                Icon(Icons.add, color: Colors.green),
-              ],
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(25)),
-              color: Colors.grey[300],
-            ),
-          ),
+        child: CommSelectContainer(
+          canTap: true,
+          joinedCommunityList: joinedCommunityList,
         ),
       ),
     );
@@ -249,7 +227,7 @@ class _EventEditRowList {
       Container(
         margin: EdgeInsets.only(top: _screenSize.width * 0.02),
         padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
-        child: Divider(color: _descriptionFontColor),
+        child: InhouseWidget.dividerContainer(),
       ),
     );
 
@@ -285,6 +263,7 @@ class _EventEditRowList {
         ),
       ),
     );
+    // 余白調整
     list.add(Container(height: MediaQuery.of(context).padding.bottom * 2));
     return list;
   }

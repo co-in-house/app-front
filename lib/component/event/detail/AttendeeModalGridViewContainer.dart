@@ -66,6 +66,41 @@ class AttendeeModalGridViewContainer extends StatelessWidget {
               Container(width: oneSize, height: oneSize, color: Colors.grey),
             ],
           ),
+          Row(
+            children: [
+              Container(width: oneSize, height: oneSize, color: Colors.pink),
+              Container(width: oneSize, height: oneSize, color: Colors.yellow),
+              Container(width: oneSize, height: oneSize, color: Colors.grey),
+            ],
+          ),
+          Row(
+            children: [
+              Container(width: oneSize, height: oneSize, color: Colors.pink),
+              Container(width: oneSize, height: oneSize, color: Colors.yellow),
+              Container(width: oneSize, height: oneSize, color: Colors.grey),
+            ],
+          ),
+          Row(
+            children: [
+              Container(width: oneSize, height: oneSize, color: Colors.pink),
+              Container(width: oneSize, height: oneSize, color: Colors.yellow),
+              Container(width: oneSize, height: oneSize, color: Colors.grey),
+            ],
+          ),
+          Row(
+            children: [
+              Container(width: oneSize, height: oneSize, color: Colors.pink),
+              Container(width: oneSize, height: oneSize, color: Colors.yellow),
+              Container(width: oneSize, height: oneSize, color: Colors.grey),
+            ],
+          ),
+          Row(
+            children: [
+              Container(width: oneSize, height: oneSize, color: Colors.pink),
+              Container(width: oneSize, height: oneSize, color: Colors.yellow),
+              Container(width: oneSize, height: oneSize, color: Colors.grey),
+            ],
+          ),
         ],
       ),
     );

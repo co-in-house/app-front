@@ -1,5 +1,6 @@
 import 'package:inhouse/model/baseModel.dart';
 import 'package:flutter/material.dart';
+import 'package:inhouse/model/community/CommunityOverview.dart';
 
 @immutable
 class JoinedCommunityList extends BaseModel {
@@ -7,14 +8,14 @@ class JoinedCommunityList extends BaseModel {
     this.contentsList, // 初期値null
     this.isLoading = false,
   });
-  final List<JoinedCommunity> contentsList;
+  final List<CommunityOverview> contentsList;
   final bool isLoading;
 
   factory JoinedCommunityList.fromJson(Map<String, dynamic> json) {
     List<dynamic> _list = json['communityList'];
-    List<JoinedCommunity> obj = [];
+    List<CommunityOverview> obj = [];
     for (int i = 0; i < _list.length; i++) {
-      var content = JoinedCommunity(
+      var content = CommunityOverview(
           communityId: _list[i]['communityId'],
           communityName: _list[i]['communityName'],
           iconImg: _list[i]['iconImg']);
@@ -22,15 +23,4 @@ class JoinedCommunityList extends BaseModel {
     }
     return JoinedCommunityList(contentsList: obj, isLoading: false);
   }
-}
-
-class JoinedCommunity {
-  JoinedCommunity({
-    this.communityId,
-    this.communityName,
-    this.iconImg,
-  });
-  num communityId;
-  String communityName;
-  String iconImg;
 }
