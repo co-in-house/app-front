@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:image_picker/image_picker.dart';
 import 'package:inhouse/component/event/common/commOverviewContainer.dart';
 import 'package:inhouse/component/event/detail/AttendeeModalGridViewContainer.dart';
 import 'package:inhouse/model/community/CommunityOverview.dart';
@@ -412,6 +415,46 @@ Future<CommunityOverview> selectCommunityForEventModal(
               ),
             ),
           ],
+        ),
+      );
+    },
+  );
+  return result;
+}
+
+// photo modal
+Future<String> getLocalPhotoPathModal({@required BuildContext context}) {
+  Future<String> result = showCupertinoModalPopup(
+    context: context,
+    builder: (BuildContext context) {
+      return CupertinoActionSheet(
+        actions: <Widget>[
+          CupertinoActionSheetAction(
+            child: const Text('写真を撮影'),
+            onPressed: () async {
+              PickedFile iconFile = await OsAccess.getImageFromCamera();
+              if (iconFile != null) {
+                Navigator.pop(context, iconFile.path);
+              }
+            },
+          ),
+          CupertinoActionSheetAction(
+            child: const Text('アルバムから選択'),
+            onPressed: () async {
+              print("onPressed select 1");
+              PickedFile iconFile = await OsAccess.getImageFromGallery();
+              if (iconFile != null) {
+                Navigator.pop(context, iconFile.path);
+              }
+            },
+          ),
+        ],
+        cancelButton: CupertinoActionSheetAction(
+          child: const Text('キャンセル'),
+          isDefaultAction: true,
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       );
     },
