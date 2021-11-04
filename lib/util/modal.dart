@@ -432,7 +432,7 @@ Future<String> getLocalPhotoPathModal({@required BuildContext context}) {
           CupertinoActionSheetAction(
             child: const Text('写真を撮影'),
             onPressed: () async {
-              PickedFile iconFile = await OsAccess.getImageFromCamera();
+              XFile iconFile = await OsAccess.getImageFromCamera();
               if (iconFile != null) {
                 Navigator.pop(context, iconFile.path);
               }
@@ -441,8 +441,7 @@ Future<String> getLocalPhotoPathModal({@required BuildContext context}) {
           CupertinoActionSheetAction(
             child: const Text('アルバムから選択'),
             onPressed: () async {
-              print("onPressed select 1");
-              PickedFile iconFile = await OsAccess.getImageFromGallery();
+              XFile iconFile = await OsAccess.getImageFromGallery();
               if (iconFile != null) {
                 Navigator.pop(context, iconFile.path);
               }

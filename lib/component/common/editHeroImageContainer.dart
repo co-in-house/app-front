@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:inhouse/util/modal.dart';
 import 'package:inhouse/util/util.dart';
@@ -57,18 +59,23 @@ class _State extends State<EditHeroImageContainer> {
                   image: widget.networkImgUrl == null
                       ? AssetImage(this.targetImagePath)
                       : NetworkImage(widget.networkImgUrl),
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
             InkWell(
               onTap: () async {
-                String path = await getLocalPhotoPathModal(context: context);
-                if (path != null) {
-                  setState(() {
-                    targetImagePath = path;
-                  });
-                } else {}
+                String rawImagepath =
+                    await getLocalPhotoPathModal(context: context);
+                if (rawImagepath != null) {
+                  File croppedFile =
+                      await OsAccess.cropImage(sourcePath: rawImagepath);
+                  if (croppedFile != null && croppedFile.path.isNotEmpty) {
+                    setState(() {
+                      targetImagePath = croppedFile.path;
+                    });
+                  }
+                }
               },
               child: Container(
                 padding: EdgeInsets.only(bottom: 10),
@@ -95,12 +102,17 @@ class _State extends State<EditHeroImageContainer> {
                         color: Colors.white,
                       ),
                       onPressed: () async {
-                        String path =
+                        String rawImagepath =
                             await getLocalPhotoPathModal(context: context);
-                        if (path != null) {
-                          setState(() {
-                            targetImagePath = path;
-                          });
+                        if (rawImagepath != null) {
+                          File croppedFile = await OsAccess.cropImage(
+                              sourcePath: rawImagepath);
+                          if (croppedFile != null &&
+                              croppedFile.path.isNotEmpty) {
+                            setState(() {
+                              targetImagePath = croppedFile.path;
+                            });
+                          }
                         }
                       },
                     ),

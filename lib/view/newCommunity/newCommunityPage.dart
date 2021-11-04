@@ -192,7 +192,7 @@ class _NewCommunityState extends State<NewCommunityPage> {
                     CupertinoActionSheetAction(
                       child: const Text('写真を撮影'),
                       onPressed: () async {
-                        final PickedFile iconFile =
+                        final XFile iconFile =
                             await OsAccess.getImageFromCamera();
                         setState(() {
                           if (iconFile != null) {
@@ -207,7 +207,7 @@ class _NewCommunityState extends State<NewCommunityPage> {
                       child: const Text('アルバムから選択'),
                       onPressed: () async {
                         print("onPressed select 1");
-                        final PickedFile iconFile =
+                        final XFile iconFile =
                             await OsAccess.getImageFromGallery();
                         setState(() {
                           print("onPressed select 2");

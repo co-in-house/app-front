@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:miniplayer/miniplayer.dart';
 
 class Const {
@@ -52,9 +55,9 @@ class OsAccess {
   static final picker = ImagePicker();
 
   // カメラから画像を取得
-  static Future<PickedFile> getImageFromCamera() async {
+  static Future<XFile> getImageFromCamera() async {
     try {
-      final pickedFile = await picker.getImage(source: ImageSource.camera);
+      final pickedFile = await picker.pickImage(source: ImageSource.camera);
       return pickedFile;
     } on PlatformException catch (err) {
       print(err);
@@ -65,10 +68,9 @@ class OsAccess {
   }
 
   // ギャラリーから画像を取得
-  static Future<PickedFile> getImageFromGallery() async {
-    PickedFile pickedFile;
+  static Future<XFile> getImageFromGallery() async {
     try {
-      pickedFile = await picker.getImage(source: ImageSource.gallery);
+      final pickedFile = await picker.pickImage(source: ImageSource.gallery);
       return pickedFile;
     } on PlatformException catch (err) {
       print(err);
@@ -78,6 +80,32 @@ class OsAccess {
     return null;
   }
 
+  static Future<File> cropImage(
+      {BuildContext context, @required String sourcePath}) async {
+    File croppedFile = await ImageCropper.cropImage(
+      sourcePath: sourcePath,
+      aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
+      androidUiSettings: AndroidUiSettings(
+        statusBarColor: Colors.black,
+        toolbarTitle: "",
+        toolbarColor: Colors.black,
+        toolbarWidgetColor: Colors.white,
+        backgroundColor: Colors.black,
+        cropFrameColor: Colors.transparent,
+        showCropGrid: false,
+        hideBottomControls: true,
+        initAspectRatio: CropAspectRatioPreset.original,
+      ),
+      iosUiSettings: IOSUiSettings(
+        hidesNavigationBar: true,
+        aspectRatioPickerButtonHidden: true,
+        doneButtonTitle: "切り抜く",
+        cancelButtonTitle: "戻る",
+      ),
+      cropStyle: CropStyle.rectangle,
+    );
+    return croppedFile;
+  }
   // 別アプリを開く
   // static Future launchURL(String url, {String secondUrl}) async {
   //   print("url: $url");
