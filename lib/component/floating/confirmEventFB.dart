@@ -5,10 +5,13 @@ import 'package:flutter/material.dart';
 class ConfirmEventFB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton.extended(
-      label: Text('確認'),
-      onPressed: () => {},
-      icon: Icon(Icons.remove_red_eye_outlined),
+    return Visibility(
+      visible: MediaQuery.of(context).viewInsets.bottom == 0.0,
+      child: FloatingActionButton.extended(
+        label: Text('確認'),
+        onPressed: () => {},
+        icon: Icon(Icons.remove_red_eye_outlined),
+      ),
     );
   }
 }

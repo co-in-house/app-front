@@ -20,17 +20,25 @@ class EventEditDelegate extends SliverChildListDelegate {
 }
 
 class _EventEditRowList {
-  static TextEditingController _titleCtrl;
-  static TextEditingController _titleErrorCtrl;
-  static TextEditingController _descriptionCtrl;
+  static TextEditingController _titleCtrl = TextEditingController();
+  static TextEditingController _titleErrorCtrl = TextEditingController();
+  static TextEditingController _descriptionCtrl = TextEditingController();
   static TextEditingController _startCtrl;
   static TextEditingController _endCtrl;
-  static TextEditingController _locationCtrl;
-  static TextEditingController _locationErrorCtrl;
+  static TextEditingController _locationCtrl = TextEditingController();
+  static TextEditingController _locationErrorCtrl = TextEditingController();
   static final Color _titleColor = Colors.black;
   static final Color _descriptionFontColor = Colors.grey;
+  static final int _titleMaxLength = 3;
 
-  static void _handleTitle() {}
+  static void _handleTitle() {
+    print("object " + _titleCtrl.text);
+    if (_titleMaxLength <= _titleCtrl.text.length) {
+      _titleErrorCtrl.text = "$_titleMaxLength文字以内にしてください。";
+    } else {
+      _titleErrorCtrl.text = "";
+    }
+  }
 
   static void _handleLocation() {}
 
@@ -40,11 +48,6 @@ class _EventEditRowList {
       JoinedCommunityList joinedCommunityList) {
     final DateTime _targetNow = DatetimeUtil.getInitialTargetDateTime();
     Size _screenSize = MediaQuery.of(context).size;
-    _titleCtrl = new TextEditingController();
-    _titleErrorCtrl = new TextEditingController();
-    _locationCtrl = new TextEditingController();
-    _locationErrorCtrl = new TextEditingController();
-    _descriptionCtrl = new TextEditingController();
     _startCtrl = new TextEditingController(text: _targetNow.toString());
     _endCtrl = new TextEditingController(
         text: _targetNow.add(Duration(hours: 2)).toString());
@@ -54,7 +57,7 @@ class _EventEditRowList {
         (content == null || content.eventId == null || content.eventId == 0);
     if (!_isNew) {
       _titleCtrl.text = content.title;
-    }
+    } else {}
 
     List<Widget> list = [];
     // thumbnail image
@@ -76,7 +79,7 @@ class _EventEditRowList {
             Flexible(
               child: TextField(
                 maxLines: 1,
-                maxLength: 3,
+                maxLength: _titleMaxLength,
                 autocorrect: false,
                 enabled: true,
                 obscureText: false,
@@ -106,6 +109,7 @@ class _EventEditRowList {
         child: InhouseWidget.dividerContainer(),
       ),
     );
+
     // start
     list.add(
       Container(
