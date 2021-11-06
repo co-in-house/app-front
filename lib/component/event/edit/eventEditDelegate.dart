@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
+import 'package:inhouse/component/common/customLongTextField.dart';
 import 'package:inhouse/component/common/customTextField.dart';
 import 'package:inhouse/component/common/dateTimeEditableContainer.dart';
 import 'package:inhouse/component/common/editHeroImageContainer.dart';
@@ -24,6 +24,8 @@ class EventEditDelegate extends SliverChildListDelegate {
     TextEditingController _locationErrorCtrl,
     TextEditingController _descriptionCtrl,
     TextEditingController _descriptionErrorCtrl,
+    TextEditingController _selectedCommNameCtrl,
+    TextEditingController _selectedCommErrorCtrl,
   ) : super(_EventEditRowList.build(
           context,
           content,
@@ -34,16 +36,14 @@ class EventEditDelegate extends SliverChildListDelegate {
           _locationErrorCtrl,
           _descriptionCtrl,
           _descriptionErrorCtrl,
+          _selectedCommNameCtrl,
+          _selectedCommErrorCtrl,
         ));
 }
 
 class _EventEditRowList {
   static final Color _titleColor = Colors.black;
   static final Color _descriptionFontColor = Colors.grey;
-
-  static void _handleLocation() {}
-
-  static void _handleDescription() {}
 
   static List<Widget> build(
     BuildContext context,
@@ -55,6 +55,8 @@ class _EventEditRowList {
     _locationErrorCtrl,
     _descriptionCtrl,
     _descriptionErrorCtrl,
+    _selectedCommNameCtrl,
+    _selectedCommErrorCtrl,
   ) {
     SelectDateTimeState selectedDateTime = context
         .select((SelectDateTimeState selectedDateTime) => selectedDateTime);
@@ -175,31 +177,13 @@ class _EventEditRowList {
                   color: _descriptionFontColor),
               margin: EdgeInsets.only(right: 5),
             ),
-            Flexible(
-              child: TextField(
-                maxLines: 1,
-                maxLength: 50,
-                autocorrect: false,
-                enabled: true,
-                obscureText: false,
-                controller: _locationCtrl,
-                onChanged: (String s) => _handleLocation(),
-                style: TextStyle(
-                  color: _descriptionFontColor,
-                  fontSize: 15,
-                ),
-                maxLengthEnforcement: MaxLengthEnforcement.none,
-                decoration: InputDecoration(
-                  errorText: _locationErrorCtrl.text != ""
-                      ? _locationErrorCtrl.text
-                      : null,
-                  hintText: '場所を追加',
-                  contentPadding: const EdgeInsets.symmetric(vertical: 0.0),
-                  border: InputBorder.none,
-                  counterText: '',
-                  isDense: true,
-                ),
-              ),
+            CustomTextField(
+              maxLine: 1,
+              maxLength: 50,
+              hintText: '場所を追加',
+              textColor: _descriptionFontColor,
+              textCtrl: _locationCtrl,
+              textErrorCtrl: _locationErrorCtrl,
             ),
           ],
         ),
@@ -220,6 +204,8 @@ class _EventEditRowList {
         child: CommSelectContainer(
           canTap: true,
           joinedCommunityList: joinedCommunityList,
+          selectedCommNameCtrl: _selectedCommNameCtrl,
+          selectedCommErrorCtrl: _selectedCommErrorCtrl,
         ),
       ),
     );
@@ -236,35 +222,12 @@ class _EventEditRowList {
       Container(
         margin: EdgeInsets.only(top: _screenSize.width * 0.02),
         padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Flexible(
-              child: TextField(
-                maxLines: null,
-                maxLength: 500,
-                autocorrect: false,
-                enabled: true,
-                obscureText: false,
-                controller: _descriptionCtrl,
-                onChanged: (String s) => _handleDescription(),
-                style: TextStyle(color: _titleColor),
-                maxLengthEnforcement: MaxLengthEnforcement.none,
-                decoration: InputDecoration(
-                  hintText: '詳細内容を追加する',
-                  contentPadding: const EdgeInsets.symmetric(vertical: 0.0),
-                  border: InputBorder.none,
-                  counterText: '',
-                  isDense: true,
-                ),
-              ),
-            ),
-          ],
-        ),
+        child: CustomLongTextField(textCtrl: _descriptionCtrl),
       ),
     );
+
     // 余白調整
-    list.add(Container(height: MediaQuery.of(context).padding.bottom * 2));
+    list.add(Container(height: MediaQuery.of(context).padding.bottom * 4));
     return list;
   }
 }

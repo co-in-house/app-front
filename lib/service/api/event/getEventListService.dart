@@ -53,6 +53,7 @@ class GetEventListService extends StateNotifier<EventMatrix> {
       );
       state = eventMatrix;
     } else {
+      debugPrint("GetEventList : " + response.statusCode.toString());
       throw Exception('Failed to get EventList');
     }
   }

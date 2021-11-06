@@ -76,7 +76,7 @@ class _State extends State<CustomTextField> {
           ),
           AnimatedContainer(
             height: widget.textErrorCtrl.text != "" &&
-                    widget.textCtrl.text.length == 0
+                    widget.textCtrl.text.trim().length == 0
                 ? 20.0
                 : 0,
             duration: const Duration(milliseconds: 500),
@@ -105,7 +105,8 @@ class _State extends State<CustomTextField> {
   }
 
   Widget _errorContainer() {
-    if (widget.textErrorCtrl.text != null && widget.textCtrl.text.length == 0) {
+    if (widget.textErrorCtrl.text != null &&
+        widget.textCtrl.text.trim().length == 0) {
       return Container(
         height: 20,
         child: Text(
