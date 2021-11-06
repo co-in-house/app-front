@@ -5,11 +5,12 @@ import 'package:inhouse/component/common/editHeroImageContainer.dart';
 import 'package:inhouse/component/event/edit/commSelectContainer.dart';
 import 'package:inhouse/model/community/JoinedCommunity.dart';
 import 'package:inhouse/model/event/eventList.dart';
+import 'package:inhouse/service/event/selectTimeService.dart';
 import 'package:inhouse/util/dataQuery.dart';
-import 'package:inhouse/util/format.dart';
 import 'package:inhouse/util/inhouseWidget.dart';
 import 'package:inhouse/util/util.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class EventEditDelegate extends SliverChildListDelegate {
   EventEditDelegate(
@@ -36,8 +37,6 @@ class EventEditDelegate extends SliverChildListDelegate {
 }
 
 class _EventEditRowList {
-  static TextEditingController _startCtrl;
-  static TextEditingController _endCtrl;
   static final Color _titleColor = Colors.black;
   static final Color _descriptionFontColor = Colors.grey;
   static final int _titleMaxLength = 3;
@@ -68,11 +67,9 @@ class _EventEditRowList {
     _descriptionCtrl,
     _descriptionErrorCtrl,
   ) {
-    final DateTime _targetNow = DatetimeUtil.getInitialTargetDateTime();
+    SelectDateTimeState selectedDateTime = context
+        .select((SelectDateTimeState selectedDateTime) => selectedDateTime);
     Size _screenSize = MediaQuery.of(context).size;
-    _startCtrl = new TextEditingController(text: _targetNow.toString());
-    _endCtrl = new TextEditingController(
-        text: _targetNow.add(Duration(hours: 2)).toString());
     final double _horizontalPadding = MediaQuery.of(context).size.width *
         (1 - Const.containerWidthPercentage);
     final bool _isNew =
@@ -151,7 +148,8 @@ class _EventEditRowList {
               child: DateTimeEditableContainer(
                 label: "開始",
                 descriptionFontColor: _descriptionFontColor,
-                dateTextCtrl: _startCtrl,
+                selectDateTime: selectedDateTime,
+                isStart: true,
               ),
             ),
           ],
@@ -173,7 +171,8 @@ class _EventEditRowList {
               child: DateTimeEditableContainer(
                 label: "終了",
                 descriptionFontColor: _descriptionFontColor,
-                dateTextCtrl: _endCtrl,
+                selectDateTime: selectedDateTime,
+                isStart: false,
               ),
             ),
           ],

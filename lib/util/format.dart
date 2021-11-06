@@ -9,6 +9,15 @@ class NumberUtil {
 }
 
 class DatetimeUtil {
+  static bool isSameDate(String dtStr1, String dtStr2) {
+    return DateTime.parse(dtStr1).difference(DateTime.parse(dtStr2)).inDays ==
+        0;
+  }
+
+  static int compareDateTimeRelationshipByString(String before, String after) {
+    return DateTime.parse(before).compareTo(DateTime.parse(after));
+  }
+
   // 現在時刻を丸めて1日後
   static DateTime getInitialTargetDateTime() {
     DateTime now = DateTime.now();

@@ -1,4 +1,6 @@
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:inhouse/model/community/JoinedCommunity.dart';
+import 'package:inhouse/service/event/selectTimeService.dart';
 import 'package:inhouse/view/event/eventEditPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +16,16 @@ class NewEventFB extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => EventEdigPage(
-              joinedCommunityList: jcl,
+            builder: (context) => MultiProvider(
+              providers: [
+                StateNotifierProvider<SelectDateTimeService,
+                    SelectDateTimeState>(
+                  create: (context) => SelectDateTimeService(),
+                ),
+              ],
+              child: EventEditPage(
+                joinedCommunityList: jcl,
+              ),
             ),
             fullscreenDialog: true,
           ),
