@@ -40,20 +40,6 @@ class EventEditDelegate extends SliverChildListDelegate {
 class _EventEditRowList {
   static final Color _titleColor = Colors.black;
   static final Color _descriptionFontColor = Colors.grey;
-  static final int _titleMaxLength = 3;
-  static int _titleNowLength = 0;
-
-  static void _handleTitle(
-      TextEditingController _titleCtrl, TextEditingController _titleErrorCtrl) {
-    _titleNowLength = _titleCtrl.text.length;
-    if (_titleMaxLength <= _titleCtrl.text.length) {
-      print("object " + _titleCtrl.text);
-      _titleErrorCtrl.text = "$_titleMaxLength文字以内にしてください。";
-    } else {
-      print("object " + _titleCtrl.text);
-      _titleErrorCtrl.text = "";
-    }
-  }
 
   static void _handleLocation() {}
 
@@ -99,33 +85,13 @@ class _EventEditRowList {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomTextField(
-              maxLength: 5,
               maxLine: 1,
+              maxLength: 5,
               hintText: 'タイトルを追加',
               textColor: _titleColor,
               textCtrl: _titleCtrl,
+              textErrorCtrl: _titleErrorCtrl,
             ),
-            // Flexible(
-            //   child: TextField(
-            //     maxLines: 1,
-            //     maxLength: _titleMaxLength,
-            //     autocorrect: false,
-            //     enabled: true,
-            //     obscureText: false,
-            //     controller: _titleCtrl,
-            //     onChanged: (String s) =>
-            //         _handleTitle(_titleCtrl, _titleErrorCtrl),
-            //     style: TextStyle(color: _titleColor),
-            //     maxLengthEnforcement: MaxLengthEnforcement.none,
-            //     decoration: InputDecoration(
-            //       hintText: 'タイトルを追加',
-            //       contentPadding: const EdgeInsets.symmetric(vertical: 0.0),
-            //       border: InputBorder.none,
-            //       counterText: '',
-            //       isDense: true,
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),

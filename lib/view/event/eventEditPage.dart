@@ -1,7 +1,6 @@
 import 'package:inhouse/component/appBar/inhouseAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:inhouse/component/event/edit/eventEditDelegate.dart';
-import 'package:inhouse/component/floating/confirmEventFB.dart';
 import 'package:inhouse/model/community/JoinedCommunity.dart';
 import 'package:inhouse/model/event/eventList.dart';
 import 'package:inhouse/service/event/selectTimeService.dart';
@@ -34,7 +33,7 @@ class _NewEventCreateState extends State<EventEditPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: InhouseAppBar.build(context, []),
-      floatingActionButton: ConfirmEventFB(),
+      floatingActionButton: _confirmFB(),
       extendBodyBehindAppBar: true,
       body: Container(
         child: CustomScrollView(
@@ -56,6 +55,25 @@ class _NewEventCreateState extends State<EventEditPage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _confirmFB() {
+    return Visibility(
+      visible: MediaQuery.of(context).viewInsets.bottom == 0.0,
+      child: FloatingActionButton.extended(
+        label: Text('確認'),
+        onPressed: () => {
+          debugPrint("hogee!!" + _titleCtrl.text),
+          if (_titleCtrl.text.length < 1)
+            {
+              setState(() {
+                _titleErrorCtrl.text = "必須だぜベイベ";
+              }),
+            }
+        },
+        icon: Icon(Icons.remove_red_eye_outlined),
       ),
     );
   }
