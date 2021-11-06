@@ -16,26 +16,39 @@ class EventEditDelegate extends SliverChildListDelegate {
     BuildContext context,
     OneEvent content,
     JoinedCommunityList joinedCommunityList,
-  ) : super(_EventEditRowList.build(context, content, joinedCommunityList));
+    TextEditingController _titleCtrl,
+    TextEditingController _titleErrorCtrl,
+    TextEditingController _locationCtrl,
+    TextEditingController _locationErrorCtrl,
+    TextEditingController _descriptionCtrl,
+    TextEditingController _descriptionErrorCtrl,
+  ) : super(_EventEditRowList.build(
+          context,
+          content,
+          joinedCommunityList,
+          _titleCtrl,
+          _titleErrorCtrl,
+          _locationCtrl,
+          _locationErrorCtrl,
+          _descriptionCtrl,
+          _descriptionErrorCtrl,
+        ));
 }
 
 class _EventEditRowList {
-  static TextEditingController _titleCtrl = TextEditingController();
-  static TextEditingController _titleErrorCtrl = TextEditingController();
-  static TextEditingController _descriptionCtrl = TextEditingController();
   static TextEditingController _startCtrl;
   static TextEditingController _endCtrl;
-  static TextEditingController _locationCtrl = TextEditingController();
-  static TextEditingController _locationErrorCtrl = TextEditingController();
   static final Color _titleColor = Colors.black;
   static final Color _descriptionFontColor = Colors.grey;
   static final int _titleMaxLength = 3;
 
-  static void _handleTitle() {
-    print("object " + _titleCtrl.text);
+  static void _handleTitle(
+      TextEditingController _titleCtrl, TextEditingController _titleErrorCtrl) {
     if (_titleMaxLength <= _titleCtrl.text.length) {
+      print("object " + _titleCtrl.text);
       _titleErrorCtrl.text = "$_titleMaxLength文字以内にしてください。";
     } else {
+      print("object " + _titleCtrl.text);
       _titleErrorCtrl.text = "";
     }
   }
@@ -44,8 +57,17 @@ class _EventEditRowList {
 
   static void _handleDescription() {}
 
-  static List<Widget> build(BuildContext context, OneEvent content,
-      JoinedCommunityList joinedCommunityList) {
+  static List<Widget> build(
+    BuildContext context,
+    OneEvent content,
+    JoinedCommunityList joinedCommunityList,
+    _titleCtrl,
+    _titleErrorCtrl,
+    _locationCtrl,
+    _locationErrorCtrl,
+    _descriptionCtrl,
+    _descriptionErrorCtrl,
+  ) {
     final DateTime _targetNow = DatetimeUtil.getInitialTargetDateTime();
     Size _screenSize = MediaQuery.of(context).size;
     _startCtrl = new TextEditingController(text: _targetNow.toString());
@@ -84,7 +106,8 @@ class _EventEditRowList {
                 enabled: true,
                 obscureText: false,
                 controller: _titleCtrl,
-                onChanged: (String s) => _handleTitle(),
+                onChanged: (String s) =>
+                    _handleTitle(_titleCtrl, _titleErrorCtrl),
                 style: TextStyle(color: _titleColor),
                 maxLengthEnforcement: MaxLengthEnforcement.none,
                 decoration: InputDecoration(

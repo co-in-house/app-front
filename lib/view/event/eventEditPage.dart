@@ -15,6 +15,12 @@ class EventEdigPage extends StatefulWidget {
 }
 
 class _NewEventCreateState extends State<EventEdigPage> {
+  TextEditingController _titleCtrl = TextEditingController();
+  TextEditingController _titleErrorCtrl = TextEditingController();
+  TextEditingController _locationCtrl = TextEditingController();
+  TextEditingController _locationErrorCtrl = TextEditingController();
+  TextEditingController _descriptionCtrl = TextEditingController();
+  TextEditingController _descriptionErrorCtrl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +37,12 @@ class _NewEventCreateState extends State<EventEdigPage> {
                 context,
                 widget.content,
                 widget.joinedCommunityList,
+                _titleCtrl,
+                _titleErrorCtrl,
+                _locationCtrl,
+                _locationErrorCtrl,
+                _descriptionCtrl,
+                _descriptionErrorCtrl,
               ),
             ),
           ],
