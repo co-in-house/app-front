@@ -1,5 +1,5 @@
 import 'package:image_picker/image_picker.dart';
-import 'package:inhouse/component/common/customTextField.dart';
+import 'package:inhouse/component/common/customLongTextContainerForModal.dart';
 import 'package:inhouse/component/event/common/commOverviewContainer.dart';
 import 'package:inhouse/component/event/detail/AttendeeModalGridViewContainer.dart';
 import 'package:inhouse/model/community/CommunityOverview.dart';
@@ -465,120 +465,23 @@ Future<String> getLocalPhotoPathModal({@required BuildContext context}) {
   return result;
 }
 
-// long text  modal
+// long text modal
 Future<String> inputLongTextModal(
     {@required BuildContext context,
     @required TextEditingController textCtrl,
     @required int maxLength,
     @required String hintLabel,
     double circular = 20}) {
-  String _preText = textCtrl.text;
   Future<String> result = showModalBottomSheet(
     backgroundColor: Colors.transparent,
     isScrollControlled: true,
     context: context,
     builder: (BuildContext context) {
-      ScrollController _scrollController = ScrollController();
-      return Container(
-        height: MediaQuery.of(context).size.height - kToolbarHeight,
-        padding: EdgeInsets.only(top: circular),
-        margin: EdgeInsets.only(top: 1),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(circular),
-            topRight: Radius.circular(circular),
-          ),
-        ),
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.05,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  CupertinoButton(
-                    padding: EdgeInsets.symmetric(horizontal: 0),
-                    child: Text(
-                      'キャンセル',
-                      style: TextStyle(
-                        color: Colors.grey,
-                      ),
-                    ),
-                    onPressed: () {
-                      textCtrl.text = _preText;
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                  CupertinoButton(
-                    padding: EdgeInsets.symmetric(horizontal: 0),
-                    child: Text('決定'),
-                    onPressed: () {
-                      Navigator.of(context).pop(textCtrl.text);
-                    },
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.05,
-              ),
-              child: Divider(
-                height: 0,
-                thickness: 1,
-              ),
-            ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(
-                  top: 10,
-                  left: MediaQuery.of(context).size.width * 0.05,
-                  right: MediaQuery.of(context).size.width * 0.05,
-                ),
-                child: Scrollbar(
-                  controller: _scrollController,
-                  isAlwaysShown: false,
-                  child: TextField(
-                    maxLines: null,
-                    maxLength: maxLength,
-                    controller: textCtrl,
-                    scrollController: _scrollController,
-                    autofocus: true,
-                    autocorrect: false,
-                    enabled: true,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      hintText: hintLabel,
-                      border: InputBorder.none,
-                      counterText: '',
-                      isDense: true,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              height: 40,
-              alignment: Alignment.centerRight,
-              padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.05),
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(color: Colors.grey[300]),
-                ),
-              ),
-              child: Text(
-                "入力文字数チェックとかここに入れたいよね",
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).viewInsets.bottom,
-            ),
-          ],
-        ),
+      return CustomLongTextContainerForModal(
+        textCtrl: textCtrl,
+        hintLabel: hintLabel,
+        maxLength: maxLength,
+        paddingTop: circular,
       );
     },
   );

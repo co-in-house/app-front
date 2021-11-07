@@ -45,6 +45,12 @@ class SelectDateTimeService extends StateNotifier<SelectDateTimeState> {
     debugPrint(
         "Select DateTime Service setEndDateTime compplete. : param $end");
   }
+
+  bool isValid() {
+    return DatetimeUtil.compareDateTimeRelationshipByString(
+            state.startDateTimeStr, state.endDateTimeStr) <
+        0;
+  }
 }
 
 @immutable

@@ -26,6 +26,7 @@ class EventEditDelegate extends SliverChildListDelegate {
     TextEditingController _descriptionErrorCtrl,
     TextEditingController _selectedCommNameCtrl,
     TextEditingController _selectedCommErrorCtrl,
+    Key _LongTextKey,
   ) : super(_EventEditRowList.build(
           context,
           content,
@@ -38,6 +39,7 @@ class EventEditDelegate extends SliverChildListDelegate {
           _descriptionErrorCtrl,
           _selectedCommNameCtrl,
           _selectedCommErrorCtrl,
+          _LongTextKey,
         ));
 }
 
@@ -57,6 +59,7 @@ class _EventEditRowList {
     _descriptionErrorCtrl,
     _selectedCommNameCtrl,
     _selectedCommErrorCtrl,
+    _LongTextKey,
   ) {
     SelectDateTimeState selectedDateTime = context
         .select((SelectDateTimeState selectedDateTime) => selectedDateTime);
@@ -88,7 +91,7 @@ class _EventEditRowList {
           children: [
             CustomTextField(
               maxLine: 1,
-              maxLength: 5,
+              maxLength: 32,
               hintText: 'タイトルを追加',
               textColor: _titleColor,
               textCtrl: _titleCtrl,
@@ -222,7 +225,10 @@ class _EventEditRowList {
       Container(
         margin: EdgeInsets.only(top: _screenSize.width * 0.02),
         padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
-        child: CustomLongTextField(textCtrl: _descriptionCtrl),
+        child: CustomLongTextField(
+          textCtrl: _descriptionCtrl,
+          key: _LongTextKey,
+        ),
       ),
     );
 

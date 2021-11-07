@@ -61,7 +61,7 @@ class _State extends State<CustomTextField> {
                   controller: widget.textCtrl,
                   onChanged: (String s) => setCounter(),
                   style: TextStyle(color: widget.textColor),
-                  maxLengthEnforcement: MaxLengthEnforcement.none,
+                  // maxLengthEnforcement: MaxLengthEnforcement.none, // 最大文字数までしか入力させない
                   decoration: InputDecoration(
                     hintText: widget.hintText,
                     contentPadding: const EdgeInsets.symmetric(vertical: 0.0),

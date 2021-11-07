@@ -22,7 +22,9 @@ class _NewEventCreateState extends State<EventEditPage> {
   TextEditingController _locationErrorCtrl = TextEditingController();
   TextEditingController _descriptionCtrl = TextEditingController();
   TextEditingController _descriptionErrorCtrl = TextEditingController();
-
+  TextEditingController _selectedCommNameCtrl = TextEditingController();
+  TextEditingController _selectedCommErrorCtrl = TextEditingController();
+  final UniqueKey _longTextKey = UniqueKey();
   @override
   void initState() {
     super.initState();
@@ -51,6 +53,9 @@ class _NewEventCreateState extends State<EventEditPage> {
                 _locationErrorCtrl,
                 _descriptionCtrl,
                 _descriptionErrorCtrl,
+                _selectedCommNameCtrl,
+                _selectedCommErrorCtrl,
+                _longTextKey,
               ),
             ),
           ],
@@ -64,14 +69,30 @@ class _NewEventCreateState extends State<EventEditPage> {
       visible: MediaQuery.of(context).viewInsets.bottom == 0.0,
       child: FloatingActionButton.extended(
         label: Text('確認'),
-        onPressed: () => {
-          debugPrint("hogee!!" + _titleCtrl.text),
-          if (_titleCtrl.text.length < 1)
-            {
-              setState(() {
-                _titleErrorCtrl.text = "必須だぜベイベ";
-              }),
+        onPressed: () {
+          bool _isValid = true;
+          setState(() {
+            if (_titleCtrl.text.trim().length < 1) {
+              _titleErrorCtrl.text = "必須項目です.";
+              _isValid = false;
             }
+            if (_locationCtrl.text.trim().length < 1) {
+              _locationErrorCtrl.text = "必須項目です.";
+              _isValid = false;
+            }
+            if (_selectedCommNameCtrl.text.trim().length < 1) {
+              _selectedCommErrorCtrl.text = "必須項目です.";
+              _isValid = false;
+            }
+            if (!context.read<SelectDateTimeService>().isValid()) {
+              _isValid = false;
+            }
+            if (_isValid) {
+              debugPrint("OK!");
+            } else {
+              debugPrint("NG!");
+            }
+          });
         },
         icon: Icon(Icons.remove_red_eye_outlined),
       ),

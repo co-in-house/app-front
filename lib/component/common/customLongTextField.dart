@@ -13,13 +13,19 @@ class CustomLongTextField extends StatefulWidget {
 
 class _State extends State<CustomLongTextField> {
   String text;
-
   @override
   void initState() {
     super.initState();
     setState(() {
+      debugPrint("initState");
       text = "";
     });
+  }
+
+  @override
+  void dispose() {
+    debugPrint("dispose");
+    super.dispose();
   }
 
   @override
