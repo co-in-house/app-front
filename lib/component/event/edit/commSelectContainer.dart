@@ -10,12 +10,16 @@ class CommSelectContainer extends StatefulWidget {
     this.joinedCommunityList,
     this.canTap = false,
     this.fixedComm,
+    this.selectedCommIdCtrl,
     this.selectedCommNameCtrl,
+    this.selectedCommImgUrlCtrl,
     this.selectedCommErrorCtrl,
   }) : super(key: key);
   final JoinedCommunityList joinedCommunityList;
   final CommunityOverview fixedComm;
+  final TextEditingController selectedCommIdCtrl;
   final TextEditingController selectedCommNameCtrl;
+  final TextEditingController selectedCommImgUrlCtrl;
   final TextEditingController selectedCommErrorCtrl;
   final bool canTap;
 
@@ -52,7 +56,10 @@ class _State extends State<CommSelectContainer> {
                   joinedCommunityList: widget.joinedCommunityList,
                 );
                 if (result != null) {
+                  widget.selectedCommIdCtrl.text =
+                      result.communityId.toString();
                   widget.selectedCommNameCtrl.text = result.communityName;
+                  widget.selectedCommImgUrlCtrl.text = result.iconImg;
                   setState(() {
                     _currentComm = result;
                   });
@@ -81,7 +88,8 @@ class _State extends State<CommSelectContainer> {
           ),
         ),
         AnimatedContainer(
-          height: widget.selectedCommErrorCtrl.text != "" &&
+          height: widget.selectedCommErrorCtrl != null &&
+                  widget.selectedCommErrorCtrl.text != "" &&
                   widget.selectedCommNameCtrl.text.trim().length == 0
               ? 20.0
               : 0,
@@ -94,7 +102,8 @@ class _State extends State<CommSelectContainer> {
   }
 
   Widget _errorContainer() {
-    if (widget.selectedCommErrorCtrl.text != null &&
+    if (widget.selectedCommErrorCtrl != null &&
+        widget.selectedCommErrorCtrl.text != null &&
         widget.selectedCommNameCtrl.text.trim().length == 0) {
       return Container(
         height: 20,

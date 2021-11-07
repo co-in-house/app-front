@@ -1,9 +1,11 @@
 import 'package:inhouse/component/appBar/inhouseAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:inhouse/component/event/edit/eventEditDelegate.dart';
+import 'package:inhouse/model/community/CommunityOverview.dart';
 import 'package:inhouse/model/community/JoinedCommunity.dart';
 import 'package:inhouse/model/event/eventList.dart';
 import 'package:inhouse/service/event/selectTimeService.dart';
+import 'package:inhouse/view/event/eventConfirmPage.dart';
 import 'package:provider/provider.dart';
 
 class EventEditPage extends StatefulWidget {
@@ -22,8 +24,11 @@ class _NewEventCreateState extends State<EventEditPage> {
   TextEditingController _locationErrorCtrl = TextEditingController();
   TextEditingController _descriptionCtrl = TextEditingController();
   TextEditingController _descriptionErrorCtrl = TextEditingController();
+  TextEditingController _selectedCommIdCtrl = TextEditingController();
   TextEditingController _selectedCommNameCtrl = TextEditingController();
+  TextEditingController _selectedCommImgUrlCtrl = TextEditingController();
   TextEditingController _selectedCommErrorCtrl = TextEditingController();
+  TextEditingController _assetImgPathCtrl = TextEditingController();
   final UniqueKey _longTextKey = UniqueKey();
   @override
   void initState() {
@@ -53,8 +58,11 @@ class _NewEventCreateState extends State<EventEditPage> {
                 _locationErrorCtrl,
                 _descriptionCtrl,
                 _descriptionErrorCtrl,
+                _selectedCommIdCtrl,
                 _selectedCommNameCtrl,
+                _selectedCommImgUrlCtrl,
                 _selectedCommErrorCtrl,
+                _assetImgPathCtrl,
                 _longTextKey,
               ),
             ),
@@ -65,6 +73,8 @@ class _NewEventCreateState extends State<EventEditPage> {
   }
 
   Widget _confirmFB() {
+    SelectDateTimeState _selectDatetime = context
+        .select((SelectDateTimeState selectedDateTime) => selectedDateTime);
     return Visibility(
       visible: MediaQuery.of(context).viewInsets.bottom == 0.0,
       child: FloatingActionButton.extended(
@@ -89,6 +99,29 @@ class _NewEventCreateState extends State<EventEditPage> {
             }
             if (_isValid) {
               debugPrint("OK!");
+              CommunityOverview _selectedComm = CommunityOverview(
+                communityId: num.parse(_selectedCommIdCtrl.text),
+                communityName: _selectedCommNameCtrl.text,
+                iconImg: _selectedCommImgUrlCtrl.text,
+              );
+
+              String _start = _selectDatetime.startDateTimeStr;
+              String _end = _selectDatetime.endDateTimeStr;
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => EventConfirmPage(
+                    assetImgPath: _assetImgPathCtrl.text,
+                    networkImgUrl: null,
+                    title: _titleCtrl.text,
+                    start: _start,
+                    end: _end,
+                    location: _locationCtrl.text,
+                    selectedComm: _selectedComm,
+                    description: _descriptionCtrl.text,
+                  ),
+                ),
+              );
             } else {
               debugPrint("NG!");
             }

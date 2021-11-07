@@ -24,9 +24,12 @@ class EventEditDelegate extends SliverChildListDelegate {
     TextEditingController _locationErrorCtrl,
     TextEditingController _descriptionCtrl,
     TextEditingController _descriptionErrorCtrl,
+    TextEditingController _selectedCommIdCtrl,
     TextEditingController _selectedCommNameCtrl,
+    TextEditingController _selectedCommImgUrlCtrl,
     TextEditingController _selectedCommErrorCtrl,
-    Key _LongTextKey,
+    TextEditingController _assetImgPathCtrl,
+    Key _longTextKey,
   ) : super(_EventEditRowList.build(
           context,
           content,
@@ -37,9 +40,12 @@ class EventEditDelegate extends SliverChildListDelegate {
           _locationErrorCtrl,
           _descriptionCtrl,
           _descriptionErrorCtrl,
+          _selectedCommIdCtrl,
           _selectedCommNameCtrl,
+          _selectedCommImgUrlCtrl,
           _selectedCommErrorCtrl,
-          _LongTextKey,
+          _assetImgPathCtrl,
+          _longTextKey,
         ));
 }
 
@@ -57,9 +63,12 @@ class _EventEditRowList {
     _locationErrorCtrl,
     _descriptionCtrl,
     _descriptionErrorCtrl,
+    _selectedCommIdCtrl,
     _selectedCommNameCtrl,
+    _selectedCommImgUrlCtrl,
     _selectedCommErrorCtrl,
-    _LongTextKey,
+    _assetImgPathCtrl,
+    _longTextKey,
   ) {
     SelectDateTimeState selectedDateTime = context
         .select((SelectDateTimeState selectedDateTime) => selectedDateTime);
@@ -78,6 +87,7 @@ class _EventEditRowList {
       EditHeroImageContainer(
         networkImgUrl: _isNew ? null : content.thumbnailImg,
         assetImgPath: _isNew ? EventImageDataQuery.getDefaultImgRandom() : null,
+        assetImgPathCtrl: _assetImgPathCtrl,
       ),
     );
 
@@ -207,7 +217,9 @@ class _EventEditRowList {
         child: CommSelectContainer(
           canTap: true,
           joinedCommunityList: joinedCommunityList,
+          selectedCommIdCtrl: _selectedCommIdCtrl,
           selectedCommNameCtrl: _selectedCommNameCtrl,
+          selectedCommImgUrlCtrl: _selectedCommImgUrlCtrl,
           selectedCommErrorCtrl: _selectedCommErrorCtrl,
         ),
       ),
@@ -227,7 +239,7 @@ class _EventEditRowList {
         padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
         child: CustomLongTextField(
           textCtrl: _descriptionCtrl,
-          key: _LongTextKey,
+          key: _longTextKey,
         ),
       ),
     );

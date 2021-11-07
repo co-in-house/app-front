@@ -5,11 +5,15 @@ import 'package:inhouse/util/modal.dart';
 import 'package:inhouse/util/util.dart';
 
 class EditHeroImageContainer extends StatefulWidget {
-  const EditHeroImageContainer(
-      {Key key, @required this.networkImgUrl, @required this.assetImgPath})
-      : super(key: key);
+  const EditHeroImageContainer({
+    Key key,
+    @required this.networkImgUrl,
+    @required this.assetImgPath,
+    @required this.assetImgPathCtrl,
+  }) : super(key: key);
   final String networkImgUrl;
   final String assetImgPath;
+  final TextEditingController assetImgPathCtrl;
 
   @override
   State<StatefulWidget> createState() => _State();
@@ -24,6 +28,7 @@ class _State extends State<EditHeroImageContainer> {
     if (widget.assetImgPath != null) {
       targetImagePath = widget.assetImgPath;
     }
+    widget.assetImgPathCtrl.text = widget.assetImgPath;
   }
 
   @override
@@ -74,6 +79,7 @@ class _State extends State<EditHeroImageContainer> {
                     setState(() {
                       targetImagePath = croppedFile.path;
                     });
+                    widget.assetImgPathCtrl.text = targetImagePath;
                   }
                 }
               },
