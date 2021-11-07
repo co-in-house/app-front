@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:inhouse/util/util.dart';
 import 'package:path/path.dart';
 
 class FirebaseStorageController {
@@ -25,10 +26,12 @@ class FirebaseStorageController {
   static Future<String> _upload(
       File file, String dirName, String fileName) async {
     String downloadUrl = '';
-    if (file.isAbsolute) {
+    File absFile = await OsAccess.getAbsoluteFilePathFromAssets(file);
+
+    if (absFile.isAbsolute) {
       TaskSnapshot storedImage = await FirebaseStorageAccess.ref
           .child(dirName + '/' + fileName)
-          .putFile(File(file.absolute.path));
+          .putFile(File(absFile.absolute.path));
       print("put file to firebase");
       downloadUrl = await _loadImage(storedImage);
     }

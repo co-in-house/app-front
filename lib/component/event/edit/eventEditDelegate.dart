@@ -92,6 +92,7 @@ class _EventEditRowList {
     }
 
     List<Widget> list = [];
+
     // thumbnail image
     list.add(
       EditHeroImageContainer(

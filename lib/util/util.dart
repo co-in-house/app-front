@@ -1,10 +1,15 @@
 import 'dart:io';
+import 'dart:async';
+import 'dart:typed_data';
+import 'package:path/path.dart';
 
+import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:miniplayer/miniplayer.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class Const {
   // private constructor
@@ -120,6 +125,22 @@ class OsAccess {
   //     throw 'Could not launch $label';
   //   }
   // }
+
+  static Future<File> getAbsoluteFilePathFromAssets(File file) async {
+    if (file.isAbsolute) {
+      return file;
+    } else {
+      ByteData byteData = await rootBundle.load('${file.path}');
+      String _extension = extension(file.path);
+      File tmpFile =
+          File('${(await getTemporaryDirectory()).path}/tmpImg.$_extension}');
+      File _copiedFile = await tmpFile.writeAsBytes(
+        byteData.buffer
+            .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes),
+      );
+      return _copiedFile;
+    }
+  }
 }
 
 class Check {
