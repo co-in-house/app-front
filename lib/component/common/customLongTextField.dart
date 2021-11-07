@@ -17,8 +17,13 @@ class _State extends State<CustomLongTextField> {
   void initState() {
     super.initState();
     setState(() {
-      debugPrint("initState");
-      text = "";
+      if (widget.textCtrl == null ||
+          widget.textCtrl.text == null ||
+          widget.textCtrl.text == "") {
+        text = "";
+      } else {
+        text = widget.textCtrl.text;
+      }
     });
   }
 

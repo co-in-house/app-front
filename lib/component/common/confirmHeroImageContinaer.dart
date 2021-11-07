@@ -8,6 +8,16 @@ class ConfirmHeroImageContainer extends StatelessWidget {
 
   final double _radius = 25;
 
+  bool choiceAssetImg() {
+    debugPrint("as: $assetImgPath");
+    debugPrint("nt: $networkImgUrl");
+    if (this.assetImgPath != null && this.assetImgPath != "") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -38,7 +48,7 @@ class ConfirmHeroImageContainer extends StatelessWidget {
                 ),
                 image: DecorationImage(
                   alignment: Alignment(-.2, -.2),
-                  image: this.assetImgPath != null
+                  image: choiceAssetImg()
                       ? AssetImage(this.assetImgPath)
                       : NetworkImage(this.networkImgUrl),
                   fit: BoxFit.cover,

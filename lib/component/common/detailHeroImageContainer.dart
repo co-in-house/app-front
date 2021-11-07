@@ -1,4 +1,3 @@
-import 'package:inhouse/util/util.dart';
 import 'package:flutter/material.dart';
 
 class DetailHeroImageContainer extends StatelessWidget {

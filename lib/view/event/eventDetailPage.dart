@@ -14,7 +14,12 @@ class EventDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: InhouseAppBar.build(context, [HeaderButtonEditEvent()]),
+      appBar: InhouseAppBar.build(context, [
+        HeaderButtonEditEvent(
+          eventInfo: eventInfo,
+          selectedComm: selectedComm,
+        )
+      ]),
       // floatingActionButton: JoinFloatingButton(),
       extendBodyBehindAppBar: true,
       body: CustomScrollView(

@@ -9,10 +9,12 @@ import 'package:inhouse/view/event/eventConfirmPage.dart';
 import 'package:provider/provider.dart';
 
 class EventEditPage extends StatefulWidget {
-  EventEditPage({Key key, this.content, this.joinedCommunityList})
+  EventEditPage(
+      {Key key, this.content, this.joinedCommunityList, this.fixedComm})
       : super(key: key);
   final OneEvent content;
   final JoinedCommunityList joinedCommunityList;
+  final CommunityOverview fixedComm;
   @override
   _NewEventCreateState createState() => _NewEventCreateState();
 }
@@ -30,6 +32,10 @@ class _NewEventCreateState extends State<EventEditPage> {
   TextEditingController _selectedCommErrorCtrl = TextEditingController();
   TextEditingController _assetImgPathCtrl = TextEditingController();
   final UniqueKey _longTextKey = UniqueKey();
+
+  int _eventId;
+  String _thumbnailImg;
+
   @override
   void initState() {
     super.initState();
@@ -38,6 +44,15 @@ class _NewEventCreateState extends State<EventEditPage> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.content != null &&
+        widget.content.eventId != null &&
+        widget.content.eventId != 0) {
+      _eventId = widget.content.eventId;
+      _thumbnailImg = widget.content.thumbnailImg;
+    } else {
+      _eventId = null;
+      _thumbnailImg = null;
+    }
     return Scaffold(
       appBar: InhouseAppBar.build(context, []),
       floatingActionButton: _confirmFB(),
@@ -51,6 +66,7 @@ class _NewEventCreateState extends State<EventEditPage> {
               delegate: EventEditDelegate(
                 context,
                 widget.content,
+                widget.fixedComm,
                 widget.joinedCommunityList,
                 _titleCtrl,
                 _titleErrorCtrl,
@@ -97,35 +113,36 @@ class _NewEventCreateState extends State<EventEditPage> {
             if (!context.read<SelectDateTimeService>().isValid()) {
               _isValid = false;
             }
-            if (_isValid) {
-              debugPrint("OK!");
-              CommunityOverview _selectedComm = CommunityOverview(
-                communityId: num.parse(_selectedCommIdCtrl.text),
-                communityName: _selectedCommNameCtrl.text,
-                iconImg: _selectedCommImgUrlCtrl.text,
-              );
-
-              String _start = _selectDatetime.startDateTimeStr;
-              String _end = _selectDatetime.endDateTimeStr;
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => EventConfirmPage(
-                    assetImgPath: _assetImgPathCtrl.text,
-                    networkImgUrl: null,
-                    title: _titleCtrl.text,
-                    start: _start,
-                    end: _end,
-                    location: _locationCtrl.text,
-                    selectedComm: _selectedComm,
-                    description: _descriptionCtrl.text,
-                  ),
-                ),
-              );
-            } else {
-              debugPrint("NG!");
-            }
           });
+          if (_isValid) {
+            debugPrint("OK!");
+            CommunityOverview _selectedComm = CommunityOverview(
+              communityId: num.parse(_selectedCommIdCtrl.text),
+              communityName: _selectedCommNameCtrl.text,
+              iconImg: _selectedCommImgUrlCtrl.text,
+            );
+
+            String _start = _selectDatetime.startDateTimeStr;
+            String _end = _selectDatetime.endDateTimeStr;
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EventConfirmPage(
+                  eventId: _eventId,
+                  assetImgPath: _assetImgPathCtrl.text,
+                  networkImgUrl: _thumbnailImg,
+                  title: _titleCtrl.text,
+                  start: _start,
+                  end: _end,
+                  location: _locationCtrl.text,
+                  selectedComm: _selectedComm,
+                  description: _descriptionCtrl.text,
+                ),
+              ),
+            );
+          } else {
+            debugPrint("NG!");
+          }
         },
         icon: Icon(Icons.remove_red_eye_outlined),
       ),

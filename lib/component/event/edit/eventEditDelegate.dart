@@ -4,6 +4,7 @@ import 'package:inhouse/component/common/customTextField.dart';
 import 'package:inhouse/component/common/dateTimeEditableContainer.dart';
 import 'package:inhouse/component/common/editHeroImageContainer.dart';
 import 'package:inhouse/component/event/edit/commSelectContainer.dart';
+import 'package:inhouse/model/community/CommunityOverview.dart';
 import 'package:inhouse/model/community/JoinedCommunity.dart';
 import 'package:inhouse/model/event/eventList.dart';
 import 'package:inhouse/service/event/selectTimeService.dart';
@@ -17,6 +18,7 @@ class EventEditDelegate extends SliverChildListDelegate {
   EventEditDelegate(
     BuildContext context,
     OneEvent content,
+    CommunityOverview fixedComm,
     JoinedCommunityList joinedCommunityList,
     TextEditingController _titleCtrl,
     TextEditingController _titleErrorCtrl,
@@ -33,6 +35,7 @@ class EventEditDelegate extends SliverChildListDelegate {
   ) : super(_EventEditRowList.build(
           context,
           content,
+          fixedComm,
           joinedCommunityList,
           _titleCtrl,
           _titleErrorCtrl,
@@ -56,6 +59,7 @@ class _EventEditRowList {
   static List<Widget> build(
     BuildContext context,
     OneEvent content,
+    CommunityOverview fixedComm,
     JoinedCommunityList joinedCommunityList,
     _titleCtrl,
     _titleErrorCtrl,
@@ -79,6 +83,11 @@ class _EventEditRowList {
         (content == null || content.eventId == null || content.eventId == 0);
     if (!_isNew) {
       _titleCtrl.text = content.title;
+      _locationCtrl.text = content.location;
+      _selectedCommIdCtrl.text = fixedComm.communityId.toString();
+      _selectedCommNameCtrl.text = fixedComm.communityName;
+      _selectedCommImgUrlCtrl.text = fixedComm.iconImg;
+      _descriptionCtrl.text = content.description;
     } else {}
 
     List<Widget> list = [];
@@ -215,7 +224,8 @@ class _EventEditRowList {
         margin: EdgeInsets.only(top: _screenSize.width * 0.02),
         padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
         child: CommSelectContainer(
-          canTap: true,
+          canTap: _isNew,
+          fixedComm: fixedComm,
           joinedCommunityList: joinedCommunityList,
           selectedCommIdCtrl: _selectedCommIdCtrl,
           selectedCommNameCtrl: _selectedCommNameCtrl,

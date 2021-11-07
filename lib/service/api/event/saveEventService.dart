@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:inhouse/model/event/saveEventInfo.dart';
 import 'package:inhouse/service/external/content/firebaseStorageController.dart';
 import 'package:http/http.dart' as http;
@@ -7,24 +9,44 @@ import 'package:inhouse/util/util.dart';
 
 // イベントの新規作成・更新
 class SaveEventService {
-  Future<void> post(SaveEventInfo saveEventInfo) async {
-    // 画像のアップロード
-    saveEventInfo.iconImgUrl =
-        await FirebaseStorageController.uploadEventThumbnail(
-      File(saveEventInfo.targetImgPath),
-      saveEventInfo.communityId,
-      saveEventInfo.title,
-    );
-    final String _body = jsonEncode(saveEventInfo);
-    final response = await http.post(
-      Uri.https(Const.APP_SERVIE_HOST, 'service/api/event/info'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: _body,
-    );
-    print("POST Event body : " + _body);
+  Future<void> save(SaveEventInfo saveEventInfo) async {
+    bool isNew = true;
+    if (saveEventInfo.eventId != null && saveEventInfo.eventId != 0) {
+      isNew = false;
+    }
 
+    // 画像のアップロード
+    if (saveEventInfo.targetImgPath != null &&
+        saveEventInfo.targetImgPath != "") {
+      debugPrint("update event image...");
+      saveEventInfo.iconImgUrl =
+          await FirebaseStorageController.uploadEventThumbnail(
+        File(saveEventInfo.targetImgPath),
+        saveEventInfo.communityId,
+        saveEventInfo.title,
+      );
+    }
+    final String _body = jsonEncode(saveEventInfo);
+    Response response;
+    if (isNew) {
+      response = await http.post(
+        Uri.https(Const.APP_SERVIE_HOST, 'service/api/event/info'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: _body,
+      );
+      print("POST Event body : " + _body);
+    } else {
+      response = await http.put(
+        Uri.https(Const.APP_SERVIE_HOST, 'service/api/event/info'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: _body,
+      );
+      print("PUT Event body : " + _body);
+    }
     // テスト用
     // await new Future.delayed(new Duration(seconds: 2));
     // final response = _MockResponse();

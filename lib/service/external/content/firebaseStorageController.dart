@@ -26,7 +26,7 @@ class FirebaseStorageController {
       File file, String dirName, String fileName) async {
     String downloadUrl = '';
     if (file.isAbsolute) {
-      final TaskSnapshot storedImage = await FirebaseStorageAccess.ref
+      TaskSnapshot storedImage = await FirebaseStorageAccess.ref
           .child(dirName + '/' + fileName)
           .putFile(File(file.absolute.path));
       print("put file to firebase");

@@ -64,8 +64,10 @@ class EventConfirmPage extends StatelessWidget {
         icon: Icon(Icons.check),
         onPressed: () async {
           SaveEventInfo saveEventInfo = SaveEventInfo(
+            eventId: this.eventId,
             communityId: this.selectedComm.communityId,
             targetImgPath: this.assetImgPath,
+            iconImgUrl: this.networkImgUrl,
             title: this.title,
             start: this.start,
             end: this.end,
@@ -75,7 +77,7 @@ class EventConfirmPage extends StatelessWidget {
           if (eventId != null) {
             saveEventInfo.eventId = eventId;
           }
-          await SaveEventService().post(saveEventInfo);
+          SaveEventService().save(saveEventInfo);
           Navigator.popUntil(context, (route) => route.isFirst);
         });
   }
