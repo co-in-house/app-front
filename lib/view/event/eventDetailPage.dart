@@ -1,17 +1,18 @@
 import 'package:inhouse/component/appBar/inhouseAppBar.dart';
 import 'package:inhouse/component/event/detail/eventDetailDelegate.dart';
 import 'package:inhouse/component/event/detail/headerButtonEdit.dart';
+import 'package:inhouse/model/community/CommunityOverview.dart';
 import 'package:inhouse/model/event/eventList.dart';
-import 'package:inhouse/service/api/event/getAttendeesService.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class EventDetailPage extends StatelessWidget {
-  EventDetailPage({Key key, @required this.eventInfo}) : super(key: key);
+  EventDetailPage(
+      {Key key, @required this.eventInfo, @required this.selectedComm})
+      : super(key: key);
   final OneEvent eventInfo;
+  final CommunityOverview selectedComm;
   @override
   Widget build(BuildContext context) {
-    context.read<GetAttendeesService>().call();
     return Scaffold(
       appBar: InhouseAppBar.build(context, [HeaderButtonEditEvent()]),
       // floatingActionButton: JoinFloatingButton(),
@@ -22,6 +23,7 @@ class EventDetailPage extends StatelessWidget {
             delegate: EventDetailDelegate(
               context,
               eventInfo,
+              selectedComm,
             ),
           ),
         ],

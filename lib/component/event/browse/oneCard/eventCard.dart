@@ -2,10 +2,9 @@ import 'dart:ui';
 
 import 'package:inhouse/component/event/browse/dateOvalContainer.dart';
 import 'package:inhouse/component/event/browse/oneCard/eventCardBottomContainer.dart';
+import 'package:inhouse/model/community/CommunityOverview.dart';
 import 'package:inhouse/model/community/JoinedCommunity.dart';
-import 'package:inhouse/model/event/attendee/attendees.dart';
 import 'package:inhouse/model/event/eventList.dart';
-import 'package:inhouse/service/api/event/getAttendeesService.dart';
 import 'package:inhouse/util/dataQuery.dart';
 import 'package:inhouse/util/format.dart';
 import 'package:inhouse/util/util.dart';
@@ -13,7 +12,6 @@ import 'package:inhouse/view/event/eventDetailPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
 
 // event 1 card container
@@ -29,6 +27,16 @@ class EventCardContainer extends HookWidget {
     double cardSize =
         MediaQuery.of(context).size.width * Const.eventCardWidthSizePercentage;
     double bottomContainerSize = cardSize * 0.25;
+
+    Map<String, String> commMap = CommunityDataQuery.getBaiscInfoById(
+      communityId: this.content.communityId,
+      joinedCommunityList: context.select(
+          (JoinedCommunityList joinedCommunityList) => joinedCommunityList),
+    );
+    CommunityOverview selectedComm = CommunityOverview(
+        communityId: this.content.communityId,
+        communityName: commMap['communityName'],
+        iconImg: commMap['iconImg']);
 
     return Container(
       width: cardSize,
@@ -57,14 +65,8 @@ class EventCardContainer extends HookWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => MultiProvider(
-                    providers: [
-                      StateNotifierProvider<GetAttendeesService, Attendees>(
-                        create: (context) => GetAttendeesService(),
-                      ),
-                    ],
-                    child: EventDetailPage(eventInfo: this.content),
-                  ),
+                  builder: (context) => EventDetailPage(
+                      eventInfo: this.content, selectedComm: selectedComm),
                   fullscreenDialog: true,
                 ),
               ),

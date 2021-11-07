@@ -98,8 +98,8 @@ class _EventConfirmRowList {
               child: DateTimeFixedContainer(
                 label: "開始",
                 descriptionFontColor: _descriptionFontColor,
-                startStr: end,
-                endStr: start,
+                startStr: start,
+                endStr: end,
                 isStart: true,
               ),
             ),
@@ -122,8 +122,8 @@ class _EventConfirmRowList {
               child: DateTimeFixedContainer(
                 label: "終了",
                 descriptionFontColor: _descriptionFontColor,
-                startStr: end,
-                endStr: start,
+                startStr: start,
+                endStr: end,
                 isStart: false,
               ),
             ),
