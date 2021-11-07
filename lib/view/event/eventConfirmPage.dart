@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:inhouse/component/appBar/inhouseAppBar.dart';
 import 'package:inhouse/component/event/confirm/eventConfirmDelegate.dart';
 import 'package:inhouse/model/community/CommunityOverview.dart';
+import 'package:inhouse/model/event/saveEventInfo.dart';
+import 'package:inhouse/service/api/event/saveEventService.dart';
 
 class EventConfirmPage extends StatelessWidget {
   const EventConfirmPage({
@@ -14,6 +16,7 @@ class EventConfirmPage extends StatelessWidget {
     @required this.location,
     @required this.selectedComm,
     this.description,
+    this.eventId,
   }) : super(key: key);
   final String networkImgUrl;
   final String assetImgPath;
@@ -23,13 +26,14 @@ class EventConfirmPage extends StatelessWidget {
   final String location;
   final CommunityOverview selectedComm;
   final String description;
+  final int eventId;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: InhouseAppBar.build(context, []),
       extendBodyBehindAppBar: true,
-      floatingActionButton: _submitFB(),
+      floatingActionButton: _submitFB(context),
       body: Container(
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(
@@ -54,12 +58,25 @@ class EventConfirmPage extends StatelessWidget {
     );
   }
 
-  Widget _submitFB() {
+  Widget _submitFB(BuildContext context) {
     return FloatingActionButton.extended(
         label: Text('作成'),
         icon: Icon(Icons.check),
-        onPressed: () {
-          print("hogehoge");
+        onPressed: () async {
+          SaveEventInfo saveEventInfo = SaveEventInfo(
+            communityId: this.selectedComm.communityId,
+            targetImgPath: this.assetImgPath,
+            title: this.title,
+            start: this.start,
+            end: this.end,
+            location: this.location,
+            description: this.description,
+          );
+          if (eventId != null) {
+            saveEventInfo.eventId = eventId;
+          }
+          await SaveEventService().post(saveEventInfo);
+          Navigator.popUntil(context, (route) => route.isFirst);
         });
   }
 }

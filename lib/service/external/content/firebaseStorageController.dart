@@ -13,6 +13,14 @@ class FirebaseStorageController {
     return await _upload(file, 'images/icon', base64Name + extenstion);
   }
 
+  static Future<String> uploadEventThumbnail(
+      File file, int communityId, String title) async {
+    String extenstion = extension(file.path);
+    String base64Id =
+        base64.encode(utf8.encode(communityId.toString() + title));
+    return await _upload(file, 'images/event', base64Id + extenstion);
+  }
+
   //storageに保存
   static Future<String> _upload(
       File file, String dirName, String fileName) async {
