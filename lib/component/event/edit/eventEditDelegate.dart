@@ -82,13 +82,14 @@ class _EventEditRowList {
     final bool _isNew =
         (content == null || content.eventId == null || content.eventId == 0);
     if (!_isNew) {
-      _titleCtrl.text = content.title;
-      _locationCtrl.text = content.location;
+      _descriptionCtrl.text = content.description;
       _selectedCommIdCtrl.text = fixedComm.communityId.toString();
       _selectedCommNameCtrl.text = fixedComm.communityName;
       _selectedCommImgUrlCtrl.text = fixedComm.iconImg;
-      _descriptionCtrl.text = content.description;
-    } else {}
+
+      if (_titleCtrl.text == "") _titleCtrl.text = content.title;
+      if (_locationCtrl.text == "") _locationCtrl.text = content.location;
+    }
 
     List<Widget> list = [];
     // thumbnail image

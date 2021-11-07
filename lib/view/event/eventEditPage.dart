@@ -35,11 +35,18 @@ class _NewEventCreateState extends State<EventEditPage> {
 
   int _eventId;
   String _thumbnailImg;
-
   @override
   void initState() {
     super.initState();
-    context.read<SelectDateTimeService>().init();
+    if (widget.content != null &&
+        widget.content.start.isNotEmpty &&
+        widget.content.end.isNotEmpty) {
+      context
+          .read<SelectDateTimeService>()
+          .set(widget.content.start, widget.content.start);
+    } else {
+      context.read<SelectDateTimeService>().init();
+    }
   }
 
   @override

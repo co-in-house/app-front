@@ -15,6 +15,15 @@ class SelectDateTimeService extends StateNotifier<SelectDateTimeState> {
     debugPrint("Select DateTime Service init complete.");
   }
 
+  void set(String start, String end) {
+    debugPrint("Select DateTime Service set start.");
+    state = SelectDateTimeState(
+      startDateTimeStr: start,
+      endDateTimeStr: end,
+    );
+    debugPrint("Select DateTime Service set complete.");
+  }
+
   void setStartDateTime(String start) {
     debugPrint(
         "Select DateTime Service setStartDateTime start. : param $start");
