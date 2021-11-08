@@ -77,8 +77,8 @@ class EventConfirmPage extends StatelessWidget {
           if (eventId != null) {
             saveEventInfo.eventId = eventId;
           }
-          SaveEventService().save(saveEventInfo);
-          Navigator.popUntil(context, (route) => route.isFirst);
+
+          Navigator.pop(context, saveEventInfo);
         });
   }
 }

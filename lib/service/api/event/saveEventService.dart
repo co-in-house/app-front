@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:inhouse/component/snackbar/customeSB.dart';
 import 'package:inhouse/model/event/saveEventInfo.dart';
 import 'package:inhouse/service/external/content/firebaseStorageController.dart';
 import 'package:http/http.dart' as http;
@@ -9,7 +10,9 @@ import 'package:inhouse/util/util.dart';
 
 // イベントの新規作成・更新
 class SaveEventService {
-  Future<void> save(SaveEventInfo saveEventInfo) async {
+  Future<void> save(BuildContext context, SaveEventInfo saveEventInfo) async {
+    debugPrint("SaveEventService save start");
+
     bool isNew = true;
     if (saveEventInfo.eventId != null && saveEventInfo.eventId != 0) {
       isNew = false;
@@ -47,6 +50,7 @@ class SaveEventService {
       );
       print("PUT Event body : " + _body);
     }
+
     // テスト用
     // await new Future.delayed(new Duration(seconds: 2));
     // final response = _MockResponse();
@@ -59,12 +63,14 @@ class SaveEventService {
     print("Status: " + response.statusCode.toString());
     if (response.statusCode == 200) {
       print("Body:" + response.body.toString());
-      // stateの初期化
+      ScaffoldMessenger.of(context).showSnackBar(SuccessSB());
     } else {
       print("ReasonPrase:" + response.reasonPhrase);
       print("Header:" + response.headers.toString());
+      ScaffoldMessenger.of(context).showSnackBar(FailedSB());
       // throw Exception('Failed to post NewCommunity Service');
     }
+    debugPrint("SaveEventService save end");
   }
 }
 

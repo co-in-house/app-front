@@ -1,5 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:inhouse/component/snackbar/customeSB.dart';
 import 'package:inhouse/model/community/JoinedCommunity.dart';
+import 'package:inhouse/model/event/saveEventInfo.dart';
+import 'package:inhouse/service/api/event/saveEventService.dart';
 import 'package:inhouse/service/event/selectTimeService.dart';
 import 'package:inhouse/view/event/eventEditPage.dart';
 import 'package:flutter/cupertino.dart';
@@ -29,9 +34,21 @@ class NewEventFB extends StatelessWidget {
             ),
             fullscreenDialog: true,
           ),
+        ).then(
+          (result) => {
+            if (result != null && result is SaveEventInfo)
+              {
+                _testSleepSnack(context, result),
+              }
+          },
         ),
       },
       child: Icon(Icons.add),
     );
+  }
+
+  void _testSleepSnack(
+      BuildContext context, SaveEventInfo saveEventInfo) async {
+    SaveEventService().save(context, saveEventInfo);
   }
 }

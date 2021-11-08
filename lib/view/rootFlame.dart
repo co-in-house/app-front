@@ -1,4 +1,3 @@
-import 'package:inhouse/component/bottomNavBar/bkupBNB.dart';
 import 'package:inhouse/component/bottomNavBar/inhouseBNB.dart';
 import 'package:inhouse/component/floating/newEventFB.dart';
 import 'package:inhouse/component/lounge/miniChatContainer.dart';
@@ -8,8 +7,6 @@ import 'package:inhouse/model/userState.dart';
 import 'package:inhouse/service/api/community/GetJoinedComService.dart';
 import 'package:inhouse/service/api/getCommunityListService.dart';
 import 'package:inhouse/service/api/event/getEventListService.dart';
-import 'package:inhouse/service/api/getLocationListService.dart';
-import 'package:inhouse/service/api/getTagListService.dart';
 import 'package:inhouse/service/external/content/firebaseStorageController.dart';
 import 'package:inhouse/util/util.dart';
 import 'package:inhouse/util/wrapper.dart';
@@ -18,7 +15,6 @@ import 'package:inhouse/view/explore/explorePage.dart';
 import 'package:inhouse/view/login/login.dart';
 import 'package:inhouse/view/lounge/chatPage.dart';
 import 'package:inhouse/view/lounge/loungePage.dart';
-import 'package:inhouse/view/message/messagePage.dart';
 import 'package:inhouse/view/userMenu/userMenuPage.dart';
 import 'package:flutter/material.dart';
 // import 'package:inhouse/view/timeline/homePage.dart';
@@ -26,6 +22,8 @@ import 'package:miniplayer/miniplayer.dart';
 import 'package:provider/provider.dart';
 
 class RootFlame extends StatelessWidget {
+  final GlobalKey rootKey = GlobalKey<ScaffoldState>();
+
   void init(BuildContext context) {}
 
   final List<Widget> _contentView = <Widget>[
@@ -57,10 +55,8 @@ class RootFlame extends StatelessWidget {
         await FirebaseStorageAccess().initialize();
         // 初期API call
         // master list 取得
-        context.read<GetLocationListService>().call();
         context.read<GetCommunityListService>().call("");
         context.read<GetEventListService>().call(communityIdList: [1, 2, 3]);
-        context.read<GetTagListService>().call();
         context.read<GetJoinedCommunityListService>().call(userid: 1);
       },
       child: AnimatedSwitcher(
@@ -69,37 +65,48 @@ class RootFlame extends StatelessWidget {
         child: !context.select((UserState state) => state).isLogined
             ? LoginPage()
             : Scaffold(
+                key: rootKey,
                 // drawer: CustomDrawer(context: context),
-                floatingActionButton: _fbList[context
-                    .select((RoutingState state) => state)
-                    .routingState], //CustomFloatingButton(),
-                bottomNavigationBar: InhouseBNB(),
-                body: Stack(
-                  children: [
-                    _contentView[context
+                floatingActionButton: Builder(
+                  builder: (context) {
+                    return _fbList[context
                         .select((RoutingState state) => state)
-                        .routingState],
-                    Offstage(
-                      offstage: _tappedRoomState.index == 0,
-                      child: Miniplayer(
-                        valueNotifier: Const.playerExpandProgress,
-                        // curve: Curves.easeInOut,
-                        controller: Const.miniplayerController,
-                        minHeight: Const.miniPlayerMinimumSize,
-                        maxHeight: MediaQuery.of(context).size.height,
-                        builder: (height, percentage) {
-                          print(Const.playerExpandProgress.value.toString());
-                          if (_tappedRoomState.index == 0)
-                            return const SizedBox.shrink();
-                          if (percentage <= 0.5) {
-                            return MiniChatContainer(
-                                tappedRoomState: _tappedRoomState);
-                          }
-                          return ChatPage(roomName: _tappedRoomState.roomName);
-                        },
-                      ),
-                    )
-                  ],
+                        .routingState];
+                  },
+                ),
+                bottomNavigationBar: InhouseBNB(),
+                body: Builder(
+                  builder: (context) {
+                    return Stack(
+                      children: [
+                        _contentView[context
+                            .select((RoutingState state) => state)
+                            .routingState],
+                        Offstage(
+                          offstage: _tappedRoomState.index == 0,
+                          child: Miniplayer(
+                            valueNotifier: Const.playerExpandProgress,
+                            // curve: Curves.easeInOut,
+                            controller: Const.miniplayerController,
+                            minHeight: Const.miniPlayerMinimumSize,
+                            maxHeight: MediaQuery.of(context).size.height,
+                            builder: (height, percentage) {
+                              print(
+                                  Const.playerExpandProgress.value.toString());
+                              if (_tappedRoomState.index == 0)
+                                return const SizedBox.shrink();
+                              if (percentage <= 0.5) {
+                                return MiniChatContainer(
+                                    tappedRoomState: _tappedRoomState);
+                              }
+                              return ChatPage(
+                                  roomName: _tappedRoomState.roomName);
+                            },
+                          ),
+                        )
+                      ],
+                    );
+                  },
                 ),
               ),
       ),

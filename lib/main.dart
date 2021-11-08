@@ -3,13 +3,10 @@ import 'package:inhouse/model/communityList.dart';
 import 'package:inhouse/model/event/eventList.dart';
 import 'package:inhouse/model/locationList.dart';
 import 'package:inhouse/model/lounge/roomState.dart';
-import 'package:inhouse/model/tagList.dart';
 import 'package:inhouse/model/userState.dart';
 import 'package:inhouse/service/api/community/GetJoinedComService.dart';
 import 'package:inhouse/service/api/getCommunityListService.dart';
 import 'package:inhouse/service/api/event/getEventListService.dart';
-import 'package:inhouse/service/api/getLocationListService.dart';
-import 'package:inhouse/service/api/getTagListService.dart';
 import 'package:inhouse/service/changeColorMode.dart';
 import 'package:inhouse/service/changePage.dart';
 import 'package:inhouse/service/lounge/changeRoom.dart';
@@ -66,12 +63,12 @@ class MyApp extends StatelessWidget {
             create: (context) => GetJoinedCommunityListService(),
           ),
           //マスター取得
-          StateNotifierProvider<GetTagListService, TagList>(
-            create: (context) => GetTagListService(),
-          ),
-          StateNotifierProvider<GetLocationListService, LocationList>(
-            create: (context) => GetLocationListService(),
-          ),
+          // StateNotifierProvider<GetTagListService, TagList>(
+          //   create: (context) => GetTagListService(),
+          // ),
+          // StateNotifierProvider<GetLocationListService, LocationList>(
+          //   create: (context) => GetLocationListService(),
+          // ),
           StateNotifierProvider<ChangeColorMode, ColorModeState>(
             create: (context) => ChangeColorMode(),
           ),
