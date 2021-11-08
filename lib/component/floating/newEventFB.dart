@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
-import 'package:inhouse/component/snackbar/customeSB.dart';
 import 'package:inhouse/model/community/JoinedCommunity.dart';
 import 'package:inhouse/model/event/saveEventInfo.dart';
 import 'package:inhouse/service/api/event/saveEventService.dart';
@@ -38,7 +37,7 @@ class NewEventFB extends StatelessWidget {
           (result) => {
             if (result != null && result is SaveEventInfo)
               {
-                _testSleepSnack(context, result),
+                _callBack(context, result),
               }
           },
         ),
@@ -47,8 +46,7 @@ class NewEventFB extends StatelessWidget {
     );
   }
 
-  void _testSleepSnack(
-      BuildContext context, SaveEventInfo saveEventInfo) async {
+  void _callBack(BuildContext context, SaveEventInfo saveEventInfo) async {
     SaveEventService().save(context, saveEventInfo);
   }
 }
