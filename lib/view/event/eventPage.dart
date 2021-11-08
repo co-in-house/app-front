@@ -96,7 +96,7 @@ class SameMonthEventContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverStickyHeader(
       header: Container(
-        height: kToolbarHeight + MediaQuery.of(context).padding.top, // 60.0 ,
+        // height: kToolbarHeight + MediaQuery.of(context).padding.top, // 60.0 ,
         color: inhouseThemeColor.backgroundColor,
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         alignment: Alignment.bottomLeft,

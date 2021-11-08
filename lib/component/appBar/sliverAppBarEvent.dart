@@ -6,8 +6,8 @@ class SliverAppBarEvent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       automaticallyImplyLeading: false,
-      floating: false,
-      pinned: false,
+      floating: true,
+      pinned: true,
       snap: false,
       expandedHeight: MediaQuery.of(context).size.width * 0.8, //正方形
       elevation: 0.0,
@@ -15,19 +15,34 @@ class SliverAppBarEvent extends StatelessWidget {
       flexibleSpace: Stack(
         children: [
           Positioned(
-              child: FlexibleSpaceBar(
-                collapseMode: CollapseMode.parallax,
-                background: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        const Color(0xFF31C941),
-                        const Color(0xFFFF9C61),
-                        inhouseThemeColor.backgroundColor,
-                      ],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                    ),
+              // collapseするならこっち
+              // child: FlexibleSpaceBar(
+              //   collapseMode: CollapseMode.parallax,
+              //   background: Container(
+              //     decoration: BoxDecoration(
+              //       gradient: LinearGradient(
+              //         colors: [
+              //           const Color(0xFF31C941),
+              //           const Color(0xFFFF9C61),
+              //           inhouseThemeColor.backgroundColor,
+              //         ],
+              //         begin: Alignment.topCenter,
+              //         end: Alignment.bottomCenter,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              // collapseしないならこっち
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      const Color(0xFF31C941),
+                      const Color(0xFFFF9C61),
+                      inhouseThemeColor.backgroundColor,
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
                   ),
                 ),
               ),
@@ -72,6 +87,21 @@ class SliverAppBarEvent extends StatelessWidget {
             right: MediaQuery.of(context).size.width * 0.05,
           ),
         ],
+      ),
+
+      bottom: PreferredSize(
+        preferredSize: const Size.fromHeight(48.0),
+        child: Container(
+          height: 48.0,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: inhouseThemeColor.backgroundColor,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(25),
+              topRight: Radius.circular(25),
+            ),
+          ),
+        ),
       ),
     );
   }
