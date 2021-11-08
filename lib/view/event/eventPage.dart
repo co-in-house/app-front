@@ -103,7 +103,7 @@ class SameMonthEventContainer extends StatelessWidget {
         child: Text(
           this.label,
           style: const TextStyle(
-            color: Colors.black,
+            color: const Color(0xFF707070),
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),

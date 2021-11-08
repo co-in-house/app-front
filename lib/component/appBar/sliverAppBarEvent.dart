@@ -37,9 +37,9 @@ class SliverAppBarEvent extends StatelessWidget {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      const Color(0xFF31C941),
-                      const Color(0xFFFF9C61),
-                      inhouseThemeColor.backgroundColor,
+                      const Color(0xFF3A7CD6),
+                      const Color(0xFF9AB0CE),
+                      // inhouseThemeColor.backgroundColor,
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
@@ -61,7 +61,7 @@ class SliverAppBarEvent extends StatelessWidget {
                       "Eventに参加しよう",
                       maxLines: 3,
                       style: TextStyle(
-                        color: Colors.black,
+                        color: const Color(0xFFFCFCFC),
                         fontWeight: FontWeight.bold,
                         fontFamily: "Robot",
                         height: 1.2,
@@ -72,8 +72,8 @@ class SliverAppBarEvent extends StatelessWidget {
                       "更なる高み、目指しちゃう？",
                       maxLines: 3,
                       style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                        color: const Color(0xFFFCFCFC),
+                        fontWeight: FontWeight.normal,
                         fontFamily: "Robot",
                         height: 1.2,
                       ),

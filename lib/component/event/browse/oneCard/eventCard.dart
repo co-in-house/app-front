@@ -100,6 +100,22 @@ class EventCardContainer extends HookWidget {
                       left: 0,
                       right: 0,
                       bottom: 0),
+                  //// blur 1
+                  Positioned(
+                    height: cardSize - cardMarginVertical * 2,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(Const.borderRadius),
+                      ),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 0, sigmaY: 0),
+                        child: Container(color: Colors.black.withOpacity(0.25)),
+                      ),
+                    ),
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                  ),
                   // dateOvalContainer
                   Positioned(
                     child: EventDateOvalContainer(
@@ -115,22 +131,22 @@ class EventCardContainer extends HookWidget {
 
                   // bottom line
                   //// blur
-                  Positioned(
-                    height: bottomContainerSize,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(Const.borderRadius),
-                        bottomRight: Radius.circular(Const.borderRadius),
-                      ),
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                        child: Container(color: Colors.white.withOpacity(0.7)),
-                      ),
-                    ),
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                  ),
+                  // Positioned(
+                  //   height: bottomContainerSize,
+                  //   child: ClipRRect(
+                  //     borderRadius: BorderRadius.only(
+                  //       bottomLeft: Radius.circular(Const.borderRadius),
+                  //       bottomRight: Radius.circular(Const.borderRadius),
+                  //     ),
+                  //     child: BackdropFilter(
+                  //       filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                  //       child: Container(color: Colors.white.withOpacity(0.7)),
+                  //     ),
+                  //   ),
+                  //   left: 0,
+                  //   right: 0,
+                  //   bottom: 0,
+                  // ),
                   //// contents
                   Positioned(
                       child: Container(

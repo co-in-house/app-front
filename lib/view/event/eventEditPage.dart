@@ -102,6 +102,7 @@ class _NewEventCreateState extends State<EventEditPage> {
     return Visibility(
       visible: MediaQuery.of(context).viewInsets.bottom == 0.0,
       child: FloatingActionButton.extended(
+        backgroundColor: const Color(0xFF3A7CD6),
         label: Text('確認'),
         onPressed: () {
           bool _isValid = true;

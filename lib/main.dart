@@ -1,7 +1,6 @@
 import 'package:inhouse/model/community/JoinedCommunity.dart';
 import 'package:inhouse/model/communityList.dart';
 import 'package:inhouse/model/event/eventList.dart';
-import 'package:inhouse/model/locationList.dart';
 import 'package:inhouse/model/lounge/roomState.dart';
 import 'package:inhouse/model/userState.dart';
 import 'package:inhouse/service/api/community/GetJoinedComService.dart';

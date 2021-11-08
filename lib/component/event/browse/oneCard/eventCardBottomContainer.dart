@@ -18,8 +18,17 @@ class EventCardBottomContainer extends StatelessWidget {
   final String startTime;
   final String endTime;
 
-  static final TextStyle _textStyle =
-      TextStyle(color: Colors.grey[700], fontWeight: FontWeight.normal);
+  static final TextStyle _textStyle = TextStyle(
+      color: const Color(0xFFFCFCFC),
+      fontWeight: FontWeight.normal,
+      shadows: shadows);
+  static final List<Shadow> shadows = [
+    Shadow(
+      offset: Offset(0.0, 0.0),
+      blurRadius: 10.0,
+      color: Colors.black,
+    )
+  ];
 
   static final double _subContentMargin = 10.0;
 
@@ -35,9 +44,10 @@ class EventCardBottomContainer extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              color: Colors.black,
+              color: const Color(0xFFFCFCFC),
               fontSize: 18,
               fontWeight: FontWeight.bold,
+              shadows: shadows,
             ),
           ),
         ),

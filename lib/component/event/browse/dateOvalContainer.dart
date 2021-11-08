@@ -1,4 +1,3 @@
-import 'package:inhouse/util/theme.dart';
 import 'package:flutter/material.dart';
 
 class EventDateOvalContainer extends StatelessWidget {
@@ -6,7 +5,16 @@ class EventDateOvalContainer extends StatelessWidget {
       : super(key: key);
   final String date;
   final String dayOfWeek;
-  final Color color = Colors.green[400];
+  // final Color color = Colors.green[400];
+  final Color color = Color(0xFF9AB0CE);
+  final List<Shadow> shadows = [
+    Shadow(
+      offset: Offset(0.0, 0.0),
+      blurRadius: 10.0,
+      color: Colors.black,
+    )
+  ];
+
   final double size;
 
   @override
@@ -30,6 +38,7 @@ class EventDateOvalContainer extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 24,
                     fontFamily: "Arial",
+                    shadows: shadows,
                   ),
                 ),
                 Text(
@@ -37,6 +46,7 @@ class EventDateOvalContainer extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
+                    shadows: shadows,
                   ),
                 ),
               ],

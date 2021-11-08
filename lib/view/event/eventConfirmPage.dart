@@ -60,6 +60,7 @@ class EventConfirmPage extends StatelessWidget {
 
   Widget _submitFB(BuildContext context) {
     return FloatingActionButton.extended(
+        backgroundColor: const Color(0xFF3A7CD6),
         label: Text('作成'),
         icon: Icon(Icons.check),
         onPressed: () async {

@@ -16,6 +16,7 @@ class NewEventFB extends StatelessWidget {
   Widget build(BuildContext context) {
     var jcl = context.select((JoinedCommunityList jcl) => jcl);
     return FloatingActionButton(
+      backgroundColor: const Color(0xFF3A7CD6),
       onPressed: () => {
         Navigator.push(
           context,
