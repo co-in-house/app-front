@@ -29,11 +29,9 @@ class EventPage extends StatelessWidget {
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(
               parent: AlwaysScrollableScrollPhysics()),
-          slivers: true
-              // ||
-              //         eventMatrix.isLoading &&
-              //             (eventMatrix.contents == null ||
-              //                 eventMatrix.contents.length == 0)
+          slivers: eventMatrix.isLoading &&
+                  (eventMatrix.contents == null ||
+                      eventMatrix.contents.length == 0)
               ? [
                   SliverAppBarEvent(),
                   SliverToBoxAdapter(
