@@ -11,6 +11,7 @@ class GetEventListService extends StateNotifier<EventMatrix> {
 
   // 取得
   Future<void> call({@required List<num> communityIdList}) async {
+    await new Future.delayed(new Duration(seconds: 10));
     print("GetEventListService Call");
     state = EventMatrix(
       contents: state.contents,

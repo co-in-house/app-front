@@ -1,3 +1,5 @@
+// import 'dart:html';
+
 import 'package:inhouse/component/appBar/sliverAppBarEvent.dart';
 import 'package:inhouse/component/event/browse/eventCardRowList.dart';
 import 'package:inhouse/model/event/eventList.dart';
@@ -27,13 +29,15 @@ class EventPage extends StatelessWidget {
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(
               parent: AlwaysScrollableScrollPhysics()),
-          slivers: eventMatrix.isLoading && eventMatrix.contents.length == 0
+          slivers: true
+              // ||
+              //         eventMatrix.isLoading &&
+              //             (eventMatrix.contents == null ||
+              //                 eventMatrix.contents.length == 0)
               ? [
                   SliverAppBarEvent(),
                   SliverToBoxAdapter(
-                    child: Container(
-                      child: Text("読み込み中"),
-                    ),
+                    child: _SorryContainer(),
                   ),
                 ]
               : _getSlivers(eventMatrix: eventMatrix),
@@ -45,16 +49,6 @@ class EventPage extends StatelessWidget {
   List<Widget> _getSlivers({@required EventMatrix eventMatrix}) {
     List<Widget> _slivers = [SliverAppBarEvent()];
 
-    if (eventMatrix.contents.length == 0) {
-      _slivers.add(
-        SliverToBoxAdapter(
-          child: Container(
-            child: Text("イベントを作成しよう！"),
-          ),
-        ),
-      );
-      return _slivers;
-    }
     String tmpStart =
         TimestampUtil.getYearMonthOfTimeStamp(eventMatrix.contents[0][0].start);
     List<List<OneEvent>> _eventMatrix = [];
@@ -98,7 +92,7 @@ class SameMonthEventContainer extends StatelessWidget {
       header: Container(
         // height: kToolbarHeight + MediaQuery.of(context).padding.top, // 60.0 ,
         color: inhouseThemeColor.backgroundColor,
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
         alignment: Alignment.bottomLeft,
         child: Text(
           this.label,
@@ -111,6 +105,54 @@ class SameMonthEventContainer extends StatelessWidget {
       ),
       sliver: SliverList(
         delegate: EventCardMatrix(this.eventMatrix),
+      ),
+    );
+  }
+}
+
+class _SorryContainer extends StatelessWidget {
+  final TextStyle _mainStyle = TextStyle(
+    color: Colors.black,
+    fontWeight: FontWeight.bold,
+    fontSize: 30,
+  );
+  final TextStyle _subStyle = TextStyle(
+    color: Color(0xFF707070),
+    fontWeight: FontWeight.normal,
+    // fontSize: 24,
+  );
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: MediaQuery.of(context).size.width * 0.1,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            '参加できるイベントが',
+            textAlign: TextAlign.center,
+            style: _mainStyle,
+          ),
+          Text(
+            'ありません！',
+            textAlign: TextAlign.center,
+            style: _mainStyle,
+          ),
+          Text('', style: _subStyle),
+          Text(
+            'コミュニティに参加していなければ\n虫眼鏡アイコンをタップして\nコミュニティを探してみましょう！',
+            textAlign: TextAlign.center,
+            style: _subStyle,
+          ),
+          Text(''),
+          Text('コミュニティに所属しているのであれば',
+              textAlign: TextAlign.center, style: _subStyle),
+          Text('+ボタンをタップして', textAlign: TextAlign.center, style: _subStyle),
+          Text('イベントを作成してみましょう', textAlign: TextAlign.center, style: _subStyle),
+        ],
       ),
     );
   }

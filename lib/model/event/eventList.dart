@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class EventMatrix extends BaseModel {
   EventMatrix({
     this.contents, // 初期値null
-    this.isLoading = false,
+    this.isLoading = true,
   });
   final List<List<OneEvent>> contents;
   final bool isLoading;

@@ -9,7 +9,7 @@ class SliverAppBarEvent extends StatelessWidget {
       floating: true,
       pinned: true,
       snap: false,
-      expandedHeight: MediaQuery.of(context).size.width * 0.8, //正方形
+      expandedHeight: MediaQuery.of(context).size.width * 0.76, //正方形
       elevation: 0.0,
 
       flexibleSpace: Stack(
@@ -82,7 +82,7 @@ class SliverAppBarEvent extends StatelessWidget {
                 ),
               ],
             ),
-            top: MediaQuery.of(context).size.width * 0.45,
+            top: MediaQuery.of(context).size.width * 0.35,
             left: MediaQuery.of(context).size.width * 0.05,
             right: MediaQuery.of(context).size.width * 0.05,
           ),
@@ -92,7 +92,7 @@ class SliverAppBarEvent extends StatelessWidget {
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(48.0),
         child: Container(
-          height: 48.0,
+          height: 20.0,
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: inhouseThemeColor.backgroundColor,
