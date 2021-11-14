@@ -8,6 +8,7 @@ import 'package:inhouse/service/api/community/GetJoinedComService.dart';
 import 'package:inhouse/service/api/getCommunityListService.dart';
 import 'package:inhouse/service/api/event/getEventListService.dart';
 import 'package:inhouse/service/external/content/firebaseStorageController.dart';
+import 'package:inhouse/service/external/icos/icosController.dart';
 import 'package:inhouse/util/util.dart';
 import 'package:inhouse/util/wrapper.dart';
 import 'package:inhouse/view/event/eventPage.dart';
@@ -47,6 +48,7 @@ class RootFlame extends StatelessWidget {
     init(context);
     // final int _roomIndex =
     //     context.select((RoomState roomState) => roomState).index;
+    // ICOSController().test();
     final RoomState _tappedRoomState =
         context.select((RoomState roomState) => roomState);
 

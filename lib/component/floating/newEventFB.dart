@@ -5,6 +5,7 @@ import 'package:inhouse/model/community/JoinedCommunity.dart';
 import 'package:inhouse/model/event/saveEventInfo.dart';
 import 'package:inhouse/service/api/event/saveEventService.dart';
 import 'package:inhouse/service/event/selectTimeService.dart';
+import 'package:inhouse/service/external/icos/icosController.dart';
 import 'package:inhouse/view/event/eventEditPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +49,14 @@ class NewEventFB extends StatelessWidget {
   }
 
   void _callBack(BuildContext context, SaveEventInfo saveEventInfo) async {
-    SaveEventService().save(context, saveEventInfo);
+    // SaveEventService().save(context, saveEventInfo);
+    debugPrint("testMode");
+    String uploadImage = await ICOSController().uploadImage(
+      userId: 1,
+      communityId: saveEventInfo.communityId,
+      f: File(saveEventInfo.targetImgPath),
+    );
+    debugPrint("uploadImage: $uploadImage");
+    debugPrint("testMode end");
   }
 }

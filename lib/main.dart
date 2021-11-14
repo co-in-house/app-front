@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:inhouse/model/community/JoinedCommunity.dart';
 import 'package:inhouse/model/communityList.dart';
 import 'package:inhouse/model/event/eventList.dart';
@@ -19,7 +20,8 @@ import 'package:inhouse/view/rootFlame.dart' as root;
 import 'model/colorModeState.dart';
 import 'model/routingState.dart';
 
-void main() {
+void main() async {
+  await DotEnv().load('.env'); // 追加
   runApp(MyApp());
 }
 

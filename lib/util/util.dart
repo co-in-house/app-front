@@ -17,6 +17,8 @@ class Const {
     throw new AssertionError("private Constructor");
   }
 
+  // SECURE_ENV_KEY
+  static const String iCOS_API_KEY = "ICOS_API_KEY";
   // app-service-hose
   static const String APP_SERVIE_HOST = 'app-service.au-syd.mybluemix.net';
 
