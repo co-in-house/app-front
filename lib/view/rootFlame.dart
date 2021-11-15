@@ -8,7 +8,6 @@ import 'package:inhouse/service/api/community/GetJoinedComService.dart';
 import 'package:inhouse/service/api/getCommunityListService.dart';
 import 'package:inhouse/service/api/event/getEventListService.dart';
 import 'package:inhouse/service/external/content/firebaseStorageController.dart';
-import 'package:inhouse/service/external/icos/icosController.dart';
 import 'package:inhouse/util/util.dart';
 import 'package:inhouse/util/wrapper.dart';
 import 'package:inhouse/view/event/eventPage.dart';
@@ -16,9 +15,9 @@ import 'package:inhouse/view/explore/explorePage.dart';
 import 'package:inhouse/view/login/login.dart';
 import 'package:inhouse/view/lounge/chatPage.dart';
 import 'package:inhouse/view/lounge/loungePage.dart';
+import 'package:inhouse/view/search/searchPage.dart';
 import 'package:inhouse/view/userMenu/userMenuPage.dart';
 import 'package:flutter/material.dart';
-// import 'package:inhouse/view/timeline/homePage.dart';
 import 'package:miniplayer/miniplayer.dart';
 import 'package:provider/provider.dart';
 
@@ -29,10 +28,9 @@ class RootFlame extends StatelessWidget {
 
   final List<Widget> _contentView = <Widget>[
     LoungePage(),
-    ExplorePage(),
+    // ExplorePage(),
+    SearchPage(),
     EventPage(),
-    // MessagePage(),
-    // CutPage(),
     UserMenuPage(),
   ];
 
@@ -46,9 +44,6 @@ class RootFlame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     init(context);
-    // final int _roomIndex =
-    //     context.select((RoomState roomState) => roomState).index;
-    // ICOSController().test();
     final RoomState _tappedRoomState =
         context.select((RoomState roomState) => roomState);
 

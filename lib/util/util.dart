@@ -24,7 +24,8 @@ class Const {
 
   // rooting No
   static const int routingNoLounge = 0;
-  static const int routingNoExplore = 1;
+  // static const int routingNoExplore = 1;
+  static const int routingNoSearch = 1;
   static const int routingNoEvent = 2;
   static const int routingNoProfile = 3;
   // static const int routingNoCut = 3;
