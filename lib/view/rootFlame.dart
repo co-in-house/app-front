@@ -11,7 +11,7 @@ import 'package:inhouse/service/external/content/firebaseStorageController.dart'
 import 'package:inhouse/util/util.dart';
 import 'package:inhouse/util/wrapper.dart';
 import 'package:inhouse/view/event/eventPage.dart';
-import 'package:inhouse/view/explore/explorePage.dart';
+// import 'package:inhouse/view/explore/explorePage.dart';
 import 'package:inhouse/view/login/login.dart';
 import 'package:inhouse/view/lounge/chatPage.dart';
 import 'package:inhouse/view/lounge/loungePage.dart';
