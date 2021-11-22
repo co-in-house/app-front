@@ -15,26 +15,26 @@ class _State extends State<InhouseBNB> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      selectedItemColor: Colors.black,
+      selectedItemColor: Colors.green,
       unselectedItemColor: ThemeData.light().unselectedWidgetColor,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
+      showSelectedLabels: true,
+      showUnselectedLabels: true,
       iconSize: 32,
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.chair_outlined),
           activeIcon: Icon(Icons.chair),
-          label: 'Lounge',
+          label: 'ラウンジ',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.search_outlined),
           activeIcon: Icon(Icons.search),
-          label: 'Search',
+          label: '検索',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.event_outlined),
           activeIcon: Icon(Icons.event),
-          label: 'Event',
+          label: 'イベント',
         ),
         BottomNavigationBarItem(
           icon: _BottomUserIcon(
@@ -42,7 +42,7 @@ class _State extends State<InhouseBNB> {
             url:
                 'https://66.media.tumblr.com/c063f0b98040e8ec4b07547263b8aa15/tumblr_inline_ppignaTjX21s9on4d_540.jpg',
           ),
-          label: 'user',
+          label: 'プロフィール',
         ),
       ],
       onTap: (int index) {
